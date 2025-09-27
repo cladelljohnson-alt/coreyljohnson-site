@@ -1,0 +1,22 @@
+name: Daily rebuild
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  trigger-netlify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Create empty commit
+        run: |
+          git config user.name "Automated Build"
+          git config user.email "actions@github.com"
+          git commit --allow-empty -m "Daily rebuild"
+          git push
