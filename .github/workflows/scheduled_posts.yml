@@ -1,0 +1,54 @@
+name: Scheduled posts
+
+on:
+  schedule:
+    - cron: '0 12 * * *'
+  workflow_dispatch:
+
+jobs:
+  publish-scheduled-post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set git config
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Publish scheduled post
+        run: |
+          set -e
+          drafts_dir="drafts"
+          placeholder="<!--POST_PLACEHOLDER-->"
+          post=$(find "$drafts_dir" -maxdepth 1 -type f -name '*.html' | sort | head -n 1 || true)
+          if [ -z "$post" ]; then
+            echo 'No draft posts to publish.'
+            exit 0
+          fi
+          filename=$(basename "$post")
+          title=$(grep -oP '(?<=<title>).*?(?=</title>)' "$post" | head -n 1)
+          description=$(grep -oP '(?<=<meta name=\"description\" content=\").*?(?=\"\\>)' "$post" | head -n 1)
+          cat <<'EOF' > card_snippet.html
+<div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col">
+  <h3 class="text-xl font-semibold mb-2">TITLE_PLACEHOLDER</h3>
+  <p class="text-gray-700 flex-grow">DESCRIPTION_PLACEHOLDER</p>
+  <a href="FILENAME_PLACEHOLDER" class="mt-4 text-indigo-600 hover:text-indigo-800 font-medium">Read More</a>
+</div>
+EOF
+          # replace placeholders
+          sed -i "s/TITLE_PLACEHOLDER/$(printf '%s' "$title" | sed 's/[&/]/\\&/g')/" card_snippet.html
+          sed -i "s/DESCRIPTION_PLACEHOLDER/$(printf '%s' "$description" | sed 's/[&/]/\\&/g')/" card_snippet.html
+          sed -i "s/FILENAME_PLACEHOLDER/$(printf '%s' "$filename" | sed 's/[&/]/\\&/g')/" card_snippet.html
+          # insert snippet before placeholder in index.html
+          perl -0777 -i -pe "s/$placeholder/`sed -e 's/[\\&/]/\\&/g' -e 's/\n/\\n/g' card_snippet.html`\\n$placeholder/" index.html
+          # move post to root
+          git mv "$post" "$filename"
+          rm card_snippet.html
+          git add index.html "$filename"
+          git commit -m "Publish scheduled post: $filename"
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
