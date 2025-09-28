@@ -45,14 +45,15 @@ jobs:
           [ -n "$title" ] || title="${filename%.*}"
           [ -n "$description" ] || description="New post: ${title}"
 
-          # Build the card snippet
-          cat <<'EOF' > card_snippet.html
-          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col">
-            <h3 class="text-xl font-semibold mb-2">TITLE_PLACEHOLDER</h3>
-            <p class="text-gray-700 flex-grow">DESCRIPTION_PLACEHOLDER</p>
-            <a href="FILENAME_PLACEHOLDER" class="mt-4 text-indigo-600 hover:text-indigo-800 font-medium">Read More</a>
-          </div>
-          EOF
+         # Build the blog-card HTML snippet (dark card)
+         cat <<'EOF' > card_snippet.html
+         <article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
+         <h3 class="text-xl font-semibold mb-3">TITLE_PLACEHOLDER</h3>
+         <p class="mb-4">DESCRIPTION_PLACEHOLDER</p>
+         <a href="FILENAME_PLACEHOLDER" class="font-medium">Read More →</a>
+         </article>
+         EOF
+
 
           # Inject dynamic values
           sed -i "s/TITLE_PLACEHOLDER/$(printf '%s' "$title" | sed 's/[&/]/\\&/g')/" card_snippet.html
