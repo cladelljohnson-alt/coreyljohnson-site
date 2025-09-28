@@ -1,0 +1,71 @@
+name: Scheduled posts
+
+on:
+  schedule:
+    - cron: '0 12 * * *'   # 12:00 UTC (about 7 AM CT during daylight saving, 6 AM CST in winter)
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scheduled-posts
+  cancel-in-progress: false
+
+jobs:
+  publish-scheduled-post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate repo state
+        run: |
+          set -e
+          test -f index.html || { echo "index.html not found"; exit 1; }
+          grep -q '<!--POST_PLACEHOLDER-->' index.html || { echo "POST_PLACEHOLDER not found in index.html"; exit 1; }
+          test -d drafts || { echo "drafts/ directory not found"; exit 1; }
+          echo "✅ Repo structure looks OK"
+      - name: Set git config
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      - name: Publish scheduled HTML post
+        shell: bash
+        run: |
+          set -euo pipefail
+          drafts_dir="drafts"
+          placeholder="<!--POST_PLACEHOLDER-->"
+          post="$(find "$drafts_dir" -maxdepth 1 -type f -name '*.html' | sort | head -n 1 || true)"
+          if [ -z "${post:-}" ]; then
+            echo 'No draft posts to publish.'
+            exit 0
+          fi
+          filename="$(basename "$post")"
+          title="$(tr -d '\n' < "$post" | grep -oP '(?<=<title>).*?(?=</title>)' | head -n 1 || true)"
+          description="$(tr -d '\n' < "$post" | grep -oP '(?<=<meta\s+name="description"\s+content=").*?(?=")' | head -n 1 || true)"
+          [ -n "$title" ] || title="${filename%.*}"
+          [ -n "$description" ] || description="New post: ${title}"
+          cat > card_snippet.html <<'EOF'
+          <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col">
+            <h3 class="text-xl font-semibold mb-2">TITLE_PLACEHOLDER</h3>
+            <p class="text-gray-700 flex-grow">DESCRIPTION_PLACEHOLDER</p>
+            <a href="FILENAME_PLACEHOLDER" class="mt-4 text-indigo-600 hover:text-indigo-800 font-medium">Read More</a>
+          </div>
+          EOF
+          sed -i "s/TITLE_PLACEHOLDER/$(printf '%s' "$title" | sed 's/[&/]/\\&/g')/" card_snippet.html
+          sed -i "s/DESCRIPTION_PLACEHOLDER/$(printf '%s' "$description" | sed 's/[&/]/\\&/g')/" card_snippet.html
+          sed -i "s#FILENAME_PLACEHOLDER#$(printf '%s' "$filename" | sed 's/[&/]/\\&/g')#" card_snippet.html
+          perl -0777 -i -pe "s|$placeholder|$(sed -e 's/[\\/&]/\\\\&/g' -e 's/\n/\\\\n/g' card_snippet.html)\n$placeholder|" index.html
+          git mv "$post" "$filename"
+          rm -f card_snippet.html
+          git add index.html "$filename"
+          git commit -m "Publish scheduled post: $filename"
+      - name: Push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+          force: true
