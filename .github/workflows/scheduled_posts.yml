@@ -84,7 +84,7 @@ EOF
 
       - name: Insert card into homepage (no escaping)
         shell: bash
-        run: |
+        run: |ijj
           python3 - <<'PY'
 import os, sys
 hp = os.environ.get('HOMEPAGE_PATH','index.html')
