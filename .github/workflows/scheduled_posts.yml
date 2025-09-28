@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  HOMEPAGE_PATH: index.html  # change if your homepage is somewhere else
+  HOMEPAGE_PATH: index.html
 
 jobs:
   publish-scheduled-post:
@@ -24,12 +24,20 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Validate repo state
+        run: |
+          set -e
+          test -f "$HOMEPAGE_PATH" || { echo "index.html not found"; exit 1; }
+          grep -q '<!--POST_PLACEHOLDER-->' "$HOMEPAGE_PATH" || { echo "POST_PLACEHOLDER not found"; exit 1; }
+          test -d drafts || { echo "drafts/ directory not found"; exit 1; }
+          echo "✅ Repo structure looks OK"
+
       - name: Set git config
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-      - name: Publish scheduled post
+      - name: Publish scheduled HTML post
         shell: bash
         run: |
           set -euo pipefail
@@ -49,8 +57,7 @@ jobs:
           [ -n "$title" ] || title="${filename%.*}"
           [ -n "$description" ] || description="New post: ${title}"
 
-          # Build the blog-card HTML snippet (dark card)
-          ts="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          # Build the blog-card HTML snippet (DARK card, with markers)
           cat <<'EOF' > card_snippet.html
 <!-- AUTO-CARD START -->
 <article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
@@ -61,7 +68,7 @@ jobs:
 <!-- AUTO-CARD END -->
 EOF
 
-          # Inject dynamic values
+          # Inject dynamic values (escape &, / in replacements; HTML-escape description)
           sed -i "s#TITLE_PLACEHOLDER#$(printf '%s' "$title" | sed 's/[&/]/\\&/g')#" card_snippet.html
           desc_html="$(printf '%s' "$description" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')"
           sed -i "s#DESCRIPTION_PLACEHOLDER#$(printf '%s' "$desc_html" | sed 's/[&/]/\\&/g')#" card_snippet.html
@@ -75,27 +82,19 @@ EOF
           echo "Backslash-escaped tags in snippet?"
           grep -n "<\\/" card_snippet.html || echo "None ✅"
 
-      - name: Debug - verify placeholder presence
-        run: |
-          echo "Looking for <!--POST_PLACEHOLDER--> in $HOMEPAGE_PATH"
-          grep -n "<!--POST_PLACEHOLDER-->" "$HOMEPAGE_PATH"
-
       - name: Insert card into homepage (no escaping)
         shell: bash
         run: |
           python3 - <<'PY'
-import os, sys, re
+import os, sys
 hp = os.environ.get('HOMEPAGE_PATH','index.html')
 placeholder = "<!--POST_PLACEHOLDER-->"
-with open('card_snippet.html','r',encoding='utf-8') as f:
-    snip = f.read()
-with open(hp,'r',encoding='utf-8') as f:
-    html = f.read()
+with open('card_snippet.html','r',encoding='utf-8') as f: snip = f.read()
+with open(hp,'r',encoding='utf-8') as f: html = f.read()
 if placeholder not in html:
     print(f"Placeholder not found in {hp}", file=sys.stderr); sys.exit(1)
 html = html.replace(placeholder, snip + "\n" + placeholder, 1)
-with open(hp,'w',encoding='utf-8') as f:
-    f.write(html)
+with open(hp,'w',encoding='utf-8') as f: f.write(html)
 print("✅ Inserted card into", hp)
 PY
 
@@ -105,8 +104,7 @@ PY
           python3 - <<'PY'
 import os, re
 hp = os.environ.get('HOMEPAGE_PATH','index.html')
-with open(hp,'r',encoding='utf-8') as f:
-    html = f.read()
+with open(hp,'r',encoding='utf-8') as f: html = f.read()
 orig = html
 # 1) Fix any escaped closing tags like <\/h3> -> </h3>
 html = re.sub(r'<\\/', '</', html)
@@ -118,8 +116,7 @@ html = re.sub(
     flags=re.DOTALL
 )
 if html != orig:
-    with open(hp,'w',encoding='utf-8') as f:
-        f.write(html)
+    with open(hp,'w',encoding='utf-8') as f: f.write(html)
     print("✅ Applied sanity fixes in", hp)
 else:
     print("✅ No broken tags or old white cards detected")
@@ -139,4 +136,3 @@ PY
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-          force: true
