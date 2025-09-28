@@ -83,8 +83,12 @@ PY
         shell: bash
         run: |
           set -euo pipefail
-          # The $post variable is still available from the first script step
+          # The $post variable is not available in this step, so we must find it again
           post_to_move="$(find "drafts" -maxdepth 1 -type f -name '*.html' | sort | head -n 1)"
+          if [ -z "${post_to_move:-}" ]; then
+            echo "Draft already moved, skipping commit step."
+            exit 0
+          fi
           filename_to_move="$(basename "$post_to_move")"
           git mv "$post_to_move" "$filename_to_move"
           rm -f card_snippet.html
