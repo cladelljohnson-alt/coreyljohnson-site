@@ -14,38 +14,47 @@
 
   <style>
     :root{
-      /* Brand palette: deep navy + slate + subtle brass accent */
-      --ink:#0f172a;        /* headings */
+      /* Brand palette for a smart, masculine look */
+      --ink:#e5e7eb;        /* headings/text on dark (slate-200) */
       --navy:#1e3a8a;       /* primary */
       --navy-700:#2743a0;   /* primary hover */
-      --slate-100:#f1f5f9;  /* section alt background */
-      --slate-700:#334155;  /* body text */
-      --brass:#b5892e;      /* optional accents */
+      --card:#ffffff;       /* card background */
+      --page:#0f172a;       /* page background (slate-900) */
+      --subtle:#0b1220;     /* darker overlay */
+      --brass:#b5892e;      /* optional accent */
     }
-    body{font-family:'Inter',sans-serif;color:var(--slate-700);}
+
+    /* Base: dark page */
     html{scroll-behavior:smooth;}
+    body{font-family:'Inter',sans-serif;background:var(--page);color:#cbd5e1;} /* slate-300 */
 
-    /* Hero overlay a touch darker for legibility */
-    .hero-overlay{position:absolute;inset:0;
-      background:linear-gradient(to bottom right,rgba(15,23,42,.55),rgba(15,23,42,.35));
+    /* Headings on dark */
+    h1,h2,h3{color:var(--ink);}
+
+    /* Hero overlay a bit darker so white text pops */
+    .hero-overlay{
+      position:absolute;inset:0;
+      background:linear-gradient(to bottom right, rgba(11,18,32,.55), rgba(11,18,32,.35));
     }
 
-    /* Lightweight brand utilities (no Tailwind config needed) */
+    /* Brand utilities */
     .btn-primary{background:var(--navy);color:#fff;}
     .btn-primary:hover{background:var(--navy-700);}
-    .btn-outline{border:1px solid rgba(15,23,42,.18);color:var(--ink);}
-    .btn-outline:hover{background:rgba(15,23,42,.04);}
-    .link-accent{color:var(--navy);}
-    .link-accent:hover{color:var(--navy-700);}
-    .section-alt{background:var(--slate-100);}
+    .btn-outline{border:1px solid rgba(229,231,235,.2);color:#e5e7eb;}
+    .btn-outline:hover{background:rgba(255,255,255,.06);}
+    .link-accent{color:#93c5fd;}          /* light indigo on dark */
+    .link-accent:hover{color:#bfdbfe;}
+    .section-alt{background:rgba(255,255,255,.04);} /* subtle panel on dark */
 
-    h1,h2,h3{color:var(--ink);}
+    /* Cards stay white to “pop” on dark */
+    .card{background:var(--card);}
   </style>
 </head>
 
 <body class="font-sans antialiased">
   <!-- Navigation -->
-  <header class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-10">
+  <header class="backdrop-blur-md sticky top-0 z-10"
+          style="background:rgba(11,18,32,.7); box-shadow:0 1px 0 rgba(255,255,255,.06);">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
       <a href="#" class="text-2xl font-bold" style="color:var(--ink)">Corey L. Johnson</a>
       <nav class="space-x-6 hidden md:block">
@@ -64,7 +73,7 @@
 
     <div class="relative container mx-auto px-4 py-24 md:py-32 flex">
       <div class="max-w-3xl">
-        <div class="bg-black/35 backdrop-blur-sm rounded-2xl px-6 py-6 md:px-8 md:py-8 shadow-lg">
+        <div class="bg-black/40 backdrop-blur-sm rounded-2xl px-6 py-6 md:px-8 md:py-8 shadow-lg">
           <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
             <span class="block">They Never Came Home</span>
           </h1>
@@ -89,7 +98,7 @@
       <h2 class="text-4xl font-bold text-center mb-12">Books</h2>
       <div class="grid md:grid-cols-2 gap-10">
         <!-- Book 1 -->
-        <div class="flex flex-col md:flex-row items-center bg-white rounded-xl overflow-hidden shadow-lg transition duration-300 transform hover:shadow-2xl hover:-translate-y-1">
+        <div class="flex flex-col md:flex-row items-center card rounded-xl overflow-hidden shadow-lg transition duration-300 transform hover:shadow-2xl hover:-translate-y-1">
           <img src="book1.png" alt="Cover of The Grass Is Always Greener" class="w-full md:w-1/3 object-cover" />
           <div class="p-6">
             <h3 class="text-2xl font-semibold mb-3">The Grass Is Always Greener</h3>
@@ -101,7 +110,7 @@
           </div>
         </div>
         <!-- Book 2 -->
-        <div class="flex flex-col md:flex-row items-center bg-white rounded-xl overflow-hidden shadow-lg transition duration-300 transform hover:shadow-2xl hover:-translate-y-1">
+        <div class="flex flex-col md:flex-row items-center card rounded-xl overflow-hidden shadow-lg transition duration-300 transform hover:shadow-2xl hover:-translate-y-1">
           <img src="book2.png" alt="Cover of They Never Came Home" class="w-full md:w-1/3 object-cover" />
           <div class="p-6">
             <h3 class="text-2xl font-semibold mb-3">They Never Came Home</h3>
@@ -137,9 +146,9 @@
 
       <div class="grid md:grid-cols-3 gap-10">
         <!-- Blog card 1 -->
-        <article class="bg-white rounded-xl shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
+        <article class="card rounded-xl shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
           <h3 class="text-xl font-semibold mb-3">African-American YA Thrillers About Missing Girls</h3>
-          <p class="mb-4 text-gray-600">
+          <p class="mb-4 text-gray-700">
             Uncover gripping mysteries featuring Black protagonists and missing girls, and learn why Corey’s latest novel
             <em>They Never Came Home</em> deserves a spot on your TBR.
           </p>
@@ -147,8 +156,7 @@
         </article>
 
         <!-- Leave this EXACTLY as-is so the workflow can insert the next card here -->
-     
-<!--POST_PLACEHOLDER-->
+        <!--POST_PLACEHOLDER-->
       </div>
     </div>
   </section>
@@ -157,22 +165,22 @@
   <section id="contact" class="py-20">
     <div class="container mx-auto px-4 flex flex-col md:flex-row gap-12">
       <!-- Newsletter sign-up -->
-      <div class="w-full md:w-1/2 bg-white/80 backdrop-blur-md p-8 rounded-xl shadow-lg">
+      <div class="w-full md:w-1/2 bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-lg">
         <h3 class="text-2xl font-bold mb-4">Join Corey’s Newsletter</h3>
         <p class="mb-6">Get updates on new releases, book club kits, and behind-the-scenes content delivered straight to your inbox.</p>
         <form action="#" method="POST" onsubmit="alert('Thanks for subscribing!'); return false;" class="flex flex-col space-y-4">
-          <input type="email" name="email" placeholder="Enter your email" required class="p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--navy)]" />
+          <input type="email" name="email" placeholder="Enter your email" required class="p-3 rounded border border-gray-600 bg-transparent text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--navy)]" />
           <button type="submit" class="py-3 rounded-full font-semibold shadow-md transition-transform transform hover:-translate-y-0.5 btn-primary">Subscribe</button>
         </form>
       </div>
       <!-- Contact form -->
-      <div class="w-full md:w-1/2 bg-white/80 backdrop-blur-md p-8 rounded-xl shadow-lg">
+      <div class="w-full md:w-1/2 bg-white/10 backdrop-blur-md p-8 rounded-xl shadow-lg">
         <h3 class="text-2xl font-bold mb-4">Get in Touch</h3>
         <p class="mb-6">Have a question, collaboration idea, or press inquiry? Drop a message below and Corey will get back to you.</p>
         <form action="#" method="POST" onsubmit="alert('Thanks for reaching out!'); return false;" class="flex flex-col space-y-4">
-          <input type="text"   name="name"    placeholder="Your Name"   required class="p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--navy)]" />
-          <input type="email"  name="email"   placeholder="Your Email"  required class="p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--navy)]" />
-          <textarea name="message" placeholder="Your Message" rows="4" required class="p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[var(--navy)]"></textarea>
+          <input type="text"   name="name"    placeholder="Your Name"   required class="p-3 rounded border border-gray-600 bg-transparent text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--navy)]" />
+          <input type="email"  name="email"   placeholder="Your Email"  required class="p-3 rounded border border-gray-600 bg-transparent text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--navy)]" />
+          <textarea name="message" placeholder="Your Message" rows="4" required class="p-3 rounded border border-gray-600 bg-transparent text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--navy)]"></textarea>
           <button type="submit" class="py-3 rounded-full font-semibold shadow-md transition-transform transform hover:-translate-y-0.5 btn-primary">Send Message</button>
         </form>
       </div>
@@ -180,7 +188,7 @@
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-200 py-8">
+  <footer class="text-gray-300 py-8" style="background:#0b1220;">
     <div class="container mx-auto px-4 text-center">
       <p>&copy; <span id="year"></span> Corey L. Johnson. All rights reserved.</p>
       <!-- Optional subtle brass accent -->
