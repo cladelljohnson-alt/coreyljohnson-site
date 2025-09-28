@@ -2,14 +2,18 @@ name: Scheduled posts
 
 on:
   schedule:
-    - cron: '0 12 * * *'
+    - cron: '0 12 * * *'   # 12:00 UTC daily
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: scheduled-posts
+  cancel-in-progress: false
+
 env:
-  HOMEPAGE_PATH: index.html  # change if your real homepage lives elsewhere
+  HOMEPAGE_PATH: index.html  # change if your homepage is somewhere else
 
 jobs:
   publish-scheduled-post:
@@ -45,27 +49,42 @@ jobs:
           [ -n "$title" ] || title="${filename%.*}"
           [ -n "$description" ] || description="New post: ${title}"
 
-         # Build the blog-card HTML snippet (dark card)
-         cat <<'EOF' > card_snippet.html
-         <article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
-         <h3 class="text-xl font-semibold mb-3">TITLE_PLACEHOLDER</h3>
-         <p class="mb-4">DESCRIPTION_PLACEHOLDER</p>
-         <a href="FILENAME_PLACEHOLDER" class="font-medium">Read More →</a>
-         </article>
-         EOF
-
+          # Build the blog-card HTML snippet (dark card)
+          ts="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          cat <<'EOF' > card_snippet.html
+<!-- AUTO-CARD START -->
+<article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
+  <h3 class="text-xl font-semibold mb-3">TITLE_PLACEHOLDER</h3>
+  <p class="mb-4">DESCRIPTION_PLACEHOLDER</p>
+  <a href="FILENAME_PLACEHOLDER" class="font-medium">Read More →</a>
+</article>
+<!-- AUTO-CARD END -->
+EOF
 
           # Inject dynamic values
-          sed -i "s/TITLE_PLACEHOLDER/$(printf '%s' "$title" | sed 's/[&/]/\\&/g')/" card_snippet.html
+          sed -i "s#TITLE_PLACEHOLDER#$(printf '%s' "$title" | sed 's/[&/]/\\&/g')#" card_snippet.html
           desc_html="$(printf '%s' "$description" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')"
-          sed -i "s/DESCRIPTION_PLACEHOLDER/$(printf '%s' "$desc_html" | sed 's/[&/]/\\&/g')/" card_snippet.html
+          sed -i "s#DESCRIPTION_PLACEHOLDER#$(printf '%s' "$desc_html" | sed 's/[&/]/\\&/g')#" card_snippet.html
           sed -i "s#FILENAME_PLACEHOLDER#$(printf '%s' "$filename" | sed 's/[&/]/\\&/g')#" card_snippet.html
+
+      - name: Debug - show snippet to be inserted
+        run: |
+          echo "----- card_snippet.html -----"
+          cat card_snippet.html
+          echo
+          echo "Backslash-escaped tags in snippet?"
+          grep -n "<\\/" card_snippet.html || echo "None ✅"
+
+      - name: Debug - verify placeholder presence
+        run: |
+          echo "Looking for <!--POST_PLACEHOLDER--> in $HOMEPAGE_PATH"
+          grep -n "<!--POST_PLACEHOLDER-->" "$HOMEPAGE_PATH"
 
       - name: Insert card into homepage (no escaping)
         shell: bash
         run: |
           python3 - <<'PY'
-import os, sys
+import os, sys, re
 hp = os.environ.get('HOMEPAGE_PATH','index.html')
 placeholder = "<!--POST_PLACEHOLDER-->"
 with open('card_snippet.html','r',encoding='utf-8') as f:
@@ -78,6 +97,32 @@ html = html.replace(placeholder, snip + "\n" + placeholder, 1)
 with open(hp,'w',encoding='utf-8') as f:
     f.write(html)
 print("✅ Inserted card into", hp)
+PY
+
+      - name: Sanity fix - unescape any broken end tags and convert old white cards
+        shell: bash
+        run: |
+          python3 - <<'PY'
+import os, re
+hp = os.environ.get('HOMEPAGE_PATH','index.html')
+with open(hp,'r',encoding='utf-8') as f:
+    html = f.read()
+orig = html
+# 1) Fix any escaped closing tags like <\/h3> -> </h3>
+html = re.sub(r'<\\/', '</', html)
+# 2) Convert any old white blog cards to dark .card
+html = re.sub(
+    r'<div class="bg-white[^"]*p-6[^"]*rounded[^"]*".*?</div>\s*',
+    '<article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">[Converted old card – please verify]</article>\n',
+    html,
+    flags=re.DOTALL
+)
+if html != orig:
+    with open(hp,'w',encoding='utf-8') as f:
+        f.write(html)
+    print("✅ Applied sanity fixes in", hp)
+else:
+    print("✅ No broken tags or old white cards detected")
 PY
 
       - name: Move draft to root and commit
