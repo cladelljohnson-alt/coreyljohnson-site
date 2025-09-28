@@ -3,16 +3,7 @@ name: Scheduled posts
 on:
   schedule:
     - cron: '0 12 * * *'   # 12:00 UTC daily
-  workflow_dispatch:
-    inputs:
-      publish:
-        description: "Publish next draft now?"
-        type: boolean
-        default: true
-      dry_run:
-        description: "Dry run (no commit/push)"
-        type: boolean
-        default: false
+  workflow_dispatch: {}     # adds the "Run workflow" button
 
 permissions:
   contents: write
@@ -69,7 +60,7 @@ jobs:
           [ -n "$title" ] || title="${filename%.*}"
           [ -n "$description" ] || description="New post: ${title}"
 
-          # Build dark card snippet
+          # Build dark blog card snippet (no escaping)
           cat <<'EOF' > card_snippet.html
 <article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
   <h3 class="text-xl font-semibold mb-3">TITLE_PLACEHOLDER</h3>
@@ -83,8 +74,6 @@ EOF
           desc_html="$(printf '%s' "$description" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')"
           sed -i "s#DESCRIPTION_PLACEHOLDER#$(printf '%s' "$desc_html" | sed 's/[&/]/\\&/g')#" card_snippet.html
           sed -i "s#FILENAME_PLACEHOLDER#$(printf '%s' "$filename" | sed 's/[&/]/\\&/g')#" card_snippet.html
-
-          echo "Built card_snippet.html for: $filename"
 
       - name: Stop if no draft
         if: steps.pick.outputs.has_post != 'true'
@@ -106,18 +95,6 @@ html = html.replace(placeholder, snip + "\n" + placeholder, 1)
 with open(hp,'w',encoding='utf-8') as f: f.write(html)
 print("✅ Inserted card into", hp)
 PY
-
-      - name: Dry run? (skip commit/push)
-        if: ${{ github.event.inputs.dry_run == 'true' }}
-        run: |
-          echo "Dry run enabled — skipping commit/push."
-          exit 0
-
-      - name: Publish toggle
-        if: ${{ github.event.inputs.publish == 'false' }}
-        run: |
-          echo "Manual run with publish=false — skipping file move/commit."
-          exit 0
 
       - name: Move draft to root and commit
         if: steps.pick.outputs.has_post == 'true'
