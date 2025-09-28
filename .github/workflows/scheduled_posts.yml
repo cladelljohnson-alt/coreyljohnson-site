@@ -24,14 +24,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Validate repo state
-        run: |
-          set -e
-          test -f "$HOMEPAGE_PATH" || { echo "index.html not found"; exit 1; }
-          grep -q '<!--POST_PLACEHOLDER-->' "$HOMEPAGE_PATH" || { echo "POST_PLACEHOLDER not found"; exit 1; }
-          test -d drafts || { echo "drafts/ directory not found"; exit 1; }
-          echo "✅ Repo structure looks OK"
-
       - name: Set git config
         run: |
           git config user.name "$GITHUB_ACTOR"
@@ -42,10 +34,9 @@ jobs:
         run: |
           set -euo pipefail
           drafts_dir="drafts"
-          placeholder="<!--POST_PLACEHOLDER-->"
           post="$(find "$drafts_dir" -maxdepth 1 -type f -name '*.html' | sort | head -n 1 || true)"
           if [ -z "${post:-}" ]; then
-            echo 'No draft posts to publish.'
+            echo "No draft posts to publish."
             exit 0
           fi
           filename="$(basename "$post")"
@@ -57,38 +48,28 @@ jobs:
           [ -n "$title" ] || title="${filename%.*}"
           [ -n "$description" ] || description="New post: ${title}"
 
-          # Build the blog-card HTML snippet (DARK card, with markers)
+          # Build the blog-card HTML snippet (DARK card)
           cat <<'EOF' > card_snippet.html
-<!-- AUTO-CARD START -->
 <article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
   <h3 class="text-xl font-semibold mb-3">TITLE_PLACEHOLDER</h3>
   <p class="mb-4">DESCRIPTION_PLACEHOLDER</p>
   <a href="FILENAME_PLACEHOLDER" class="font-medium">Read More →</a>
 </article>
-<!-- AUTO-CARD END -->
 EOF
 
-          # Inject dynamic values (escape &, / in replacements; HTML-escape description)
+          # Inject dynamic values into the snippet
           sed -i "s#TITLE_PLACEHOLDER#$(printf '%s' "$title" | sed 's/[&/]/\\&/g')#" card_snippet.html
           desc_html="$(printf '%s' "$description" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')"
           sed -i "s#DESCRIPTION_PLACEHOLDER#$(printf '%s' "$desc_html" | sed 's/[&/]/\\&/g')#" card_snippet.html
           sed -i "s#FILENAME_PLACEHOLDER#$(printf '%s' "$filename" | sed 's/[&/]/\\&/g')#" card_snippet.html
 
-      - name: Debug - show snippet to be inserted
-        run: |
-          echo "----- card_snippet.html -----"
-          cat card_snippet.html
-          echo
-          echo "Backslash-escaped tags in snippet?"
-          grep -n "<\\/" card_snippet.html || echo "None ✅"
-
       - name: Insert card into homepage (no escaping)
         shell: bash
-        run: |ijj
+        run: |
           python3 - <<'PY'
 import os, sys
 hp = os.environ.get('HOMEPAGE_PATH','index.html')
-placeholder = "<!--POST_PLACEHOLDER-->"
+placeholder = ""
 with open('card_snippet.html','r',encoding='utf-8') as f: snip = f.read()
 with open(hp,'r',encoding='utf-8') as f: html = f.read()
 if placeholder not in html:
@@ -98,38 +79,17 @@ with open(hp,'w',encoding='utf-8') as f: f.write(html)
 print("✅ Inserted card into", hp)
 PY
 
-      - name: Sanity fix - unescape any broken end tags and convert old white cards
-        shell: bash
-        run: |
-          python3 - <<'PY'
-import os, re
-hp = os.environ.get('HOMEPAGE_PATH','index.html')
-with open(hp,'r',encoding='utf-8') as f: html = f.read()
-orig = html
-# 1) Fix any escaped closing tags like <\/h3> -> </h3>
-html = re.sub(r'<\\/', '</', html)
-# 2) Convert any old white blog cards to dark .card
-html = re.sub(
-    r'<div class="bg-white[^"]*p-6[^"]*rounded[^"]*".*?</div>\s*',
-    '<article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">[Converted old card – please verify]</article>\n',
-    html,
-    flags=re.DOTALL
-)
-if html != orig:
-    with open(hp,'w',encoding='utf-8') as f: f.write(html)
-    print("✅ Applied sanity fixes in", hp)
-else:
-    print("✅ No broken tags or old white cards detected")
-PY
-
       - name: Move draft to root and commit
         shell: bash
         run: |
           set -euo pipefail
-          git mv "$post" "$filename"
+          # The $post variable is still available from the first script step
+          post_to_move="$(find "drafts" -maxdepth 1 -type f -name '*.html' | sort | head -n 1)"
+          filename_to_move="$(basename "$post_to_move")"
+          git mv "$post_to_move" "$filename_to_move"
           rm -f card_snippet.html
-          git add "$HOMEPAGE_PATH" "$filename"
-          git commit -m "Publish scheduled post: $filename"
+          git add "$HOMEPAGE_PATH" "$filename_to_move"
+          git commit -m "Publish scheduled post: $filename_to_move"
 
       - name: Push changes
         uses: ad-m/github-push-action@v0.6.0
