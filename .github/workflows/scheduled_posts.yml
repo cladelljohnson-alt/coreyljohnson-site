@@ -2,11 +2,14 @@ name: Scheduled posts
 
 on:
   schedule:
-    - cron: '0 12 * * *'   # 12:00 UTC (~7 AM CT during DST, ~6 AM CST)
+    - cron: '0 12 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
+
+env:
+  HOMEPAGE_PATH: index.html  # change if your real homepage lives elsewhere
 
 jobs:
   publish-scheduled-post:
@@ -28,24 +31,21 @@ jobs:
           set -euo pipefail
           drafts_dir="drafts"
           placeholder="<!--POST_PLACEHOLDER-->"
-
-          # Find the first HTML file in drafts, if any (alphabetical)
           post="$(find "$drafts_dir" -maxdepth 1 -type f -name '*.html' | sort | head -n 1 || true)"
           if [ -z "${post:-}" ]; then
             echo 'No draft posts to publish.'
             exit 0
           fi
-
           filename="$(basename "$post")"
 
-          # Extract title + meta description (compact the file to one line first)
+          # Extract title + description (robust to newlines)
           compact="$(tr -d '\n' < "$post")"
           title="$(printf '%s' "$compact" | grep -oP '(?<=<title>).*?(?=</title>)' | head -n 1 || true)"
           description="$(printf '%s' "$compact" | grep -oP '(?<=<meta\s+name="description"\s+content=").*?(?=")' | head -n 1 || true)"
           [ -n "$title" ] || title="${filename%.*}"
           [ -n "$description" ] || description="New post: ${title}"
 
-          # Build the blog-card HTML snippet (TITLE/DESCRIPTION/FILE get injected)
+          # Build the card snippet
           cat <<'EOF' > card_snippet.html
           <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col">
             <h3 class="text-xl font-semibold mb-2">TITLE_PLACEHOLDER</h3>
@@ -54,33 +54,29 @@ jobs:
           </div>
           EOF
 
-          # Safely inject text values into the snippet (escape & and / only in replacements)
+          # Inject dynamic values
           sed -i "s/TITLE_PLACEHOLDER/$(printf '%s' "$title" | sed 's/[&/]/\\&/g')/" card_snippet.html
-
-          # HTML-escape description minimally (&, <, >) before putting it in HTML
           desc_html="$(printf '%s' "$description" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')"
           sed -i "s/DESCRIPTION_PLACEHOLDER/$(printf '%s' "$desc_html" | sed 's/[&/]/\\&/g')/" card_snippet.html
-
           sed -i "s#FILENAME_PLACEHOLDER#$(printf '%s' "$filename" | sed 's/[&/]/\\&/g')#" card_snippet.html
 
       - name: Insert card into homepage (no escaping)
         shell: bash
         run: |
           python3 - <<'PY'
-import io, os, sys
-hp = "index.html"  # change to "public/index.html" if that's your real homepage
+import os, sys
+hp = os.environ.get('HOMEPAGE_PATH','index.html')
 placeholder = "<!--POST_PLACEHOLDER-->"
 with open('card_snippet.html','r',encoding='utf-8') as f:
     snip = f.read()
 with open(hp,'r',encoding='utf-8') as f:
     html = f.read()
 if placeholder not in html:
-    print(f"Placeholder not found in {hp}", file=sys.stderr)
-    sys.exit(1)
-html = html.replace(placeholder, snip + '\n' + placeholder, 1)
+    print(f"Placeholder not found in {hp}", file=sys.stderr); sys.exit(1)
+html = html.replace(placeholder, snip + "\n" + placeholder, 1)
 with open(hp,'w',encoding='utf-8') as f:
     f.write(html)
-print("✅ Inserted card snippet into", hp)
+print("✅ Inserted card into", hp)
 PY
 
       - name: Move draft to root and commit
@@ -89,7 +85,7 @@ PY
           set -euo pipefail
           git mv "$post" "$filename"
           rm -f card_snippet.html
-          git add index.html "$filename"
+          git add "$HOMEPAGE_PATH" "$filename"
           git commit -m "Publish scheduled post: $filename"
 
       - name: Push changes
