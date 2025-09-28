@@ -4,6 +4,15 @@ on:
   schedule:
     - cron: '0 12 * * *'   # 12:00 UTC daily
   workflow_dispatch:
+    inputs:
+      publish:
+        description: "Publish next draft now?"
+        type: boolean
+        default: true
+      dry_run:
+        description: "Dry run (no commit/push)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -14,6 +23,7 @@ concurrency:
 
 env:
   HOMEPAGE_PATH: index.html
+  PLACEHOLDER: "<!--POST_PLACEHOLDER-->"
 
 jobs:
   publish-scheduled-post:
@@ -24,31 +34,42 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Validate repo state
+        run: |
+          set -e
+          test -f "$HOMEPAGE_PATH" || { echo "index.html not found"; exit 1; }
+          grep -q "$PLACEHOLDER" "$HOMEPAGE_PATH" || { echo "POST_PLACEHOLDER not found in $HOMEPAGE_PATH"; exit 1; }
+          test -d drafts || { echo "drafts/ directory not found"; exit 1; }
+          echo "✅ Repo looks OK"
+
       - name: Set git config
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
-      - name: Publish scheduled HTML post
+      - name: Pick next draft and build card snippet
+        id: pick
         shell: bash
         run: |
           set -euo pipefail
-          drafts_dir="drafts"
-          post="$(find "$drafts_dir" -maxdepth 1 -type f -name '*.html' | sort | head -n 1 || true)"
+          post="$(find drafts -maxdepth 1 -type f -name '*.html' | sort | head -n 1 || true)"
           if [ -z "${post:-}" ]; then
             echo "No draft posts to publish."
+            echo "has_post=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
+          echo "has_post=true" >> "$GITHUB_OUTPUT"
+          echo "post_path=$post" >> "$GITHUB_OUTPUT"
           filename="$(basename "$post")"
+          echo "filename=$filename" >> "$GITHUB_OUTPUT"
 
-          # Extract title + description (robust to newlines)
           compact="$(tr -d '\n' < "$post")"
           title="$(printf '%s' "$compact" | grep -oP '(?<=<title>).*?(?=</title>)' | head -n 1 || true)"
-          description="$(printf '%s' "$compact" | grep -oP '(?<=<meta\s+name="description"\s+content=").*?(?=")' | head -n 1 || true)"
+          description="$(printf '%s' "$compact" | grep -oP '(?<=<meta\s+name=\"description\"\s+content=\").*?(?=\")' | head -n 1 || true)"
           [ -n "$title" ] || title="${filename%.*}"
           [ -n "$description" ] || description="New post: ${title}"
 
-          # Build the blog-card HTML snippet (DARK card)
+          # Build dark card snippet
           cat <<'EOF' > card_snippet.html
 <article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
   <h3 class="text-xl font-semibold mb-3">TITLE_PLACEHOLDER</h3>
@@ -57,19 +78,26 @@ jobs:
 </article>
 EOF
 
-          # Inject dynamic values into the snippet
+          # Inject dynamic values
           sed -i "s#TITLE_PLACEHOLDER#$(printf '%s' "$title" | sed 's/[&/]/\\&/g')#" card_snippet.html
           desc_html="$(printf '%s' "$description" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')"
           sed -i "s#DESCRIPTION_PLACEHOLDER#$(printf '%s' "$desc_html" | sed 's/[&/]/\\&/g')#" card_snippet.html
           sed -i "s#FILENAME_PLACEHOLDER#$(printf '%s' "$filename" | sed 's/[&/]/\\&/g')#" card_snippet.html
 
+          echo "Built card_snippet.html for: $filename"
+
+      - name: Stop if no draft
+        if: steps.pick.outputs.has_post != 'true'
+        run: echo "Nothing to do."
+
       - name: Insert card into homepage (no escaping)
+        if: steps.pick.outputs.has_post == 'true'
         shell: bash
         run: |
           python3 - <<'PY'
 import os, sys
 hp = os.environ.get('HOMEPAGE_PATH','index.html')
-placeholder = ""
+placeholder = os.environ.get('PLACEHOLDER','<!--POST_PLACEHOLDER-->')
 with open('card_snippet.html','r',encoding='utf-8') as f: snip = f.read()
 with open(hp,'r',encoding='utf-8') as f: html = f.read()
 if placeholder not in html:
@@ -79,23 +107,32 @@ with open(hp,'w',encoding='utf-8') as f: f.write(html)
 print("✅ Inserted card into", hp)
 PY
 
+      - name: Dry run? (skip commit/push)
+        if: ${{ github.event.inputs.dry_run == 'true' }}
+        run: |
+          echo "Dry run enabled — skipping commit/push."
+          exit 0
+
+      - name: Publish toggle
+        if: ${{ github.event.inputs.publish == 'false' }}
+        run: |
+          echo "Manual run with publish=false — skipping file move/commit."
+          exit 0
+
       - name: Move draft to root and commit
+        if: steps.pick.outputs.has_post == 'true'
         shell: bash
         run: |
           set -euo pipefail
-          # The $post variable is not available in this step, so we must find it again
-          post_to_move="$(find "drafts" -maxdepth 1 -type f -name '*.html' | sort | head -n 1)"
-          if [ -z "${post_to_move:-}" ]; then
-            echo "Draft already moved, skipping commit step."
-            exit 0
-          fi
-          filename_to_move="$(basename "$post_to_move")"
-          git mv "$post_to_move" "$filename_to_move"
+          post="${{ steps.pick.outputs.post_path }}"
+          filename="${{ steps.pick.outputs.filename }}"
+          git mv "$post" "$filename"
           rm -f card_snippet.html
-          git add "$HOMEPAGE_PATH" "$filename_to_move"
-          git commit -m "Publish scheduled post: $filename_to_move"
+          git add "$HOMEPAGE_PATH" "$filename"
+          git commit -m "Publish scheduled post: $filename"
 
       - name: Push changes
+        if: steps.pick.outputs.has_post == 'true'
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
