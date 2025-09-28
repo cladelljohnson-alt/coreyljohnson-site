@@ -2,15 +2,20 @@ name: Scheduled posts
 
 on:
   schedule:
-    - cron: '0 12 * * *'   # Runs at 12:00 UTC (7 AM CT)
+    - cron: '0 12 * * *'   # 12:00 UTC (~7 AM CT during DST, ~6 AM CST)
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   publish-scheduled-post:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set git config
         run: |
@@ -18,21 +23,29 @@ jobs:
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
 
       - name: Publish scheduled post
+        shell: bash
         run: |
-          set -e
+          set -euo pipefail
           drafts_dir="drafts"
           placeholder="<!--POST_PLACEHOLDER-->"
-          # Find the first HTML file in drafts, if any
-          post=$(find "$drafts_dir" -maxdepth 1 -type f -name '*.html' | sort | head -n 1 || true)
-          if [ -z "$post" ]; then
+
+          # Find the first HTML file in drafts, if any (alphabetical)
+          post="$(find "$drafts_dir" -maxdepth 1 -type f -name '*.html' | sort | head -n 1 || true)"
+          if [ -z "${post:-}" ]; then
             echo 'No draft posts to publish.'
             exit 0
           fi
-          filename=$(basename "$post")
-          title=$(grep -oP '(?<=<title>).*(?=</title>)' "$post" | head -n 1)
-          description=$(grep -oP '(?<=<meta name="description" content=").*(?=")' "$post" | head -n 1)
 
-          # Build the blog-card HTML snippet
+          filename="$(basename "$post")"
+
+          # Extract title + meta description (compact the file to one line first)
+          compact="$(tr -d '\n' < "$post")"
+          title="$(printf '%s' "$compact" | grep -oP '(?<=<title>).*?(?=</title>)' | head -n 1 || true)"
+          description="$(printf '%s' "$compact" | grep -oP '(?<=<meta\s+name="description"\s+content=").*?(?=")' | head -n 1 || true)"
+          [ -n "$title" ] || title="${filename%.*}"
+          [ -n "$description" ] || description="New post: ${title}"
+
+          # Build the blog-card HTML snippet (TITLE/DESCRIPTION/FILE get injected)
           cat <<'EOF' > card_snippet.html
           <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex flex-col">
             <h3 class="text-xl font-semibold mb-2">TITLE_PLACEHOLDER</h3>
@@ -41,17 +54,41 @@ jobs:
           </div>
           EOF
 
-          # Replace placeholders in the snippet
+          # Safely inject text values into the snippet (escape & and / only in replacements)
           sed -i "s/TITLE_PLACEHOLDER/$(printf '%s' "$title" | sed 's/[&/]/\\&/g')/" card_snippet.html
-          sed -i "s/DESCRIPTION_PLACEHOLDER/$(printf '%s' "$description" | sed 's/[&/]/\\&/g')/" card_snippet.html
-          sed -i "s/FILENAME_PLACEHOLDER/$(printf '%s' "$filename" | sed 's/[&/]/\\&/g')/" card_snippet.html
 
-          # Insert the snippet into index.html before the placeholder
-          perl -0777 -i -pe "s|$placeholder|$(sed -e 's/[\\/&]/\\\\&/g' -e 's/\n/\\\\n/g' card_snippet.html)\n$placeholder|" index.html
+          # HTML-escape description minimally (&, <, >) before putting it in HTML
+          desc_html="$(printf '%s' "$description" | sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g')"
+          sed -i "s/DESCRIPTION_PLACEHOLDER/$(printf '%s' "$desc_html" | sed 's/[&/]/\\&/g')/" card_snippet.html
 
-          # Move the post from drafts to the site root and commit it
+          sed -i "s#FILENAME_PLACEHOLDER#$(printf '%s' "$filename" | sed 's/[&/]/\\&/g')#" card_snippet.html
+
+      - name: Insert card into homepage (no escaping)
+        shell: bash
+        run: |
+          python3 - <<'PY'
+import io, os, sys
+hp = "index.html"  # change to "public/index.html" if that's your real homepage
+placeholder = "<!--POST_PLACEHOLDER-->"
+with open('card_snippet.html','r',encoding='utf-8') as f:
+    snip = f.read()
+with open(hp,'r',encoding='utf-8') as f:
+    html = f.read()
+if placeholder not in html:
+    print(f"Placeholder not found in {hp}", file=sys.stderr)
+    sys.exit(1)
+html = html.replace(placeholder, snip + '\n' + placeholder, 1)
+with open(hp,'w',encoding='utf-8') as f:
+    f.write(html)
+print("✅ Inserted card snippet into", hp)
+PY
+
+      - name: Move draft to root and commit
+        shell: bash
+        run: |
+          set -euo pipefail
           git mv "$post" "$filename"
-          rm card_snippet.html
+          rm -f card_snippet.html
           git add index.html "$filename"
           git commit -m "Publish scheduled post: $filename"
 
@@ -59,6 +96,5 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-
-            branch: main
-            force: true
+          branch: main
+          force: true
