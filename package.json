@@ -1,0 +1,8 @@
+{
+  "name": "coreyljohnson-site",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "build-blog": "node scripts/build_blog.js"
+  }
+}
