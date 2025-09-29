@@ -54,11 +54,26 @@ jobs:
           filename="$(basename "$post")"
           echo "filename=$filename" >> "$GITHUB_OUTPUT"
 
-          compact="$(tr -d '\n' < "$post")"
-          title="$(printf '%s' "$compact" | grep -oP '(?<=<title>).*?(?=</title>)' | head -n 1 || true)"
-          description="$(printf '%s' "$compact" | grep -oP '(?<=<meta\s+name=\"description\"\s+content=\").*?(?=\")' | head -n 1 || true)"
-          [ -n "$title" ] || title="${filename%.*}"
-          [ -n "$description" ] || description="New post: ${title}"
+          readarray -t meta < <(python3 - <<'PY' "$post")
+import sys, re, pathlib
+path = pathlib.Path(sys.argv[1])
+text = path.read_text(encoding='utf-8')
+compact = ''.join(text.splitlines())
+title_match = re.search(r'<title>(.*?)</title>', compact, flags=re.IGNORECASE)
+title = title_match.group(1).strip() if title_match else path.stem
+desc_match = re.search(r'<meta\s+name="description"\s+content="([^"]*)"', compact, flags=re.IGNORECASE)
+description = desc_match.group(1).strip() if desc_match else f"New post: {title}"
+print(title)
+print(description)
+PY
+          title="${meta[0]:-${filename%.*}}"
+          description="${meta[1]-}"
+          if [ -z "$title" ]; then
+            title="${filename%.*}"
+          fi
+          if [ -z "$description" ]; then
+            description="New post: ${title}"
+          fi
 
           # Build dark blog card snippet (no escaping)
           cat <<'EOF' > card_snippet.html
