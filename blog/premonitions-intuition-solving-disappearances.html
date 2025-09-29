@@ -10,30 +10,51 @@
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --ink: #e5e7eb;
+      --navy: #1e3a8a;
+      --navy-700: #2743a0;
+      --page: #0f172a;
+      --subtle: #0b1220;
+    }
+
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
+      background: var(--page);
+      color: #cbd5e1;
     }
-    html {
-      scroll-behavior: smooth;
+
+    h1, h2, h3, h4 { color: var(--ink); }
+
+    .card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      border-radius: 0.75rem;
+      color: #cbd5e1;
     }
+
+    .link-accent { color: #93c5fd; }
+    .link-accent:hover { color: #bfdbfe; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="font-sans antialiased">
   <!-- Navigation -->
-  <header class="bg-white/80 backdrop-blur-md shadow-md sticky top-0 z-10">
+  <header class="backdrop-blur-md sticky top-0 z-10" style="background: rgba(11,18,32,0.7); box-shadow: 0 1px 0 rgba(255,255,255,0.06);">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="/index.html" class="text-2xl font-bold text-gray-800">Corey L. Johnson</a>
+      <a href="/index.html" class="text-2xl font-bold" style="color: var(--ink);">Corey L. Johnson</a>
       <nav class="space-x-6 hidden md:block">
-        <a href="/index.html#books" class="text-gray-700 hover:text-gray-900 transition-colors">Books</a>
-        <a href="/index.html#about" class="text-gray-700 hover:text-gray-900 transition-colors">About</a>
-        <a href="/index.html#blog" class="text-gray-700 hover:text-gray-900 transition-colors">Blog</a>
-        <a href="/index.html#contact" class="text-gray-700 hover:text-gray-900 transition-colors">Contact</a>
+        <a href="/index.html#books" class="hover:underline link-accent">Books</a>
+        <a href="/index.html#about" class="hover:underline link-accent">About</a>
+        <a href="/blog/index.html" class="hover:underline link-accent">Blog</a>
+        <a href="/index.html#contact" class="hover:underline link-accent">Contact</a>
       </nav>
     </div>
   </header>
 
   <main class="container mx-auto px-4 py-12">
-    <article class="max-w-3xl mx-auto">
+    <article class="max-w-3xl mx-auto card p-8 md:p-10">
       <h1 class="text-4xl font-bold mb-6">Premonitions &amp; Intuition: Solving Disappearances in YA Thrillers</h1>
       <p class="mb-4">What if your instincts could lead you to the truth? Many young adult thrillers lean on classic detective work—magnifying glasses, hidden clues and suspects with shaky alibis. But a growing subgenre blends mystery with a touch of the supernatural, giving protagonists abilities that border on premonition. These stories don’t just entertain; they explore how gut feelings and uncanny gifts can become tools of survival, especially when the missing are girls of color.</p>
       <p class="mb-4">Intuition isn’t merely a mystical plot device. Research into human cognition shows that “gut feelings” often stem from subconscious pattern recognition. In fiction, heightened intuition provides a metaphor for the ways marginalized communities sense danger before others do. For Black teens, hyper‑awareness is a survival skill—one that becomes life‑saving in thrillers where institutions fall short.</p>
@@ -73,9 +94,9 @@
 
       <h2 class="text-3xl font-semibold mb-4 mt-10">Calls to action</h2>
       <ul class="list-disc pl-5 mb-4">
-        <li class="mb-2">Dive into a blend of mystery and intuition by reading Corey L. Johnson’s <a href="https://a.co/d/cVwd3TI" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800"><em>They Never Came Home</em></a>.</li>
-        <li class="mb-2">Join our community of mystery lovers and get exclusive previews by signing up for the <a href="/index.html#contact" class="text-blue-600 underline hover:text-blue-800">newsletter</a>.</li>
-        <li class="mb-2">Support diverse storytelling across genres by picking up <a href="https://a.co/d/93FOaLR" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-800"><em>The Grass Is Always Greener</em></a>, a novel about faith, family and second chances.</li>
+        <li class="mb-2">Dive into a blend of mystery and intuition by reading Corey L. Johnson’s <a href="https://a.co/d/cVwd3TI" target="_blank" rel="noopener noreferrer" class="link-accent underline hover:underline"><em>They Never Came Home</em></a>.</li>
+        <li class="mb-2">Join our community of mystery lovers and get exclusive previews by signing up for the <a href="/index.html#contact" class="link-accent underline hover:underline">newsletter</a>.</li>
+        <li class="mb-2">Support diverse storytelling across genres by picking up <a href="https://a.co/d/93FOaLR" target="_blank" rel="noopener noreferrer" class="link-accent underline hover:underline"><em>The Grass Is Always Greener</em></a>, a novel about faith, family and second chances.</li>
       </ul>
 
       <h2 class="text-3xl font-semibold mb-4 mt-10">Image suggestions</h2>
@@ -85,15 +106,15 @@
       <p class="mb-4">4. <strong>A community search party with flashlights</strong> looking for a missing person. <em>Alt text:</em> “Group of volunteers searching with flashlights at night.”</p>
 
       <h2 class="text-3xl font-semibold mb-4 mt-10">What to read next</h2>
-      <p class="mb-4">For more on intuition and justice, browse our <a href="/index.html#books" class="text-blue-600 underline hover:text-blue-800">Books</a> page and discover stories that blend mystery with social insight. Every time you choose a diverse title, you help ensure the future of inclusive YA fiction.</p>
+      <p class="mb-4">For more on intuition and justice, browse our <a href="/index.html#books" class="link-accent underline hover:underline">Books</a> page and discover stories that blend mystery with social insight. Every time you choose a diverse title, you help ensure the future of inclusive YA fiction.</p>
 
-      <p class="text-sm text-gray-500">Note: This article is for informational and promotional purposes. Some links may be affiliate links.</p>
+      <p class="text-sm text-slate-400">Note: This article is for informational and promotional purposes. Some links may be affiliate links.</p>
     </article>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-200 py-8">
-    <div class="container mx-auto px-4 text-center">
+  <footer class="py-8" style="background: rgba(11,18,32,0.9);">
+    <div class="container mx-auto px-4 text-center text-slate-300">
       <p>&copy; <span id="year"></span> Corey L. Johnson. All rights reserved.</p>
     </div>
   </footer>
