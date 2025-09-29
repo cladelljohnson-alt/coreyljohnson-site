@@ -3,7 +3,7 @@ name: Scheduled posts
 on:
   schedule:
     - cron: '0 12 * * *'   # 12:00 UTC daily
-  workflow_dispatch: {}     # adds the "Run workflow" button
+  workflow_dispatch:        # adds the "Run workflow" button
 
 permissions:
   contents: write
