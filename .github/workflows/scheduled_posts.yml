@@ -54,11 +54,24 @@ jobs:
           filename="$(basename "$post")"
           echo "filename=$filename" >> "$GITHUB_OUTPUT"
 
-          compact="$(tr -d '\n' < "$post")"
-          title="$(printf '%s' "$compact" | grep -oP '(?<=<title>).*?(?=</title>)' | head -n 1 || true)"
-          description="$(printf '%s' "$compact" | grep -oP '(?<=<meta\s+name=\"description\"\s+content=\").*?(?=\")' | head -n 1 || true)"
-          [ -n "$title" ] || title="${filename%.*}"
-          [ -n "$description" ] || description="New post: ${title}"
+          eval "$(python3 - "$post" <<'PY')"
+import sys, re, pathlib, shlex
+path = pathlib.Path(sys.argv[1])
+text = path.read_text(encoding='utf-8')
+compact = ''.join(text.splitlines())
+title_match = re.search(r'<title>(.*?)</title>', compact, flags=re.IGNORECASE)
+title = title_match.group(1).strip() if title_match else path.stem
+desc_match = re.search(r'<meta\s+name="description"\s+content="([^"]*)"', compact, flags=re.IGNORECASE)
+description = desc_match.group(1).strip() if desc_match else f"New post: {title}"
+print(f"title={shlex.quote(title)}")
+print(f"description={shlex.quote(description)}")
+PY
+          if [ -z "${title:-}" ]; then
+            title="${filename%.*}"
+          fi
+          if [ -z "${description:-}" ]; then
+            description="New post: ${title}"
+          fi
 
           # Build dark blog card snippet (no escaping)
           cat <<'EOF' > card_snippet.html
@@ -69,10 +82,22 @@ jobs:
 </article>
 EOF
 
+
+<<<<<<< codex/update-draft-card-snippet-step-gfn7bf
+          # Inject dynamic values with sed-safe escaping
+          safe_title="$(printf '%s' "$title" | sed 's/[&#\/\\]/\\&/g')"
+          safe_description="$(printf '%s' "$description" | sed 's/[&#\/\\]/\\&/g')"
+          safe_filename="$(printf '%s' "$filename" | sed 's/[&#\/\\]/\\&/g')"
+
+          sed -i "s#TITLE_PLACEHOLDER#${safe_title}#" card_snippet.html
+          sed -i "s#DESCRIPTION_PLACEHOLDER#${safe_description}#" card_snippet.html
+          sed -i "s#FILENAME_PLACEHOLDER#${safe_filename}#" card_snippet.html
+=======
           # Inject dynamic values
           sed -i "s#TITLE_PLACEHOLDER#$(printf '%s' "$title" | sed 's/[&/]/\\&/g')#" card_snippet.html
           sed -i "s#DESCRIPTION_PLACEHOLDER#$(printf '%s' "$description" | sed 's/[&/]/\\&/g')#" card_snippet.html
           sed -i "s#FILENAME_PLACEHOLDER#$(printf '%s' "$filename" | sed 's/[&/]/\\&/g')#" card_snippet.html
+>>>>>>> main
 
       - name: Stop if no draft
         if: steps.pick.outputs.has_post != 'true'
