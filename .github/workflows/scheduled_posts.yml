@@ -3,7 +3,7 @@ name: Scheduled posts
 on:
   schedule:
     - cron: '0 12 * * *'   # 12:00 UTC daily
-  workflow_dispatch: {}     # adds the "Run workflow" button
+  workflow_dispatch:        # adds the "Run workflow" button
 
 permissions:
   contents: write
@@ -82,6 +82,8 @@ PY
 </article>
 EOF
 
+
+<<<<<<< codex/update-draft-card-snippet-step-gfn7bf
           # Inject dynamic values with sed-safe escaping
           safe_title="$(printf '%s' "$title" | sed 's/[&#\/\\]/\\&/g')"
           safe_description="$(printf '%s' "$description" | sed 's/[&#\/\\]/\\&/g')"
@@ -90,6 +92,12 @@ EOF
           sed -i "s#TITLE_PLACEHOLDER#${safe_title}#" card_snippet.html
           sed -i "s#DESCRIPTION_PLACEHOLDER#${safe_description}#" card_snippet.html
           sed -i "s#FILENAME_PLACEHOLDER#${safe_filename}#" card_snippet.html
+=======
+          # Inject dynamic values
+          sed -i "s#TITLE_PLACEHOLDER#$(printf '%s' "$title" | sed 's/[&/]/\\&/g')#" card_snippet.html
+          sed -i "s#DESCRIPTION_PLACEHOLDER#$(printf '%s' "$description" | sed 's/[&/]/\\&/g')#" card_snippet.html
+          sed -i "s#FILENAME_PLACEHOLDER#$(printf '%s' "$filename" | sed 's/[&/]/\\&/g')#" card_snippet.html
+>>>>>>> main
 
       - name: Stop if no draft
         if: steps.pick.outputs.has_post != 'true'
