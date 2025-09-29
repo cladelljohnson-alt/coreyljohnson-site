@@ -3,7 +3,7 @@ name: Scheduled posts
 on:
   schedule:
     - cron: '0 12 * * *'   # 12:00 UTC daily
-  workflow_dispatch:        # adds the "Run workflow" button
+  workflow_dispatch: {}     # adds the "Run workflow" button
 
 permissions:
   contents: write
@@ -69,14 +69,14 @@ jobs:
 </article>
 EOF
 
-          # Inject dynamic values
-          escape_for_sed() {
-            printf '%s' "$1" | sed 's/[&#\\]/\\&/g'
-          }
+          # Inject dynamic values with sed-safe escaping
+          safe_title="$(printf '%s' "$title" | sed 's/[&#\/\\]/\\&/g')"
+          safe_description="$(printf '%s' "$description" | sed 's/[&#\/\\]/\\&/g')"
+          safe_filename="$(printf '%s' "$filename" | sed 's/[&#\/\\]/\\&/g')"
 
-          sed -i "s#TITLE_PLACEHOLDER#$(escape_for_sed "$title")#" card_snippet.html
-          sed -i "s#DESCRIPTION_PLACEHOLDER#$(escape_for_sed "$description")#" card_snippet.html
-          sed -i "s#FILENAME_PLACEHOLDER#$(escape_for_sed "$filename")#" card_snippet.html
+          sed -i "s#TITLE_PLACEHOLDER#${safe_title}#" card_snippet.html
+          sed -i "s#DESCRIPTION_PLACEHOLDER#${safe_description}#" card_snippet.html
+          sed -i "s#FILENAME_PLACEHOLDER#${safe_filename}#" card_snippet.html
 
       - name: Stop if no draft
         if: steps.pick.outputs.has_post != 'true'
