@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog – Corey L. Johnson</title>
+  <meta name="description" content="Read the latest updates from Corey L. Johnson, including news, essays, and resources about young adult thrillers." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #e5e7eb;
+      --navy: #1e3a8a;
+      --navy-700: #2743a0;
+      --page: #0f172a;
+      --subtle: #0b1220;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--page);
+      color: #cbd5e1;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--ink);
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      background: var(--navy-700);
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+      border-radius: 0.75rem;
+      color: #cbd5e1;
+    }
+
+    .link-accent { color: #93c5fd; }
+    .link-accent:hover { color: #bfdbfe; }
+  </style>
+</head>
+<body class="font-sans antialiased">
+  <header class="backdrop-blur-md sticky top-0 z-10" style="background: rgba(11,18,32,0.7); box-shadow: 0 1px 0 rgba(255,255,255,0.06);">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="/index.html" class="text-2xl font-bold" style="color: var(--ink);">Corey L. Johnson</a>
+      <nav class="space-x-6 hidden md:block">
+        <a href="/index.html#books" class="hover:underline link-accent">Books</a>
+        <a href="/index.html#about" class="hover:underline link-accent">About</a>
+        <a href="/blog/index.html" class="hover:underline link-accent">Blog</a>
+        <a href="/index.html#contact" class="hover:underline link-accent">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-16">
+    <section class="max-w-4xl mx-auto mb-12 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Blog</h1>
+      <p class="text-lg md:text-xl text-slate-300">Browse articles, resources, and behind-the-scenes updates about Corey L. Johnson&#39;s young adult thrillers.</p>
+    </section>
+
+    <section class="max-w-4xl mx-auto">
+      <div id="post-list" class="space-y-6" aria-live="polite">
+        <p class="text-center text-slate-400">Loading posts…</p>
+      </div>
+      <noscript>
+        <ul class="list-disc pl-5 mt-6 space-y-2 text-left text-slate-300">
+          <li><a href="/blog/character-deep-dive-malik-thompson.html" class="link-accent underline">Character Deep Dive: Malik Thompson</a></li>
+          <li><a href="/blog/10-signs-your-marriage-is-running-on-secrets.html" class="link-accent underline">10 Signs Your Marriage Is Running on Secrets</a></li>
+          <li><a href="/blog/21-brutal-questions-before-i-do.html" class="link-accent underline">21 Brutal Questions to Ask Before You Say &ldquo;I Do&rdquo;</a></li>
+          <li><a href="/blog/ya-mysteries-black-protagonists.html" class="link-accent underline">7 YA Mysteries Featuring Black Protagonists</a></li>
+          <li><a href="/blog/why-some-couples-survive-betrayal.html" class="link-accent underline">Why Some Couples Survive Betrayal&mdash;and Some Don&rsquo;t</a></li>
+          <li><a href="/blog/family-secrets-in-fiction.html" class="link-accent underline">Family Secrets in Fiction: Why We Can&rsquo;t Look Away</a></li>
+          <li><a href="/blog/long-lost-siblings-surprise-adoptions-in-literature.html" class="link-accent underline">Long-Lost Siblings &amp; Surprise Adoptions in Literature</a></li>
+          <li><a href="/blog/premonitions-intuition-solving-disappearances.html" class="link-accent underline">Premonitions &amp; Intuition in Missing‑Person YA Thrillers</a></li>
+          <li><a href="/blog/real-life-cases-missing-girls-of-color.html" class="link-accent underline">Real-Life Cases of Missing Girls of Color</a></li>
+          <li><a href="/blog/african-american-ya-thrillers.html" class="link-accent underline">Top African‑American YA Thrillers: Missing Girls &amp; Mystery</a></li>
+          <li><a href="/blog/why-representation-matters-ya-thrillers.html" class="link-accent underline">Why Representation Matters in YA Thrillers</a></li>
+          <li><a href="/blog/how-to-write-suspense-without-gore-11-05-09-am.html" class="link-accent underline">Writing Suspense Without Gore: Building Tension Through Atmosphere</a></li>
+        </ul>
+      </noscript>
+    </section>
+  </main>
+
+  <footer class="py-8" style="background: rgba(11,18,32,0.9);">
+    <div class="container mx-auto px-4 text-center text-slate-300">
+      <p>&copy; <span id="year"></span> Corey L. Johnson. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    async function loadPosts() {
+      const container = document.getElementById('post-list');
+      if (!container) return;
+
+      try {
+        const response = await fetch('/blog/posts.json', { cache: 'no-store' });
+        if (!response.ok) throw new Error('Unable to fetch posts');
+        const posts = await response.json();
+
+        if (!Array.isArray(posts) || posts.length === 0) {
+          container.innerHTML = '<p class="text-center text-slate-400">No published posts yet—check back soon.</p>';
+          return;
+        }
+
+        container.innerHTML = '';
+        const fragment = document.createDocumentFragment();
+
+        posts.forEach((post) => {
+          const article = document.createElement('article');
+          article.className = 'card p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1';
+
+          const title = document.createElement('h2');
+          title.className = 'text-2xl font-semibold mb-2';
+
+          const link = document.createElement('a');
+          const href = typeof post.href === 'string' ? post.href : '';
+          link.href = href.startsWith('/') ? href : '/' + href.replace(/^\//, '');
+          link.className = 'link-accent hover:underline';
+          link.textContent = post.title || 'Untitled post';
+          title.appendChild(link);
+
+          const excerpt = document.createElement('p');
+          excerpt.className = 'text-slate-300';
+          excerpt.textContent = post.excerpt || '';
+
+          article.appendChild(title);
+          article.appendChild(excerpt);
+          fragment.appendChild(article);
+        });
+
+        container.appendChild(fragment);
+      } catch (error) {
+        console.error('Failed to load blog posts', error);
+        container.innerHTML = '<p class="text-center text-slate-400">Unable to load posts right now. Please refresh the page.</p>';
+      }
+    }
+
+    loadPosts();
+  </script>
+</body>
+</html>
