@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1800" viewBox="0 0 1200 1800" role="img" aria-labelledby="title desc">
+  <title id="title">Ain't No Going Back Cover</title>
+  <desc id="desc">Gradient book cover with the title Ain't No Going Back and author name Corey L. Johnson.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#0f7490" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1800" fill="url(#bg)" />
+  <g fill="#0b1c2c" font-family="'Inter', 'Arial Black', sans-serif" font-weight="800" font-size="180" text-anchor="middle">
+    <text x="600" y="280">AIN'T</text>
+    <text x="600" y="480">NO</text>
+    <text x="600" y="680">GOING</text>
+    <text x="600" y="880">BACK</text>
+  </g>
+  <g fill="#f59e0b" font-family="'Inter', 'Arial Black', sans-serif" font-weight="700" font-size="72" text-anchor="middle">
+    <text x="600" y="1620">COREY L. JOHNSON</text>
+  </g>
+</svg>
