@@ -3,146 +3,629 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog – Corey L. Johnson</title>
-  <meta name="description" content="Read the latest updates from Corey L. Johnson, including news, essays, and resources about young adult thrillers." />
+  <title>News &amp; Notes – Corey L. Johnson</title>
+  <meta name="description" content="The latest news, essays, and behind-the-scenes updates from bestselling author Corey L. Johnson." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --ink: #e5e7eb;
-      --navy: #1e3a8a;
-      --navy-700: #2743a0;
-      --page: #0f172a;
-      --subtle: #0b1220;
+      --gold:    #c9963f;
+      --gold-lt: #e8b96a;
+      --ink:     #f1ede6;
+      --muted:   #a89880;
+      --page:    #0d0d0d;
+      --card:    #161410;
+      --border:  rgba(201,150,63,0.18);
     }
 
+    *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Inter', sans-serif;
       background: var(--page);
-      color: #cbd5e1;
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
     }
 
     h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* ── NAV ── */
+    .site-nav {
+      background: rgba(13,13,13,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: .875rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--gold); }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
       color: var(--ink);
+      letter-spacing: .02em;
     }
 
-    .btn-primary {
-      background: var(--navy);
-      color: #fff;
-    }
-    .btn-primary:hover {
-      background: var(--navy-700);
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-      border-radius: 0.75rem;
-      color: #cbd5e1;
+    /* ── PAGE HEADER ── */
+    .page-hero {
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 0 2.5rem;
+      text-align: center;
     }
 
-    .link-accent { color: #93c5fd; }
-    .link-accent:hover { color: #bfdbfe; }
+    .overline {
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: .75rem;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      color: var(--ink);
+      line-height: 1.1;
+    }
+
+    .page-hero p {
+      color: var(--muted);
+      max-width: 36rem;
+      margin: .75rem auto 0;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .gold-rule {
+      width: 3rem;
+      height: 2px;
+      background: var(--gold);
+      margin: 1.25rem auto 0;
+    }
+
+    /* ── FILTERS ── */
+    .filter-bar {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 1.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .filter-pill {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .4rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .filter-pill:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+    .filter-pill.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #0d0d0d;
+    }
+
+    /* ── FEATURED CARD ── */
+    .featured-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: .75rem;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 320px;
+      transition: box-shadow .3s, transform .3s;
+    }
+    .featured-card:hover {
+      box-shadow: 0 20px 60px rgba(201,150,63,.12);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .featured-card { grid-template-columns: 1fr; }
+    }
+
+    .featured-visual {
+      background: linear-gradient(135deg, #1a130a 0%, #2d1f0e 50%, #1a1206 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      min-height: 220px;
+    }
+
+    .featured-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 30% 50%, rgba(201,150,63,.15) 0%, transparent 70%);
+    }
+
+    .featured-visual-icon {
+      font-size: 5rem;
+      opacity: .35;
+      position: relative;
+      z-index: 1;
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      font-weight: 700;
+      background: var(--gold);
+      color: #0d0d0d;
+      padding: .25rem .75rem;
+      border-radius: 999px;
+      z-index: 2;
+    }
+
+    .featured-body {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .featured-cat {
+      font-size: .7rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: .6rem;
+    }
+
+    .featured-body h2 {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      color: var(--ink);
+      line-height: 1.25;
+      margin-bottom: .75rem;
+    }
+
+    .featured-body p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: .95rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .read-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      transition: gap .2s, color .2s;
+    }
+    .read-link:hover { color: var(--gold-lt); gap: .7rem; }
+    .read-link::after { content: '→'; }
+
+    /* ── POST GRID ── */
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 1024px) { .posts-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px)  { .posts-grid { grid-template-columns: 1fr; } }
+
+    /* ── POST CARD ── */
+    .post-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: .75rem;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow .3s, transform .3s, border-color .3s;
+      text-decoration: none;
+    }
+    .post-card:hover {
+      box-shadow: 0 12px 40px rgba(201,150,63,.1);
+      transform: translateY(-3px);
+      border-color: rgba(201,150,63,.4);
+    }
+
+    .card-visual {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, var(--card) 100%);
+    }
+
+    .card-body { padding: 1.25rem 1.25rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+
+    .card-cat {
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: .5rem;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--ink);
+      line-height: 1.35;
+      margin-bottom: .6rem;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .post-card:hover .card-title { color: var(--gold-lt); }
+
+    .card-excerpt {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex-grow: 1;
+      margin-bottom: 1rem;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: .75rem;
+      margin-top: auto;
+    }
+
+    .card-read-time { font-size: .75rem; color: var(--muted); }
+
+    .card-arrow {
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: .05em;
+    }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3.5rem 0 2rem;
+    }
+    .section-divider span {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── NEWSLETTER ── */
+    .newsletter-strip {
+      background: linear-gradient(135deg, #1a130a, #2d1e0d);
+      border: 1px solid var(--border);
+      border-radius: .75rem;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin: 4rem 0 2rem;
+    }
+    .newsletter-strip h3 {
+      font-size: 1.75rem;
+      color: var(--ink);
+      margin-bottom: .5rem;
+    }
+    .newsletter-strip p { color: var(--muted); margin-bottom: 1.5rem; }
+
+    .newsletter-form {
+      display: flex;
+      gap: .5rem;
+      max-width: 28rem;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      min-width: 0;
+      padding: .7rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.05);
+      color: var(--ink);
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .newsletter-input::placeholder { color: var(--muted); }
+    .newsletter-input:focus { border-color: var(--gold); }
+
+    .newsletter-btn {
+      padding: .7rem 1.6rem;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #0d0d0d;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .newsletter-btn:hover { background: var(--gold-lt); transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: .8rem;
+    }
+    footer a { color: var(--gold); text-decoration: none; }
+    footer a:hover { color: var(--gold-lt); }
+
+    /* ── EMPTY / HIDDEN ── */
+    .hidden { display: none !important; }
   </style>
 </head>
-<body class="font-sans antialiased">
-  <header class="backdrop-blur-md sticky top-0 z-10" style="background: rgba(11,18,32,0.7); box-shadow: 0 1px 0 rgba(255,255,255,0.06);">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="/index.html" class="text-2xl font-bold" style="color: var(--ink);">Corey L. Johnson</a>
-      <nav class="space-x-6 hidden md:block">
-        <a href="/index.html#books" class="hover:underline link-accent">Books</a>
-        <a href="/index.html#about" class="hover:underline link-accent">About</a>
-        <a href="/blog/index.html" class="hover:underline link-accent">Blog</a>
-        <a href="/index.html#contact" class="hover:underline link-accent">Contact</a>
+<body>
+
+  <!-- NAV -->
+  <header class="site-nav sticky top-0 z-20">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="/index.html" class="logo">Corey L. Johnson</a>
+      <nav class="space-x-7 hidden md:flex items-center">
+        <a href="/index.html#books" class="nav-link">Books</a>
+        <a href="/index.html#about" class="nav-link">About</a>
+        <a href="/blog/index.html" class="nav-link active">News</a>
+        <a href="/index.html#contact" class="nav-link">Contact</a>
+        <a href="https://www.amazon.com/stores/Corey-L.-Johnson/author/B0CXHJ2VLK" target="_blank" rel="noopener"
+           class="nav-link" style="color:var(--gold); border:1px solid var(--border); padding:.35rem .9rem; border-radius:999px;">
+          Amazon
+        </a>
       </nav>
+      <!-- Mobile menu toggle placeholder -->
+      <button class="md:hidden text-2xl" style="color:var(--muted); background:none; border:none; cursor:pointer;" aria-label="Menu">☰</button>
     </div>
   </header>
 
-  <main class="container mx-auto px-4 py-16">
-    <section class="max-w-4xl mx-auto mb-12 text-center">
-      <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Blog</h1>
-      <p class="text-lg md:text-xl text-slate-300">Browse articles, resources, and behind-the-scenes updates about Corey L. Johnson&#39;s young adult thrillers.</p>
-    </section>
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="container mx-auto px-6">
+      <p class="overline">From the Desk of Corey L. Johnson</p>
+      <h1>News &amp; Notes</h1>
+      <div class="gold-rule"></div>
+      <p>Essays on craft, relationships, justice, and the stories that won't let us look away.</p>
+    </div>
+  </div>
 
-    <section class="max-w-4xl mx-auto">
-      <div id="post-list" class="space-y-6" aria-live="polite">
-        <p class="text-center text-slate-400">Loading posts…</p>
-      </div>
-      <noscript>
-        <ul class="list-disc pl-5 mt-6 space-y-2 text-left text-slate-300">
-          <li><a href="/blog/character-deep-dive-malik-thompson.html" class="link-accent underline">Character Deep Dive: Malik Thompson of <em>They Never Came Home</em></a></li>
-          <li><a href="/blog/10-signs-your-marriage-is-running-on-secrets.html" class="link-accent underline">10 Signs Your Marriage Is Running on Secrets</a></li>
-          <li><a href="/blog/21-brutal-questions-before-i-do.html" class="link-accent underline">21 Brutal Questions to Ask Before You Say &ldquo;I Do&rdquo;</a></li>
-          <li><a href="/blog/ya-mysteries-black-protagonists.html" class="link-accent underline">7 Must-Read YA Mysteries Featuring Black Protagonists</a></li>
-          <li><a href="/blog/why-some-couples-survive-betrayal.html" class="link-accent underline">Why Some Couples Survive Betrayal&mdash;and Some Don&rsquo;t</a></li>
-          <li><a href="/blog/family-secrets-in-fiction.html" class="link-accent underline">Family Secrets in Fiction: Why They Haunt Us</a></li>
-          <li><a href="/blog/long-lost-siblings-surprise-adoptions-in-literature.html" class="link-accent underline">Long-Lost Siblings &amp; Surprise Adoptions in Literature</a></li>
-          <li><a href="/blog/premonitions-intuition-solving-disappearances.html" class="link-accent underline">Premonitions &amp; Intuition in Missing‑Person YA Thrillers</a></li>
-          <li><a href="/blog/real-life-cases-missing-girls-of-color.html" class="link-accent underline">Real-Life Cases of Missing Girls of Color</a></li>
-          <li><a href="/blog/african-american-ya-thrillers.html" class="link-accent underline">Top African‑American YA Thrillers: Missing Girls &amp; Mystery</a></li>
-          <li><a href="/blog/why-representation-matters-ya-thrillers.html" class="link-accent underline">Why Representation Matters in YA Thrillers</a></li>
-          <li><a href="/blog/how-to-write-suspense-without-gore-11-05-09-am.html" class="link-accent underline">Writing Suspense Without Gore: Building Tension Through Atmosphere</a></li>
-        </ul>
-      </noscript>
-    </section>
+  <!-- FILTERS -->
+  <div class="container mx-auto px-6">
+    <div class="filter-bar">
+      <button class="filter-pill active" data-filter="all">All</button>
+      <button class="filter-pill" data-filter="Writing Craft">Writing Craft</button>
+      <button class="filter-pill" data-filter="Relationships">Relationships</button>
+      <button class="filter-pill" data-filter="YA Fiction">YA Fiction</button>
+      <button class="filter-pill" data-filter="Thrillers">Thrillers</button>
+    </div>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="container mx-auto px-6 pb-16">
+
+    <!-- FEATURED POST -->
+    <div id="featured-section" style="margin-top:2.5rem; margin-bottom:.5rem;">
+      <div id="featured-post"></div>
+    </div>
+
+    <!-- ALL POSTS GRID -->
+    <div class="section-divider">
+      <span>Latest Articles</span>
+    </div>
+
+    <div id="post-grid" class="posts-grid"></div>
+
+    <p id="no-results" class="hidden text-center py-12" style="color:var(--muted);">
+      No articles in this category yet — check back soon.
+    </p>
+
+    <!-- NEWSLETTER -->
+    <div class="newsletter-strip">
+      <p class="overline" style="margin-bottom:.4rem;">Stay in the Loop</p>
+      <h3>Get Updates from Corey</h3>
+      <p>New releases, behind-the-scenes notes, and reading picks — delivered straight to your inbox.</p>
+      <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+        <input class="newsletter-input" type="email" placeholder="Your email address" required />
+        <button class="newsletter-btn" type="submit">Subscribe</button>
+      </form>
+      <p id="subscribe-confirm" class="hidden" style="color:var(--gold); margin-top:1rem; font-weight:600;">
+        ✓ You're on the list — thank you!
+      </p>
+    </div>
+
   </main>
 
-  <footer class="py-8" style="background: rgba(11,18,32,0.9);">
-    <div class="container mx-auto px-4 text-center text-slate-300">
+  <!-- FOOTER -->
+  <footer>
+    <div class="container mx-auto px-6">
       <p>&copy; <span id="year"></span> Corey L. Johnson. All rights reserved.</p>
+      <p style="margin-top:.4rem;">
+        <a href="/index.html">Home</a> &nbsp;·&nbsp;
+        <a href="/index.html#books">Books</a> &nbsp;·&nbsp;
+        <a href="/index.html#about">About</a> &nbsp;·&nbsp;
+        <a href="/index.html#contact">Contact</a>
+      </p>
     </div>
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // ── Category + visual config ──────────────────────────────────
+    const categoryMap = {
+      'character-deep-dive-malik-thompson':              { cat: 'Writing Craft', icon: '✍️', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
+      '10-signs-your-marriage-is-running-on-secrets':   { cat: 'Relationships',  icon: '💍', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
+      '21-brutal-questions-before-i-do':                { cat: 'Relationships',  icon: '💬', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
+      'ya-mysteries-black-protagonists':                { cat: 'YA Fiction',     icon: '🔍', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
+      'why-some-couples-survive-betrayal':              { cat: 'Relationships',  icon: '❤️', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
+      'family-secrets-in-fiction':                      { cat: 'Writing Craft',  icon: '📖', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
+      'long-lost-siblings-surprise-adoptions-in-literature': { cat: 'Writing Craft', icon: '🧬', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
+      'premonitions-intuition-solving-disappearances':  { cat: 'YA Fiction',     icon: '🌙', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
+      'real-life-cases-missing-girls-of-color':         { cat: 'Thrillers',      icon: '🕵️', bg: 'linear-gradient(135deg,#1a0d0d,#2e1a1a)' },
+      'african-american-ya-thrillers':                  { cat: 'YA Fiction',     icon: '📚', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
+      'why-representation-matters-ya-thrillers':        { cat: 'YA Fiction',     icon: '✊', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
+      'how-to-write-suspense-without-gore-11-05-09-am': { cat: 'Writing Craft',  icon: '⚡', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
+    };
+
+    // Estimate read time from excerpt length (rough)
+    function readTime(excerpt) {
+      const words = (excerpt || '').split(' ').length * 18; // scale excerpt to article
+      return Math.max(3, Math.round(words / 200)) + ' min read';
+    }
+
+    function buildFeatured(post, meta) {
+      return `
+        <a href="/${post.href}" class="featured-card" style="text-decoration:none;">
+          <div class="featured-visual" style="background:${meta.bg}">
+            <span class="featured-badge">Featured</span>
+            <span class="featured-visual-icon">${meta.icon}</span>
+          </div>
+          <div class="featured-body">
+            <p class="featured-cat">${meta.cat}</p>
+            <h2>${post.title}</h2>
+            <p>${post.excerpt}</p>
+            <span class="read-link">Read Article</span>
+          </div>
+        </a>`;
+    }
+
+    function buildCard(post, meta) {
+      return `
+        <a href="/${post.href}" class="post-card">
+          <div class="card-visual" style="background:${meta.bg}">
+            <span style="position:relative;z-index:1;">${meta.icon}</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">${meta.cat}</p>
+            <p class="card-title">${post.title}</p>
+            <p class="card-excerpt">${post.excerpt}</p>
+            <div class="card-footer">
+              <span class="card-read-time">${readTime(post.excerpt)}</span>
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>`;
+    }
+
+    let allPosts = [];
+
     async function loadPosts() {
-      const container = document.getElementById('post-list');
-      if (!container) return;
-
       try {
-        const response = await fetch('/blog/posts.json', { cache: 'no-store' });
-        if (!response.ok) throw new Error('Unable to fetch posts');
-        const posts = await response.json();
-
-        if (!Array.isArray(posts) || posts.length === 0) {
-          container.innerHTML = '<p class="text-center text-slate-400">No published posts yet—check back soon.</p>';
-          return;
-        }
-
-        container.innerHTML = '';
-        const fragment = document.createDocumentFragment();
-
-        posts.forEach((post) => {
-          const article = document.createElement('article');
-          article.className = 'card p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1';
-
-          const title = document.createElement('h2');
-          title.className = 'text-2xl font-semibold mb-2';
-
-          const link = document.createElement('a');
-          const href = typeof post.href === 'string' ? post.href : '';
-          link.href = href.startsWith('/') ? href : '/' + href.replace(/^\//, '');
-          link.className = 'link-accent hover:underline';
-          link.textContent = post.title || 'Untitled post';
-          title.appendChild(link);
-
-          const excerpt = document.createElement('p');
-          excerpt.className = 'text-slate-300';
-          excerpt.textContent = post.excerpt || '';
-
-          article.appendChild(title);
-          article.appendChild(excerpt);
-          fragment.appendChild(article);
-        });
-
-        container.appendChild(fragment);
-      } catch (error) {
-        console.error('Failed to load blog posts', error);
-        container.innerHTML = '<p class="text-center text-slate-400">Unable to load posts right now. Please refresh the page.</p>';
+        const res = await fetch('/blog/posts.json', { cache: 'no-store' });
+        if (!res.ok) throw new Error('fetch failed');
+        allPosts = await res.json();
+        renderPosts('all');
+      } catch (e) {
+        document.getElementById('post-grid').innerHTML =
+          '<p class="text-center py-8" style="color:var(--muted);">Unable to load articles right now. Please refresh.</p>';
       }
+    }
+
+    function renderPosts(filter) {
+      const featured  = document.getElementById('featured-post');
+      const grid      = document.getElementById('post-grid');
+      const noResults = document.getElementById('no-results');
+      const featSec   = document.getElementById('featured-section');
+
+      const filtered = filter === 'all'
+        ? allPosts
+        : allPosts.filter(p => {
+            const meta = categoryMap[p.slug] || {};
+            return meta.cat === filter;
+          });
+
+      if (filtered.length === 0) {
+        featured.innerHTML = '';
+        grid.innerHTML = '';
+        featSec.style.display = 'none';
+        noResults.classList.remove('hidden');
+        return;
+      }
+
+      noResults.classList.add('hidden');
+
+      // Featured = first post
+      const [first, ...rest] = filtered;
+      const firstMeta = categoryMap[first.slug] || { cat: 'General', icon: '📝', bg: 'linear-gradient(135deg,#1a1206,#2d1f0e)' };
+
+      featSec.style.display = '';
+      featured.innerHTML = buildFeatured(first, firstMeta);
+
+      // Remaining in grid
+      grid.innerHTML = rest.map(p => {
+        const m = categoryMap[p.slug] || { cat: 'General', icon: '📝', bg: 'linear-gradient(135deg,#1a1206,#2d1f0e)' };
+        return buildCard(p, m);
+      }).join('');
+    }
+
+    // ── Filter pills ──────────────────────────────────────────────
+    document.querySelectorAll('.filter-pill').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderPosts(btn.dataset.filter);
+      });
+    });
+
+    // ── Newsletter ────────────────────────────────────────────────
+    function handleSubscribe(e) {
+      e.preventDefault();
+      e.currentTarget.style.display = 'none';
+      document.getElementById('subscribe-confirm').classList.remove('hidden');
     }
 
     loadPosts();
