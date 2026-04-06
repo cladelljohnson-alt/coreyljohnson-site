@@ -8,7 +8,7 @@
   <title>Corey L. Johnson – Author</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root{
@@ -45,15 +45,168 @@
 
     /* Dark cards that sit nicely on the dark page */
     .card{
-      background: rgba(255,255,255,.06);           /* subtle dark panel */
-      border: 1px solid rgba(255,255,255,.08);     /* soft outline */
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.08);
       box-shadow: 0 8px 24px rgba(0,0,0,.25);
-      color: #cbd5e1;                               /* slate-300 body text */
-      border-radius: 0.75rem;                       /* rounded-xl */
+      color: #cbd5e1;
+      border-radius: 0.75rem;
     }
-    .card h1,.card h2,.card h3,.card h4{ color:#e5e7eb; }  /* headings a touch brighter */
+    .card h1,.card h2,.card h3,.card h4{ color:#e5e7eb; }
     .card a{ color:#93c5fd; }
     .card a:hover{ color:#bfdbfe; }
+
+    /* ── BOOKS SECTION REDESIGN ── */
+    h1,h2,h3,h4 { font-family:'Playfair Display',serif; }
+
+    .books-overline {
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: #60a5fa;
+      display: block;
+      margin-bottom: .5rem;
+    }
+
+    /* Featured spotlight book */
+    .book-spotlight {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 3rem;
+      align-items: center;
+      background: rgba(30,58,138,.12);
+      border: 1px solid rgba(30,58,138,.35);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      margin-bottom: 3.5rem;
+      transition: box-shadow .3s;
+    }
+    .book-spotlight:hover { box-shadow: 0 20px 60px rgba(30,58,138,.25); }
+    @media(max-width:768px){
+      .book-spotlight { grid-template-columns:1fr; text-align:center; }
+      .book-spotlight img { max-width:200px; margin:0 auto; }
+    }
+
+    .book-spotlight img {
+      width: 100%;
+      border-radius: .5rem;
+      box-shadow: 0 20px 50px rgba(0,0,0,.6);
+      transition: transform .3s;
+    }
+    .book-spotlight:hover img { transform: translateY(-4px) rotate(-1deg); }
+
+    .spotlight-badge {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      background: #1e3a8a;
+      color: #93c5fd;
+      padding: .3rem .9rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .book-spotlight h3 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: #e5e7eb;
+      line-height: 1.15;
+      margin-bottom: .75rem;
+    }
+
+    .book-spotlight p {
+      color: #94a3b8;
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Series section headings */
+    .series-label {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 3rem 0 1.5rem;
+    }
+    .series-label span {
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #60a5fa;
+      white-space: nowrap;
+    }
+    .series-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(30,58,138,.4);
+    }
+
+    /* Book cover grid */
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 2rem;
+    }
+
+    .book-item {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      transition: transform .3s;
+    }
+    .book-item:hover { transform: translateY(-6px); }
+
+    .book-item img {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      border-radius: .5rem;
+      box-shadow: 0 12px 35px rgba(0,0,0,.55);
+      margin-bottom: 1rem;
+      transition: box-shadow .3s;
+    }
+    .book-item:hover img { box-shadow: 0 20px 50px rgba(30,58,138,.35); }
+
+    .book-item-series {
+      font-family: 'Inter', sans-serif;
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #60a5fa;
+      margin-bottom: .25rem;
+    }
+
+    .book-item-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: #e5e7eb;
+      line-height: 1.3;
+      margin-bottom: .5rem;
+    }
+
+    .book-item-btn {
+      font-family: 'Inter', sans-serif;
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #60a5fa;
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      margin-top: auto;
+      padding-top: .4rem;
+      text-decoration: none;
+      transition: color .2s, gap .2s;
+    }
+    .book-item-btn:hover { color: #93c5fd; gap: .5rem; }
+    .book-item-btn::after { content: '→'; }
   </style>
 </head>
 
@@ -96,93 +249,80 @@
     </div>
   </section>
 
-  <section id="books" class="py-20 section-alt">
-    <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center mb-12">Books</h2>
-      <div class="grid md:grid-cols-2 gap-10">
+  <section id="books" class="py-24 section-alt">
+    <div class="container mx-auto px-6">
 
-        <!-- The Grass Is Always Greener -->
-        <div class="flex flex-col md:flex-row items-center card overflow-hidden transition duration-300 transform hover:shadow-2xl hover:-translate-y-1">
-          <img src="book1.png" alt="Cover of The Grass Is Always Greener by Corey L. Johnson" class="w-full md:w-1/3 object-cover" />
-          <div class="p-6">
-            <h3 class="text-2xl font-semibold mb-3">The Grass Is Always Greener</h3>
-            <p class="mb-5">A heartfelt tale of family secrets and second chances set in the American South. Follow characters whose faith and resilience illuminate the path through grief and redemption.</p>
-            <a href="https://a.co/d/bIOYPL0" target="_blank" rel="noopener noreferrer"
-               class="inline-block px-6 py-3 rounded-full shadow-md transition-transform transform hover:-translate-y-0.5 btn-primary">
-              Read on Amazon
-            </a>
-          </div>
-        </div>
+      <!-- Section header -->
+      <div class="text-center mb-14">
+        <span class="books-overline">The Complete Collection</span>
+        <h2 class="text-5xl font-extrabold" style="color:#e5e7eb;">Books</h2>
+        <div style="width:3rem;height:2px;background:#1e3a8a;margin:1rem auto 0;"></div>
+      </div>
 
-        <!-- They Never Came Home -->
-        <div class="flex flex-col md:flex-row items-center card overflow-hidden transition duration-300 transform hover:shadow-2xl hover:-translate-y-1">
-          <img src="book2.png" alt="Cover of They Never Came Home by Corey L. Johnson" class="w-full md:w-1/3 object-cover" />
-          <div class="p-6">
-            <h3 class="text-2xl font-semibold mb-3">They Never Came Home</h3>
-            <p class="mb-5">A suspenseful journey that explores loss, mystery, and the unbreakable bonds of family. Discover what happens when the past refuses to stay buried.</p>
-            <a href="https://a.co/d/cUCeKhh" target="_blank" rel="noopener noreferrer"
-               class="inline-block px-6 py-3 rounded-full shadow-md transition-transform transform hover:-translate-y-0.5 btn-primary">
-              Read on Amazon
-            </a>
-          </div>
+      <!-- ── FEATURED: Latest Release ── -->
+      <div class="book-spotlight">
+        <img src="book3.png" alt="Cover of Into You by Corey L. Johnson" />
+        <div>
+          <span class="spotlight-badge">Latest Release</span>
+          <p style="font-family:'Inter',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#60a5fa;margin-bottom:.5rem;">R&amp;B Mixtape Series</p>
+          <h3>Into You</h3>
+          <p>She plans weddings. He ends marriages. When their worlds collide, the tension is electric and the feelings are impossible to ignore. A slow-burn enemies-to-lovers romance that proves love doesn't always follow the plan—sometimes it rewrites it entirely.</p>
+          <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener noreferrer"
+             class="inline-block px-8 py-3 rounded-full font-semibold shadow-lg transition-transform hover:-translate-y-0.5 btn-primary" style="font-family:'Inter',sans-serif;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;">
+            Get It on Amazon
+          </a>
         </div>
+      </div>
 
-        <!-- Into You -->
-        <div class="flex flex-col md:flex-row items-center card overflow-hidden transition duration-300 transform hover:shadow-2xl hover:-translate-y-1">
-          <img src="book3.png" alt="Cover of Into You by Corey L. Johnson – R&B Mixtape Series enemies-to-lovers romance" class="w-full md:w-1/3 object-cover" />
-          <div class="p-6">
-            <span class="text-xs font-semibold uppercase tracking-widest mb-2 inline-block opacity-60">R&amp;B Mixtape Series</span>
-            <h3 class="text-2xl font-semibold mb-3">Into You</h3>
-            <p class="mb-5">She plans weddings. He ends marriages. When their worlds collide, the tension is electric and the feelings are impossible to ignore. A slow-burn enemies-to-lovers romance that proves love doesn't always follow the plan—sometimes it rewrites it entirely.</p>
-            <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener noreferrer"
-               class="inline-block px-6 py-3 rounded-full shadow-md transition-transform transform hover:-translate-y-0.5 btn-primary">
-              Read on Amazon
-            </a>
-          </div>
-        </div>
+      <!-- ── STANDALONE NOVELS ── -->
+      <div class="series-label"><span>Standalone Novels</span></div>
+      <div class="book-grid">
 
-        <!-- Ain't No Going Back -->
-        <div class="flex flex-col md:flex-row items-center card overflow-hidden transition duration-300 transform hover:shadow-2xl hover:-translate-y-1">
-          <img src="book4.png" alt="Cover of Ain't No Going Back by Corey L. Johnson" class="w-full md:w-1/3 object-cover" />
-          <div class="p-6">
-            <h3 class="text-2xl font-semibold mb-3">Ain't No Going Back</h3>
-            <p class="mb-5">When the life you knew is behind you and the road ahead is uncharted, what do you hold onto? A bold, emotionally charged story about the courage it takes to walk away, move forward, and finally choose yourself—even when everything pulls you back.</p>
-            <a href="https://a.co/d/0iRS62Hp" target="_blank" rel="noopener noreferrer"
-               class="inline-block px-6 py-3 rounded-full shadow-md transition-transform transform hover:-translate-y-0.5 btn-primary">
-              Read on Amazon
-            </a>
-          </div>
-        </div>
+        <a href="https://a.co/d/bIOYPL0" target="_blank" rel="noopener noreferrer" class="book-item">
+          <img src="book1.png" alt="Cover of The Grass Is Always Greener" />
+          <p class="book-item-title">The Grass Is Always Greener</p>
+          <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:.5rem;">A heartfelt tale of family secrets and second chances set in the American South — where faith and resilience light the path through grief.</p>
+          <span class="book-item-btn">Read on Amazon</span>
+        </a>
 
-        <!-- The People-Pleaser -->
-        <div class="flex flex-col md:flex-row items-center card overflow-hidden transition duration-300 transform hover:shadow-2xl hover:-translate-y-1">
-          <img src="book5.png" alt="Cover of The People-Pleaser by Corey L. Johnson – Highway 51 Series psychological thriller" class="w-full md:w-1/3 object-cover" />
-          <div class="p-6">
-            <span class="text-xs font-semibold uppercase tracking-widest mb-2 inline-block opacity-60">Highway 51 Series · Book 1</span>
-            <h3 class="text-2xl font-semibold mb-3">The People-Pleaser</h3>
-            <p class="mb-5">Some smiles hide the darkest secrets. A spine-chilling psychological thriller that forces you to ask: how well do you really know the people around you? When friendly turns sinister and trust becomes a weapon, the truth is far more terrifying than anyone expected.</p>
-            <a href="https://a.co/d/0cwyrbag" target="_blank" rel="noopener noreferrer"
-               class="inline-block px-6 py-3 rounded-full shadow-md transition-transform transform hover:-translate-y-0.5 btn-primary">
-              Read on Amazon
-            </a>
-          </div>
-        </div>
+        <a href="https://a.co/d/0iRS62Hp" target="_blank" rel="noopener noreferrer" class="book-item">
+          <img src="book4.png" alt="Cover of Ain't No Going Back" />
+          <p class="book-item-title">Ain't No Going Back</p>
+          <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:.5rem;">A bold story about the courage it takes to walk away, move forward, and finally choose yourself — even when everything pulls you back.</p>
+          <span class="book-item-btn">Read on Amazon</span>
+        </a>
 
-        <!-- Cost of Living -->
-        <div class="flex flex-col md:flex-row items-center card overflow-hidden transition duration-300 transform hover:shadow-2xl hover:-translate-y-1">
-          <img src="book6.png" alt="Cover of Cost of Living by Corey L. Johnson – Highway 51 Series" class="w-full md:w-1/3 object-cover" />
-          <div class="p-6">
-            <span class="text-xs font-semibold uppercase tracking-widest mb-2 inline-block opacity-60">Highway 51 Series · Book 2</span>
-            <h3 class="text-2xl font-semibold mb-3">Cost of Living</h3>
-            <p class="mb-5">Five years. Five renewals. One fight that never ends. A gripping, timely story about survival, dignity, and what it truly means to fight for the place you call home—in a world that keeps raising the price of simply belonging.</p>
-            <a href="https://a.co/d/07IOyuZ4" target="_blank" rel="noopener noreferrer"
-               class="inline-block px-6 py-3 rounded-full shadow-md transition-transform transform hover:-translate-y-0.5 btn-primary">
-              Read on Amazon
-            </a>
-          </div>
-        </div>
+        <a href="https://a.co/d/cUCeKhh" target="_blank" rel="noopener noreferrer" class="book-item">
+          <img src="book2.png" alt="Cover of They Never Came Home" />
+          <p class="book-item-title">They Never Came Home</p>
+          <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:.5rem;">A suspenseful journey through loss, mystery, and unbreakable family bonds. When everyone looks away, one teen won't stop looking.</p>
+          <span class="book-item-btn">Read on Amazon</span>
+        </a>
 
       </div>
+
+      <!-- ── HIGHWAY 51 SERIES ── -->
+      <div class="series-label"><span>Highway 51 Series</span></div>
+      <div class="book-grid">
+
+        <a href="https://a.co/d/0cwyrbag" target="_blank" rel="noopener noreferrer" class="book-item">
+          <img src="book5.png" alt="Cover of The People-Pleaser" />
+          <p class="book-item-series">Book 1</p>
+          <p class="book-item-title">The People-Pleaser</p>
+          <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:.5rem;">Some smiles hide the darkest secrets. A chilling psychological thriller about what lurks behind the friendliest faces.</p>
+          <span class="book-item-btn">Read on Amazon</span>
+        </a>
+
+        <a href="https://a.co/d/07IOyuZ4" target="_blank" rel="noopener noreferrer" class="book-item">
+          <img src="book6.png" alt="Cover of Cost of Living" />
+          <p class="book-item-series">Book 2</p>
+          <p class="book-item-title">Cost of Living</p>
+          <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:.5rem;">Five years. Five renewals. One fight that never ends. A timely story about survival, dignity, and the price of belonging.</p>
+          <span class="book-item-btn">Read on Amazon</span>
+        </a>
+
+      </div>
+
     </div>
   </section>
 
