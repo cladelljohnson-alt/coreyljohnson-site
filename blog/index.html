@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>News &amp; Notes – Corey L. Johnson</title>
-  <meta name="description" content="The latest news, essays, and behind-the-scenes updates from bestselling author Corey L. Johnson." />
+  <title>Between the Lines – Corey L. Johnson</title>
+  <meta name="description" content="Between the Lines — essays on craft, relationships, justice, and the stories that won't let us look away. From the desk of Corey L. Johnson." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
@@ -420,8 +420,12 @@
     footer a { color: var(--gold); text-decoration: none; }
     footer a:hover { color: var(--gold-lt); }
 
-    /* ── EMPTY / HIDDEN ── */
-    .hidden { display: none !important; }
+    /* ── NAV: always visible on desktop, hide on mobile ── */
+    .desktop-nav { display: flex; gap: 1.75rem; align-items: center; }
+    @media (max-width: 767px) { .desktop-nav { display: none; } }
+
+    /* ── EMPTY / HIDDEN (used by JS filter only — do NOT apply to nav) ── */
+    .post-hidden { display: none !important; }
   </style>
 </head>
 <body>
@@ -430,7 +434,7 @@
   <header class="site-nav sticky top-0 z-20">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="../index.html" class="nav-logo">Corey L. Johnson</a>
-      <nav class="space-x-7 hidden md:flex items-center">
+      <nav class="desktop-nav">
         <a href="../books.html"      class="nav-link">Books</a>
         <a href="../blog/index.html" class="nav-link active">Blog</a>
         <a href="../news.html"       class="nav-link">News</a>
@@ -447,8 +451,8 @@
   <!-- PAGE HERO -->
   <div class="page-hero">
     <div class="container mx-auto px-6">
-      <p class="overline">From the Desk of Corey L. Johnson</p>
-      <h1>News &amp; Notes</h1>
+      <p class="overline">The Blog</p>
+      <h1>Between the Lines</h1>
       <div class="gold-rule"></div>
       <p>Essays on craft, relationships, justice, and the stories that won't let us look away.</p>
     </div>
@@ -480,7 +484,7 @@
 
     <div id="post-grid" class="posts-grid"></div>
 
-    <p id="no-results" class="hidden text-center py-12" style="color:var(--muted);">
+    <p id="no-results" class="post-hidden text-center py-12" style="color:var(--muted);">
       No articles in this category yet — check back soon.
     </p>
 
@@ -493,7 +497,7 @@
         <input class="newsletter-input" type="email" placeholder="Your email address" required />
         <button class="newsletter-btn" type="submit">Subscribe</button>
       </form>
-      <p id="subscribe-confirm" class="hidden" style="color:var(--gold); margin-top:1rem; font-weight:600;">
+      <p id="subscribe-confirm" class="post-hidden" style="color:var(--gold); margin-top:1rem; font-weight:600;">
         ✓ You're on the list — thank you!
       </p>
     </div>
@@ -606,11 +610,11 @@
         featured.innerHTML = '';
         grid.innerHTML = '';
         featSec.style.display = 'none';
-        noResults.classList.remove('hidden');
+        noResults.classList.remove('post-hidden');
         return;
       }
 
-      noResults.classList.add('hidden');
+      noResults.classList.add('post-hidden');
 
       // Featured = first post
       const [first, ...rest] = filtered;
@@ -639,7 +643,7 @@
     function handleSubscribe(e) {
       e.preventDefault();
       e.currentTarget.style.display = 'none';
-      document.getElementById('subscribe-confirm').classList.remove('hidden');
+      document.getElementById('subscribe-confirm').classList.remove('post-hidden');
     }
 
     loadPosts();
