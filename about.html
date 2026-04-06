@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About – Corey L. Johnson</title>
+  <meta name="description" content="Learn about Corey L. Johnson, author of emotionally resonant fiction set in the American South." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:       #c9963f;
+      --gold-lt:    #e8b96a;
+      --gold-border: rgba(201,150,63,0.25);
+      --page:       #0f172a;
+      --card:       #162033;
+      --ink:        #e5e7eb;
+      --muted:      #94a3b8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--page);
+      color: var(--muted);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--ink); }
+
+    /* ── SHARED NAV ── */
+    .site-nav {
+      background: rgba(15,23,42,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: .02em;
+    }
+    .nav-link {
+      color: var(--muted);
+      font-size: .875rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-link:hover { color: var(--gold); }
+    .nav-link.active { color: var(--gold); }
+    .nav-amazon {
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: .35rem .9rem;
+      border-radius: 999px;
+      font-size: .875rem;
+      text-decoration: none;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: border-color .2s, color .2s;
+    }
+    .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      border-bottom: 1px solid var(--gold-border);
+      padding: 5rem 0 3rem;
+      text-align: center;
+    }
+    .overline {
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: .75rem;
+    }
+    .page-hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; }
+    .gold-rule { width: 3rem; height: 2px; background: var(--gold); margin: 1.25rem auto 0; }
+
+    /* ── BUTTONS ── */
+    .btn-gold {
+      display: inline-block;
+      padding: .75rem 2rem;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #0f172a;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      background: var(--card);
+      border-left: 4px solid var(--gold);
+      border-radius: 0 .5rem .5rem 0;
+      padding: 2rem 2.5rem;
+      margin: 2.5rem 0;
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: var(--gold-lt);
+      font-style: italic;
+      line-height: 1.6;
+    }
+
+    /* ── NEWSLETTER STRIP ── */
+    .newsletter-strip {
+      background: linear-gradient(135deg, #162033, #1e2a40);
+      border: 1px solid var(--gold-border);
+      border-radius: .75rem;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .newsletter-strip h3 { font-size: 1.75rem; color: var(--ink); margin-bottom: .5rem; }
+    .newsletter-strip p { color: var(--muted); margin-bottom: 1.5rem; }
+    .newsletter-form { display: flex; gap: .5rem; max-width: 28rem; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .newsletter-input {
+      flex: 1; min-width: 0;
+      padding: .7rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--gold-border);
+      background: rgba(255,255,255,.05);
+      color: var(--ink);
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .newsletter-input::placeholder { color: var(--muted); }
+    .newsletter-input:focus { border-color: var(--gold); }
+    .newsletter-btn {
+      padding: .7rem 1.6rem;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #0f172a;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .newsletter-btn:hover { background: var(--gold-lt); transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--gold-border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: .8rem;
+      background: #0a1020;
+      margin-top: 5rem;
+    }
+    .site-footer a { color: var(--gold); text-decoration: none; transition: color .2s; }
+    .site-footer a:hover { color: var(--gold-lt); }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <header class="site-nav sticky top-0 z-20">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="nav-logo">Corey L. Johnson</a>
+      <nav class="space-x-7 hidden md:flex items-center">
+        <a href="books.html"       class="nav-link">Books</a>
+        <a href="blog/index.html"  class="nav-link">News</a>
+        <a href="about.html"       class="nav-link active">About</a>
+        <a href="contact.html"     class="nav-link">Contact</a>
+        <a href="https://www.amazon.com/stores/Corey-L.-Johnson/author/B0CXHJ2VLK"
+           target="_blank" rel="noopener" class="nav-amazon">Amazon</a>
+      </nav>
+      <button class="md:hidden text-2xl" style="color:var(--muted); background:none; border:none; cursor:pointer;" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <!-- ── PAGE HERO ── -->
+  <div class="page-hero">
+    <div class="container mx-auto px-6">
+      <span class="overline">The Storyteller</span>
+      <h1>About Corey</h1>
+      <div class="gold-rule"></div>
+    </div>
+  </div>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="container mx-auto px-6" style="padding-top: 4rem; padding-bottom: 2rem; max-width: 1000px;">
+
+    <!-- Two-col bio layout -->
+    <div style="display: grid; grid-template-columns: 340px 1fr; gap: 4rem; align-items: start;">
+
+      <!-- Portrait -->
+      <div style="position: sticky; top: 6rem;">
+        <img src="author.png" alt="Author portrait of Corey L. Johnson"
+             style="width: 100%; border-radius: .75rem; box-shadow: 0 0 0 1px var(--gold-border), 0 20px 60px rgba(0,0,0,.55);" />
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <a href="https://www.amazon.com/stores/Corey-L.-Johnson/author/B0CXHJ2VLK"
+             target="_blank" rel="noopener" class="btn-gold">Find Corey's Books on Amazon</a>
+        </div>
+      </div>
+
+      <!-- Bio -->
+      <div>
+        <span class="overline" style="margin-bottom: .75rem;">About the Author</span>
+        <h2 style="font-size: clamp(1.6rem, 3vw, 2.4rem); line-height: 1.2; margin-bottom: 1.5rem;">Corey L. Johnson</h2>
+
+        <p style="line-height: 1.8; margin-bottom: 1.25rem; font-size: 1rem;">
+          Corey L. Johnson's love for storytelling began in Ripley, Tennessee, near the childhood home of literary legend Alex Haley.
+          After years in the corporate world, Corey returned to his passion for writing. Today, he crafts emotionally resonant stories
+          about life, love, faith, and the decisions that define us, all while living in Murfreesboro, Tennessee with his family.
+        </p>
+
+        <p style="line-height: 1.8; margin-bottom: 1.25rem; font-size: 1rem;">
+          Corey aims to create books that move readers and spark reflection, reminding us that even in everyday challenges
+          there is meaning and hope.
+        </p>
+
+        <!-- Pull quote -->
+        <div class="pull-quote">
+          <p>"Stories should move you — and remind you that even in everyday challenges, there is meaning and hope."</p>
+        </div>
+
+        <p style="line-height: 1.8; margin-bottom: 1.25rem; font-size: 1rem;">
+          His debut novel <em>The Grass Is Always Greener</em> explored the tensions of family, faith, and second chances in the
+          American South. Since then, Corey has written across genres — from YA thriller to psychological suspense to
+          romance — always anchored by the emotional truth at the center of every story.
+        </p>
+
+        <p style="line-height: 1.8; font-size: 1rem;">
+          Whether writing about a teenager who refuses to stop searching for missing friends, a community fighting to keep
+          their homes, or two strangers whose worlds collide in the most unlikely way, Corey's stories carry the same
+          conviction: that people — and the choices they make — matter deeply.
+        </p>
+      </div>
+    </div>
+
+    <!-- Responsive adjustment for mobile -->
+    <style>
+      @media (max-width: 768px) {
+        main > div[style*="grid-template-columns"] {
+          display: block !important;
+        }
+        main > div[style*="grid-template-columns"] > div:first-child {
+          position: static !important;
+          margin-bottom: 2.5rem;
+          text-align: center;
+        }
+        main > div[style*="grid-template-columns"] > div:first-child img {
+          max-width: 260px;
+          margin: 0 auto;
+          display: block;
+        }
+      }
+    </style>
+
+    <!-- Newsletter strip -->
+    <div style="margin-top: 5rem;">
+      <div class="newsletter-strip" style="max-width: 640px; margin: 0 auto;">
+        <span class="overline" style="margin-bottom: .5rem;">Stay in the Loop</span>
+        <h3>Join Corey's Insider List</h3>
+        <p>New releases, book club kits, and behind-the-scenes content delivered straight to your inbox.</p>
+        <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+          <input class="newsletter-input" type="email" placeholder="Your email address" required />
+          <button class="newsletter-btn" type="submit">Subscribe</button>
+        </form>
+        <p id="subscribe-confirm" style="display:none; color:var(--gold); margin-top:1rem; font-weight:600;">
+          You're on the list — thank you!
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <div class="container mx-auto px-6">
+      <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--ink); margin-bottom:.75rem;">Corey L. Johnson</p>
+      <p style="margin-bottom:.75rem;">
+        <a href="index.html">Home</a> &nbsp;·&nbsp;
+        <a href="books.html">Books</a> &nbsp;·&nbsp;
+        <a href="blog/index.html">News</a> &nbsp;·&nbsp;
+        <a href="about.html">About</a> &nbsp;·&nbsp;
+        <a href="contact.html">Contact</a>
+      </p>
+      <p>&copy; <span id="year"></span> Corey L. Johnson. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function handleSubscribe(e) {
+      e.preventDefault();
+      e.currentTarget.style.display = 'none';
+      document.getElementById('subscribe-confirm').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

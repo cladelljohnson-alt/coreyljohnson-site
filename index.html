@@ -2,91 +2,160 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Corey L. Johnson – Author</title>
-
+  <meta name="description" content="Official author website for Corey L. Johnson — stories about life, love, faith, and the decisions that define us." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
   <style>
-    :root{
-      /* Brand palette for a smart, masculine look */
-      --ink:#e5e7eb;        /* headings/text on dark (slate-200) */
-      --navy:#1e3a8a;       /* primary */
-      --navy-700:#2743a0;   /* primary hover */
-      --page:#0f172a;       /* page background (slate-900) */
-      --subtle:#0b1220;     /* darker overlay */
-      --brass:#b5892e;      /* optional accent */
+    :root {
+      --gold:       #c9963f;
+      --gold-lt:    #e8b96a;
+      --gold-border: rgba(201,150,63,0.25);
+      --page:       #0f172a;
+      --card:       #162033;
+      --ink:        #e5e7eb;
+      --muted:      #94a3b8;
     }
 
-    /* Base: dark page */
-    html{scroll-behavior:smooth;}
-    body{font-family:'Inter',sans-serif;background:var(--page);color:#cbd5e1;} /* slate-300 */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--page);
+      color: var(--muted);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--ink); }
 
-    /* Headings on dark */
-    h1,h2,h3{color:var(--ink);}
+    /* ── SHARED NAV ── */
+    .site-nav {
+      background: rgba(15,23,42,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: .02em;
+    }
+    .nav-link {
+      color: var(--muted);
+      font-size: .875rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-link:hover { color: var(--gold); }
+    .nav-link.active { color: var(--gold); }
+    .nav-amazon {
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: .35rem .9rem;
+      border-radius: 999px;
+      font-size: .875rem;
+      text-decoration: none;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: border-color .2s, color .2s;
+    }
+    .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
 
-    /* Hero overlay a bit darker so white text pops */
-    .hero-overlay{
-      position:absolute;inset:0;
-      background:linear-gradient(to bottom right, rgba(11,18,32,.55), rgba(11,18,32,.35));
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background-image: url('upscalemedia-transformed.jpeg');
+      background-size: cover;
+      background-position: 70% center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom right, rgba(15,23,42,.82), rgba(15,23,42,.55));
+    }
+    .hero-content { position: relative; z-index: 1; }
+    .hero h1 {
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      line-height: 1.1;
+      color: #fff;
+    }
+    .hero p { color: rgba(229,231,235,.85); font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.7; }
+
+    /* ── GOLD BUTTONS ── */
+    .btn-gold {
+      display: inline-block;
+      padding: .75rem 2rem;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #0f172a;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+    .btn-outline-gold {
+      display: inline-block;
+      padding: .75rem 2rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, color .2s, transform .15s;
+    }
+    .btn-outline-gold:hover { background: var(--gold); color: #0f172a; transform: translateY(-2px); }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--gold-border);
+      border-radius: .75rem;
     }
 
-    /* Brand utilities */
-    .btn-primary{background:var(--navy);color:#fff;}
-    .btn-primary:hover{background:var(--navy-700);}
-    .btn-outline{border:1px solid rgba(229,231,235,.2);color:#e5e7eb;}
-    .btn-outline:hover{background:rgba(255,255,255,.06);}
-    .link-accent{color:#93c5fd;}          /* light indigo on dark */
-    .link-accent:hover{color:#bfdbfe;}
-    .section-alt{background:rgba(255,255,255,.04);} /* subtle panel on dark */
-
-    /* Dark cards that sit nicely on the dark page */
-    .card{
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 8px 24px rgba(0,0,0,.25);
-      color: #cbd5e1;
-      border-radius: 0.75rem;
-    }
-    .card h1,.card h2,.card h3,.card h4{ color:#e5e7eb; }
-    .card a{ color:#93c5fd; }
-    .card a:hover{ color:#bfdbfe; }
-
-    /* ── BOOKS SECTION REDESIGN ── */
-    h1,h2,h3,h4 { font-family:'Playfair Display',serif; }
-
-    .books-overline {
+    /* ── OVERLINE / LABELS ── */
+    .overline {
       font-family: 'Inter', sans-serif;
       font-size: .7rem;
+      font-weight: 700;
       letter-spacing: .2em;
       text-transform: uppercase;
-      color: #60a5fa;
+      color: var(--gold);
       display: block;
-      margin-bottom: .5rem;
     }
 
-    /* Featured spotlight book */
+    .gold-rule {
+      width: 3rem;
+      height: 2px;
+      background: var(--gold);
+      margin: 1rem auto 0;
+    }
+
+    /* ── SPOTLIGHT ── */
     .book-spotlight {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 260px 1fr;
       gap: 3rem;
       align-items: center;
-      background: rgba(30,58,138,.12);
-      border: 1px solid rgba(30,58,138,.35);
-      border-radius: 1rem;
-      padding: 2.5rem;
-      margin-bottom: 3.5rem;
-      transition: box-shadow .3s;
     }
-    .book-spotlight:hover { box-shadow: 0 20px 60px rgba(30,58,138,.25); }
-    @media(max-width:768px){
-      .book-spotlight { grid-template-columns:1fr; text-align:center; }
-      .book-spotlight img { max-width:200px; margin:0 auto; }
+    @media (max-width: 768px) {
+      .book-spotlight { grid-template-columns: 1fr; text-align: center; }
+      .book-spotlight img { max-width: 200px; margin: 0 auto; }
     }
-
     .book-spotlight img {
       width: 100%;
       border-radius: .5rem;
@@ -102,327 +171,317 @@
       font-weight: 700;
       letter-spacing: .15em;
       text-transform: uppercase;
-      background: #1e3a8a;
-      color: #93c5fd;
+      background: var(--gold);
+      color: #0f172a;
       padding: .3rem .9rem;
       border-radius: 999px;
       margin-bottom: 1rem;
     }
 
-    .book-spotlight h3 {
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      color: #e5e7eb;
-      line-height: 1.15;
-      margin-bottom: .75rem;
-    }
-
-    .book-spotlight p {
-      color: #94a3b8;
-      font-size: 1rem;
-      line-height: 1.75;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Series section headings */
-    .series-label {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin: 3rem 0 1.5rem;
-    }
-    .series-label span {
-      font-family: 'Inter', sans-serif;
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: #60a5fa;
-      white-space: nowrap;
-    }
-    .series-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: rgba(30,58,138,.4);
-    }
-
-    /* Book cover grid */
-    .book-grid {
+    /* ── BOOK GRID TEASE ── */
+    .book-teaser-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
     }
+    @media (max-width: 768px) { .book-teaser-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 1024px) and (min-width: 769px) { .book-teaser-grid { grid-template-columns: repeat(2, 1fr); } }
 
-    .book-item {
+    .book-teaser-item {
       display: flex;
       flex-direction: column;
       text-decoration: none;
       transition: transform .3s;
     }
-    .book-item:hover { transform: translateY(-6px); }
-
-    .book-item img {
+    .book-teaser-item:hover { transform: translateY(-6px); }
+    .book-teaser-item img {
       width: 100%;
       aspect-ratio: 2/3;
       object-fit: cover;
       border-radius: .5rem;
       box-shadow: 0 12px 35px rgba(0,0,0,.55);
-      margin-bottom: 1rem;
-      transition: box-shadow .3s;
+      margin-bottom: .75rem;
     }
-    .book-item:hover img { box-shadow: 0 20px 50px rgba(30,58,138,.35); }
-
-    .book-item-series {
-      font-family: 'Inter', sans-serif;
-      font-size: .65rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: #60a5fa;
-      margin-bottom: .25rem;
-    }
-
-    .book-item-title {
+    .book-teaser-item span {
       font-family: 'Playfair Display', serif;
       font-size: 1rem;
-      color: #e5e7eb;
+      color: var(--ink);
       line-height: 1.3;
-      margin-bottom: .5rem;
+      text-align: center;
     }
 
-    .book-item-btn {
-      font-family: 'Inter', sans-serif;
-      font-size: .72rem;
+    /* ── BLOG TEASER CARDS ── */
+    .blog-card {
+      background: var(--card);
+      border: 1px solid var(--gold-border);
+      border-radius: .75rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow .3s, transform .3s, border-color .3s;
+      text-decoration: none;
+    }
+    .blog-card:hover {
+      box-shadow: 0 12px 40px rgba(201,150,63,.1);
+      transform: translateY(-3px);
+      border-color: rgba(201,150,63,.45);
+    }
+    .blog-card h3 { font-size: 1.1rem; color: var(--ink); line-height: 1.35; margin-bottom: .6rem; }
+    .blog-card p { font-size: .9rem; color: var(--muted); line-height: 1.65; flex-grow: 1; margin-bottom: 1rem; }
+    .blog-card .read-link {
+      font-size: .78rem;
       font-weight: 600;
       letter-spacing: .08em;
       text-transform: uppercase;
-      color: #60a5fa;
-      display: inline-flex;
-      align-items: center;
-      gap: .3rem;
+      color: var(--gold);
       margin-top: auto;
-      padding-top: .4rem;
-      text-decoration: none;
-      transition: color .2s, gap .2s;
     }
-    .book-item-btn:hover { color: #93c5fd; gap: .5rem; }
-    .book-item-btn::after { content: '→'; }
+    .blog-card:hover .read-link { color: var(--gold-lt); }
+
+    /* ── LINK GOLD ── */
+    .link-gold {
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .9rem;
+      letter-spacing: .04em;
+      transition: color .2s;
+    }
+    .link-gold:hover { color: var(--gold-lt); }
+
+    /* ── NEWSLETTER STRIP ── */
+    .newsletter-strip {
+      background: linear-gradient(135deg, #162033, #1e2a40);
+      border: 1px solid var(--gold-border);
+      border-radius: .75rem;
+      padding: 3rem 2rem;
+      text-align: center;
+    }
+    .newsletter-strip h3 { font-size: 1.75rem; color: var(--ink); margin-bottom: .5rem; }
+    .newsletter-strip p { color: var(--muted); margin-bottom: 1.5rem; }
+    .newsletter-form { display: flex; gap: .5rem; max-width: 28rem; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .newsletter-input {
+      flex: 1; min-width: 0;
+      padding: .7rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid var(--gold-border);
+      background: rgba(255,255,255,.05);
+      color: var(--ink);
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .newsletter-input::placeholder { color: var(--muted); }
+    .newsletter-input:focus { border-color: var(--gold); }
+    .newsletter-btn {
+      padding: .7rem 1.6rem;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #0f172a;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .newsletter-btn:hover { background: var(--gold-lt); transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--gold-border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: .8rem;
+      background: #0a1020;
+    }
+    .site-footer a { color: var(--gold); text-decoration: none; transition: color .2s; }
+    .site-footer a:hover { color: var(--gold-lt); }
   </style>
 </head>
+<body>
 
-<body class="font-sans antialiased">
-  <header class="backdrop-blur-md sticky top-0 z-10"
-          style="background:rgba(11,18,32,.7); box-shadow:0 1px 0 rgba(255,255,255,.06);">
-    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="#" class="text-2xl font-bold" style="color:var(--ink)">Corey L. Johnson</a>
-      <nav class="space-x-6 hidden md:block">
-        <a href="#books"   class="hover:underline link-accent">Books</a>
-        <a href="#about"   class="hover:underline link-accent">About</a>
-        <a href="blog/index.html"    class="hover:underline link-accent">Blog</a>
-        <a href="#contact" class="hover:underline link-accent">Contact</a>
+  <!-- ── NAV ── -->
+  <header class="site-nav sticky top-0 z-20">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="nav-logo">Corey L. Johnson</a>
+      <nav class="space-x-7 hidden md:flex items-center">
+        <a href="books.html"       class="nav-link">Books</a>
+        <a href="blog/index.html"  class="nav-link">News</a>
+        <a href="about.html"       class="nav-link">About</a>
+        <a href="contact.html"     class="nav-link">Contact</a>
+        <a href="https://www.amazon.com/stores/Corey-L.-Johnson/author/B0CXHJ2VLK"
+           target="_blank" rel="noopener" class="nav-amazon">Amazon</a>
       </nav>
+      <button class="md:hidden text-2xl" style="color:var(--muted); background:none; border:none; cursor:pointer;" aria-label="Menu">☰</button>
     </div>
   </header>
 
-  <section class="relative text-white"
-           style="background-image:url('upscalemedia-transformed.jpeg');background-size:cover;background-position:70% center;min-height:80vh;">
+  <!-- ── HERO ── -->
+  <section class="hero">
     <div class="hero-overlay"></div>
-
-    <div class="relative container mx-auto px-4 py-24 md:py-32 flex">
-      <div class="max-w-3xl">
-        <div class="bg-black/40 backdrop-blur-sm rounded-2xl px-6 py-6 md:px-8 md:py-8 shadow-lg">
-          <h1 class="text-4xl md:text-6xl font-extrabold leading-tight">
-            <span class="block">They Never Came Home</span>
-          </h1>
-
-          <p class="mt-4 text-lg md:text-2xl leading-relaxed">
-            In this YA thriller, a disappearance rattles a small community.
-            When everyone else looks the other way, one teen won't stop looking.
-          </p>
-
-          <a href="https://a.co/d/cUCeKhh" target="_blank" rel="noopener noreferrer"
-             class="mt-8 inline-block px-8 py-4 rounded-full font-semibold shadow-lg transition-transform hover:-translate-y-0.5 btn-primary">
-            Read on Amazon
-          </a>
+    <div class="hero-content container mx-auto px-6 py-32">
+      <div style="max-width: 680px;">
+        <span class="overline" style="margin-bottom: 1rem;">Corey L. Johnson</span>
+        <h1 style="margin-bottom: 1.25rem;">Stories That<br>Move You.</h1>
+        <p style="max-width: 520px; margin-bottom: 2rem;">
+          Emotionally resonant fiction about life, love, faith, and the decisions that define us —
+          from the Tennessee storyteller who believes every challenge carries meaning and hope.
+        </p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="books.html" class="btn-gold">Explore Books</a>
+          <a href="blog/index.html" class="btn-outline-gold">Read Latest News</a>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="books" class="py-24 section-alt">
+  <!-- ── LATEST RELEASE SPOTLIGHT ── -->
+  <section style="padding: 6rem 0; background: var(--page);">
     <div class="container mx-auto px-6">
-
-      <!-- Section header -->
-      <div class="text-center mb-14">
-        <span class="books-overline">The Complete Collection</span>
-        <h2 class="text-5xl font-extrabold" style="color:#e5e7eb;">Books</h2>
-        <div style="width:3rem;height:2px;background:#1e3a8a;margin:1rem auto 0;"></div>
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <span class="overline">Now Available</span>
+        <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: .5rem;">Latest Release</h2>
+        <div class="gold-rule"></div>
       </div>
-
-      <!-- ── FEATURED: Latest Release ── -->
-      <div class="book-spotlight">
-        <img src="book3.png" alt="Cover of Into You by Corey L. Johnson" />
-        <div>
-          <span class="spotlight-badge">Latest Release</span>
-          <p style="font-family:'Inter',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#60a5fa;margin-bottom:.5rem;">R&amp;B Mixtape Series</p>
-          <h3>Into You</h3>
-          <p>She plans weddings. He ends marriages. When their worlds collide, the tension is electric and the feelings are impossible to ignore. A slow-burn enemies-to-lovers romance that proves love doesn't always follow the plan—sometimes it rewrites it entirely.</p>
-          <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener noreferrer"
-             class="inline-block px-8 py-3 rounded-full font-semibold shadow-lg transition-transform hover:-translate-y-0.5 btn-primary" style="font-family:'Inter',sans-serif;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;">
-            Get It on Amazon
-          </a>
+      <div class="card" style="padding: 2.5rem;">
+        <div class="book-spotlight">
+          <img src="book3.png" alt="Cover of Into You by Corey L. Johnson" />
+          <div>
+            <span class="spotlight-badge">Latest Release</span>
+            <p class="overline" style="margin-bottom: .5rem;">R&amp;B Mixtape Series</p>
+            <h3 style="font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.15; margin-bottom: .75rem;">Into You</h3>
+            <p style="font-size: 1rem; line-height: 1.75; margin-bottom: 1.5rem;">
+              She plans weddings. He ends marriages. When their worlds collide, the tension is electric and the feelings are impossible to ignore.
+              A slow-burn enemies-to-lovers romance that proves love doesn't always follow the plan — sometimes it rewrites it entirely.
+            </p>
+            <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener" class="btn-gold">Get It on Amazon</a>
+          </div>
         </div>
       </div>
-
-      <!-- ── STANDALONE NOVELS ── -->
-      <div class="series-label"><span>Standalone Novels</span></div>
-      <div class="book-grid">
-
-        <a href="https://a.co/d/bIOYPL0" target="_blank" rel="noopener noreferrer" class="book-item">
-          <img src="book1.png" alt="Cover of The Grass Is Always Greener" />
-          <p class="book-item-title">The Grass Is Always Greener</p>
-          <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:.5rem;">A heartfelt tale of family secrets and second chances set in the American South — where faith and resilience light the path through grief.</p>
-          <span class="book-item-btn">Read on Amazon</span>
-        </a>
-
-        <a href="https://a.co/d/0iRS62Hp" target="_blank" rel="noopener noreferrer" class="book-item">
-          <img src="book4.png" alt="Cover of Ain't No Going Back" />
-          <p class="book-item-title">Ain't No Going Back</p>
-          <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:.5rem;">A bold story about the courage it takes to walk away, move forward, and finally choose yourself — even when everything pulls you back.</p>
-          <span class="book-item-btn">Read on Amazon</span>
-        </a>
-
-        <a href="https://a.co/d/cUCeKhh" target="_blank" rel="noopener noreferrer" class="book-item">
-          <img src="book2.png" alt="Cover of They Never Came Home" />
-          <p class="book-item-title">They Never Came Home</p>
-          <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:.5rem;">A suspenseful journey through loss, mystery, and unbreakable family bonds. When everyone looks away, one teen won't stop looking.</p>
-          <span class="book-item-btn">Read on Amazon</span>
-        </a>
-
-      </div>
-
-      <!-- ── HIGHWAY 51 SERIES ── -->
-      <div class="series-label"><span>Highway 51 Series</span></div>
-      <div class="book-grid">
-
-        <a href="https://a.co/d/0cwyrbag" target="_blank" rel="noopener noreferrer" class="book-item">
-          <img src="book5.png" alt="Cover of The People-Pleaser" />
-          <p class="book-item-series">Book 1</p>
-          <p class="book-item-title">The People-Pleaser</p>
-          <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:.5rem;">Some smiles hide the darkest secrets. A chilling psychological thriller about what lurks behind the friendliest faces.</p>
-          <span class="book-item-btn">Read on Amazon</span>
-        </a>
-
-        <a href="https://a.co/d/07IOyuZ4" target="_blank" rel="noopener noreferrer" class="book-item">
-          <img src="book6.png" alt="Cover of Cost of Living" />
-          <p class="book-item-series">Book 2</p>
-          <p class="book-item-title">Cost of Living</p>
-          <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin-bottom:.5rem;">Five years. Five renewals. One fight that never ends. A timely story about survival, dignity, and the price of belonging.</p>
-          <span class="book-item-btn">Read on Amazon</span>
-        </a>
-
-      </div>
-
     </div>
   </section>
 
-  <section id="about" class="py-20">
-    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-12">
-      <div class="w-full md:w-1/3 flex justify-center">
-        <img src="author.png" alt="Author portrait of Corey L. Johnson" class="rounded-full shadow-xl w-64 h-64 object-cover" />
+  <!-- ── BOOKS TEASER ── -->
+  <section style="padding: 5rem 0; background: #0a1020;">
+    <div class="container mx-auto px-6">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <span class="overline">The Collection</span>
+        <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: .5rem;">Books</h2>
+        <div class="gold-rule"></div>
       </div>
-      <div class="w-full md:w-2/3">
-        <h2 class="text-4xl font-bold mb-4">About Corey</h2>
-        <p class="mb-4">Corey L. Johnson's love for storytelling began in Ripley, Tennessee, near the childhood home of literary legend Alex Haley. After years in the corporate world, Corey returned to his passion for writing. Today, he crafts emotionally resonant stories about life, love, faith, and the decisions that define us, all while living in Murfreesboro, Tennessee with his family.</p>
-        <p class="mb-4">Corey aims to create books that move readers and spark reflection, reminding us that even in everyday challenges there is meaning and hope.</p>
+      <div class="book-teaser-grid" style="margin-bottom: 2.5rem;">
+        <a href="https://a.co/d/bIOYPL0" target="_blank" rel="noopener" class="book-teaser-item">
+          <img src="book1.png" alt="The Grass Is Always Greener" />
+          <span>The Grass Is Always Greener</span>
+        </a>
+        <a href="https://a.co/d/cUCeKhh" target="_blank" rel="noopener" class="book-teaser-item">
+          <img src="book2.png" alt="They Never Came Home" />
+          <span>They Never Came Home</span>
+        </a>
+        <a href="https://a.co/d/0iRS62Hp" target="_blank" rel="noopener" class="book-teaser-item">
+          <img src="book4.png" alt="Ain't No Going Back" />
+          <span>Ain't No Going Back</span>
+        </a>
+      </div>
+      <div class="text-center">
+        <a href="books.html" class="link-gold">View All Books →</a>
       </div>
     </div>
   </section>
 
-    <section id="blog" class="py-20 section-alt">
-    <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center mb-6">From the Blog</h2>
-      <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 mb-10 text-slate-300">
-        <p class="text-center md:text-left">Catch up on Corey's latest essays, book updates, and behind-the-scenes posts. Prefer a quick list? Browse every article on the dedicated blog page.</p>
-        <a href="blog/index.html" class="inline-flex items-center px-6 py-3 rounded-full font-semibold transition-transform transform hover:-translate-y-0.5 btn-outline">View all posts</a>
+  <!-- ── FROM THE BLOG ── -->
+  <section style="padding: 5rem 0; background: var(--page);">
+    <div class="container mx-auto px-6">
+      <div class="text-center" style="margin-bottom: 3rem;">
+        <span class="overline">Essays &amp; Updates</span>
+        <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: .5rem;">From the Blog</h2>
+        <div class="gold-rule"></div>
       </div>
-
-      <!-- BLOG:START -->
-      <div class="grid md:grid-cols-3 gap-10">
-        <!--POST_PLACEHOLDER-->
-        <article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
-          <h3 class="text-xl font-semibold mb-3">Character Deep Dive: Malik Thompson of <em>They Never Came Home</em></h3>
-          <p class="mb-4">Meet the sharp, loyal teen who reads rooms, organizes rescue, and refuses to let Ripley's secrets stay buried.</p>
-          <a href="blog/character-deep-dive-malik-thompson.html" class="font-medium">Read More →</a>
-        </article>
-
-        <article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
-          <h3 class="text-xl font-semibold mb-3">10 Signs Your Marriage Is Running on Secrets</h3>
-          <p class="mb-4">Identify the habits that hollow a relationship and find practical ways to invite honesty and trust back home.</p>
-          <a href="blog/10-signs-your-marriage-is-running-on-secrets.html" class="font-medium">Read More →</a>
-        </article>
-
-        <article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
-          <h3 class="text-xl font-semibold mb-3">21 Brutal Questions to Ask Before You Say "I Do"</h3>
-          <p class="mb-4">Work through twenty-one hard conversations—about money, faith, loyalty, and boundaries—before silence buries your vows.</p>
-          <a href="blog/21-brutal-questions-before-i-do.html" class="font-medium">Read More →</a>
-        </article>
-
-        <article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
-          <h3 class="text-xl font-semibold mb-3">7 Must-Read YA Mysteries Featuring Black Protagonists</h3>
-          <p class="mb-4">Add seven standout thrillers to your list—each centering Black teens who balance suspense with truth.</p>
-          <a href="blog/ya-mysteries-black-protagonists.html" class="font-medium">Read More →</a>
-        </article>
-
-        <article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
-          <h3 class="text-xl font-semibold mb-3">Why Some Couples Survive Betrayal—and Some Don't</h3>
-          <p class="mb-4">See the research-backed patterns that make recovery possible—and the warning signs it's time to walk away.</p>
-          <a href="blog/why-some-couples-survive-betrayal.html" class="font-medium">Read More →</a>
-        </article>
-
-        <article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
-          <h3 class="text-xl font-semibold mb-3">Family Secrets in Fiction: Why They Haunt Us</h3>
-          <p class="mb-4">Unpack how hidden truths shape motive, structure, and theme—and why readers crave the reckoning.</p>
-          <a href="blog/family-secrets-in-fiction.html" class="font-medium">Read More →</a>
-        </article>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+        <a href="blog/character-deep-dive-malik-thompson.html" class="blog-card">
+          <h3>Character Deep Dive: Malik Thompson of <em>They Never Came Home</em></h3>
+          <p>Meet the sharp, loyal teen who reads rooms, organizes rescue, and refuses to let Ripley's secrets stay buried.</p>
+          <span class="read-link">Read More →</span>
+        </a>
+        <a href="blog/10-signs-your-marriage-is-running-on-secrets.html" class="blog-card">
+          <h3>10 Signs Your Marriage Is Running on Secrets</h3>
+          <p>Identify the habits that hollow a relationship and find practical ways to invite honesty and trust back home.</p>
+          <span class="read-link">Read More →</span>
+        </a>
+        <a href="blog/21-brutal-questions-before-i-do.html" class="blog-card">
+          <h3>21 Brutal Questions to Ask Before You Say "I Do"</h3>
+          <p>Work through twenty-one hard conversations — about money, faith, loyalty, and boundaries — before silence buries your vows.</p>
+          <span class="read-link">Read More →</span>
+        </a>
       </div>
-      <!-- BLOG:END -->
+      <div class="text-center">
+        <a href="blog/index.html" class="link-gold">Read All Articles →</a>
+      </div>
     </div>
   </section>
 
-  <section id="contact" class="py-20">
-    <div class="container mx-auto px-4 flex flex-col md:flex-row gap-12">
-      <div class="w-full md:w-1/2 card backdrop-blur-md p-8 shadow-lg">
-        <h3 class="text-2xl font-bold mb-4">Join Corey's Newsletter</h3>
-        <p class="mb-6">Get updates on new releases, book club kits, and behind-the-scenes content delivered straight to your inbox.</p>
-        <form action="#" method="POST" onsubmit="alert('Thanks for subscribing!'); return false;" class="flex flex-col space-y-4">
-          <input type="email" name="email" placeholder="Enter your email" required class="p-3 rounded border border-gray-600 bg-transparent text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--navy)]" />
-          <button type="submit" class="py-3 rounded-full font-semibold shadow-md transition-transform transform hover:-translate-y-0.5 btn-primary">Subscribe</button>
+  <!-- ── ABOUT TEASER ── -->
+  <section style="padding: 5rem 0; background: #0a1020;">
+    <div class="container mx-auto px-6">
+      <div style="display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: center; max-width: 860px; margin: 0 auto;">
+        <img src="author.png" alt="Author portrait of Corey L. Johnson"
+             style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px var(--gold-border), 0 12px 40px rgba(0,0,0,.5);" />
+        <div>
+          <span class="overline" style="margin-bottom: .75rem;">About the Author</span>
+          <h2 style="font-size: 1.9rem; margin-bottom: .75rem;">Corey L. Johnson</h2>
+          <p style="line-height: 1.75; margin-bottom: .5rem;">
+            Corey L. Johnson's love for storytelling began in Ripley, Tennessee, near the childhood home of literary legend Alex Haley.
+            After years in the corporate world, Corey returned to his passion for writing, crafting emotionally resonant stories about life, love, faith, and the decisions that define us.
+          </p>
+          <a href="about.html" class="link-gold" style="margin-top: .5rem; display: inline-block;">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── NEWSLETTER STRIP ── -->
+  <section style="padding: 5rem 0; background: var(--page);">
+    <div class="container mx-auto px-6">
+      <div class="newsletter-strip" style="max-width: 640px; margin: 0 auto;">
+        <span class="overline" style="margin-bottom: .5rem;">Stay in the Loop</span>
+        <h3>Join Corey's Insider List</h3>
+        <p>New releases, book club kits, and behind-the-scenes content delivered straight to your inbox.</p>
+        <form class="newsletter-form" onsubmit="handleSubscribe(event)">
+          <input class="newsletter-input" type="email" placeholder="Your email address" required />
+          <button class="newsletter-btn" type="submit">Subscribe</button>
         </form>
-      </div>
-      <div class="w-full md:w-1/2 card backdrop-blur-md p-8 shadow-lg">
-        <h3 class="text-2xl font-bold mb-4">Get in Touch</h3>
-        <p class="mb-6">Have a question, collaboration idea, or press inquiry? Drop a message below and Corey will get back to you.</p>
-        <form action="#" method="POST" onsubmit="alert('Thanks for reaching out!'); return false;" class="flex flex-col space-y-4">
-          <input type="text"   name="name"    placeholder="Your Name"   required class="p-3 rounded border border-gray-600 bg-transparent text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--navy)]" />
-          <input type="email"  name="email"   placeholder="Your Email"  required class="p-3 rounded border border-gray-600 bg-transparent text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--navy)]" />
-          <textarea name="message" placeholder="Your Message" rows="4" required class="p-3 rounded border border-gray-600 bg-transparent text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--navy)]"></textarea>
-          <button type="submit" class="py-3 rounded-full font-semibold shadow-md transition-transform transform hover:-translate-y-0.5 btn-primary">Send Message</button>
-        </form>
+        <p id="subscribe-confirm" style="display:none; color:var(--gold); margin-top:1rem; font-weight:600;">
+          ✓ You're on the list — thank you!
+        </p>
       </div>
     </div>
   </section>
 
-  <footer class="text-gray-300 py-8" style="background:#0b1220;">
-    <div class="container mx-auto px-4 text-center">
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <div class="container mx-auto px-6">
+      <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--ink); margin-bottom:.75rem;">Corey L. Johnson</p>
+      <p style="margin-bottom:.75rem;">
+        <a href="books.html">Books</a> &nbsp;·&nbsp;
+        <a href="blog/index.html">News</a> &nbsp;·&nbsp;
+        <a href="about.html">About</a> &nbsp;·&nbsp;
+        <a href="contact.html">Contact</a>
+      </p>
       <p>&copy; <span id="year"></span> Corey L. Johnson. All rights reserved.</p>
-      <hr style="border:none;height:1px;margin:1.5rem auto 0;max-width:320px;background:linear-gradient(90deg,var(--brass),transparent)" />
     </div>
   </footer>
 
   <script>
-    // update year automatically
     document.getElementById('year').textContent = new Date().getFullYear();
+    function handleSubscribe(e) {
+      e.preventDefault();
+      e.currentTarget.style.display = 'none';
+      document.getElementById('subscribe-confirm').style.display = 'block';
+    }
   </script>
 </body>
 </html>

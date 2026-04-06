@@ -9,13 +9,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --gold:    #2563eb;
-      --gold-lt: #60a5fa;
-      --ink:     #f1ede6;
-      --muted:   #a89880;
-      --page:    #0d0d0d;
-      --card:    #161410;
-      --border:  rgba(37,99,235,0.18);
+      --gold:    #c9963f;
+      --gold-lt: #e8b96a;
+      --ink:     #e5e7eb;
+      --muted:   #94a3b8;
+      --page:    #0f172a;
+      --card:    #162033;
+      --border:  rgba(201,150,63,0.18);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -34,7 +34,7 @@
 
     /* ── NAV ── */
     .site-nav {
-      background: rgba(13,13,13,0.88);
+      background: rgba(15,23,42,0.88);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
@@ -121,7 +121,7 @@
     .filter-pill.active {
       background: var(--gold);
       border-color: var(--gold);
-      color: #0d0d0d;
+      color: #0f172a;
     }
 
     /* ── FEATURED CARD ── */
@@ -136,7 +136,7 @@
       transition: box-shadow .3s, transform .3s;
     }
     .featured-card:hover {
-      box-shadow: 0 20px 60px rgba(37,99,235,.12);
+      box-shadow: 0 20px 60px rgba(201,150,63,.12);
       transform: translateY(-2px);
     }
 
@@ -145,7 +145,7 @@
     }
 
     .featured-visual {
-      background: linear-gradient(135deg, #1a130a 0%, #2d1f0e 50%, #1a1206 100%);
+      background: linear-gradient(135deg, #0f172a 0%, #162033 50%, #1e2a40 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -158,7 +158,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 30% 50%, rgba(37,99,235,.15) 0%, transparent 70%);
+      background: radial-gradient(circle at 30% 50%, rgba(201,150,63,.15) 0%, transparent 70%);
     }
 
     .featured-visual-icon {
@@ -177,7 +177,7 @@
       text-transform: uppercase;
       font-weight: 700;
       background: var(--gold);
-      color: #0d0d0d;
+      color: #0f172a;
       padding: .25rem .75rem;
       border-radius: 999px;
       z-index: 2;
@@ -251,9 +251,9 @@
       text-decoration: none;
     }
     .post-card:hover {
-      box-shadow: 0 12px 40px rgba(37,99,235,.1);
+      box-shadow: 0 12px 40px rgba(201,150,63,.1);
       transform: translateY(-3px);
-      border-color: rgba(37,99,235,.4);
+      border-color: rgba(201,150,63,.4);
     }
 
     .card-visual {
@@ -343,7 +343,7 @@
 
     /* ── NEWSLETTER ── */
     .newsletter-strip {
-      background: linear-gradient(135deg, #1a130a, #2d1e0d);
+      background: linear-gradient(135deg, #162033, #1e2a40);
       border: 1px solid var(--border);
       border-radius: .75rem;
       padding: 3rem 2rem;
@@ -385,7 +385,7 @@
       padding: .7rem 1.6rem;
       border-radius: 999px;
       background: var(--gold);
-      color: #0d0d0d;
+      color: #0f172a;
       font-weight: 700;
       font-size: .85rem;
       letter-spacing: .06em;
@@ -417,12 +417,12 @@
   <!-- NAV -->
   <header class="site-nav sticky top-0 z-20">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="/index.html" class="logo">Corey L. Johnson</a>
+      <a href="../index.html" class="logo">Corey L. Johnson</a>
       <nav class="space-x-7 hidden md:flex items-center">
-        <a href="/index.html#books" class="nav-link">Books</a>
-        <a href="/index.html#about" class="nav-link">About</a>
-        <a href="/blog/index.html" class="nav-link active">News</a>
-        <a href="/index.html#contact" class="nav-link">Contact</a>
+        <a href="../books.html"      class="nav-link">Books</a>
+        <a href="../blog/index.html" class="nav-link active">News</a>
+        <a href="../about.html"      class="nav-link">About</a>
+        <a href="../contact.html"    class="nav-link">Contact</a>
         <a href="https://www.amazon.com/stores/Corey-L.-Johnson/author/B0CXHJ2VLK" target="_blank" rel="noopener"
            class="nav-link" style="color:var(--gold); border:1px solid var(--border); padding:.35rem .9rem; border-radius:999px;">
           Amazon
@@ -492,12 +492,14 @@
   <!-- FOOTER -->
   <footer>
     <div class="container mx-auto px-6">
+      <p style="font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--ink); margin-bottom:.6rem;">Corey L. Johnson</p>
       <p>&copy; <span id="year"></span> Corey L. Johnson. All rights reserved.</p>
       <p style="margin-top:.4rem;">
-        <a href="/index.html">Home</a> &nbsp;·&nbsp;
-        <a href="/index.html#books">Books</a> &nbsp;·&nbsp;
-        <a href="/index.html#about">About</a> &nbsp;·&nbsp;
-        <a href="/index.html#contact">Contact</a>
+        <a href="../index.html">Home</a> &nbsp;·&nbsp;
+        <a href="../books.html">Books</a> &nbsp;·&nbsp;
+        <a href="../blog/index.html">News</a> &nbsp;·&nbsp;
+        <a href="../about.html">About</a> &nbsp;·&nbsp;
+        <a href="../contact.html">Contact</a>
       </p>
     </div>
   </footer>
@@ -600,14 +602,14 @@
 
       // Featured = first post
       const [first, ...rest] = filtered;
-      const firstMeta = categoryMap[first.slug] || { cat: 'General', icon: '📝', bg: 'linear-gradient(135deg,#1a1206,#2d1f0e)' };
+      const firstMeta = categoryMap[first.slug] || { cat: 'General', icon: '📝', bg: 'linear-gradient(135deg,#0f172a,#162033)' };
 
       featSec.style.display = '';
       featured.innerHTML = buildFeatured(first, firstMeta);
 
       // Remaining in grid
       grid.innerHTML = rest.map(p => {
-        const m = categoryMap[p.slug] || { cat: 'General', icon: '📝', bg: 'linear-gradient(135deg,#1a1206,#2d1f0e)' };
+        const m = categoryMap[p.slug] || { cat: 'General', icon: '📝', bg: 'linear-gradient(135deg,#0f172a,#162033)' };
         return buildCard(p, m);
       }).join('');
     }
