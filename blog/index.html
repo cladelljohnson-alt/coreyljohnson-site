@@ -38,22 +38,34 @@
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
-
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: .02em;
+    }
     .nav-link {
       color: var(--muted);
       font-size: .875rem;
       letter-spacing: .06em;
       text-transform: uppercase;
+      text-decoration: none;
       transition: color .2s;
     }
     .nav-link:hover, .nav-link.active { color: var(--gold); }
-
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      color: var(--ink);
-      letter-spacing: .02em;
+    .nav-amazon {
+      color: var(--gold);
+      border: 1px solid var(--border);
+      padding: .35rem .9rem;
+      border-radius: 999px;
+      font-size: .875rem;
+      text-decoration: none;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: border-color .2s, color .2s;
     }
+    .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
 
     /* ── PAGE HEADER ── */
     .page-hero {
@@ -417,16 +429,15 @@
   <!-- NAV -->
   <header class="site-nav sticky top-0 z-20">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="../index.html" class="logo">Corey L. Johnson</a>
+      <a href="../index.html" class="nav-logo">Corey L. Johnson</a>
       <nav class="space-x-7 hidden md:flex items-center">
         <a href="../books.html"      class="nav-link">Books</a>
-        <a href="../blog/index.html" class="nav-link active">News</a>
+        <a href="../blog/index.html" class="nav-link active">Blog</a>
+        <a href="../news.html"       class="nav-link">News</a>
         <a href="../about.html"      class="nav-link">About</a>
         <a href="../contact.html"    class="nav-link">Contact</a>
-        <a href="https://www.amazon.com/stores/Corey-L.-Johnson/author/B0CXHJ2VLK" target="_blank" rel="noopener"
-           class="nav-link" style="color:var(--gold); border:1px solid var(--border); padding:.35rem .9rem; border-radius:999px;">
-          Amazon
-        </a>
+        <a href="https://www.amazon.com/stores/Corey-Johnson/author/B0CTFZPKV1?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=11104394-ef31-44eb-9566-8f0ff4e64682"
+           target="_blank" rel="noopener" class="nav-amazon">Amazon</a>
       </nav>
       <!-- Mobile menu toggle placeholder -->
       <button class="md:hidden text-2xl" style="color:var(--muted); background:none; border:none; cursor:pointer;" aria-label="Menu">☰</button>
@@ -497,7 +508,8 @@
       <p style="margin-top:.4rem;">
         <a href="../index.html">Home</a> &nbsp;·&nbsp;
         <a href="../books.html">Books</a> &nbsp;·&nbsp;
-        <a href="../blog/index.html">News</a> &nbsp;·&nbsp;
+        <a href="../blog/index.html">Blog</a> &nbsp;·&nbsp;
+        <a href="../news.html">News</a> &nbsp;·&nbsp;
         <a href="../about.html">About</a> &nbsp;·&nbsp;
         <a href="../contact.html">Contact</a>
       </p>
