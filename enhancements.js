@@ -68,8 +68,8 @@
         }
       });
     }, {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px' // trigger slightly before fully on screen
+      threshold: 0.05,
+      rootMargin: '0px 0px -20px 0px' // trigger as soon as element is barely on screen
     });
 
     elements.forEach(function (el) { observer.observe(el); });
