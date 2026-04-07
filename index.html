@@ -371,6 +371,40 @@
       50%       { opacity: 0; }
     }
 
+    /* ── LIGHT CONTENT SECTIONS (2–6, below hero) ── */
+    .content-section { color: #475569; }
+    .content-section h2,
+    .content-section h3,
+    .content-section h4 { color: #1e293b; }
+
+    /* Spotlight card goes light */
+    .content-section .card {
+      background: #ffffff;
+      border-color: rgba(201,150,63,0.2);
+      box-shadow: 0 4px 28px rgba(0,0,0,.07);
+    }
+    /* Spotlight description text */
+    .content-section .book-spotlight p { color: #475569; }
+
+    /* Blog cards go light */
+    .content-section .blog-card {
+      background: #ffffff;
+      border-color: rgba(0,0,0,.09);
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .content-section .blog-card:hover {
+      border-color: rgba(201,150,63,.4);
+      box-shadow: 0 12px 40px rgba(201,150,63,.12);
+    }
+    .content-section .blog-card h3 { color: #1e293b; }
+    .content-section .blog-card p  { color: #64748b; }
+
+    /* Book title text under covers */
+    .content-section .book-teaser-item span { color: #1e293b; }
+
+    /* About section body copy */
+    .content-section .about-body p { color: #475569; }
+
     /* ── FOOTER ── */
     .site-footer {
       border-top: 1px solid var(--gold-border);
@@ -427,7 +461,7 @@
   </section>
 
   <!-- ── LATEST RELEASE SPOTLIGHT ── -->
-  <section style="padding: 3.75rem 0 5rem; background: var(--page);">
+  <section class="content-section" style="padding: 3.75rem 0 5rem; background: #ffffff;">
     <div class="container mx-auto px-6">
       <div class="text-center fade-in" style="margin-bottom: 3rem;">
         <span class="overline">Now Available</span>
@@ -453,7 +487,7 @@
   </section>
 
   <!-- ── BOOKS TEASER ── -->
-  <section style="padding: 5rem 0; background: #0a1020;">
+  <section class="content-section" style="padding: 5rem 0; background: #f1f5f9;">
     <div class="container mx-auto px-6">
       <div class="text-center" style="margin-bottom: 3rem;">
         <span class="overline">The Collection</span>
@@ -496,7 +530,7 @@
   </section>
 
   <!-- ── FROM THE BLOG ── -->
-  <section style="padding: 5rem 0; background: var(--page);">
+  <section class="content-section" style="padding: 5rem 0; background: #ffffff;">
     <div class="container mx-auto px-6">
       <div class="text-center" style="margin-bottom: 3rem;">
         <span class="overline">Essays &amp; Updates</span>
@@ -527,7 +561,7 @@
   </section>
 
   <!-- ── ABOUT TEASER ── -->
-  <section style="padding: 5rem 0; background: #0a1020;">
+  <section class="content-section" style="padding: 5rem 0; background: #f1f5f9;">
     <div class="container mx-auto px-6">
       <div class="fade-in" style="display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: center; max-width: 860px; margin: 0 auto;">
         <img src="author.png" alt="Author portrait of Corey L. Johnson"
@@ -546,7 +580,7 @@
   </section>
 
   <!-- ── NEWSLETTER STRIP ── -->
-  <section style="padding: 5rem 0; background: var(--page);">
+  <section class="content-section" style="padding: 5rem 0; background: #f1f5f9;">
     <div class="container mx-auto px-6">
       <div class="newsletter-strip" style="max-width: 640px; margin: 0 auto;">
         <span class="overline" style="margin-bottom: .5rem;">Stay in the Loop</span>
