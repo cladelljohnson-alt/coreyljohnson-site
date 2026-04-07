@@ -64,6 +64,42 @@
     }
     .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
 
+    /* ── DESKTOP / MOBILE NAV TOGGLE ── */
+    .desktop-nav { display: flex; gap: 1.75rem; align-items: center; }
+    .mobile-toggle {
+      display: none;
+      font-size: 1.65rem;
+      color: var(--ink);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .25rem .5rem;
+      line-height: 1;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(15,23,42,0.97);
+      border-top: 1px solid var(--gold-border);
+      padding: .5rem 1.5rem 1rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-link {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: .95rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .9rem .25rem;
+      border-bottom: 1px solid rgba(201,150,63,0.12);
+    }
+    .mobile-link:last-child { border-bottom: none; }
+    .mobile-link-amazon { color: var(--gold); }
+    @media (max-width: 767px) {
+      .desktop-nav { display: none; }
+      .mobile-toggle { display: inline-block; }
+    }
+
     /* ── HERO ── */
     .hero {
       position: relative;
@@ -391,7 +427,7 @@
   <header class="site-nav sticky top-0 z-20">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="index.html" class="nav-logo">Corey L. Johnson</a>
-      <nav class="space-x-7 hidden md:flex items-center">
+      <nav class="desktop-nav">
         <a href="books.html"       class="nav-link">Books</a>
         <a href="blog/index.html"  class="nav-link">Blog</a>
         <a href="news.html"       class="nav-link">News</a>
@@ -400,7 +436,17 @@
         <a href="https://www.amazon.com/stores/Corey-Johnson/author/B0CTFZPKV1?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=11104394-ef31-44eb-9566-8f0ff4e64682"
            target="_blank" rel="noopener" class="nav-amazon">Amazon</a>
       </nav>
-      <button class="md:hidden text-2xl" style="color:var(--muted); background:none; border:none; cursor:pointer;" aria-label="Menu">☰</button>
+      <button id="mobile-menu-toggle" class="mobile-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+    <!-- Mobile dropdown -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="books.html"       class="mobile-link">Books</a>
+      <a href="blog/index.html"  class="mobile-link">Blog</a>
+      <a href="news.html"        class="mobile-link">News</a>
+      <a href="about.html"       class="mobile-link">About</a>
+      <a href="contact.html"     class="mobile-link">Contact</a>
+      <a href="https://www.amazon.com/stores/Corey-Johnson/author/B0CTFZPKV1?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=11104394-ef31-44eb-9566-8f0ff4e64682"
+         target="_blank" rel="noopener" class="mobile-link mobile-link-amazon">Amazon</a>
     </div>
   </header>
 
@@ -581,6 +627,18 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+    // Mobile menu toggle
+    (function () {
+      var btn = document.getElementById('mobile-menu-toggle');
+      var menu = document.getElementById('mobile-menu');
+      if (btn && menu) {
+        btn.addEventListener('click', function () {
+          var open = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          btn.textContent = open ? '✕' : '☰';
+        });
+      }
+    })();
     function handleSubscribe(e) {
       e.preventDefault();
       e.currentTarget.style.display = 'none';
