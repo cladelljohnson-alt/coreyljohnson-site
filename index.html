@@ -73,6 +73,10 @@
       background-image: url('upscalemedia-transformed.jpeg');
       background-size: cover;
       background-position: 70% center;
+      background-attachment: fixed; /* parallax on desktop */
+    }
+    @media (max-width: 768px) {
+      .hero { background-attachment: scroll; } /* disable on mobile — iOS bug */
     }
     .hero-overlay {
       position: absolute;
@@ -289,6 +293,84 @@
     }
     .newsletter-btn:hover { background: var(--gold-lt); transform: translateY(-1px); }
 
+    /* ── BOOK CARD HOVER OVERLAY ── */
+    .book-cover-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: .5rem;
+      margin-bottom: .75rem;
+    }
+    .book-cover-wrap img {
+      width: 100%;
+      aspect-ratio: 2/3;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 12px 35px rgba(0,0,0,.55);
+      transition: transform .4s ease, box-shadow .4s ease;
+    }
+    .book-teaser-item:hover .book-cover-wrap img {
+      transform: translateY(-8px);
+      box-shadow: 0 28px 55px rgba(0,0,0,.75);
+    }
+    .book-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(11,18,32,.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .35s ease;
+      border-radius: .5rem;
+    }
+    .book-teaser-item:hover .book-overlay { opacity: 1; }
+    .book-overlay-btn {
+      display: inline-block;
+      padding: .6rem 1.4rem;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #0f172a;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: .75rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transform: translateY(10px);
+      transition: transform .35s ease, background .2s;
+    }
+    .book-teaser-item:hover .book-overlay-btn { transform: translateY(0); }
+    .book-overlay-btn:hover { background: var(--gold-lt); }
+
+    /* ── SCROLL FADE-IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* stagger children if needed */
+    .fade-in.delay-1 { transition-delay: .1s; }
+    .fade-in.delay-2 { transition-delay: .2s; }
+    .fade-in.delay-3 { transition-delay: .3s; }
+
+    /* ── TYPEWRITER CURSOR ── */
+    .tw-cursor {
+      display: inline-block;
+      width: 3px;
+      background: var(--gold);
+      margin-left: 3px;
+      vertical-align: middle;
+      animation: tw-blink .65s step-end infinite;
+    }
+    @keyframes tw-blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
     /* ── FOOTER ── */
     .site-footer {
       border-top: 1px solid var(--gold-border);
@@ -327,12 +409,16 @@
     <div class="hero-content container mx-auto px-6 py-32">
       <div style="max-width: 680px;">
         <span class="overline" style="margin-bottom: 1rem;">Corey L. Johnson</span>
-        <h1 style="margin-bottom: 1.25rem;">Stories That<br>Move You.</h1>
-        <p style="max-width: 520px; margin-bottom: 2rem;">
+        <h1 id="hero-tagline"
+            data-text="Stories That Move You."
+            style="margin-bottom: 1.25rem; min-height: 2.3em;"></h1>
+        <p id="hero-subtitle"
+           style="max-width: 520px; margin-bottom: 2rem; opacity: 0; transition: opacity .5s ease;">
           Emotionally resonant fiction about life, love, faith, and the decisions that define us —
           from the Tennessee storyteller who believes every challenge carries meaning and hope.
         </p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+        <div id="hero-ctas"
+             style="display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; transition: opacity .5s ease .2s;">
           <a href="books.html" class="btn-gold">Explore Books</a>
           <a href="blog/index.html" class="btn-outline-gold">Read Latest News</a>
         </div>
@@ -343,12 +429,12 @@
   <!-- ── LATEST RELEASE SPOTLIGHT ── -->
   <section style="padding: 6rem 0; background: var(--page);">
     <div class="container mx-auto px-6">
-      <div class="text-center" style="margin-bottom: 3rem;">
+      <div class="text-center fade-in" style="margin-bottom: 3rem;">
         <span class="overline">Now Available</span>
         <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: .5rem;">Latest Release</h2>
         <div class="gold-rule"></div>
       </div>
-      <div class="card" style="padding: 2.5rem;">
+      <div class="card fade-in" style="padding: 2.5rem;">
         <div class="book-spotlight">
           <img src="book3.png" alt="Cover of Into You by Corey L. Johnson" />
           <div>
@@ -374,17 +460,32 @@
         <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: .5rem;">Books</h2>
         <div class="gold-rule"></div>
       </div>
-      <div class="book-teaser-grid" style="margin-bottom: 2.5rem;">
+      <div class="book-teaser-grid fade-in" style="margin-bottom: 2.5rem;">
         <a href="https://a.co/d/bIOYPL0" target="_blank" rel="noopener" class="book-teaser-item">
-          <img src="book1.png" alt="The Grass Is Always Greener" />
+          <div class="book-cover-wrap">
+            <img src="book1.png" alt="The Grass Is Always Greener" />
+            <div class="book-overlay">
+              <span class="book-overlay-btn">View on Amazon</span>
+            </div>
+          </div>
           <span>The Grass Is Always Greener</span>
         </a>
         <a href="https://a.co/d/cUCeKhh" target="_blank" rel="noopener" class="book-teaser-item">
-          <img src="book2.png" alt="They Never Came Home" />
+          <div class="book-cover-wrap">
+            <img src="book2.png" alt="They Never Came Home" />
+            <div class="book-overlay">
+              <span class="book-overlay-btn">View on Amazon</span>
+            </div>
+          </div>
           <span>They Never Came Home</span>
         </a>
         <a href="https://a.co/d/0iRS62Hp" target="_blank" rel="noopener" class="book-teaser-item">
-          <img src="book4.png" alt="Ain't No Going Back" />
+          <div class="book-cover-wrap">
+            <img src="book4.png" alt="Ain't No Going Back" />
+            <div class="book-overlay">
+              <span class="book-overlay-btn">View on Amazon</span>
+            </div>
+          </div>
           <span>Ain't No Going Back</span>
         </a>
       </div>
@@ -402,7 +503,7 @@
         <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: .5rem;">From the Blog</h2>
         <div class="gold-rule"></div>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+      <div class="fade-in" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
         <a href="blog/character-deep-dive-malik-thompson.html" class="blog-card">
           <h3>Character Deep Dive: Malik Thompson of <em>They Never Came Home</em></h3>
           <p>Meet the sharp, loyal teen who reads rooms, organizes rescue, and refuses to let Ripley's secrets stay buried.</p>
@@ -428,7 +529,7 @@
   <!-- ── ABOUT TEASER ── -->
   <section style="padding: 5rem 0; background: #0a1020;">
     <div class="container mx-auto px-6">
-      <div style="display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: center; max-width: 860px; margin: 0 auto;">
+      <div class="fade-in" style="display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: center; max-width: 860px; margin: 0 auto;">
         <img src="author.png" alt="Author portrait of Corey L. Johnson"
              style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px var(--gold-border), 0 12px 40px rgba(0,0,0,.5);" />
         <div>
@@ -485,5 +586,6 @@
       document.getElementById('subscribe-confirm').style.display = 'block';
     }
   </script>
+  <script src="enhancements.js"></script>
 </body>
 </html>
