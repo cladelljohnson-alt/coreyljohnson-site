@@ -292,9 +292,10 @@
           Be the first to know about new releases, exclusive behind-the-scenes content, book club discussion guides,
           and personal notes from Corey's desk. Subscribers also get early access to cover reveals and giveaways.
         </p>
-        <form onsubmit="handleNewsletterSubmit(event)">
+        <form name="newsletter" data-netlify="true" onsubmit="handleNewsletterSubmit(event)">
+          <input type="hidden" name="form-name" value="newsletter" />
           <div class="newsletter-form-row">
-            <input class="newsletter-input" type="email" placeholder="Your email address" required />
+            <input class="newsletter-input" type="email" name="email" placeholder="Your email address" required />
             <button class="newsletter-btn" type="submit">Subscribe</button>
           </div>
           <p style="font-size: .8rem; color: var(--muted); margin-top: .75rem;">
@@ -313,7 +314,8 @@
         <p>
           Have a question, press inquiry, or collaboration idea? Drop a message below and Corey will get back to you.
         </p>
-        <form onsubmit="handleContactSubmit(event)">
+        <form name="contact" data-netlify="true" onsubmit="handleContactSubmit(event)">
+          <input type="hidden" name="form-name" value="contact" />
           <input class="form-field" type="text"  name="name"    placeholder="Your Name"    required />
           <input class="form-field" type="email" name="email"   placeholder="Your Email"   required />
           <textarea class="form-field" name="message" placeholder="Your Message" required></textarea>

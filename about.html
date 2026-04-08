@@ -318,8 +318,9 @@
         <span class="overline" style="margin-bottom: .5rem;">Stay in the Loop</span>
         <h3>Join Corey's Insider List</h3>
         <p>New releases, book club kits, and behind-the-scenes content delivered straight to your inbox.</p>
-        <form class="newsletter-form" onsubmit="handleSubscribe(event)">
-          <input class="newsletter-input" type="email" placeholder="Your email address" required />
+        <form class="newsletter-form" name="newsletter" data-netlify="true" onsubmit="handleSubscribe(event)">
+          <input type="hidden" name="form-name" value="newsletter" />
+          <input class="newsletter-input" type="email" name="email" placeholder="Your email address" required />
           <button class="newsletter-btn" type="submit">Subscribe</button>
         </form>
         <p id="subscribe-confirm" style="display:none; color:var(--gold); margin-top:1rem; font-weight:600;">

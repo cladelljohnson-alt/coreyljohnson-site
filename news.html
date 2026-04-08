@@ -295,8 +295,9 @@
       <span class="overline" style="margin-bottom: .4rem;">Be the First to Know</span>
       <h3>Join the Insider List</h3>
       <p>Sign up and you'll hear about news, new releases, and events before anyone else.</p>
-      <form class="newsletter-form" onsubmit="handleSubscribe(event)">
-        <input class="newsletter-input" type="email" placeholder="Your email address" required />
+      <form class="newsletter-form" name="newsletter" data-netlify="true" onsubmit="handleSubscribe(event)">
+        <input type="hidden" name="form-name" value="newsletter" />
+        <input class="newsletter-input" type="email" name="email" placeholder="Your email address" required />
         <button class="newsletter-btn" type="submit">Notify Me</button>
       </form>
       <p id="subscribe-confirm" style="display:none; color:var(--gold); margin-top:1rem; font-weight:600;">
