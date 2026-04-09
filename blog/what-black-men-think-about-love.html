@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Black Men Actually Think About Love (But Rarely Say Out Loud) – Corey L. Johnson</title>
+  <meta name="description" content="Black men are not emotionally absent by nature. They are emotionally guarded by design. Corey L. Johnson on the silence, the desire, and what finally makes the wall come down." />
+  <link rel="canonical" href="https://coreyljohnson.com/blog/what-black-men-think-about-love" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:        #c9963f;
+      --gold-lt:     #e8b96a;
+      --gold-border: rgba(201,150,63,0.25);
+      --page:        #0f172a;
+      --card:        #162033;
+      --ink:         #e5e7eb;
+      --muted:       #94a3b8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--page);
+      color: var(--muted);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--ink); }
+
+    /* ── NAV ── */
+    .site-nav {
+      background: rgba(15,23,42,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: .02em;
+    }
+    .nav-link {
+      color: var(--muted);
+      font-size: .875rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-link:hover { color: var(--gold); }
+    .nav-link.active { color: var(--gold); }
+    .nav-amazon {
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: .35rem .9rem;
+      border-radius: 999px;
+      font-size: .875rem;
+      text-decoration: none;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: border-color .2s, color .2s;
+    }
+    .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
+    .desktop-nav { display: flex; gap: 1.75rem; align-items: center; }
+    @media (max-width: 767px) { .desktop-nav { display: none; } }
+
+    /* ── MOBILE NAV TOGGLE ── */
+    .mobile-toggle {
+      display: none;
+      font-size: 1.65rem;
+      color: var(--ink);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .25rem .5rem;
+      line-height: 1;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(15,23,42,0.97);
+      border-top: 1px solid var(--gold-border);
+      padding: .5rem 1.5rem 1rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-link {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: .95rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .9rem .25rem;
+      border-bottom: 1px solid rgba(201,150,63,0.12);
+    }
+    .mobile-link:last-child { border-bottom: none; }
+    .mobile-link-amazon { color: var(--gold); }
+    @media (max-width: 767px) {
+      .mobile-toggle { display: inline-block; }
+    }
+
+    /* ── ARTICLE HERO ── */
+    .article-hero {
+      background: linear-gradient(135deg, #1a0d15 0%, #2e1a25 60%, #1a1030 100%);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 5rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(201,150,63,.14) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .article-hero-inner { position: relative; z-index: 1; }
+
+    .overline {
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: .75rem;
+    }
+    .article-hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.15;
+      color: var(--ink);
+      max-width: 820px;
+      margin: 0 auto .75rem;
+    }
+    .article-meta {
+      font-size: .8rem;
+      color: var(--muted);
+      letter-spacing: .04em;
+    }
+    .gold-rule { width: 3rem; height: 2px; background: var(--gold); margin: 1.5rem auto; }
+
+    /* ── ARTICLE BODY ── */
+    .article-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    .article-body p {
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: #cbd5e1;
+      margin-bottom: 1.6rem;
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem 1.75rem;
+      margin: 2.5rem 0;
+      background: rgba(201,150,63,.06);
+      border-radius: 0 .5rem .5rem 0;
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      line-height: 1.55;
+      color: var(--ink) !important;
+      margin: 0 !important;
+      font-style: italic;
+    }
+
+    /* ── CTA CARD ── */
+    .cta-card {
+      background: var(--card);
+      border: 1px solid var(--gold-border);
+      border-radius: .75rem;
+      padding: 2rem 2.5rem;
+      margin-top: 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(201,150,63,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-card h3 { font-size: 1.4rem; margin-bottom: .5rem; }
+    .cta-card p { font-size: .95rem; margin-bottom: 1.5rem; }
+
+    .btn-gold {
+      display: inline-block;
+      padding: .75rem 2rem;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #0f172a;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+      margin: .35rem;
+    }
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: .75rem 2rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, color .2s, transform .15s;
+      margin: .35rem;
+    }
+    .btn-outline:hover { background: var(--gold); color: #0f172a; transform: translateY(-2px); }
+
+    /* ── BACK LINK ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+      transition: color .2s, gap .2s;
+    }
+    .back-link::before { content: '←'; }
+    .back-link:hover { color: var(--gold-lt); gap: .6rem; }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--gold-border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: .8rem;
+      background: #0a1020;
+    }
+    .site-footer a { color: var(--gold); text-decoration: none; transition: color .2s; }
+    .site-footer a:hover { color: var(--gold-lt); }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <header class="site-nav sticky top-0 z-20">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="../index.html" class="nav-logo">Corey L. Johnson</a>
+      <nav class="desktop-nav">
+        <a href="../books.html"      class="nav-link">Books</a>
+        <a href="../blog/index.html" class="nav-link active">Blog</a>
+        <a href="../news.html"       class="nav-link">News</a>
+        <a href="../about.html"      class="nav-link">About</a>
+        <a href="../contact.html"    class="nav-link">Contact</a>
+        <a href="https://www.amazon.com/stores/Corey-Johnson/author/B0CTFZPKV1?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=11104394-ef31-44eb-9566-8f0ff4e64682"
+           target="_blank" rel="noopener" class="nav-amazon">Amazon</a>
+      </nav>
+      <button id="mobile-menu-toggle" class="mobile-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="../books.html"   class="mobile-link">Books</a>
+      <a href="index.html"      class="mobile-link">Blog</a>
+      <a href="../news.html"    class="mobile-link">News</a>
+      <a href="../about.html"   class="mobile-link">About</a>
+      <a href="../contact.html" class="mobile-link">Contact</a>
+      <a href="https://www.amazon.com/stores/Corey-Johnson/author/B0CTFZPKV1?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=11104394-ef31-44eb-9566-8f0ff4e64682"
+         target="_blank" rel="noopener" class="mobile-link mobile-link-amazon">Amazon</a>
+    </div>
+  </header>
+
+  <!-- ── ARTICLE HERO ── -->
+  <div class="article-hero">
+    <div class="container mx-auto px-6 article-hero-inner">
+      <span class="overline">Relationships &nbsp;·&nbsp; Author's Note</span>
+      <h1>What Black Men Actually Think About Love (But Rarely Say Out Loud)</h1>
+      <div class="gold-rule"></div>
+      <p class="article-meta">By Corey L. Johnson &nbsp;·&nbsp; <span id="pub-date"></span> &nbsp;·&nbsp; 5 min read</p>
+    </div>
+  </div>
+
+  <!-- ── ARTICLE BODY ── -->
+  <main>
+    <div class="article-wrap">
+
+      <a href="index.html" class="back-link">Back to Blog</a>
+
+      <article class="article-body">
+
+        <p>Ask a Black man if he believes in love. Watch what he does before he answers.</p>
+
+        <p>Some laugh first. Not because the question is funny. Because laughing buys time. It is a stall, a recalibration, a way to measure how much truth the room can hold before they have to give any of it. Others answer fast and clean, the way you answer a question you decided the answer to a long time ago and are not interested in revisiting. A few go quiet. Not uncomfortable quiet. Thinking quiet. Those are the ones who have done some work on themselves.</p>
+
+        <div class="pull-quote">
+          <p>The silence is not indifference. It never was.</p>
+        </div>
+
+        <p>From the time Black boys are young, the message comes in from every direction. Strength is silence. Emotion is weakness. Need is something you keep to yourself or it gets used against you. You carry what you carry. You keep moving. A 2024 study published in <em>Metropolitan Universities</em> found that only 26.4% of Black men experiencing anxiety or depression seek mental health treatment. The same research found that Black men described asking for help as being equated with weakness. As proof you could not handle your own life. That belief does not stay in the therapist's office. It walks into every relationship, every hard conversation, every moment when something real is sitting right there and a man chooses to leave it on the table.</p>
+
+        <p>And yet the desire is present. It has always been present.</p>
+
+        <p>A 2024 Pew Research survey of more than 6,000 adults found that 60% of Americans say society does not value men who are caring or open about their emotions enough. Not a minority opinion. The majority. People want emotionally available men. The culture just built a world where being one costs something, and for Black men, the cost has always come with interest.</p>
+
+        <p>NIH-backed research published in 2024 added another layer. Black men in positive relationships but disadvantaged neighborhoods showed more emotional distress over time, not less. Not because the love was not real. Because the external pressure worked against a man's ability to show up the way he wanted to. The love was there. The conditions made it hard to carry.</p>
+
+        <p>That is the part nobody puts in the headlines.</p>
+
+        <div class="pull-quote">
+          <p>Black men are not emotionally absent by nature. They are emotionally guarded by design.</p>
+        </div>
+
+        <p>By years of being told that tenderness is a liability, that vulnerability is an opening, that the man who says too much gives too much away. What that produces is a man who loves deeply and quietly, who expresses it through action because nobody told him words were also allowed. A man who shows up every time and never explains why showing up matters to him.</p>
+
+        <p>That love is real. It is also incomplete.</p>
+
+        <p>That tension is exactly what lives inside Darius Steele in <em>Into You</em>. Darius is a divorce attorney. His whole career is the wreckage of love that did not hold. He has sat across from enough broken marriages to build a perfectly reasonable argument against ever wanting one. Love is a liability. A documented, expensive, emotionally catastrophic liability. He has the case files to prove it.</p>
+
+        <p>Kiana Mercer is a wedding planner who believes love is worth everything. She has built her entire professional life on that conviction. They share a wall between their offices. His clients argue. Hers cry happy tears. They cannot stand each other.</p>
+
+        <p>Until they cannot stay away from each other.</p>
+
+        <p>I wrote Darius as a portrait, not a villain. A Black man who looked at love, did the math, and decided the risk was not worth it. The whole story is about what happens when something real gets through anyway. When a man who armored himself against love meets a woman who makes him question whether the armor was ever actually protecting him.</p>
+
+        <p>Black men deserve to see that story told. Not the version where we are absent or irreparably broken. The version where we are complicated, guarded, capable of choosing love, and worth watching when we finally do.</p>
+
+        <p>Black women deserve to see themselves as the reason the wall comes down.</p>
+
+        <p>That is why I write what I write. If you want to see what it looks like when a man who stopped believing in love walks into the life of a woman who never did, <em>Into You</em> is available now.</p>
+
+        <p>The wall comes down slow. But it comes down.</p>
+
+      </article>
+
+      <!-- ── CTA ── -->
+      <div class="cta-card">
+        <span class="overline" style="margin-bottom:.6rem;">Read the Story</span>
+        <h3>When the Wall Finally Comes Down</h3>
+        <p>A divorce attorney who stopped believing in love. A wedding planner who never did. See what happens when they can't stay away from each other.</p>
+        <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener" class="btn-gold">Read <em>Into You</em> on Amazon</a>
+        <a href="../books.html" class="btn-outline">Browse All Books</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <div class="container mx-auto px-6">
+      <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--ink); margin-bottom:.75rem;">Corey L. Johnson</p>
+      <p style="margin-bottom:.75rem;">
+        <a href="../index.html">Home</a> &nbsp;·&nbsp;
+        <a href="../books.html">Books</a> &nbsp;·&nbsp;
+        <a href="index.html">Blog</a> &nbsp;·&nbsp;
+        <a href="../news.html">News</a> &nbsp;·&nbsp;
+        <a href="../about.html">About</a> &nbsp;·&nbsp;
+        <a href="../contact.html">Contact</a>
+      </p>
+      <p>&copy; <span id="year"></span> Corey L. Johnson. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('pub-date').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    (function () {
+      var btn = document.getElementById('mobile-menu-toggle');
+      var menu = document.getElementById('mobile-menu');
+      if (btn && menu) {
+        btn.addEventListener('click', function () {
+          var open = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          btn.textContent = open ? '✕' : '☰';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
