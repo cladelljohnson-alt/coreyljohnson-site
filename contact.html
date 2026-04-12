@@ -380,13 +380,27 @@
     })();
     function handleNewsletterSubmit(e) {
       e.preventDefault();
-      e.currentTarget.style.display = 'none';
-      document.getElementById('newsletter-confirm').style.display = 'block';
+      var form = e.currentTarget;
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).finally(function() {
+        form.style.display = 'none';
+        document.getElementById('newsletter-confirm').style.display = 'block';
+      });
     }
     function handleContactSubmit(e) {
       e.preventDefault();
-      e.currentTarget.style.display = 'none';
-      document.getElementById('contact-confirm').style.display = 'block';
+      var form = e.currentTarget;
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).finally(function() {
+        form.style.display = 'none';
+        document.getElementById('contact-confirm').style.display = 'block';
+      });
     }
   </script>
 </body>

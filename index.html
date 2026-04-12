@@ -643,8 +643,15 @@
     })();
     function handleSubscribe(e) {
       e.preventDefault();
-      e.currentTarget.style.display = 'none';
-      document.getElementById('subscribe-confirm').style.display = 'block';
+      var form = e.currentTarget;
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).finally(function() {
+        form.style.display = 'none';
+        document.getElementById('subscribe-confirm').style.display = 'block';
+      });
     }
   </script>
   <script src="enhancements.js"></script>
