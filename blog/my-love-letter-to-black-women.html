@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Love Letter to Black Women – Corey L. Johnson</title>
+  <meta name="description" content="I have a Black mother. A Black wife. A Black daughter. This is my small way of saying what I already know — they're the best thing God ever made." />
+  <link rel="canonical" href="https://coreyljohnson.com/blog/my-love-letter-to-black-women" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:        #c9963f;
+      --gold-lt:     #e8b96a;
+      --gold-border: rgba(201,150,63,0.25);
+      --page:        #0f172a;
+      --card:        #162033;
+      --ink:         #e5e7eb;
+      --muted:       #94a3b8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--page);
+      color: var(--muted);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--ink); }
+
+    /* ── NAV ── */
+    .site-nav {
+      background: rgba(15,23,42,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: .02em;
+    }
+    .nav-link {
+      color: var(--muted);
+      font-size: .875rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-link:hover { color: var(--gold); }
+    .nav-link.active { color: var(--gold); }
+    .nav-amazon {
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: .35rem .9rem;
+      border-radius: 999px;
+      font-size: .875rem;
+      text-decoration: none;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: border-color .2s, color .2s;
+    }
+    .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
+    .desktop-nav { display: flex; gap: 1.75rem; align-items: center; }
+    @media (max-width: 767px) { .desktop-nav { display: none; } }
+
+    /* ── MOBILE NAV TOGGLE ── */
+    .mobile-toggle {
+      display: none;
+      font-size: 1.65rem;
+      color: var(--ink);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .25rem .5rem;
+      line-height: 1;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(15,23,42,0.97);
+      border-top: 1px solid var(--gold-border);
+      padding: .5rem 1.5rem 1rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-link {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: .95rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .9rem .25rem;
+      border-bottom: 1px solid rgba(201,150,63,0.12);
+    }
+    .mobile-link:last-child { border-bottom: none; }
+    .mobile-link-amazon { color: var(--gold); }
+    @media (max-width: 767px) {
+      .mobile-toggle { display: inline-block; }
+    }
+
+    /* ── ARTICLE HERO ── */
+    .article-hero {
+      background: linear-gradient(135deg, #1a0d15 0%, #2e1a25 60%, #1a0820 100%);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 5rem 0 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .article-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(201,150,63,.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .article-hero-inner { position: relative; z-index: 1; }
+
+    .overline {
+      font-family: 'Inter', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: .75rem;
+    }
+    .article-hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.15;
+      color: var(--ink);
+      max-width: 720px;
+      margin: 0 auto .75rem;
+    }
+    .article-meta {
+      font-size: .8rem;
+      color: var(--muted);
+      letter-spacing: .04em;
+    }
+    .gold-rule { width: 3rem; height: 2px; background: var(--gold); margin: 1.5rem auto; }
+
+    /* ── ARTICLE BODY ── */
+    .article-wrap {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+
+    .article-body p {
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: #cbd5e1;
+      margin-bottom: 1.6rem;
+    }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 3px solid var(--gold);
+      padding: 1.25rem 1.75rem;
+      margin: 2.5rem 0;
+      background: rgba(201,150,63,.06);
+      border-radius: 0 .5rem .5rem 0;
+    }
+    .pull-quote p {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      line-height: 1.55;
+      color: var(--ink) !important;
+      margin: 0 !important;
+      font-style: italic;
+    }
+
+    /* ── CTA CARD ── */
+    .cta-card {
+      background: var(--card);
+      border: 1px solid var(--gold-border);
+      border-radius: .75rem;
+      padding: 2rem 2.5rem;
+      margin-top: 3.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(201,150,63,.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-card h3 { font-size: 1.4rem; margin-bottom: .5rem; }
+    .cta-card p { font-size: .95rem; margin-bottom: 1.5rem; }
+
+    .btn-gold {
+      display: inline-block;
+      padding: .75rem 2rem;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #0f172a;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+      margin: .35rem;
+    }
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+    .btn-outline {
+      display: inline-block;
+      padding: .75rem 2rem;
+      border-radius: 999px;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background .2s, color .2s, transform .15s;
+      margin: .35rem;
+    }
+    .btn-outline:hover { background: var(--gold); color: #0f172a; transform: translateY(-2px); }
+
+    /* ── BACK LINK ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      margin-bottom: 2.5rem;
+      transition: color .2s, gap .2s;
+    }
+    .back-link::before { content: '←'; }
+    .back-link:hover { color: var(--gold-lt); gap: .6rem; }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--gold-border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: .8rem;
+      background: #0a1020;
+    }
+    .site-footer a { color: var(--gold); text-decoration: none; transition: color .2s; }
+    .site-footer a:hover { color: var(--gold-lt); }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <header class="site-nav sticky top-0 z-20">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="../index.html" class="nav-logo">Corey L. Johnson</a>
+      <nav class="desktop-nav">
+        <a href="../books.html"      class="nav-link">Books</a>
+        <a href="../blog/index.html" class="nav-link active">Blog</a>
+        <a href="../news.html"       class="nav-link">News</a>
+        <a href="../about.html"      class="nav-link">About</a>
+        <a href="../contact.html"    class="nav-link">Contact</a>
+        <a href="https://www.amazon.com/stores/Corey-Johnson/author/B0CTFZPKV1?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=11104394-ef31-44eb-9566-8f0ff4e64682"
+           target="_blank" rel="noopener" class="nav-amazon">Amazon</a>
+      </nav>
+      <button id="mobile-menu-toggle" class="mobile-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="../books.html"   class="mobile-link">Books</a>
+      <a href="index.html"      class="mobile-link">Blog</a>
+      <a href="../news.html"    class="mobile-link">News</a>
+      <a href="../about.html"   class="mobile-link">About</a>
+      <a href="../contact.html" class="mobile-link">Contact</a>
+      <a href="https://www.amazon.com/stores/Corey-Johnson/author/B0CTFZPKV1?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=11104394-ef31-44eb-9566-8f0ff4e64682"
+         target="_blank" rel="noopener" class="mobile-link mobile-link-amazon">Amazon</a>
+    </div>
+  </header>
+
+  <!-- ── ARTICLE HERO ── -->
+  <div class="article-hero">
+    <div class="container mx-auto px-6 article-hero-inner">
+      <span class="overline">Author's Note</span>
+      <h1>My Love Letter to Black Women</h1>
+      <div class="gold-rule"></div>
+      <p class="article-meta">By Corey L. Johnson &nbsp;·&nbsp; <span id="pub-date"></span> &nbsp;·&nbsp; 4 min read</p>
+    </div>
+  </div>
+
+  <!-- ── ARTICLE BODY ── -->
+  <main>
+    <div class="article-wrap">
+
+      <a href="index.html" class="back-link">Back to Blog</a>
+
+      <article class="article-body">
+
+        <p>This isn't a think piece. It's exactly what the title says.</p>
+
+        <p>A love letter.</p>
+
+        <p>I have a Black mother. A Black wife. A Black daughter. More Black women in my family than I can count, and every single one of them has left a mark on me that nothing else could. I've had Black women friends who kept it real with me when nobody else would. Who told me the truth whether I wanted it or not. Who checked me when I needed to be checked and showed up for me when I didn't deserve it.</p>
+
+        <p>I've been watching Black women my whole life. Up close. In the house I grew up in. At the kitchen table. Through hard seasons and good ones. And I don't need data or research or outside confirmation to say what I already know.</p>
+
+        <div class="pull-quote">
+          <p>They're the best thing God ever made.</p>
+        </div>
+
+        <p>That's not hyperbole. That's testimony.</p>
+
+        <p>Black women hold things together that would fall apart without them. Not sometimes. Consistently. They carry weight that was never supposed to be theirs alone. They love hard. They love loyal. They tell the truth when the truth costs something. They push you toward the version of yourself you've been avoiding. They pray for you when they're running on empty. They fight for the people they love with everything they've got left.</p>
+
+        <p>And the world still asks more of them.</p>
+
+        <p>That's always bothered me. The gap between what Black women give and what comes back to them. The way they get celebrated in theory and overlooked in practice. The way the word <em>strong</em> gets put on them not as a compliment but as permission to keep taking without giving rest in return.</p>
+
+        <p>My mother showed me what it looks like to love a family without keeping score. My wife has been my partner, my mirror, my person through every season. My daughter is the reason I write what I write. She deserves to grow up in a world where women who look like her are chosen. Pursued. Written as the whole point of the story, not the supporting role in somebody else's.</p>
+
+        <p>That's what I was building when I wrote Kiana Mercer in <em>Into You</em>.</p>
+
+        <p>Kiana plans weddings because she genuinely believes love is worth everything. She's not naive. She's not fragile. She's the kind of woman who has looked at love clearly, with both eyes open, and decided it's worth choosing anyway. That takes more strength than most people will ever have.</p>
+
+        <p>Darius doesn't see it at first. He's a divorce attorney. His whole life is what happens when love falls apart. He's built a perfectly reasonable case against it. Then he meets Kiana and runs out of arguments.</p>
+
+        <p>Not because she fixed him. Because she was herself. Completely and without apology. And that was enough.</p>
+
+        <div class="pull-quote">
+          <p>Black women deserve to see themselves as the reason a man rethinks everything.</p>
+        </div>
+
+        <p>Not because they need a man to be complete. But because they spend so much time being everything for everybody else that somebody ought to write the version where the love comes back to them.</p>
+
+        <p>We'd be nothing without them. I mean that down to the ground.</p>
+
+        <p>This is my small way of saying so.</p>
+
+      </article>
+
+      <!-- ── CTA ── -->
+      <div class="cta-card">
+        <span class="overline" style="margin-bottom:.6rem;">Read the Story</span>
+        <h3>Written for Her. On Purpose.</h3>
+        <p>A woman who never stopped believing in love. A man who finally ran out of reasons not to. See what happens when they share a wall — and can't stay on their own side of it.</p>
+        <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener" class="btn-gold">Read <em>Into You</em> on Amazon</a>
+        <a href="../books.html" class="btn-outline">Browse All Books</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <div class="container mx-auto px-6">
+      <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--ink); margin-bottom:.75rem;">Corey L. Johnson</p>
+      <p style="margin-bottom:.75rem;">
+        <a href="../index.html">Home</a> &nbsp;·&nbsp;
+        <a href="../books.html">Books</a> &nbsp;·&nbsp;
+        <a href="index.html">Blog</a> &nbsp;·&nbsp;
+        <a href="../news.html">News</a> &nbsp;·&nbsp;
+        <a href="../about.html">About</a> &nbsp;·&nbsp;
+        <a href="../contact.html">Contact</a>
+      </p>
+      <p>&copy; <span id="year"></span> Corey L. Johnson. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('pub-date').textContent = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+    (function () {
+      var btn = document.getElementById('mobile-menu-toggle');
+      var menu = document.getElementById('mobile-menu');
+      if (btn && menu) {
+        btn.addEventListener('click', function () {
+          var open = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          btn.textContent = open ? '✕' : '☰';
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
