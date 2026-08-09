@@ -286,6 +286,12 @@
     .book-item:hover .book-item-btn { color: var(--accent-lt, var(--gold-lt)); gap: .5rem; }
     .book-item-btn::after { content: '→'; }
 
+    .book-item-soon { cursor: default; }
+    .book-item-soon .book-item-series,
+    .book-item-soon .book-item-btn { color: var(--muted); }
+    .book-item-soon .book-item-btn::after { content: ''; }
+    .book-item-soon:hover .book-item-btn { color: var(--muted); gap: .3rem; }
+
     /* ── FOOTER ── */
     .site-footer {
       border-top: 1px solid var(--gold-border);
@@ -407,18 +413,29 @@
     <!-- ── R&B MIXTAPE SERIES ── -->
     <div class="series-rose">
     <div class="series-label"><span>R&amp;B Mixtape Series</span></div>
-    <div class="book-grid" style="max-width: 300px;">
+    <p style="font-size: .85rem; color: var(--muted); margin: -1.25rem 0 2rem;">An anthology series — each book stands on its own, no reading order required.</p>
+    <div class="book-grid" style="max-width: 620px;">
 
       <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener" class="book-item">
         <span class="cover">
         <img src="book3.png" alt="Cover of Into You" />
         <span class="gleam"></span>
       </span>
-        <p class="book-item-series">Book 1</p>
         <p class="book-item-title">Into You</p>
         <p class="book-item-desc">She plans weddings. He ends marriages. When their worlds collide, the tension is electric. A slow-burn enemies-to-lovers romance that proves love doesn't always follow the plan.</p>
         <span class="book-item-btn">Read on Amazon</span>
       </a>
+
+      <div class="book-item book-item-soon">
+        <span class="cover">
+        <img src="book8.png" alt="Cover of We Can't Be Friends" />
+        <span class="gleam"></span>
+      </span>
+        <p class="book-item-series">Coming Soon</p>
+        <p class="book-item-title">We Can't Be Friends</p>
+        <p class="book-item-desc">A relationship coach whose toughest client is the childhood best friend who broke her heart. Fifteen years of unfinished business, one impossible contract, and a second chance neither of them saw coming.</p>
+        <span class="book-item-btn">Not Yet Available</span>
+      </div>
 
     </div>
     </div>
