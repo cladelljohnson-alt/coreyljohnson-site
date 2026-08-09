@@ -65,6 +65,49 @@
       transition: border-color .2s, color .2s;
     }
     .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
+
+    /* ── NAV DROPDOWN ── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { display: inline-flex; align-items: center; gap: .3rem; }
+    .nav-caret { font-size: .6rem; transition: transform .2s ease; position: relative; top: 1px; }
+    .nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      min-width: 190px;
+      background: rgba(11,18,32,.98);
+      border: 1px solid var(--gold-border);
+      border-radius: .6rem;
+      padding: .4rem;
+      margin-top: .6rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .2s ease, transform .2s ease, visibility .2s;
+      box-shadow: 0 20px 45px rgba(0,0,0,.5);
+      z-index: 30;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown-item {
+      display: block;
+      padding: .6rem .9rem;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-radius: .4rem;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+    .nav-dropdown-item:hover { background: rgba(201,150,63,.1); color: var(--gold-lt); }
     .desktop-nav { display: flex; gap: 1.75rem; align-items: center; }
     @media (max-width: 767px) { .desktop-nav { display: none; } }
 
@@ -98,6 +141,7 @@
     }
     .mobile-link:last-child { border-bottom: none; }
     .mobile-link-amazon { color: var(--gold); }
+    .mobile-sublink { padding-left: 1.5rem; font-size: .82rem; color: var(--muted); text-transform: none; letter-spacing: .02em; }
     @media (max-width: 767px) {
       .mobile-toggle { display: inline-block; }
     }
@@ -267,7 +311,14 @@
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="../index.html" class="nav-logo">Corey L. Johnson</a>
       <nav class="desktop-nav">
-        <a href="../books.html"      class="nav-link">Books</a>
+        <div class="nav-dropdown">
+          <a href="../books.html" class="nav-link nav-dropdown-toggle">Books <span class="nav-caret">⌄</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="../books.html#rooted-in-grace" class="nav-dropdown-item">Christian Fiction</a>
+            <a href="../books.html#rnb-mixtape" class="nav-dropdown-item">Romance</a>
+            <a href="../books.html#highway-51" class="nav-dropdown-item">Horror</a>
+          </div>
+        </div>
         <a href="../blog/index.html" class="nav-link active">Blog</a>
         <a href="../news.html"       class="nav-link">News</a>
         <a href="../about.html"      class="nav-link">About</a>
@@ -278,7 +329,10 @@
       <button id="mobile-menu-toggle" class="mobile-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     </div>
     <div id="mobile-menu" class="mobile-menu">
-      <a href="../books.html"   class="mobile-link">Books</a>
+      <a href="../books.html"       class="mobile-link">Books</a>
+      <a href="../books.html#rooted-in-grace" class="mobile-link mobile-sublink">Christian Fiction</a>
+      <a href="../books.html#rnb-mixtape"     class="mobile-link mobile-sublink">Romance</a>
+      <a href="../books.html#highway-51"      class="mobile-link mobile-sublink">Horror</a>
       <a href="index.html"      class="mobile-link">Blog</a>
       <a href="../news.html"    class="mobile-link">News</a>
       <a href="../about.html"   class="mobile-link">About</a>

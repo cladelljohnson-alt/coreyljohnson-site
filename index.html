@@ -65,6 +65,49 @@
     }
     .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
 
+    /* ── NAV DROPDOWN ── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-toggle { display: inline-flex; align-items: center; gap: .3rem; }
+    .nav-caret { font-size: .6rem; transition: transform .2s ease; position: relative; top: 1px; }
+    .nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      min-width: 190px;
+      background: rgba(11,18,32,.98);
+      border: 1px solid var(--gold-border);
+      border-radius: .6rem;
+      padding: .4rem;
+      margin-top: .6rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .2s ease, transform .2s ease, visibility .2s;
+      box-shadow: 0 20px 45px rgba(0,0,0,.5);
+      z-index: 30;
+    }
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown-item {
+      display: block;
+      padding: .6rem .9rem;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-radius: .4rem;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+    .nav-dropdown-item:hover { background: rgba(201,150,63,.1); color: var(--gold-lt); }
+
     /* ── DESKTOP / MOBILE NAV TOGGLE ── */
     .desktop-nav { display: flex; gap: 1.75rem; align-items: center; }
     .mobile-toggle {
@@ -96,6 +139,7 @@
     }
     .mobile-link:last-child { border-bottom: none; }
     .mobile-link-amazon { color: var(--gold); }
+    .mobile-sublink { padding-left: 1.5rem; font-size: .82rem; color: var(--muted); text-transform: none; letter-spacing: .02em; }
     @media (max-width: 767px) {
       .desktop-nav { display: none; }
       .mobile-toggle { display: inline-block; }
@@ -104,21 +148,21 @@
     /* ── HERO ── */
     .hero {
       position: relative;
-      min-height: 100vh;
+      width: 100%;
+      aspect-ratio: 2172 / 724; /* matches the banner image so nothing crops */
+      min-height: 580px;
+      max-height: 900px;
       display: flex;
       align-items: center;
-      background-image: url('upscalemedia-transformed.jpeg');
+      background-color: var(--page);
+      background-image: url('hero-banner.jpg');
       background-size: cover;
-      background-position: 70% center;
-      background-attachment: fixed; /* parallax on desktop */
-    }
-    @media (max-width: 768px) {
-      .hero { background-attachment: scroll; } /* disable on mobile — iOS bug */
+      background-position: center;
     }
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom right, rgba(15,23,42,.82), rgba(15,23,42,.55));
+      background: linear-gradient(to right, rgba(15,23,42,.94) 0%, rgba(15,23,42,.68) 55%, rgba(15,23,42,.25) 100%);
     }
     .hero-content { position: relative; z-index: 1; }
     .hero h1 {
@@ -204,6 +248,9 @@
       transition: transform .3s;
     }
     .book-spotlight:hover img { transform: translateY(-4px) rotate(-1deg); }
+    .book-spotlight.reverse { grid-template-columns: 1fr 260px; }
+    .book-spotlight.reverse img { order: 2; }
+    @media (max-width: 768px) { .book-spotlight.reverse { grid-template-columns: 1fr; } }
 
     .spotlight-badge {
       display: inline-block;
@@ -443,7 +490,14 @@
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
       <a href="index.html" class="nav-logo">Corey L. Johnson</a>
       <nav class="desktop-nav">
-        <a href="books.html"       class="nav-link">Books</a>
+        <div class="nav-dropdown">
+          <a href="books.html" class="nav-link nav-dropdown-toggle">Books <span class="nav-caret">⌄</span></a>
+          <div class="nav-dropdown-menu">
+            <a href="books.html#rooted-in-grace" class="nav-dropdown-item">Christian Fiction</a>
+            <a href="books.html#rnb-mixtape" class="nav-dropdown-item">Romance</a>
+            <a href="books.html#highway-51" class="nav-dropdown-item">Horror</a>
+          </div>
+        </div>
         <a href="blog/index.html"  class="nav-link">Blog</a>
         <a href="news.html"       class="nav-link">News</a>
         <a href="about.html"       class="nav-link">About</a>
@@ -456,6 +510,9 @@
     <!-- Mobile dropdown -->
     <div id="mobile-menu" class="mobile-menu">
       <a href="books.html"       class="mobile-link">Books</a>
+      <a href="books.html#rooted-in-grace" class="mobile-link mobile-sublink">Christian Fiction</a>
+      <a href="books.html#rnb-mixtape"     class="mobile-link mobile-sublink">Romance</a>
+      <a href="books.html#highway-51"      class="mobile-link mobile-sublink">Horror</a>
       <a href="blog/index.html"  class="mobile-link">Blog</a>
       <a href="news.html"        class="mobile-link">News</a>
       <a href="about.html"       class="mobile-link">About</a>
@@ -468,7 +525,7 @@
   <!-- ── HERO ── -->
   <section class="hero">
     <div class="hero-overlay"></div>
-    <div class="hero-content container mx-auto px-6 py-32">
+    <div class="hero-content container mx-auto px-6 py-12">
       <div style="max-width: 680px;">
         <span class="overline" style="margin-bottom: 1rem;">Corey L. Johnson</span>
         <h1 id="hero-tagline"
@@ -522,37 +579,44 @@
         <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: .5rem;">Books</h2>
         <div class="gold-rule"></div>
       </div>
-      <div class="book-teaser-grid fade-in" style="margin-bottom: 2.5rem;">
-        <a href="https://a.co/d/bIOYPL0" target="_blank" rel="noopener" class="book-teaser-item">
-          <div class="book-cover-wrap">
-            <img src="book1.png" alt="The Grass Is Always Greener" />
-            <span class="gleam"></span>
-            <div class="book-overlay">
-              <span class="book-overlay-btn">View on Amazon</span>
+      <div class="fade-in" style="display: flex; flex-direction: column; gap: 2rem; margin-bottom: 2.5rem;">
+
+        <div class="card" style="padding: 2.5rem;">
+          <div class="book-spotlight">
+            <img src="book1.png" alt="Cover of The Grass Is Always Greener" />
+            <div>
+              <p class="overline" style="margin-bottom: .5rem;">Rooted in Grace Series</p>
+              <h3 style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: .75rem;">The Grass Is Always Greener</h3>
+              <p style="font-size: .96rem; line-height: 1.75; margin-bottom: 1.25rem;">A heartfelt tale of family secrets and second chances set in the American South — where faith and resilience light the path through grief and redemption.</p>
+              <a href="https://a.co/d/bIOYPL0" target="_blank" rel="noopener" class="btn-gold">View on Amazon</a>
             </div>
           </div>
-          <span>The Grass Is Always Greener</span>
-        </a>
-        <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener" class="book-teaser-item">
-          <div class="book-cover-wrap">
-            <img src="book3.png" alt="Into You" />
-            <span class="gleam"></span>
-            <div class="book-overlay">
-              <span class="book-overlay-btn">View on Amazon</span>
+        </div>
+
+        <div class="card" style="padding: 2.5rem;">
+          <div class="book-spotlight reverse">
+            <img src="book3.png" alt="Cover of Into You" />
+            <div>
+              <p class="overline" style="margin-bottom: .5rem;">R&amp;B Mixtape Series</p>
+              <h3 style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: .75rem;">Into You</h3>
+              <p style="font-size: .96rem; line-height: 1.75; margin-bottom: 1.25rem;">She plans weddings. He ends marriages. When their worlds collide, the tension is electric. A slow-burn enemies-to-lovers romance that proves love doesn't always follow the plan.</p>
+              <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener" class="btn-gold">View on Amazon</a>
             </div>
           </div>
-          <span>Into You</span>
-        </a>
-        <a href="https://a.co/d/0iRS62Hp" target="_blank" rel="noopener" class="book-teaser-item">
-          <div class="book-cover-wrap">
-            <img src="book4.png" alt="Ain't No Going Back" />
-            <span class="gleam"></span>
-            <div class="book-overlay">
-              <span class="book-overlay-btn">View on Amazon</span>
+        </div>
+
+        <div class="card" style="padding: 2.5rem;">
+          <div class="book-spotlight">
+            <img src="book4.png" alt="Cover of Ain't No Going Back" />
+            <div>
+              <p class="overline" style="margin-bottom: .5rem;">Standalone Novel</p>
+              <h3 style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: .75rem;">Ain't No Going Back</h3>
+              <p style="font-size: .96rem; line-height: 1.75; margin-bottom: 1.25rem;">A bold story about the courage it takes to walk away, move forward, and finally choose yourself — even when everything pulls you back.</p>
+              <a href="https://a.co/d/0iRS62Hp" target="_blank" rel="noopener" class="btn-gold">View on Amazon</a>
             </div>
           </div>
-          <span>Ain't No Going Back</span>
-        </a>
+        </div>
+
       </div>
       <div class="text-center">
         <a href="books.html" class="link-gold">View All Books →</a>
