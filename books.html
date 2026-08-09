@@ -17,7 +17,19 @@
       --card:       #162033;
       --ink:        #e5e7eb;
       --muted:      #94a3b8;
+
+      /* genre accents: R&B Mixtape (romance) / Highway 51 (suspense) */
+      --rose:        #c98a86;
+      --rose-lt:     #e0aba7;
+      --rose-border: rgba(201,138,134,.26);
+      --steel:       #7c93ad;
+      --steel-lt:    #a3b6cc;
+      --steel-border: rgba(124,147,173,.28);
     }
+
+    .series-rose  { --accent: var(--rose);  --accent-lt: var(--rose-lt);  --accent-border: var(--rose-border); }
+    .series-steel { --accent: var(--steel); --accent-lt: var(--steel-lt); --accent-border: var(--steel-border); }
+    .series-neutral { --accent: var(--muted); --accent-lt: var(--ink); --accent-border: rgba(255,255,255,.16); }
 
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -190,10 +202,10 @@
       font-weight: 700;
       letter-spacing: .18em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--accent, var(--gold));
       white-space: nowrap;
     }
-    .series-label::after { content: ''; flex: 1; height: 1px; background: var(--gold-border); }
+    .series-label::after { content: ''; flex: 1; height: 1px; background: var(--accent-border, var(--gold-border)); }
 
     /* ── BOOK GRID ── */
     .book-grid {
@@ -209,14 +221,14 @@
       flex-direction: column;
       text-decoration: none;
       background: var(--card);
-      border: 1px solid var(--gold-border);
+      border: 1px solid var(--accent-border, var(--gold-border));
       border-radius: .75rem;
       padding: 1.25rem;
       transform-style: preserve-3d;
       transform: translateY(calc(var(--lift) * -6px)) rotateX(var(--rx)) rotateY(var(--ry));
       transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s;
     }
-    .book-item:hover { box-shadow: 0 20px 50px rgba(0,0,0,.4); border-color: rgba(201,150,63,.5); }
+    .book-item:hover { box-shadow: 0 20px 50px rgba(0,0,0,.4); border-color: var(--accent, var(--gold)); }
 
     .book-item .cover { position: relative; border-radius: .4rem; overflow: hidden; margin-bottom: 1rem; }
     .book-item .cover .gleam {
@@ -245,7 +257,7 @@
       font-weight: 600;
       letter-spacing: .12em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--accent, var(--gold));
       margin-bottom: .25rem;
     }
     .book-item-title {
@@ -262,16 +274,16 @@
       font-weight: 600;
       letter-spacing: .08em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--accent, var(--gold));
       display: inline-flex;
       align-items: center;
       gap: .3rem;
       margin-top: auto;
       padding-top: .4rem;
-      border-top: 1px solid var(--gold-border);
+      border-top: 1px solid var(--accent-border, var(--gold-border));
       transition: color .2s, gap .2s;
     }
-    .book-item:hover .book-item-btn { color: var(--gold-lt); gap: .5rem; }
+    .book-item:hover .book-item-btn { color: var(--accent-lt, var(--gold-lt)); gap: .5rem; }
     .book-item-btn::after { content: '→'; }
 
     /* ── FOOTER ── */
@@ -347,6 +359,7 @@
     </div>
 
     <!-- ── STANDALONE NOVELS ── -->
+    <div class="series-neutral">
     <div class="series-label"><span>Standalone Novels</span></div>
     <div class="book-grid">
 
@@ -360,6 +373,7 @@
         <span class="book-item-btn">Read on Amazon</span>
       </a>
 
+    </div>
     </div>
 
     <!-- ── ROOTED IN GRACE SERIES ── -->
@@ -391,6 +405,7 @@
     </div>
 
     <!-- ── R&B MIXTAPE SERIES ── -->
+    <div class="series-rose">
     <div class="series-label"><span>R&amp;B Mixtape Series</span></div>
     <div class="book-grid" style="max-width: 300px;">
 
@@ -406,8 +421,10 @@
       </a>
 
     </div>
+    </div>
 
     <!-- ── HIGHWAY 51 SERIES ── -->
+    <div class="series-steel">
     <div class="series-label"><span>Highway 51 Series</span></div>
     <p style="font-size: .85rem; color: var(--muted); margin: -1.25rem 0 2rem;">An anthology series — each book stands on its own and can be read in any order, except Book 1.</p>
     <div class="book-grid">
@@ -445,6 +462,7 @@
         <span class="book-item-btn">Read on Amazon</span>
       </a>
 
+    </div>
     </div>
 
   </main>
