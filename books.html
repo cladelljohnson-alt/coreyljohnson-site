@@ -200,9 +200,11 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 2rem;
+      perspective: 1400px;
     }
 
     .book-item {
+      --rx: 0deg; --ry: 0deg; --mx: 50%; --my: 50%; --lift: 0;
       display: flex;
       flex-direction: column;
       text-decoration: none;
@@ -210,17 +212,32 @@
       border: 1px solid var(--gold-border);
       border-radius: .75rem;
       padding: 1.25rem;
-      transition: transform .3s, box-shadow .3s, border-color .3s;
+      transform-style: preserve-3d;
+      transform: translateY(calc(var(--lift) * -6px)) rotateX(var(--rx)) rotateY(var(--ry));
+      transition: transform .5s cubic-bezier(.2,.8,.2,1), box-shadow .3s, border-color .3s;
     }
-    .book-item:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,.4); border-color: rgba(201,150,63,.5); }
+    .book-item:hover { box-shadow: 0 20px 50px rgba(0,0,0,.4); border-color: rgba(201,150,63,.5); }
 
+    .book-item .cover { position: relative; border-radius: .4rem; overflow: hidden; margin-bottom: 1rem; }
+    .book-item .cover .gleam {
+      position: absolute; inset: 0;
+      background: radial-gradient(180px 180px at var(--mx) var(--my), rgba(232,185,106,.35), transparent 60%);
+      opacity: var(--lift);
+      transition: opacity .4s ease;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
     .book-item img {
       width: 100%;
       aspect-ratio: 2/3;
       object-fit: cover;
       border-radius: .4rem;
       box-shadow: 0 8px 25px rgba(0,0,0,.5);
-      margin-bottom: 1rem;
+      margin-bottom: 0;
+      display: block;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .book-item { transition: none; }
     }
     .book-item-series {
       font-family: 'Inter', sans-serif;
@@ -334,7 +351,10 @@
     <div class="book-grid">
 
       <a href="https://a.co/d/0iRS62Hp" target="_blank" rel="noopener" class="book-item">
+        <span class="cover">
         <img src="book4.png" alt="Cover of Ain't No Going Back" />
+        <span class="gleam"></span>
+      </span>
         <p class="book-item-title">Ain't No Going Back</p>
         <p class="book-item-desc">A bold story about the courage it takes to walk away, move forward, and finally choose yourself — even when everything pulls you back.</p>
         <span class="book-item-btn">Read on Amazon</span>
@@ -347,7 +367,10 @@
     <div class="book-grid" style="max-width: 620px;">
 
       <a href="https://a.co/d/bIOYPL0" target="_blank" rel="noopener" class="book-item">
+        <span class="cover">
         <img src="book1.png" alt="Cover of The Grass Is Always Greener" />
+        <span class="gleam"></span>
+      </span>
         <p class="book-item-series">Book 1</p>
         <p class="book-item-title">The Grass Is Always Greener</p>
         <p class="book-item-desc">A heartfelt tale of family secrets and second chances set in the American South — where faith and resilience light the path through grief and redemption.</p>
@@ -355,7 +378,10 @@
       </a>
 
       <a href="https://a.co/d/05ZYHq6i" target="_blank" rel="noopener" class="book-item">
+        <span class="cover">
         <img src="book7.png" alt="Cover of The Seeds We Sow" />
+        <span class="gleam"></span>
+      </span>
         <p class="book-item-series">Book 2</p>
         <p class="book-item-title">The Seeds We Sow</p>
         <p class="book-item-desc">Five years after walking out of her own wedding, Julie has rebuilt a guarded new life in Memphis — until Mark Baxter, the man she left behind, walks back into it. A gripping story of faith, betrayal, forgiveness, and the dangerous cost of silence.</p>
@@ -369,7 +395,10 @@
     <div class="book-grid" style="max-width: 300px;">
 
       <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener" class="book-item">
+        <span class="cover">
         <img src="book3.png" alt="Cover of Into You" />
+        <span class="gleam"></span>
+      </span>
         <p class="book-item-series">Book 1</p>
         <p class="book-item-title">Into You</p>
         <p class="book-item-desc">She plans weddings. He ends marriages. When their worlds collide, the tension is electric. A slow-burn enemies-to-lovers romance that proves love doesn't always follow the plan.</p>
@@ -384,7 +413,10 @@
     <div class="book-grid">
 
       <a href="https://a.co/d/cUCeKhh" target="_blank" rel="noopener" class="book-item">
+        <span class="cover">
         <img src="book2.png" alt="Cover of They Never Came Home" />
+        <span class="gleam"></span>
+      </span>
         <p class="book-item-series">Book 1</p>
         <p class="book-item-title">They Never Came Home</p>
         <p class="book-item-desc">A suspenseful journey through loss, mystery, and the unbreakable bonds of family. When everyone looks away, one teen refuses to stop searching for the truth.</p>
@@ -392,7 +424,10 @@
       </a>
 
       <a href="https://a.co/d/0cwyrbag" target="_blank" rel="noopener" class="book-item">
+        <span class="cover">
         <img src="book5.png" alt="Cover of The People-Pleaser" />
+        <span class="gleam"></span>
+      </span>
         <p class="book-item-series">Book 2</p>
         <p class="book-item-title">The People-Pleaser</p>
         <p class="book-item-desc">Some smiles hide the darkest secrets. A spine-chilling psychological thriller about what lurks behind the friendliest faces — and the price of finding out.</p>
@@ -400,7 +435,10 @@
       </a>
 
       <a href="https://a.co/d/07IOyuZ4" target="_blank" rel="noopener" class="book-item">
+        <span class="cover">
         <img src="book6.png" alt="Cover of Cost of Living" />
+        <span class="gleam"></span>
+      </span>
         <p class="book-item-series">Book 3</p>
         <p class="book-item-title">Cost of Living</p>
         <p class="book-item-desc">Five years. Five renewals. One fight that never ends. A gripping, timely story about survival, dignity, and the true cost of fighting for the place you call home.</p>
@@ -440,6 +478,29 @@
           btn.textContent = open ? '✕' : '☰';
         });
       }
+    })();
+
+    // Shelf tilt: pointer-tracked 3D tilt + light gleam on book covers
+    (function () {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) return;
+      document.querySelectorAll('.book-item').forEach(function (card) {
+        card.addEventListener('pointermove', function (e) {
+          var r = card.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width;
+          var py = (e.clientY - r.top) / r.height;
+          card.style.setProperty('--ry', ((px - 0.5) * 14).toFixed(2) + 'deg');
+          card.style.setProperty('--rx', ((0.5 - py) * 10).toFixed(2) + 'deg');
+          card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+          card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+          card.style.setProperty('--lift', '1');
+        });
+        card.addEventListener('pointerleave', function () {
+          card.style.setProperty('--rx', '0deg');
+          card.style.setProperty('--ry', '0deg');
+          card.style.setProperty('--lift', '0');
+        });
+      });
     })();
   </script>
 </body>

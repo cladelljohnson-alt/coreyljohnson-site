@@ -224,17 +224,23 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.5rem;
+      perspective: 1400px;
     }
     @media (max-width: 768px) { .book-teaser-grid { grid-template-columns: 1fr; } }
     @media (max-width: 1024px) and (min-width: 769px) { .book-teaser-grid { grid-template-columns: repeat(2, 1fr); } }
 
     .book-teaser-item {
+      --rx: 0deg; --ry: 0deg; --mx: 50%; --my: 50%; --lift: 0;
       display: flex;
       flex-direction: column;
       text-decoration: none;
-      transition: transform .3s;
+      transform-style: preserve-3d;
+      transform: translateY(calc(var(--lift) * -6px)) rotateX(var(--rx)) rotateY(var(--ry));
+      transition: transform .5s cubic-bezier(.2,.8,.2,1);
     }
-    .book-teaser-item:hover { transform: translateY(-6px); }
+    @media (prefers-reduced-motion: reduce) {
+      .book-teaser-item { transition: none; }
+    }
     .book-teaser-item img {
       width: 100%;
       aspect-ratio: 2/3;
@@ -348,6 +354,14 @@
     .book-teaser-item:hover .book-cover-wrap img {
       transform: translateY(-8px);
       box-shadow: 0 28px 55px rgba(0,0,0,.75);
+    }
+    .book-cover-wrap .gleam {
+      position: absolute; inset: 0;
+      background: radial-gradient(180px 180px at var(--mx) var(--my), rgba(232,185,106,.35), transparent 60%);
+      opacity: var(--lift);
+      transition: opacity .4s ease;
+      mix-blend-mode: soft-light;
+      pointer-events: none;
     }
     .book-overlay {
       position: absolute;
@@ -512,6 +526,7 @@
         <a href="https://a.co/d/bIOYPL0" target="_blank" rel="noopener" class="book-teaser-item">
           <div class="book-cover-wrap">
             <img src="book1.png" alt="The Grass Is Always Greener" />
+            <span class="gleam"></span>
             <div class="book-overlay">
               <span class="book-overlay-btn">View on Amazon</span>
             </div>
@@ -521,6 +536,7 @@
         <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener" class="book-teaser-item">
           <div class="book-cover-wrap">
             <img src="book3.png" alt="Into You" />
+            <span class="gleam"></span>
             <div class="book-overlay">
               <span class="book-overlay-btn">View on Amazon</span>
             </div>
@@ -530,6 +546,7 @@
         <a href="https://a.co/d/0iRS62Hp" target="_blank" rel="noopener" class="book-teaser-item">
           <div class="book-cover-wrap">
             <img src="book4.png" alt="Ain't No Going Back" />
+            <span class="gleam"></span>
             <div class="book-overlay">
               <span class="book-overlay-btn">View on Amazon</span>
             </div>
@@ -653,6 +670,29 @@
         document.getElementById('subscribe-confirm').style.display = 'block';
       });
     }
+
+    // Shelf tilt: pointer-tracked 3D tilt + light gleam on book covers
+    (function () {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) return;
+      document.querySelectorAll('.book-teaser-item').forEach(function (card) {
+        card.addEventListener('pointermove', function (e) {
+          var r = card.getBoundingClientRect();
+          var px = (e.clientX - r.left) / r.width;
+          var py = (e.clientY - r.top) / r.height;
+          card.style.setProperty('--ry', ((px - 0.5) * 14).toFixed(2) + 'deg');
+          card.style.setProperty('--rx', ((0.5 - py) * 10).toFixed(2) + 'deg');
+          card.style.setProperty('--mx', (px * 100).toFixed(1) + '%');
+          card.style.setProperty('--my', (py * 100).toFixed(1) + '%');
+          card.style.setProperty('--lift', '1');
+        });
+        card.addEventListener('pointerleave', function () {
+          card.style.setProperty('--rx', '0deg');
+          card.style.setProperty('--ry', '0deg');
+          card.style.setProperty('--lift', '0');
+        });
+      });
+    })();
   </script>
   <script src="enhancements.js"></script>
 </body>
