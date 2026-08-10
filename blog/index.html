@@ -77,24 +77,25 @@
       position: absolute;
       top: 100%;
       left: 50%;
-      transform: translateX(-50%) translateY(4px);
-      min-width: 190px;
-      background: rgba(11,18,32,.98);
-      border: 1px solid var(--gold-border);
-      border-radius: .6rem;
-      padding: .4rem;
-      margin-top: .6rem;
+      transform: translateX(-50%);
+      padding-top: .6rem; /* bridges the hover gap so the menu doesn't close while moving the mouse down to it */
       opacity: 0;
       visibility: hidden;
-      transition: opacity .2s ease, transform .2s ease, visibility .2s;
-      box-shadow: 0 20px 45px rgba(0,0,0,.5);
+      transition: opacity .2s ease, visibility .2s;
       z-index: 30;
     }
     .nav-dropdown:hover .nav-dropdown-menu,
     .nav-dropdown:focus-within .nav-dropdown-menu {
       opacity: 1;
       visibility: visible;
-      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown-menu-inner {
+      min-width: 190px;
+      background: rgba(11,18,32,.98);
+      border: 1px solid var(--gold-border);
+      border-radius: .6rem;
+      padding: .4rem;
+      box-shadow: 0 20px 45px rgba(0,0,0,.5);
     }
     .nav-dropdown-item {
       display: block;
@@ -517,9 +518,12 @@
         <div class="nav-dropdown">
           <a href="../books.html" class="nav-link nav-dropdown-toggle">Books <span class="nav-caret">⌄</span></a>
           <div class="nav-dropdown-menu">
-            <a href="../books.html#rooted-in-grace" class="nav-dropdown-item">Christian Fiction</a>
-            <a href="../books.html#rnb-mixtape" class="nav-dropdown-item">Romance</a>
-            <a href="../books.html#highway-51" class="nav-dropdown-item">Horror</a>
+            <div class="nav-dropdown-menu-inner">
+              <a href="../books.html#rooted-in-grace" class="nav-dropdown-item">Christian Fiction</a>
+              <a href="../books.html#rnb-mixtape" class="nav-dropdown-item">Romance</a>
+              <a href="../books.html#highway-51" class="nav-dropdown-item">Horror</a>
+              <a href="../books.html#standalone-novels" class="nav-dropdown-item">Standalone Novels</a>
+            </div>
           </div>
         </div>
         <a href="../blog/index.html" class="nav-link active">Blog</a>
@@ -537,6 +541,7 @@
       <a href="../books.html#rooted-in-grace" class="mobile-link mobile-sublink">Christian Fiction</a>
       <a href="../books.html#rnb-mixtape"     class="mobile-link mobile-sublink">Romance</a>
       <a href="../books.html#highway-51"      class="mobile-link mobile-sublink">Horror</a>
+      <a href="../books.html#standalone-novels" class="mobile-link mobile-sublink">Standalone Novels</a>
       <a href="index.html"      class="mobile-link">Blog</a>
       <a href="../news.html"    class="mobile-link">News</a>
       <a href="../about.html"   class="mobile-link">About</a>
