@@ -68,26 +68,37 @@
     }
     .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
 
-    /* ── NAV DROPDOWN ── */
-    .nav-dropdown { position: relative; }
-    .nav-dropdown-toggle { display: inline-flex; align-items: center; gap: .3rem; }
-    .nav-caret { font-size: .6rem; transition: transform .2s ease; position: relative; top: 1px; }
-    .nav-dropdown:hover .nav-caret, .nav-dropdown:focus-within .nav-caret { transform: rotate(180deg); }
+    /* ── NAV DROPDOWN (click-to-open, not hover) ── */
+    .nav-dropdown { position: relative; display: inline-flex; align-items: center; gap: .25rem; }
+    .nav-caret-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: .6rem;
+      padding: .2rem .3rem;
+      line-height: 1;
+      transition: color .2s ease, transform .2s ease;
+    }
+    .nav-caret-btn:hover { color: var(--gold); }
+    .nav-dropdown.open .nav-caret-btn { color: var(--gold); transform: rotate(180deg); }
     .nav-dropdown-menu {
       position: absolute;
       top: 100%;
       left: 50%;
-      transform: translateX(-50%);
-      padding-top: .6rem; /* bridges the hover gap so the menu doesn't close while moving the mouse down to it */
+      transform: translateX(-50%) translateY(4px);
+      padding-top: .6rem;
       opacity: 0;
       visibility: hidden;
-      transition: opacity .2s ease, visibility .2s;
+      pointer-events: none;
+      transition: opacity .15s ease, transform .15s ease, visibility .15s;
       z-index: 30;
     }
-    .nav-dropdown:hover .nav-dropdown-menu,
-    .nav-dropdown:focus-within .nav-dropdown-menu {
+    .nav-dropdown.open .nav-dropdown-menu {
       opacity: 1;
       visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
     }
     .nav-dropdown-menu-inner {
       min-width: 190px;
@@ -516,7 +527,8 @@
       <a href="../index.html" class="nav-logo">Corey L. Johnson</a>
       <nav class="desktop-nav">
         <div class="nav-dropdown">
-          <a href="../books.html" class="nav-link nav-dropdown-toggle">Books <span class="nav-caret">⌄</span></a>
+          <a href="../books.html" class="nav-link nav-dropdown-toggle">Books</a>
+          <button type="button" class="nav-caret-btn" aria-expanded="false" aria-label="Show book categories">⌄</button>
           <div class="nav-dropdown-menu">
             <div class="nav-dropdown-menu-inner">
               <a href="../books.html#rooted-in-grace" class="nav-dropdown-item">Christian Fiction</a>
@@ -637,6 +649,32 @@
           btn.textContent = open ? '✕' : '☰';
         });
       }
+    })();
+
+    // Books nav dropdown (click-to-open)
+    (function () {
+      document.querySelectorAll('.nav-dropdown').forEach(function (dd) {
+        var caretBtn = dd.querySelector('.nav-caret-btn');
+        if (!caretBtn) return;
+        caretBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var isOpen = dd.classList.toggle('open');
+          caretBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      });
+      document.addEventListener('click', function (e) {
+        document.querySelectorAll('.nav-dropdown.open').forEach(function (dd) {
+          if (!dd.contains(e.target)) dd.classList.remove('open');
+        });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.nav-dropdown.open').forEach(function (dd) {
+            dd.classList.remove('open');
+          });
+        }
+      });
     })();
 
     // ── Category + visual config ──────────────────────────────────
