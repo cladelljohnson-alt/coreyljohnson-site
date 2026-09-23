@@ -4,6 +4,7 @@
   "type": "commonjs",
   "scripts": {
     "build-blog": "node scripts/build_blog.js",
-    "build-blog-index": "node scripts/build_blog_index.js"
+    "build-blog-index": "node scripts/build_blog_index.js",
+    "build-sitemap": "node scripts/build_sitemap.js"
   }
 }

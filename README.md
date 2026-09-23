@@ -22,3 +22,7 @@ Commit the updated files after running the build to keep the repository in sync 
 ## Regenerate the blog hub
 
 After updating the published catalog in `blog/posts.json`, run `npm run build-blog-index` and commit `blog/index.html`. This renders article links directly into HTML, preserving the existing featured article and category filters. It validates destinations and does not publish drafts. The blog remains readable when JavaScript or JSON requests are unavailable.
+
+## Sitemap
+
+After changing published pages or `blog/posts.json`, run `npm run build-sitemap` and commit `sitemap.xml`. The generator lists public site pages and published blog entries, using each page's canonical URL where available. Drafts are excluded. `robots.txt` advertises the sitemap to crawlers.
