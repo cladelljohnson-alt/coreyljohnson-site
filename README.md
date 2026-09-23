@@ -18,3 +18,7 @@ The `build-blog` script will:
 3. Regenerate the blog card markup inside the `<!-- BLOG:START -->` / `<!-- BLOG:END -->` markers in `index.html` so the homepage stays synchronized with the published posts.
 
 Commit the updated files after running the build to keep the repository in sync with what ships.
+
+## Regenerate the blog hub
+
+After updating the published catalog in `blog/posts.json`, run `npm run build-blog-index` and commit `blog/index.html`. This renders article links directly into HTML, preserving the existing featured article and category filters. It validates destinations and does not publish drafts. The blog remains readable when JavaScript or JSON requests are unavailable.

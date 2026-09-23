@@ -5,6 +5,7 @@
   <link rel="icon" type="image/png" href="../favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Between the Lines – Corey L. Johnson</title>
+  <link rel="canonical" href="https://coreyljohnson.com/blog/" />
   <meta name="description" content="Between the Lines — essays on craft, relationships, justice, and the stories that won't let us look away. From the desk of Corey L. Johnson." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -516,6 +517,7 @@
     }
 
     /* ── EMPTY / HIDDEN (used by JS filter only — do NOT apply to nav) ── */
+    [hidden] { display: none !important; }
     .post-hidden { display: none !important; }
   </style>
 </head>
@@ -575,8 +577,8 @@
 
   <!-- FILTERS -->
   <div class="container mx-auto px-6">
-    <div class="filter-bar">
-      <button class="filter-pill active" data-filter="all">All</button>
+    <div class="filter-bar" hidden>
+      <button class="filter-pill active" data-filter="all" aria-pressed="true">All</button>
       <button class="filter-pill" data-filter="Writing Craft">Writing Craft</button>
       <button class="filter-pill" data-filter="Relationships">Relationships</button>
       <button class="filter-pill" data-filter="YA Fiction">YA Fiction</button>
@@ -589,7 +591,21 @@
 
     <!-- FEATURED POST -->
     <div id="featured-section" style="margin-top:2.5rem; margin-bottom:.5rem;">
-      <div id="featured-post"></div>
+      <div id="featured-post"><!-- FEATURED:START -->
+
+        <a href="/blog/my-love-letter-to-black-women.html" data-category="Relationships" class="featured-card" style="text-decoration:none;">
+          <div class="featured-visual" style="background:linear-gradient(135deg,#1a0d15,#2e1a25)">
+            <span class="featured-badge">Featured</span>
+            <span class="featured-visual-icon">💛</span>
+          </div>
+          <div class="featured-body">
+            <p class="featured-cat">Relationships</p>
+            <h2>My Love Letter to Black Women</h2>
+            <p>I have a Black mother. A Black wife. A Black daughter. I don&#39;t need data or outside confirmation to say what I already know — they&#39;re the best thing God ever made.</p>
+            <span class="read-link">Read Article</span>
+          </div>
+        </a>
+<!-- FEATURED:END --></div>
     </div>
 
     <!-- ALL POSTS GRID -->
@@ -597,7 +613,218 @@
       <span>Latest Articles</span>
     </div>
 
-    <div id="post-grid" class="posts-grid"></div>
+    <div id="post-grid" class="posts-grid"><!-- POSTS:START -->
+
+        <a href="/blog/what-black-men-think-about-love.html" data-category="Relationships" class="post-card">
+          <div class="card-visual" style="background:linear-gradient(135deg,#1a0d15,#2e1a25)">
+            <span style="position:relative;z-index:1;">❤️</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">Relationships</p>
+            <h2 class="card-title">What Black Men Actually Think About Love (But Rarely Say Out Loud)</h2>
+            <p class="card-excerpt">Black men are not emotionally absent by nature. They are emotionally guarded by design. On the silence, the desire, and what finally makes the wall come down.</p>
+            <div class="card-footer">
+
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/why-i-write-black-men-loving-black-women.html" data-category="Writing Craft" class="post-card">
+          <div class="card-visual" style="background:linear-gradient(135deg,#1a0d15,#2e1a25)">
+            <span style="position:relative;z-index:1;">❤️</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">Writing Craft</p>
+            <h2 class="card-title">Why I Write Black Men Loving Black Women</h2>
+            <p class="card-excerpt">Nobody asked me to write romance. I did it anyway — because Black women deserve to see themselves loved on the page, pursued and chosen, written that way on purpose by somebody who means it.</p>
+            <div class="card-footer">
+
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/character-deep-dive-malik-thompson.html" data-category="Writing Craft" class="post-card">
+          <div class="card-visual" style="background:linear-gradient(135deg,#0d1a0d,#1a2e1a)">
+            <span style="position:relative;z-index:1;">✍️</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">Writing Craft</p>
+            <h2 class="card-title">Character Deep Dive: Malik Thompson of They Never Came Home</h2>
+            <p class="card-excerpt">Meet Malik Thompson, the sharp, loyal teen who drives They Never Came Home and refuses to let buried truths stay hidden.</p>
+            <div class="card-footer">
+
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/10-signs-your-marriage-is-running-on-secrets.html" data-category="Relationships" class="post-card">
+          <div class="card-visual" style="background:linear-gradient(135deg,#1a0d15,#2e1a25)">
+            <span style="position:relative;z-index:1;">💍</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">Relationships</p>
+            <h2 class="card-title">10 Signs Your Marriage Is Running on Secrets</h2>
+            <p class="card-excerpt">Silence, half-answers, and hidden receipts add up fast—spot the ten warning signs and learn how to name the truth before trust snaps.</p>
+            <div class="card-footer">
+
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/21-brutal-questions-before-i-do.html" data-category="Relationships" class="post-card">
+          <div class="card-visual" style="background:linear-gradient(135deg,#1a0d15,#2e1a25)">
+            <span style="position:relative;z-index:1;">💬</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">Relationships</p>
+            <h2 class="card-title">21 Brutal Questions to Ask Before You Say &#39;I Do&#39;</h2>
+            <p class="card-excerpt">Protect your vow by answering the hard questions about money, loyalty, family, and faith long before you walk down the aisle.</p>
+            <div class="card-footer">
+
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/ya-mysteries-black-protagonists.html" data-category="YA Fiction" class="post-card">
+          <div class="card-visual" style="background:linear-gradient(135deg,#0d0f1a,#1a1e35)">
+            <span style="position:relative;z-index:1;">🔍</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">YA Fiction</p>
+            <h2 class="card-title">7 Must-Read YA Mysteries Featuring Black Protagonists</h2>
+            <p class="card-excerpt">Build your TBR with seven high-stakes mysteries where Black teens take the lead and refuse to stop digging for the truth.</p>
+            <div class="card-footer">
+
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/why-some-couples-survive-betrayal.html" data-category="Relationships" class="post-card">
+          <div class="card-visual" style="background:linear-gradient(135deg,#1a0d15,#2e1a25)">
+            <span style="position:relative;z-index:1;">❤️</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">Relationships</p>
+            <h2 class="card-title">Why Some Couples Survive Betrayal—and Some Don&#39;t</h2>
+            <p class="card-excerpt">When trust breaks, some marriages rebuild and others can&#39;t—here&#39;s what healing requires and when it&#39;s wise to walk away.</p>
+            <div class="card-footer">
+
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/family-secrets-in-fiction.html" data-category="Writing Craft" class="post-card">
+          <div class="card-visual" style="background:linear-gradient(135deg,#0d1a0d,#1a2e1a)">
+            <span style="position:relative;z-index:1;">📖</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">Writing Craft</p>
+            <h2 class="card-title">Family Secrets in Fiction: Why They Haunt Us</h2>
+            <p class="card-excerpt">Explore how hidden motives, ticking clocks, and truth-telling fuel the most compelling family dramas and thrillers.</p>
+            <div class="card-footer">
+
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/long-lost-siblings-surprise-adoptions-in-literature.html" data-category="Writing Craft" class="post-card">
+          <div class="card-visual" style="background:linear-gradient(135deg,#0d1a0d,#1a2e1a)">
+            <span style="position:relative;z-index:1;">🧬</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">Writing Craft</p>
+            <h2 class="card-title">Long-Lost Siblings &amp; Surprise Adoptions in Literature</h2>
+            <p class="card-excerpt">Discover why reunion twists rock a story&#39;s foundation and where to find novels that rebuild belonging after the reveal.</p>
+            <div class="card-footer">
+
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/premonitions-intuition-solving-disappearances.html" data-category="YA Fiction" class="post-card">
+          <div class="card-visual" style="background:linear-gradient(135deg,#0d0f1a,#1a1e35)">
+            <span style="position:relative;z-index:1;">🌙</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">YA Fiction</p>
+            <h2 class="card-title">Premonitions &amp; Intuition in Missing‑Person YA Thrillers</h2>
+            <p class="card-excerpt">Explore how supernatural gifts and gut instincts drive YA mysteries about missing friends. Learn about premonition‑based thrillers and why diverse voices matter.</p>
+            <div class="card-footer">
+
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/real-life-cases-missing-girls-of-color.html" data-category="Thrillers" class="post-card">
+          <div class="card-visual" style="background:linear-gradient(135deg,#1a0d0d,#2e1a1a)">
+            <span style="position:relative;z-index:1;">🕵️</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">Thrillers</p>
+            <h2 class="card-title">Real-Life Cases of Missing Girls of Color</h2>
+            <p class="card-excerpt">Learn about the crisis of missing girls of color, media bias, and how you can help. Explore Corey L. Johnson&#39;s fiction and real-world resources to take action.</p>
+            <div class="card-footer">
+
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/african-american-ya-thrillers.html" data-category="YA Fiction" class="post-card">
+          <div class="card-visual" style="background:linear-gradient(135deg,#0d0f1a,#1a1e35)">
+            <span style="position:relative;z-index:1;">📚</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">YA Fiction</p>
+            <h2 class="card-title">Top African‑American YA Thrillers: Missing Girls &amp; Mystery</h2>
+            <p class="card-excerpt">Explore gripping YA thrillers featuring Black protagonists and missing girls. Learn why representation matters and discover Corey L. Johnson&#39;s new YA thriller &#39;They Never Came Home&#39;.</p>
+            <div class="card-footer">
+
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/why-representation-matters-ya-thrillers.html" data-category="YA Fiction" class="post-card">
+          <div class="card-visual" style="background:linear-gradient(135deg,#0d0f1a,#1a1e35)">
+            <span style="position:relative;z-index:1;">✊</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">YA Fiction</p>
+            <h2 class="card-title">Why Representation Matters in YA Thrillers</h2>
+            <p class="card-excerpt">Unpack why diversity in YA thrillers matters. Discover how inclusive storytelling empowers readers and explore Corey L. Johnson&#39;s work featuring Black protagonists.</p>
+            <div class="card-footer">
+
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+
+        <a href="/blog/how-to-write-suspense-without-gore-11-05-09-am.html" data-category="Writing Craft" class="post-card">
+          <div class="card-visual" style="background:linear-gradient(135deg,#0d1a0d,#1a2e1a)">
+            <span style="position:relative;z-index:1;">⚡</span>
+          </div>
+          <div class="card-body">
+            <p class="card-cat">Writing Craft</p>
+            <h2 class="card-title">Writing Suspense Without Gore: Building Tension Through Atmosphere</h2>
+            <p class="card-excerpt">Learn how to craft nail‑biting suspense without graphic violence. Discover techniques for atmosphere, pacing and character, and see how Corey L. Johnson uses them in his novels.</p>
+            <div class="card-footer">
+
+              <span class="card-arrow">Read →</span>
+            </div>
+          </div>
+        </a>
+<!-- POSTS:END --></div>
 
     <p id="no-results" class="post-hidden text-center py-12" style="color:var(--muted);">
       No articles in this category yet — check back soon.
@@ -677,121 +904,27 @@
       });
     })();
 
-    // ── Category + visual config ──────────────────────────────────
-    const categoryMap = {
-      'my-love-letter-to-black-women':                    { cat: 'Relationships',  icon: '💛', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
-      'what-black-men-think-about-love':                  { cat: 'Relationships',  icon: '❤️', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
-      'why-i-write-black-men-loving-black-women':         { cat: 'Writing Craft',  icon: '❤️', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
-      'character-deep-dive-malik-thompson':              { cat: 'Writing Craft', icon: '✍️', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
-      '10-signs-your-marriage-is-running-on-secrets':   { cat: 'Relationships',  icon: '💍', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
-      '21-brutal-questions-before-i-do':                { cat: 'Relationships',  icon: '💬', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
-      'ya-mysteries-black-protagonists':                { cat: 'YA Fiction',     icon: '🔍', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
-      'why-some-couples-survive-betrayal':              { cat: 'Relationships',  icon: '❤️', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
-      'family-secrets-in-fiction':                      { cat: 'Writing Craft',  icon: '📖', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
-      'long-lost-siblings-surprise-adoptions-in-literature': { cat: 'Writing Craft', icon: '🧬', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
-      'premonitions-intuition-solving-disappearances':  { cat: 'YA Fiction',     icon: '🌙', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
-      'real-life-cases-missing-girls-of-color':         { cat: 'Thrillers',      icon: '🕵️', bg: 'linear-gradient(135deg,#1a0d0d,#2e1a1a)' },
-      'african-american-ya-thrillers':                  { cat: 'YA Fiction',     icon: '📚', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
-      'why-representation-matters-ya-thrillers':        { cat: 'YA Fiction',     icon: '✊', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
-      'how-to-write-suspense-without-gore-11-05-09-am': { cat: 'Writing Craft',  icon: '⚡', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
-    };
-
-    // Estimate read time from excerpt length (rough)
-    function readTime(excerpt) {
-      const words = (excerpt || '').split(' ').length * 18; // scale excerpt to article
-      return Math.max(3, Math.round(words / 200)) + ' min read';
-    }
-
-    function buildFeatured(post, meta) {
-      return `
-        <a href="/${post.href}" class="featured-card" style="text-decoration:none;">
-          <div class="featured-visual" style="background:${meta.bg}">
-            <span class="featured-badge">Featured</span>
-            <span class="featured-visual-icon">${meta.icon}</span>
-          </div>
-          <div class="featured-body">
-            <p class="featured-cat">${meta.cat}</p>
-            <h2>${post.title}</h2>
-            <p>${post.excerpt}</p>
-            <span class="read-link">Read Article</span>
-          </div>
-        </a>`;
-    }
-
-    function buildCard(post, meta) {
-      return `
-        <a href="/${post.href}" class="post-card">
-          <div class="card-visual" style="background:${meta.bg}">
-            <span style="position:relative;z-index:1;">${meta.icon}</span>
-          </div>
-          <div class="card-body">
-            <p class="card-cat">${meta.cat}</p>
-            <p class="card-title">${post.title}</p>
-            <p class="card-excerpt">${post.excerpt}</p>
-            <div class="card-footer">
-              <span class="card-read-time">${readTime(post.excerpt)}</span>
-              <span class="card-arrow">Read →</span>
-            </div>
-          </div>
-        </a>`;
-    }
-
-    let allPosts = [];
-
-    async function loadPosts() {
-      try {
-        const res = await fetch('/blog/posts.json', { cache: 'no-store' });
-        if (!res.ok) throw new Error('fetch failed');
-        allPosts = await res.json();
-        renderPosts('all');
-      } catch (e) {
-        document.getElementById('post-grid').innerHTML =
-          '<p class="text-center py-8" style="color:var(--muted);">Unable to load articles right now. Please refresh.</p>';
-      }
-    }
-
+    // Enhance existing HTML; article links remain available without JavaScript.
     function renderPosts(filter) {
-      const featured  = document.getElementById('featured-post');
-      const grid      = document.getElementById('post-grid');
-      const noResults = document.getElementById('no-results');
-      const featSec   = document.getElementById('featured-section');
-
-      const filtered = filter === 'all'
-        ? allPosts
-        : allPosts.filter(p => {
-            const meta = categoryMap[p.slug] || {};
-            return meta.cat === filter;
-          });
-
-      if (filtered.length === 0) {
-        featured.innerHTML = '';
-        grid.innerHTML = '';
-        featSec.style.display = 'none';
-        noResults.classList.remove('post-hidden');
-        return;
-      }
-
-      noResults.classList.add('post-hidden');
-
-      // Featured = first post
-      const [first, ...rest] = filtered;
-      const firstMeta = categoryMap[first.slug] || { cat: 'General', icon: '📝', bg: 'linear-gradient(135deg,#0f172a,#162033)' };
-
-      featSec.style.display = '';
-      featured.innerHTML = buildFeatured(first, firstMeta);
-
-      // Remaining in grid
-      grid.innerHTML = rest.map(p => {
-        const m = categoryMap[p.slug] || { cat: 'General', icon: '📝', bg: 'linear-gradient(135deg,#0f172a,#162033)' };
-        return buildCard(p, m);
-      }).join('');
+      let visible = 0;
+      document.querySelectorAll('[data-category]').forEach(card => {
+        const show = filter === 'all' || card.dataset.category === filter;
+        card.classList.toggle('post-hidden', !show);
+        if (show) visible++;
+      });
+      const featured = document.querySelector('.featured-card');
+      document.getElementById('featured-section').classList.toggle('post-hidden', !featured || featured.classList.contains('post-hidden'));
+      document.getElementById('no-results').classList.toggle('post-hidden', visible > 0);
     }
+
+    document.querySelector('.filter-bar').hidden = false;
 
     // ── Filter pills ──────────────────────────────────────────────
     document.querySelectorAll('.filter-pill').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.filter-pill').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
         renderPosts(btn.dataset.filter);
       });
     });
@@ -810,7 +943,7 @@
       });
     }
 
-    loadPosts();
+
   </script>
 </body>
 </html>
