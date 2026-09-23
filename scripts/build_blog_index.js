@@ -7,6 +7,7 @@ function escapeHtml(value) {
 }
     // ── Category + visual config ──────────────────────────────────
     const categoryMap = {
+      'black-male-authors': { cat: 'General', icon: '📚', bg: 'linear-gradient(135deg,#0f172a,#162033)' },
       'black-male-romance-authors':                      { cat: 'Relationships',  icon: '📚', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
       'my-love-letter-to-black-women':                    { cat: 'Relationships',  icon: '💛', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
       'what-black-men-think-about-love':                  { cat: 'Relationships',  icon: '❤️', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
