@@ -7,23 +7,20 @@ function escapeHtml(value) {
 }
     // ── Category + visual config ──────────────────────────────────
     const categoryMap = {
-      'black-male-authors': { cat: 'General', icon: '📚', bg: 'linear-gradient(135deg,#0f172a,#162033)' },
-      'black-male-romance-authors':                      { cat: 'Relationships',  icon: '📚', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
-      'my-love-letter-to-black-women':                    { cat: 'Relationships',  icon: '💛', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
-      'what-black-men-think-about-love':                  { cat: 'Relationships',  icon: '❤️', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
-      'why-i-write-black-men-loving-black-women':         { cat: 'Writing Craft',  icon: '❤️', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
-      'character-deep-dive-malik-thompson':              { cat: 'Writing Craft', icon: '✍️', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
-      '10-signs-your-marriage-is-running-on-secrets':   { cat: 'Relationships',  icon: '💍', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
-      '21-brutal-questions-before-i-do':                { cat: 'Relationships',  icon: '💬', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
-      'ya-mysteries-black-protagonists':                { cat: 'YA Fiction',     icon: '🔍', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
-      'why-some-couples-survive-betrayal':              { cat: 'Relationships',  icon: '❤️', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
-      'family-secrets-in-fiction':                      { cat: 'Writing Craft',  icon: '📖', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
-      'long-lost-siblings-surprise-adoptions-in-literature': { cat: 'Writing Craft', icon: '🧬', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
-      'premonitions-intuition-solving-disappearances':  { cat: 'YA Fiction',     icon: '🌙', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
-      'real-life-cases-missing-girls-of-color':         { cat: 'Thrillers',      icon: '🕵️', bg: 'linear-gradient(135deg,#1a0d0d,#2e1a1a)' },
-      'african-american-ya-thrillers':                  { cat: 'YA Fiction',     icon: '📚', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
-      'why-representation-matters-ya-thrillers':        { cat: 'YA Fiction',     icon: '✊', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
-      'how-to-write-suspense-without-gore-11-05-09-am': { cat: 'Writing Craft',  icon: '⚡', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
+      'black-male-authors': { cat: 'Black Authors', icon: '📚', bg: 'linear-gradient(135deg,#101b2d,#253853)' },
+      'black-male-romance-authors': { cat: 'Black Romance', icon: '💛', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
+      'my-love-letter-to-black-women': { cat: 'Relationships', icon: '💛', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
+      'what-black-men-think-about-love': { cat: 'Relationships', icon: '❤️', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
+      'why-i-write-black-men-loving-black-women': { cat: 'Writing & Culture', icon: '❤️', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
+      'character-deep-dive-malik-thompson': { cat: 'Fiction & Suspense', icon: '✍️', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
+      '10-signs-your-marriage-is-running-on-secrets': { cat: 'Relationships', icon: '💍', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
+      '21-brutal-questions-before-i-do': { cat: 'Relationships', icon: '💬', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
+      'ya-mysteries-black-protagonists': { cat: 'Fiction & Suspense', icon: '🔍', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
+      'why-some-couples-survive-betrayal': { cat: 'Relationships', icon: '❤️', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
+      'family-secrets-in-fiction': { cat: 'Writing & Culture', icon: '📖', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
+      'real-life-cases-missing-girls-of-color': { cat: 'Fiction & Suspense', icon: '🕵️', bg: 'linear-gradient(135deg,#1a0d0d,#2e1a1a)' },
+      'why-representation-matters-ya-thrillers': { cat: 'Writing & Culture', icon: '✊', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
+      'how-to-write-suspense-without-gore-11-05-09-am': { cat: 'Writing & Culture', icon: '⚡', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
     };
 
     function buildFeatured(post, meta) {
