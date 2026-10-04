@@ -386,6 +386,9 @@
         <p>
           Have a question, press inquiry, or collaboration idea? Drop a message below and Corey will get back to you.
         </p>
+        <p>
+          Prefer email? Reach Corey directly at <span id="author-email"></span>.
+        </p>
         <form name="contact" data-netlify="true" onsubmit="handleContactSubmit(event)">
           <input type="hidden" name="form-name" value="contact" />
           <input class="form-field" type="text"  name="name"    placeholder="Your Name"    required />
@@ -499,6 +502,20 @@
         document.getElementById('contact-confirm').style.display = 'block';
       });
     }
+
+    // Author email, assembled at render time so page scrapers don't harvest it
+    (function () {
+      var u = 'coreyljohnsonbooks', d = 'gmail.com';
+      var addr = u + '@' + d;
+      var el = document.getElementById('author-email');
+      if (el) {
+        var a = document.createElement('a');
+        a.href = 'mailto:' + addr;
+        a.textContent = addr;
+        a.style.color = 'var(--gold)';
+        el.appendChild(a);
+      }
+    })();
   </script>
 </body>
 </html>
