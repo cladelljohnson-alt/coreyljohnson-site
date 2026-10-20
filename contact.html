@@ -365,7 +365,16 @@
           Be the first to know about new releases, exclusive behind-the-scenes content, book club discussion guides,
           and personal notes from Corey's desk. Subscribers also get early access to cover reveals and giveaways.
         </p>
-        <iframe src="https://authorcoreyljohnson.substack.com/embed" width="480" height="320" style="border:0; background:transparent; max-width:100%;" frameborder="0" scrolling="no" title="Subscribe to Corey's newsletter"></iframe>
+        <form name="newsletter" data-netlify="true" onsubmit="handleNewsletterSubmit(event)">
+          <input type="hidden" name="form-name" value="newsletter" />
+          <div class="newsletter-form-row">
+            <input class="newsletter-input" type="email" name="email" placeholder="Your email address" required />
+            <button class="newsletter-btn" type="submit">Subscribe</button>
+          </div>
+          <p style="font-size: .8rem; color: var(--muted); margin-top: .75rem;">
+            No spam, ever. Unsubscribe any time.
+          </p>
+        </form>
         <p id="newsletter-confirm" style="display:none; color:var(--gold); font-weight:600; margin-top:1rem;">
           You're on the list — thank you!
         </p>
