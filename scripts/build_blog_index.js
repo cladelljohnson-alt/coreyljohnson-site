@@ -12,13 +12,11 @@ function escapeHtml(value) {
       'my-love-letter-to-black-women': { cat: 'Relationships', icon: '💛', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
       'what-black-men-think-about-love': { cat: 'Relationships', icon: '❤️', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
       'why-i-write-black-men-loving-black-women': { cat: 'Writing & Culture', icon: '❤️', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
-      'character-deep-dive-malik-thompson': { cat: 'Fiction & Suspense', icon: '✍️', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
       '10-signs-your-marriage-is-running-on-secrets': { cat: 'Relationships', icon: '💍', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
       '21-brutal-questions-before-i-do': { cat: 'Relationships', icon: '💬', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
       'ya-mysteries-black-protagonists': { cat: 'Fiction & Suspense', icon: '🔍', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
       'why-some-couples-survive-betrayal': { cat: 'Relationships', icon: '❤️', bg: 'linear-gradient(135deg,#1a0d15,#2e1a25)' },
       'family-secrets-in-fiction': { cat: 'Writing & Culture', icon: '📖', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
-      'real-life-cases-missing-girls-of-color': { cat: 'Fiction & Suspense', icon: '🕵️', bg: 'linear-gradient(135deg,#1a0d0d,#2e1a1a)' },
       'why-representation-matters-ya-thrillers': { cat: 'Writing & Culture', icon: '✊', bg: 'linear-gradient(135deg,#0d0f1a,#1a1e35)' },
       'how-to-write-suspense-without-gore-11-05-09-am': { cat: 'Writing & Culture', icon: '⚡', bg: 'linear-gradient(135deg,#0d1a0d,#1a2e1a)' },
     };

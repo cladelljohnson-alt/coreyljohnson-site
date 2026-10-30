@@ -34,7 +34,7 @@ jobs:
         run: |
           set -euo pipefail
           drafts_dir="drafts"
-          post="$(find "$drafts_dir" -maxdepth 1 -type f -name '*.html' | sort | head -n 1 || true)"
+          post="$(find "$drafts_dir" -maxdepth 1 -type f -name '*.html' ! -name 'african-american-ya-thrillers.html' ! -name 'premonitions-intuition-solving-disappearances.html' ! -name 'real-life-cases-missing-girls-of-color.html' ! -name 'why-representation-matters-ya-thrillers.html' ! -name 'how-to-write-suspense-without-gore*' | sort | head -n 1 || true)"
           if [ -z "${post:-}" ]; then
             echo "No draft posts to publish."
             exit 0
@@ -84,7 +84,7 @@ PY
         run: |
           set -euo pipefail
           # The $post variable is not available in this step, so we must find it again
-          post_to_move="$(find "drafts" -maxdepth 1 -type f -name '*.html' | sort | head -n 1)"
+          post_to_move="$(find "drafts" -maxdepth 1 -type f -name '*.html' ! -name 'african-american-ya-thrillers.html' ! -name 'premonitions-intuition-solving-disappearances.html' ! -name 'real-life-cases-missing-girls-of-color.html' ! -name 'why-representation-matters-ya-thrillers.html' ! -name 'how-to-write-suspense-without-gore*' | sort | head -n 1)"
           if [ -z "${post_to_move:-}" ]; then
             echo "Draft already moved, skipping commit step."
             exit 0

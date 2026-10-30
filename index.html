@@ -3,10 +3,12 @@
 <head>
   <link rel="canonical" href="https://coreyljohnson.com/">
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Corey L. Johnson – Author</title>
-  <meta name="description" content="Official author website for Corey L. Johnson — stories about life, love, faith, and the decisions that define us." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+  <title>Corey L. Johnson | Black Romance Author of Into You</title>
+  <meta name="description" content="Corey L. Johnson writes slow-burn Black romance, plus faith-based fiction. Read chapter 1 of We Can't Be Friends free." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -42,6 +44,7 @@
       color: var(--ink);
       text-decoration: none;
       letter-spacing: .02em;
+      white-space: nowrap;
     }
     .nav-link {
       color: var(--muted);
@@ -65,6 +68,47 @@
       transition: border-color .2s, color .2s;
     }
     .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: #0f172a;
+      padding: .35rem .85rem;
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+    .nav-cta:hover { background: var(--gold-lt); color: #0f172a; }
+    .mobile-link-cta { color: var(--gold); font-weight: 700; }
+    .nav-amazon { display: inline-flex; align-items: center; gap: .35rem; }
+    .nav-amazon-icon { display: none; }
+    @media (min-width: 768px) and (max-width: 1180px) {
+      .nav-logo { font-size: 1.02rem; }
+      header .container { flex-wrap: nowrap; gap: .65rem; }
+      .desktop-nav { gap: .28rem; flex-wrap: nowrap; }
+      nav.space-x-7 { gap: .28rem; }
+      nav.space-x-7 > :not([hidden]) ~ :not([hidden]) { margin-left: .28rem !important; }
+      .nav-link { font-size: .72rem; letter-spacing: .02em; }
+      .nav-cta, .nav-amazon { font-size: .68rem; letter-spacing: .02em; padding: .32rem .42rem; }
+      .nav-amazon-full {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      .nav-amazon-icon { display: inline-flex; }
+      .nav-amazon { position: relative; }
+    }
+
 
     /* ── NAV DROPDOWN (click-to-open, not hover) ── */
     .nav-dropdown { position: relative; display: inline-flex; align-items: center; gap: .25rem; }
@@ -162,25 +206,40 @@
     .hero {
       position: relative;
       width: 100%;
-      aspect-ratio: 2172 / 724; /* matches the banner image so nothing crops */
-      min-height: 580px;
-      max-height: 900px;
+      aspect-ratio: 2172 / 724;
+      min-height: 520px;
+      max-height: 760px;
       display: flex;
       align-items: center;
       background-color: var(--page);
       background-image: url('hero-banner.jpg');
+      background-image: image-set(url('hero-banner-1600.webp') type('image/webp'));
       background-size: cover;
       background-position: center;
     }
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, rgba(15,23,42,.94) 0%, rgba(15,23,42,.68) 55%, rgba(15,23,42,.25) 100%);
+      background: linear-gradient(to right, rgba(15,23,42,.94) 0%, rgba(15,23,42,.72) 55%, rgba(15,23,42,.4) 100%);
+    }
+    @media (max-width: 767px) {
+      .hero {
+        min-height: 0;
+        max-height: none;
+        aspect-ratio: auto;
+        background-image: url('hero-banner-800.webp');
+        background-position: center top;
+        padding: 1.5rem 0;
+      }
+      .hero-overlay { background: rgba(15, 23, 42, 0.88); }
+    }
+    @media (min-width: 768px) and (max-width: 1199px) {
+      .hero { background-image: url('hero-banner-1000.webp'); }
     }
     .hero-content { position: relative; z-index: 1; }
     .hero h1 {
-      font-size: clamp(2.8rem, 7vw, 5rem);
-      line-height: 1.1;
+      font-size: clamp(2.05rem, 5.4vw, 4.2rem);
+      line-height: 1.12;
       color: #fff;
     }
     .hero p { color: rgba(229,231,235,.85); font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.7; }
@@ -468,20 +527,48 @@
     .fade-in.delay-2 { transition-delay: .2s; }
     .fade-in.delay-3 { transition-delay: .3s; }
 
-    /* ── TYPEWRITER CURSOR ── */
-    .tw-cursor {
-      display: inline-block;
-      width: 3px;
-      background: var(--gold);
-      margin-left: 3px;
-      vertical-align: middle;
-      animation: tw-blink .65s step-end infinite;
+    #newsletter { scroll-margin-top: 5.5rem; }
+    .signup-offer { text-align: left; padding: 1.6rem 1.4rem; }
+    .signup-layout { display: grid; grid-template-columns: 140px 1fr; gap: 1.4rem; align-items: center; }
+    .signup-layout img { width: 140px; height: auto; border-radius: .4rem; box-shadow: 0 12px 30px rgba(0,0,0,.45); }
+    .signup-offer h2 { font-size: clamp(1.45rem, 3vw, 1.9rem); margin: .3rem 0 .55rem; line-height: 1.2; }
+    .signup-offer .lede { margin-bottom: 1rem; line-height: 1.65; }
+    .signup-privacy, .signup-ok, .signup-err { font-size: .85rem; margin-top: .85rem; }
+    .signup-ok { color: var(--gold); font-weight: 600; }
+    .signup-err { color: #f0c2c2; font-weight: 600; }
+    .newsletter-btn { min-height: 44px; }
+    .newsletter-btn:disabled { opacity: .65; cursor: wait; }
+    .romance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: stretch; }
+    .romance-card { padding: 1.4rem; display: flex; flex-direction: column; gap: .7rem; }
+    .romance-card img { width: min(100%, 280px); height: auto; border-radius: .45rem; box-shadow: 0 16px 40px rgba(0,0,0,.55); }
+    .romance-card h3 { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.15; margin: 0; }
+    .romance-card p { line-height: 1.7; margin: 0; }
+    .romance-actions { display: flex; flex-wrap: wrap; gap: .75rem 1.2rem; align-items: center; margin-top: auto; }
+    .text-link { color: var(--gold); font-weight: 600; text-decoration: none; }
+    .text-link:hover { color: var(--gold-lt); }
+    .book-teaser-item { text-align: center; }
+    .book-teaser-item .overline { margin-top: .15rem; }
+    .teaser-line { font-size: .9rem; line-height: 1.6; margin: .4rem 0 .85rem; }
+    .book-teaser-item .btn-gold { margin-top: auto; min-height: 44px; padding: .7rem 1rem; }
+    .about-teaser { display: grid; grid-template-columns: 180px 1fr; gap: 2.5rem; align-items: center; max-width: 860px; margin: 0 auto; }
+    .about-teaser img { width: 180px; height: 180px; border-radius: 50%; object-fit: cover; object-position: center top; box-shadow: 0 0 0 3px var(--gold-border), 0 12px 40px rgba(0,0,0,.5); }
+    @media (max-width: 800px) {
+      .romance-grid { grid-template-columns: 1fr; }
+      .romance-card { align-items: center; text-align: center; }
+      .romance-actions { justify-content: center; }
+      .romance-card img { width: 180px; }
+      .book-teaser-item img { width: 160px; max-width: 160px; margin-left: auto; margin-right: auto; }
+      .romance-block, .faith-row, .from-blog, .about-block { padding-top: 1.35rem !important; padding-bottom: 1.35rem !important; }
+      .from-blog .blog-card { padding: 1rem; }
+      .teaser-line { font-size: .84rem; margin-bottom: .6rem; }
     }
-    @keyframes tw-blink {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0; }
+    @media (max-width: 700px) {
+      .signup-layout { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+      .signup-layout img { width: 110px; }
+      .signup-offer .newsletter-form { flex-direction: column; align-items: stretch; width: 100%; }
+      .signup-offer .newsletter-input, .signup-offer .newsletter-btn { width: 100%; }
+      .about-teaser { grid-template-columns: 1fr; justify-items: center; text-align: center; }
     }
-
 
     /* ── FOOTER ── */
     .site-footer {
@@ -495,7 +582,22 @@
     .site-footer a { color: var(--gold); text-decoration: none; transition: color .2s; }
     .site-footer a:hover { color: var(--gold-lt); }
   </style>
-</head>
+<meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Corey L. Johnson" />
+  <meta property="og:title" content="Corey L. Johnson | Black Romance Author of Into You" />
+  <meta property="og:description" content="Corey L. Johnson writes slow-burn Black romance, plus faith-based fiction. Read chapter 1 of We Can't Be Friends free." />
+  <meta property="og:url" content="https://coreyljohnson.com/" />
+  <meta property="og:image" content="https://coreyljohnson.com/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Corey L. Johnson, Black romance author, with the covers of Into You and We Can't Be Friends" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Corey L. Johnson | Black Romance Author of Into You" />
+  <meta name="twitter:description" content="Corey L. Johnson writes slow-burn Black romance, plus faith-based fiction. Read chapter 1 of We Can't Be Friends free." />
+  <meta name="twitter:image" content="https://coreyljohnson.com/og-default.jpg" />
+  <link rel="preload" as="image" href="/hero-banner-800.webp" media="(max-width: 767px)" type="image/webp" />
+  <link rel="preload" as="image" href="/hero-banner-1600.webp" media="(min-width: 768px)" type="image/webp" />
+  </head>
 <body>
 
   <!-- ── NAV ── -->
@@ -509,28 +611,30 @@
           <div class="nav-dropdown-menu">
             <div class="nav-dropdown-menu-inner">
               <a href="books.html#rooted-in-grace" class="nav-dropdown-item">Christian Fiction</a>
-              <a href="books.html#rnb-mixtape" class="nav-dropdown-item">Romance</a>
-              <a href="books.html#highway-51" class="nav-dropdown-item">Horror</a>
+              <a href="books.html#rnb-mixtape" class="nav-dropdown-item">Romance Books</a>
               <a href="books.html#standalone-novels" class="nav-dropdown-item">Standalone Novels</a>
             </div>
           </div>
         </div>
+        <a href="/black-male-romance-author/" class="nav-link">Romance</a>
         <a href="blog/index.html"  class="nav-link">Blog</a>
         <a href="news.html"       class="nav-link">News</a>
         <a href="about.html"       class="nav-link">About</a>
         <a href="contact.html"     class="nav-link">Contact</a>
+        <a href="#newsletter" class="nav-cta">Free Chapter</a>
         <a href="https://www.amazon.com/stores/Corey-Johnson/author/B0CTFZPKV1?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=11104394-ef31-44eb-9566-8f0ff4e64682"
-           target="_blank" rel="noopener" class="nav-amazon">Amazon</a>
+           target="_blank" rel="noopener" class="nav-amazon"><span class="nav-amazon-full">Amazon</span><svg class="nav-amazon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></a>
       </nav>
       <button id="mobile-menu-toggle" class="mobile-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     </div>
     <!-- Mobile dropdown -->
     <div id="mobile-menu" class="mobile-menu">
+      <a href="#newsletter" class="mobile-link mobile-link-cta">Free Chapter</a>
       <a href="books.html"       class="mobile-link">Books</a>
       <a href="books.html#rooted-in-grace" class="mobile-link mobile-sublink">Christian Fiction</a>
-      <a href="books.html#rnb-mixtape"     class="mobile-link mobile-sublink">Romance</a>
-      <a href="books.html#highway-51"      class="mobile-link mobile-sublink">Horror</a>
+      <a href="books.html#rnb-mixtape"     class="mobile-link mobile-sublink">Romance Books</a>
       <a href="books.html#standalone-novels" class="mobile-link mobile-sublink">Standalone Novels</a>
+      <a href="/black-male-romance-author/" class="mobile-link">Romance</a>
       <a href="blog/index.html"  class="mobile-link">Blog</a>
       <a href="news.html"        class="mobile-link">News</a>
       <a href="about.html"       class="mobile-link">About</a>
@@ -545,96 +649,126 @@
     <div class="hero-overlay"></div>
     <div class="hero-content container mx-auto px-6 py-12">
       <div style="max-width: 680px;">
-        <span class="overline" style="margin-bottom: 1rem;">Corey L. Johnson</span>
-        <h1 id="hero-tagline"
-            data-text="Stories That Move You."
-            style="margin-bottom: 1.25rem; min-height: 1.2em;"></h1>
-        <p id="hero-subtitle"
-           style="max-width: 520px; margin-bottom: 2rem; opacity: 0; transition: opacity .5s ease;">
-          Emotionally resonant fiction about life, love, faith, and the decisions that define us —
-          from the Tennessee storyteller who believes every challenge carries meaning and hope.
+        <span class="overline" style="margin-bottom: 1rem;">Black Romance · Murfreesboro, TN</span>
+        <h1 id="hero-tagline" style="margin-bottom: 1.25rem;">I write Black love stories. Slow burn. Earned endings.</h1>
+        <p id="hero-subtitle" style="max-width: 640px; margin-bottom: 2rem;">
+          I'm Corey L. Johnson, one of the few Black men writing romance. I just think it's my mission to restore faith in Black love between Black men and women.
         </p>
-        <div id="hero-ctas"
-             style="display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; transition: opacity .5s ease .2s;">
+        <div id="hero-ctas" style="display: flex; gap: 1rem; flex-wrap: wrap;">
           <a href="books.html" class="btn-gold">Explore Books</a>
-          <a href="blog/index.html" class="btn-outline-gold">Read Latest News</a>
+          <a href="#newsletter" class="btn-outline-gold">Read Chapter 1 Free</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── LATEST RELEASE SPOTLIGHT ── -->
-  <section style="padding: 3.75rem 0 5rem; background: var(--page);">
+  <!-- ── FREE CHAPTER ── -->
+  <section id="newsletter" style="padding: 2.25rem 0 1rem; background: var(--page);">
     <div class="container mx-auto px-6">
-      <div class="text-center fade-in" style="margin-bottom: 3rem;">
-        <span class="overline">Now Available</span>
-        <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: .5rem;">Latest Release</h2>
-        <div class="gold-rule"></div>
-      </div>
-      <div class="card fade-in" style="padding: 2.5rem;">
-        <div class="book-spotlight">
-          <img src="book7.png" alt="Cover of The Seeds We Sow by Corey L. Johnson" />
+      <div class="newsletter-strip signup-offer" data-signup style="max-width: 820px; margin: 0 auto;">
+        <div class="signup-layout">
+          <picture>
+            <source type="image/webp" srcset="book8-600.webp 600w, book8-900.webp 900w" sizes="140px">
+            <img src="book8-600.jpg" alt="Cover of We Can't Be Friends by Corey L. Johnson" width="600" height="900" decoding="async" />
+          </picture>
           <div>
-            <span class="spotlight-badge">Latest Release</span>
-            <p class="overline" style="margin-bottom: .5rem;">Rooted in Grace Series</p>
-            <h3 style="font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.15; margin-bottom: .75rem;">The Seeds We Sow</h3>
-            <p style="font-size: 1rem; line-height: 1.75; margin-bottom: 1.5rem;">
-              Five years after walking out of her own wedding, Julie has rebuilt a guarded new life in Memphis — until Mark Baxter, the man she left behind, walks back into it.
-              A gripping story of faith, betrayal, forgiveness, and the dangerous cost of silence.
-            </p>
-            <a href="https://a.co/d/05ZYHq6i" target="_blank" rel="noopener" class="btn-gold">Get It on Amazon</a>
+            <span class="overline">Free Chapter</span>
+            <h2>Read Chapter 1 of We Can't Be Friends, Free</h2>
+            <p class="lede">Imani's family creamery is on the line. The best friend she hasn't talked to in ten years just moved in upstairs. Drop your email and I'll send you chapter 1.</p>
+            <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubscribe(event)">
+              <input type="hidden" name="form-name" value="newsletter" />
+              <input type="hidden" name="source" value="home-top" />
+              <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
+              <input class="newsletter-input" type="email" name="email" placeholder="Your email address" required />
+              <button class="newsletter-btn" type="submit">Send Me Chapter 1</button>
+            </form>
+            <p class="signup-privacy">No spam. Unsubscribe anytime.</p>
+            <p class="signup-ok" style="display:none;" aria-live="polite">You're in. Chapter 1's on its way to your inbox. If you don't see it, check your spam or promotions folder.</p>
+            <p class="signup-err" style="display:none;" aria-live="polite">That didn't go through. Give it another try in a minute.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── BOOKS TEASER ── -->
-  <section style="padding: 5rem 0; background: #0a1020;">
+  <!-- ── ROMANCE SPOTLIGHT ── -->
+  <section class="romance-block" style="padding: 3.5rem 0 4.5rem; background: var(--page);">
     <div class="container mx-auto px-6">
-      <div class="text-center" style="margin-bottom: 3rem;">
-        <span class="overline">The Collection</span>
-        <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: .5rem;">Books</h2>
+      <div class="text-center" style="margin-bottom: 2.25rem;">
+        <span class="overline">Start Here</span>
+        <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: .5rem;">Black Romance</h2>
         <div class="gold-rule"></div>
       </div>
-      <div class="fade-in" style="display: flex; flex-direction: column; gap: 2rem; margin-bottom: 2.5rem;">
-
-        <div class="card" style="padding: 2.5rem;">
-          <div class="book-spotlight">
-            <img src="book1.png" alt="Cover of The Grass Is Always Greener" />
-            <div>
-              <p class="overline" style="margin-bottom: .5rem;">Rooted in Grace Series</p>
-              <h3 style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: .75rem;">The Grass Is Always Greener</h3>
-              <p style="font-size: .96rem; line-height: 1.75; margin-bottom: 1.25rem;">A heartfelt tale of family secrets and second chances set in the American South — where faith and resilience light the path through grief and redemption.</p>
-              <a href="https://a.co/d/bIOYPL0" target="_blank" rel="noopener" class="btn-gold">View on Amazon</a>
-            </div>
+      <div class="romance-grid">
+        <article class="card romance-card">
+          <picture>
+            <source type="image/webp" srcset="book3-600.webp 600w, book3-900.webp 900w" sizes="(max-width: 800px) 70vw, 280px">
+            <img src="book3-600.jpg" alt="Cover of Into You by Corey L. Johnson" width="600" height="902" decoding="async" />
+          </picture>
+          <p class="overline">Slow-Burn Romance · Standalone</p>
+          <h3>Into You</h3>
+          <p>She plans weddings. He ends marriages. When their worlds collide, the tension is electric. A slow-burn enemies-to-lovers romance that proves love doesn't always follow the plan.</p>
+          <p>Available now on Amazon and Kindle+.</p>
+          <div class="romance-actions">
+            <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener" class="btn-gold">Get Into You on Amazon</a>
+            <a href="https://www.audible.com/pd/Into-You-Audiobook/B0GTK1K9KM" target="_blank" rel="noopener" class="text-link">Listen on Audible</a>
           </div>
-        </div>
-
-        <div class="card" style="padding: 2.5rem;">
-          <div class="book-spotlight reverse">
-            <img src="book3.png" alt="Cover of Into You" />
-            <div>
-              <p class="overline" style="margin-bottom: .5rem;">R&amp;B Mixtape Series</p>
-              <h3 style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: .75rem;">Into You</h3>
-              <p style="font-size: .96rem; line-height: 1.75; margin-bottom: 1.25rem;">She plans weddings. He ends marriages. When their worlds collide, the tension is electric. A slow-burn enemies-to-lovers romance that proves love doesn't always follow the plan.</p>
-              <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener" class="btn-gold">View on Amazon</a>
-            </div>
+        </article>
+        <article class="card romance-card">
+          <picture>
+            <source type="image/webp" srcset="book8-600.webp 600w, book8-900.webp 900w" sizes="(max-width: 800px) 70vw, 280px">
+            <img src="book8-600.jpg" alt="Cover of We Can't Be Friends by Corey L. Johnson" width="600" height="900" loading="lazy" decoding="async" />
+          </picture>
+          <p class="overline">Coming Soon · Chapter 1 Free</p>
+          <h3>We Can't Be Friends</h3>
+          <p>Imani's family creamery is on the line. The best friend she hasn't talked to in ten years just moved in upstairs.</p>
+          <div class="romance-actions">
+            <a href="#newsletter" class="btn-gold">Read Chapter 1 Free</a>
           </div>
-        </div>
+        </article>
+      </div>
+    </div>
+  </section>
 
-        <div class="card" style="padding: 2.5rem;">
-          <div class="book-spotlight">
-            <img src="book4.png" alt="Cover of Ain't No Going Back" />
-            <div>
-              <p class="overline" style="margin-bottom: .5rem;">Standalone Novel</p>
-              <h3 style="font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: .75rem;">Ain't No Going Back</h3>
-              <p style="font-size: .96rem; line-height: 1.75; margin-bottom: 1.25rem;">A bold story about the courage it takes to walk away, move forward, and finally choose yourself — even when everything pulls you back.</p>
-              <a href="https://a.co/d/0iRS62Hp" target="_blank" rel="noopener" class="btn-gold">View on Amazon</a>
-            </div>
-          </div>
+  <!-- ── FAITH AND FAMILY ── -->
+  <section class="faith-row" style="padding: 4.5rem 0; background: #0a1020;">
+    <div class="container mx-auto px-6">
+      <div class="text-center" style="margin-bottom: 2.25rem;">
+        <span class="overline">Faith &amp; Family</span>
+        <h2 style="font-size: clamp(1.8rem, 3vw, 2.5rem); margin-top: .5rem;">The Rooted in Grace Series</h2>
+        <div class="gold-rule"></div>
+      </div>
+      <div class="book-teaser-grid" style="margin-bottom: 2.5rem;">
+        <div class="book-teaser-item">
+          <picture>
+            <source type="image/webp" srcset="book1-600.webp 600w, book1-900.webp 900w" sizes="(max-width: 768px) 80vw, 320px">
+            <img src="book1-600.jpg" alt="Cover of The Grass Is Always Greener" width="600" height="901" loading="lazy" decoding="async" />
+          </picture>
+          <p class="overline">Book 1</p>
+          <span>The Grass Is Always Greener</span>
+          <p class="teaser-line">A heartfelt tale of family secrets and second chances set in the American South, where faith and resilience light the path through grief and redemption.</p>
+          <a href="https://a.co/d/bIOYPL0" target="_blank" rel="noopener" class="btn-gold">View on Amazon</a>
         </div>
-
+        <div class="book-teaser-item">
+          <picture>
+            <source type="image/webp" srcset="book7-600.webp 600w, book7-900.webp 900w" sizes="(max-width: 768px) 80vw, 320px">
+            <img src="book7-600.jpg" alt="Cover of The Seeds We Sow by Corey L. Johnson" width="600" height="960" loading="lazy" decoding="async" />
+          </picture>
+          <p class="overline">Book 2</p>
+          <span>The Seeds We Sow</span>
+          <p class="teaser-line">Five years after walking out of her own wedding, Julie has rebuilt a guarded new life in Memphis, until Mark Baxter, the man she left behind, walks back into it.</p>
+          <a href="https://a.co/d/05ZYHq6i" target="_blank" rel="noopener" class="btn-gold">View on Amazon</a>
+        </div>
+        <div class="book-teaser-item">
+          <picture>
+            <source type="image/webp" srcset="book4-600.webp 600w, book4-900.webp 900w" sizes="(max-width: 768px) 80vw, 320px">
+            <img src="book4-600.jpg" alt="Cover of Ain't No Going Back" width="600" height="900" loading="lazy" decoding="async" />
+          </picture>
+          <p class="overline">Standalone Novel</p>
+          <span>Ain't No Going Back</span>
+          <p class="teaser-line">A bold story about the courage it takes to walk away, move forward, and finally choose yourself, even when everything pulls you back.</p>
+          <a href="https://a.co/d/0iRS62Hp" target="_blank" rel="noopener" class="btn-gold">View on Amazon</a>
+        </div>
       </div>
       <div class="text-center">
         <a href="books.html" class="link-gold">View All Books →</a>
@@ -643,7 +777,7 @@
   </section>
 
   <!-- ── FROM THE BLOG ── -->
-  <section style="padding: 5rem 0; background: var(--page);">
+  <section class="from-blog" style="padding: 5rem 0; background: var(--page);">
     <div class="container mx-auto px-6">
       <div class="text-center" style="margin-bottom: 3rem;">
         <span class="overline">Essays &amp; Updates</span>
@@ -659,7 +793,7 @@
         </a>
         <a href="blog/21-brutal-questions-before-i-do.html" class="blog-card">
           <h3>21 Brutal Questions to Ask Before You Say "I Do"</h3>
-          <p>Work through twenty-one hard conversations — about money, faith, loyalty, and boundaries — before silence buries your vows.</p>
+          <p>Work through twenty-one hard conversations, about money, faith, loyalty, and boundaries, before silence buries your vows.</p>
           <span class="read-link">Read More →</span>
         </a>
       </div>
@@ -670,42 +804,26 @@
   </section>
 
   <!-- ── ABOUT TEASER ── -->
-  <section style="padding: 5rem 0; background: #0a1020;">
+  <section class="about-block" style="padding: 5rem 0; background: #0a1020;">
     <div class="container mx-auto px-6">
-      <div class="fade-in" style="display: grid; grid-template-columns: auto 1fr; gap: 3rem; align-items: center; max-width: 860px; margin: 0 auto;">
-        <img src="author.png" alt="Author portrait of Corey L. Johnson"
-             style="width: 180px; height: 180px; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px var(--gold-border), 0 12px 40px rgba(0,0,0,.5);" />
+      <div class="about-teaser fade-in">
+        <picture>
+          <source type="image/webp" srcset="author-400.webp 400w, author-800.webp 800w" sizes="180px">
+          <img src="author-400.webp" alt="Author portrait of Corey L. Johnson" width="800" height="1202" loading="lazy" decoding="async" />
+        </picture>
         <div>
           <span class="overline" style="margin-bottom: .75rem;">About the Author</span>
           <h2 style="font-size: 1.9rem; margin-bottom: .75rem;">Corey L. Johnson</h2>
           <p style="line-height: 1.75; margin-bottom: .5rem;">
-            Corey L. Johnson knows exactly how rare his lane is — one of the few Black male authors writing romance today. From Murfreesboro, Tennessee, he writes contemporary romance, psychological suspense, and Christian fiction that trades fairy-tale filters for sharp, honest character studies of real love.
+            Corey L. Johnson knows exactly how rare his lane is, one of the few Black male authors writing romance today. From Murfreesboro, Tennessee, he writes contemporary romance and Christian fiction that trades fairy-tale filters for sharp, honest character studies of real love.
           </p>
-          <p><a href="/black-male-romance-author/" class="link-gold">Explore Corey’s Black romance books →</a></p>
+          <p><a href="/black-male-romance-author/" class="link-gold">Explore Corey's Black romance books →</a></p>
           <a href="about.html" class="link-gold" style="margin-top: .5rem; display: inline-block;">Learn More →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ── NEWSLETTER STRIP ── -->
-  <section style="padding: 5rem 0; background: var(--page);">
-    <div class="container mx-auto px-6">
-      <div id="newsletter" class="newsletter-strip" style="max-width: 640px; margin: 0 auto;">
-        <span class="overline" style="margin-bottom: .5rem;">Stay in the Loop</span>
-        <h3>Join Corey's Insider List</h3>
-        <p>New releases, book club kits, and behind-the-scenes content delivered straight to your inbox.</p>
-        <form class="newsletter-form" name="newsletter" data-netlify="true" onsubmit="handleSubscribe(event)">
-          <input type="hidden" name="form-name" value="newsletter" />
-          <input class="newsletter-input" type="email" name="email" placeholder="Your email address" required />
-          <button class="newsletter-btn" type="submit">Subscribe</button>
-        </form>
-        <p id="subscribe-confirm" style="display:none; color:var(--gold); margin-top:1rem; font-weight:600;">
-          ✓ You're on the list — thank you!
-        </p>
-      </div>
-    </div>
-  </section>
 
   <!-- ── FOOTER ── -->
   <footer class="site-footer">
@@ -713,6 +831,7 @@
       <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--ink); margin-bottom:.75rem;">Corey L. Johnson</p>
       <p style="margin-bottom:.75rem;">
         <a href="books.html">Books</a> &nbsp;·&nbsp;
+        <a href="/black-male-romance-author/">Romance</a> &nbsp;·&nbsp;
         <a href="blog/index.html">Blog</a> &nbsp;·&nbsp;
         <a href="news.html">News</a> &nbsp;·&nbsp;
         <a href="about.html">About</a> &nbsp;·&nbsp;
@@ -765,13 +884,24 @@
     function handleSubscribe(e) {
       e.preventDefault();
       var form = e.currentTarget;
+      var wrap = form.closest('[data-signup]');
+      var ok = wrap.querySelector('.signup-ok');
+      var err = wrap.querySelector('.signup-err');
+      var btn = form.querySelector('button[type=submit]');
+      btn.disabled = true;
+      err.style.display = 'none';
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(new FormData(form)).toString()
-      }).finally(function() {
+      }).then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
         form.style.display = 'none';
-        document.getElementById('subscribe-confirm').style.display = 'block';
+        ok.style.display = 'block';
+      }).catch(function () {
+        err.style.display = 'block';
+      }).finally(function () {
+        btn.disabled = false;
       });
     }
 
