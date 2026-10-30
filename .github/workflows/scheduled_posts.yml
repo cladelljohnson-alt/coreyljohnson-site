@@ -1,132 +1,20 @@
 name: Scheduled posts
 
+# Manual only (D15). No daily schedule, and this workflow does not push to main.
+# The old steps looked for a homepage placeholder and pushed to main. They are retired.
+# Publish posts with npm run build-blog, build-blog-index, and build-sitemap, then open a pull request.
+
 on:
-  schedule:
-    - cron: '0 12 * * *'   # 12:00 UTC daily
-  workflow_dispatch:        # adds the "Run workflow" button
+  workflow_dispatch:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: scheduled-posts
-  cancel-in-progress: false
-
-env:
-  HOMEPAGE_PATH: index.html
-  PLACEHOLDER: "<!--POST_PLACEHOLDER-->"
+  contents: read
 
 jobs:
   publish-scheduled-post:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Validate repo state
+      - name: Scheduled publishing is retired
         run: |
-          set -e
-          test -f "$HOMEPAGE_PATH" || { echo "index.html not found"; exit 1; }
-          grep -q "$PLACEHOLDER" "$HOMEPAGE_PATH" || { echo "POST_PLACEHOLDER not found in $HOMEPAGE_PATH"; exit 1; }
-          test -d drafts || { echo "drafts/ directory not found"; exit 1; }
-          echo "✅ Repo looks OK"
-
-      - name: Set git config
-        run: |
-          git config user.name "$GITHUB_ACTOR"
-          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
-
-      - name: Pick next draft and build card snippet
-        id: pick
-        shell: bash
-        run: |
-          set -euo pipefail
-          post="$(find drafts -maxdepth 1 -type f -name '*.html' ! -name 'african-american-ya-thrillers.html' ! -name 'premonitions-intuition-solving-disappearances.html' ! -name 'real-life-cases-missing-girls-of-color.html' ! -name 'why-representation-matters-ya-thrillers.html' ! -name 'how-to-write-suspense-without-gore*' | sort | head -n 1 || true)"
-          if [ -z "${post:-}" ]; then
-            echo "No draft posts to publish."
-            echo "has_post=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          echo "has_post=true" >> "$GITHUB_OUTPUT"
-          echo "post_path=$post" >> "$GITHUB_OUTPUT"
-          filename="$(basename "$post")"
-          echo "filename=$filename" >> "$GITHUB_OUTPUT"
-
-          eval "$(python3 - "$post" <<'PY')"
-import sys, re, pathlib, shlex
-path = pathlib.Path(sys.argv[1])
-text = path.read_text(encoding='utf-8')
-compact = ''.join(text.splitlines())
-title_match = re.search(r'<title>(.*?)</title>', compact, flags=re.IGNORECASE)
-title = title_match.group(1).strip() if title_match else path.stem
-desc_match = re.search(r'<meta\s+name="description"\s+content="([^"]*)"', compact, flags=re.IGNORECASE)
-description = desc_match.group(1).strip() if desc_match else f"New post: {title}"
-print(f"title={shlex.quote(title)}")
-print(f"description={shlex.quote(description)}")
-PY
-          if [ -z "${title:-}" ]; then
-            title="${filename%.*}"
-          fi
-          if [ -z "${description:-}" ]; then
-            description="New post: ${title}"
-          fi
-
-          # Build dark blog card snippet (no escaping)
-          cat <<'EOF' > card_snippet.html
-<article class="card shadow-lg overflow-hidden p-6 transition duration-300 transform hover:shadow-xl hover:-translate-y-1">
-  <h3 class="text-xl font-semibold mb-3">TITLE_PLACEHOLDER</h3>
-  <p class="mb-4">DESCRIPTION_PLACEHOLDER</p>
-  <a href="FILENAME_PLACEHOLDER" class="font-medium">Read More →</a>
-</article>
-EOF
-
-          # Inject dynamic values with sed-safe escaping
-          safe_title="$(printf '%s' "$title" | sed 's/[&#\/\\]/\\&/g')"
-          safe_description="$(printf '%s' "$description" | sed 's/[&#\/\\]/\\&/g')"
-          safe_filename="$(printf '%s' "$filename" | sed 's/[&#\/\\]/\\&/g')"
-
-          sed -i "s#TITLE_PLACEHOLDER#${safe_title}#" card_snippet.html
-          sed -i "s#DESCRIPTION_PLACEHOLDER#${safe_description}#" card_snippet.html
-          sed -i "s#FILENAME_PLACEHOLDER#${safe_filename}#" card_snippet.html
-
-      - name: Stop if no draft
-        if: steps.pick.outputs.has_post != 'true'
-        run: echo "Nothing to do."
-
-      - name: Insert card into homepage (no escaping)
-        if: steps.pick.outputs.has_post == 'true'
-        shell: bash
-        run: |
-          python3 - <<'PY'
-import os, sys
-hp = os.environ.get('HOMEPAGE_PATH','index.html')
-placeholder = os.environ.get('PLACEHOLDER','<!--POST_PLACEHOLDER-->')
-with open('card_snippet.html','r',encoding='utf-8') as f: snip = f.read()
-with open(hp,'r',encoding='utf-8') as f: html = f.read()
-if placeholder not in html:
-    print(f"Placeholder not found in {hp}", file=sys.stderr); sys.exit(1)
-html = html.replace(placeholder, snip + "\n" + placeholder, 1)
-with open(hp,'w',encoding='utf-8') as f: f.write(html)
-print("✅ Inserted card into", hp)
-PY
-
-      - name: Move draft to root and commit
-        if: steps.pick.outputs.has_post == 'true'
-        shell: bash
-        run: |
-          set -euo pipefail
-          post="${{ steps.pick.outputs.post_path }}"
-          filename="${{ steps.pick.outputs.filename }}"
-          git mv "$post" "$filename"
-          rm -f card_snippet.html
-          git add "$HOMEPAGE_PATH" "$filename"
-          git commit -m "Publish scheduled post: $filename"
-
-      - name: Push changes
-        if: steps.pick.outputs.has_post == 'true'
-        uses: ad-m/github-push-action@v0.6.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main
+          echo "This workflow is manual-only and does not publish or push to main."
+          echo "Use npm run build-blog, npm run build-blog-index, and npm run build-sitemap, then open a pull request."
