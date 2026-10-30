@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="../favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Between the Lines – Corey L. Johnson</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+  <title>Between the Lines | Corey L. Johnson, Black Romance Author</title>
   <link rel="canonical" href="https://coreyljohnson.com/blog/" />
-  <meta name="description" content="Between the Lines — essays on craft, relationships, justice, and the stories that won't let us look away. From the desk of Corey L. Johnson." />
+  <meta name="description" content="Between the Lines, essays on craft, relationships, and the stories that won't let us look away. From the desk of Corey L. Johnson." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
@@ -46,6 +48,7 @@
       color: var(--ink);
       text-decoration: none;
       letter-spacing: .02em;
+      white-space: nowrap;
     }
     .nav-link {
       color: var(--muted);
@@ -68,6 +71,47 @@
       transition: border-color .2s, color .2s;
     }
     .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: #0f172a;
+      padding: .35rem .85rem;
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+    .nav-cta:hover { background: var(--gold-lt); color: #0f172a; }
+    .mobile-link-cta { color: var(--gold); font-weight: 700; }
+    .nav-amazon { display: inline-flex; align-items: center; gap: .35rem; }
+    .nav-amazon-icon { display: none; }
+    @media (min-width: 768px) and (max-width: 1180px) {
+      .nav-logo { font-size: 1.02rem; }
+      header .container { flex-wrap: nowrap; gap: .65rem; }
+      .desktop-nav { gap: .28rem; flex-wrap: nowrap; }
+      nav.space-x-7 { gap: .28rem; }
+      nav.space-x-7 > :not([hidden]) ~ :not([hidden]) { margin-left: .28rem !important; }
+      .nav-link { font-size: .72rem; letter-spacing: .02em; }
+      .nav-cta, .nav-amazon { font-size: .68rem; letter-spacing: .02em; padding: .32rem .42rem; }
+      .nav-amazon-full {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      .nav-amazon-icon { display: inline-flex; }
+      .nav-amazon { position: relative; }
+    }
+
 
     /* ── NAV DROPDOWN (click-to-open, not hover) ── */
     .nav-dropdown { position: relative; display: inline-flex; align-items: center; gap: .25rem; }
@@ -520,7 +564,20 @@
     [hidden] { display: none !important; }
     .post-hidden { display: none !important; }
   </style>
-</head>
+<meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Corey L. Johnson" />
+  <meta property="og:title" content="Between the Lines | Corey L. Johnson, Black Romance Author" />
+  <meta property="og:description" content="Between the Lines, essays on craft, relationships, and the stories that won't let us look away. From the desk of Corey L. Johnson." />
+  <meta property="og:url" content="https://coreyljohnson.com/blog/" />
+  <meta property="og:image" content="https://coreyljohnson.com/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Corey L. Johnson, Black romance author, with the covers of Into You and We Can't Be Friends" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Between the Lines | Corey L. Johnson, Black Romance Author" />
+  <meta name="twitter:description" content="Between the Lines, essays on craft, relationships, and the stories that won't let us look away. From the desk of Corey L. Johnson." />
+  <meta name="twitter:image" content="https://coreyljohnson.com/og-default.jpg" />
+  </head>
 <body>
 
   <!-- NAV -->
@@ -534,28 +591,30 @@
           <div class="nav-dropdown-menu">
             <div class="nav-dropdown-menu-inner">
               <a href="../books.html#rooted-in-grace" class="nav-dropdown-item">Christian Fiction</a>
-              <a href="../books.html#rnb-mixtape" class="nav-dropdown-item">Romance</a>
-              <a href="../books.html#highway-51" class="nav-dropdown-item">Horror</a>
+              <a href="../books.html#rnb-mixtape" class="nav-dropdown-item">Romance Books</a>
               <a href="../books.html#standalone-novels" class="nav-dropdown-item">Standalone Novels</a>
             </div>
           </div>
         </div>
+        <a href="/black-male-romance-author/" class="nav-link">Romance</a>
         <a href="../blog/index.html" class="nav-link active">Blog</a>
         <a href="../news.html"       class="nav-link">News</a>
         <a href="../about.html"      class="nav-link">About</a>
         <a href="../contact.html"    class="nav-link">Contact</a>
+        <a href="/#newsletter" class="nav-cta">Free Chapter</a>
         <a href="https://www.amazon.com/stores/Corey-Johnson/author/B0CTFZPKV1?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=11104394-ef31-44eb-9566-8f0ff4e64682"
-           target="_blank" rel="noopener" class="nav-amazon">Amazon</a>
+           target="_blank" rel="noopener" class="nav-amazon"><span class="nav-amazon-full">Amazon</span><svg class="nav-amazon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></a>
       </nav>
       <button id="mobile-menu-toggle" class="mobile-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     </div>
     <!-- Mobile dropdown -->
     <div id="mobile-menu" class="mobile-menu">
+      <a href="/#newsletter" class="mobile-link mobile-link-cta">Free Chapter</a>
       <a href="../books.html"       class="mobile-link">Books</a>
       <a href="../books.html#rooted-in-grace" class="mobile-link mobile-sublink">Christian Fiction</a>
-      <a href="../books.html#rnb-mixtape"     class="mobile-link mobile-sublink">Romance</a>
-      <a href="../books.html#highway-51"      class="mobile-link mobile-sublink">Horror</a>
+      <a href="../books.html#rnb-mixtape"     class="mobile-link mobile-sublink">Romance Books</a>
       <a href="../books.html#standalone-novels" class="mobile-link mobile-sublink">Standalone Novels</a>
+      <a href="/black-male-romance-author/" class="mobile-link">Romance</a>
       <a href="index.html"      class="mobile-link">Blog</a>
       <a href="../news.html"    class="mobile-link">News</a>
       <a href="../about.html"   class="mobile-link">About</a>
@@ -676,21 +735,6 @@
           </div>
         </a>
 
-        <a href="/blog/character-deep-dive-malik-thompson.html" data-category="Fiction & Suspense" class="post-card">
-          <div class="card-visual" style="background:linear-gradient(135deg,#0d0f1a,#1a1e35)">
-            <span style="position:relative;z-index:1;">✍️</span>
-          </div>
-          <div class="card-body">
-            <p class="card-cat">Fiction & Suspense</p>
-            <h2 class="card-title">Character Deep Dive: Malik Thompson of They Never Came Home</h2>
-            <p class="card-excerpt">Meet Malik Thompson, the sharp, loyal teen who drives They Never Came Home and refuses to let buried truths stay hidden.</p>
-            <div class="card-footer">
-
-              <span class="card-arrow">Read →</span>
-            </div>
-          </div>
-        </a>
-
         <a href="/blog/10-signs-your-marriage-is-running-on-secrets.html" data-category="Relationships" class="post-card">
           <div class="card-visual" style="background:linear-gradient(135deg,#1a0d15,#2e1a25)">
             <span style="position:relative;z-index:1;">💍</span>
@@ -727,7 +771,7 @@
           </div>
           <div class="card-body">
             <p class="card-cat">Fiction & Suspense</p>
-            <h2 class="card-title">7 YA Books with Black Protagonists About Mystery, Truth, and Identity</h2>
+            <h2 class="card-title">6 YA Books with Black Protagonists About Mystery, Truth, and Identity</h2>
             <p class="card-excerpt">Explore YA mystery, suspense, and adjacent reads with Black protagonists, from missing-person stories to books about justice and identity.</p>
             <div class="card-footer">
 
@@ -759,21 +803,6 @@
             <p class="card-cat">Writing & Culture</p>
             <h2 class="card-title">Family Secrets in Fiction: Why We Can’t Look Away</h2>
             <p class="card-excerpt">See how hidden histories, family secrets, and long-lost relatives create conflict—and what a writer can do after the reveal.</p>
-            <div class="card-footer">
-
-              <span class="card-arrow">Read →</span>
-            </div>
-          </div>
-        </a>
-
-        <a href="/blog/real-life-cases-missing-girls-of-color.html" data-category="Fiction & Suspense" class="post-card">
-          <div class="card-visual" style="background:linear-gradient(135deg,#1a0d0d,#2e1a1a)">
-            <span style="position:relative;z-index:1;">🕵️</span>
-          </div>
-          <div class="card-body">
-            <p class="card-cat">Fiction & Suspense</p>
-            <h2 class="card-title">Missing Girls of Color: What the Data Says—and What It Doesn’t</h2>
-            <p class="card-excerpt">What FBI missing-person records can tell us about missing Black girls, what the numbers cannot establish, and where families can find help.</p>
             <div class="card-footer">
 
               <span class="card-arrow">Read →</span>
@@ -813,22 +842,26 @@
 <!-- POSTS:END --></div>
 
     <p id="no-results" class="post-hidden text-center py-12" style="color:var(--muted);">
-      No articles in this category yet — check back soon.
+      No articles in this category yet. Check back soon.
     </p>
 
     <!-- NEWSLETTER -->
     <div class="newsletter-strip">
       <p class="overline" style="margin-bottom:.4rem;">Stay in the Loop</p>
       <h3>Get Updates from Corey</h3>
-      <p>New releases, behind-the-scenes notes, and reading picks — delivered straight to your inbox.</p>
-      <form class="newsletter-form" name="newsletter" data-netlify="true" onsubmit="handleSubscribe(event)">
-        <input type="hidden" name="form-name" value="newsletter" />
-        <input class="newsletter-input" type="email" name="email" placeholder="Your email address" required />
-        <button class="newsletter-btn" type="submit">Subscribe</button>
-      </form>
-      <p id="subscribe-confirm" class="post-hidden" style="color:var(--gold); margin-top:1rem; font-weight:600;">
-        ✓ You're on the list — thank you!
-      </p>
+      <p>New releases, behind-the-scenes notes, and reading picks, delivered straight to your inbox.</p>
+      <div data-signup>
+            <form class="newsletter-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubscribe(event)">
+              <input type="hidden" name="form-name" value="newsletter" />
+              <input type="hidden" name="source" value="blog" />
+              <p hidden><label>Leave this empty: <input name="bot-field"></label></p>
+              <input class="newsletter-input" type="email" name="email" placeholder="Your email address" required />
+              <button class="newsletter-btn" type="submit">Subscribe</button>
+            </form>
+            <p class="signup-privacy">No spam. Unsubscribe anytime.</p>
+            <p class="signup-ok" style="display:none;" aria-live="polite">You're in. Thanks for signing up.</p>
+            <p class="signup-err" style="display:none; color:#f0c2c2;" aria-live="polite">That didn't go through. Give it another try in a minute.</p>
+          </div>
     </div>
 
   </main>
@@ -841,6 +874,7 @@
       <p style="margin-top:.4rem;">
         <a href="../index.html">Home</a> &nbsp;·&nbsp;
         <a href="../books.html">Books</a> &nbsp;·&nbsp;
+        <a href="/black-male-romance-author/">Romance</a> &nbsp;·&nbsp;
         <a href="../blog/index.html">Blog</a> &nbsp;·&nbsp;
         <a href="../news.html">News</a> &nbsp;·&nbsp;
         <a href="../about.html">About</a> &nbsp;·&nbsp;
@@ -919,13 +953,24 @@
     function handleSubscribe(e) {
       e.preventDefault();
       var form = e.currentTarget;
+      var wrap = form.closest('[data-signup]');
+      var ok = wrap.querySelector('.signup-ok');
+      var err = wrap.querySelector('.signup-err');
+      var btn = form.querySelector('button[type=submit]');
+      btn.disabled = true;
+      err.style.display = 'none';
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(new FormData(form)).toString()
-      }).finally(function() {
+      }).then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
         form.style.display = 'none';
-        document.getElementById('subscribe-confirm').classList.remove('post-hidden');
+        ok.style.display = 'block';
+      }).catch(function () {
+        err.style.display = 'block';
+      }).finally(function () {
+        btn.disabled = false;
       });
     }
 

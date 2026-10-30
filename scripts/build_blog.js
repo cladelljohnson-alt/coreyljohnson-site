@@ -3,6 +3,47 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
 
+const HELD_BACK = new Set([
+  'african-american-ya-thrillers.html',
+  'premonitions-intuition-solving-disappearances.html',
+  'real-life-cases-missing-girls-of-color.html',
+  'why-representation-matters-ya-thrillers.html',
+]);
+
+function isHeldBack(name) {
+  return HELD_BACK.has(name) || name.startsWith('how-to-write-suspense-without-gore');
+}
+
+function ensureShareTags(html, { title, description, slug }) {
+  const canonical = `https://coreyljohnson.com/blog/${slug}`;
+  const esc = (value) => String(value).replace(/"/g, '&quot;');
+  const block = [
+    `<meta property="og:type" content="article" />`,
+    `<meta property="og:site_name" content="Corey L. Johnson" />`,
+    `<meta property="og:title" content="${esc(title)}" />`,
+    `<meta property="og:description" content="${esc(description)}" />`,
+    `<meta property="og:url" content="${canonical}" />`,
+    `<meta property="og:image" content="https://coreyljohnson.com/og-default.jpg" />`,
+    `<meta property="og:image:width" content="1200" />`,
+    `<meta property="og:image:height" content="630" />`,
+    `<meta property="og:image:alt" content="Corey L. Johnson, Black romance author, with the covers of Into You and We Can't Be Friends" />`,
+    `<meta name="twitter:card" content="summary_large_image" />`,
+    `<meta name="twitter:title" content="${esc(title)}" />`,
+    `<meta name="twitter:description" content="${esc(description)}" />`,
+    `<meta name="twitter:image" content="https://coreyljohnson.com/og-default.jpg" />`,
+  ].join('\n  ');
+  let out = html.replace(/\n?[ \t]*<meta[^>]+(?:property="og:[^"]+"|name="twitter:[^"]+")[^>]*>\s*/g, '\n');
+  if (/<link\s+rel="canonical"/i.test(out)) {
+    out = out.replace(/<link\s+rel="canonical"[^>]*>/i, `<link rel="canonical" href="${canonical}" />`);
+  } else if (/<\/head>/i.test(out)) {
+    out = out.replace(/<\/head>/i, `  <link rel="canonical" href="${canonical}" />\n</head>`);
+  }
+  if (/<\/head>/i.test(out)) {
+    out = out.replace(/<\/head>/i, `  ${block}\n</head>`);
+  }
+  return out;
+}
+
 async function main() {
   const rootDir = path.resolve(__dirname, '..');
   const draftsDir = path.join(rootDir, 'drafts');
@@ -18,15 +59,29 @@ async function main() {
   for (const entry of entries) {
     if (!entry.isFile()) continue;
     if (!entry.name.toLowerCase().endsWith('.html')) continue;
+    if (isHeldBack(entry.name)) {
+      console.warn(`Skipping held-back draft: ${entry.name}`);
+      continue;
+    }
 
     const sourcePath = path.join(draftsDir, entry.name);
     const html = await fs.readFile(sourcePath, 'utf8');
+    if (html.includes('\u2014')) {
+      console.warn(`Warning: ${entry.name} contains an em dash.`);
+    }
 
     const baseName = entry.name.replace(/\.html$/i, '');
     const baseSlug = slugify(baseName);
     const slug = ensureUniqueSlug(baseSlug, slugCounts);
     const destinationPath = path.join(blogDir, `${slug}.html`);
-    await fs.writeFile(destinationPath, html, 'utf8');
+    const titled = cleanupWhitespace(extractTitle(html) || toTitleCase(slug.replace(/-/g, ' ')));
+    const described = cleanupWhitespace(extractDescription(html) || '');
+    const withTags = ensureShareTags(html, {
+      title: titled,
+      description: described,
+      slug,
+    });
+    await fs.writeFile(destinationPath, withTags, 'utf8');
 
     const title = extractTitle(html) || toTitleCase(slug.replace(/-/g, ' '));
     const description = extractDescription(html);
@@ -188,7 +243,8 @@ async function updateIndex(indexPath, posts) {
   const endIndex = indexHtml.indexOf(endMarker);
 
   if (startIndex === -1 || endIndex === -1 || endIndex <= startIndex) {
-    throw new Error('Blog markers not found in index.html');
+    console.warn('Blog markers not found in index.html. Leaving the homepage blog section as it is.');
+    return;
   }
 
   const startLineStart = indexHtml.lastIndexOf('\n', startIndex);

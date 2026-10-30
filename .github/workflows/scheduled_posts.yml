@@ -43,7 +43,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          post="$(find drafts -maxdepth 1 -type f -name '*.html' | sort | head -n 1 || true)"
+          post="$(find drafts -maxdepth 1 -type f -name '*.html' ! -name 'african-american-ya-thrillers.html' ! -name 'premonitions-intuition-solving-disappearances.html' ! -name 'real-life-cases-missing-girls-of-color.html' ! -name 'why-representation-matters-ya-thrillers.html' ! -name 'how-to-write-suspense-without-gore*' | sort | head -n 1 || true)"
           if [ -z "${post:-}" ]; then
             echo "No draft posts to publish."
             echo "has_post=false" >> "$GITHUB_OUTPUT"

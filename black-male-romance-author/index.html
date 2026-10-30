@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
   <title>Corey L. Johnson | Black Male Romance Author</title>
   <meta name="description" content="Meet Corey L. Johnson, a Black male romance author writing funny, honest Black love stories. Explore Into You, upcoming romance, and essays on love." />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -41,6 +43,7 @@
       color: var(--ink);
       text-decoration: none;
       letter-spacing: .02em;
+      white-space: nowrap;
     }
     .nav-link {
       color: var(--muted);
@@ -64,6 +67,47 @@
       transition: border-color .2s, color .2s;
     }
     .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: #0f172a;
+      padding: .35rem .85rem;
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+    .nav-cta:hover { background: var(--gold-lt); color: #0f172a; }
+    .mobile-link-cta { color: var(--gold); font-weight: 700; }
+    .nav-amazon { display: inline-flex; align-items: center; gap: .35rem; }
+    .nav-amazon-icon { display: none; }
+    @media (min-width: 768px) and (max-width: 1180px) {
+      .nav-logo { font-size: 1.02rem; }
+      header .container { flex-wrap: nowrap; gap: .65rem; }
+      .desktop-nav { gap: .28rem; flex-wrap: nowrap; }
+      nav.space-x-7 { gap: .28rem; }
+      nav.space-x-7 > :not([hidden]) ~ :not([hidden]) { margin-left: .28rem !important; }
+      .nav-link { font-size: .72rem; letter-spacing: .02em; }
+      .nav-cta, .nav-amazon { font-size: .68rem; letter-spacing: .02em; padding: .32rem .42rem; }
+      .nav-amazon-full {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      .nav-amazon-icon { display: inline-flex; }
+      .nav-amazon { position: relative; }
+    }
+
 
     /* ── NAV DROPDOWN (click-to-open, not hover) ── */
     .nav-dropdown { position: relative; display: inline-flex; align-items: center; gap: .25rem; }
@@ -261,17 +305,29 @@
     .site-footer a:hover { color: var(--gold-lt); }
   </style>
 <link rel="canonical" href="https://coreyljohnson.com/black-male-romance-author/" />
-<meta property="og:title" content="Corey L. Johnson | Black Male Romance Author" />
-<meta property="og:description" content="Funny, honest Black love stories. Meet Corey L. Johnson and find your next romance read." />
-<meta property="og:url" content="https://coreyljohnson.com/black-male-romance-author/" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="https://coreyljohnson.com/author.png" />
-<meta name="twitter:card" content="summary_large_image" />
+
+
+
+
+
 <style>
 .landing{max-width:1100px;margin:auto;padding:4rem 1.5rem}.landing p{line-height:1.85;color:var(--muted);margin:1rem 0}.landing h1{font-size:clamp(2.4rem,5vw,4rem);line-height:1.12;margin:1rem 0}.landing h2{font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.25}.landing h3{font-size:1.6rem}.landing a:not(.btn-gold){color:var(--gold)}.landing .intro{display:grid;grid-template-columns:1.6fr 1fr;gap:3rem;align-items:center}.portrait{width:100%;border-radius:1rem}.landing section{padding:3rem 0;border-bottom:1px solid rgba(201,150,63,.2)}.landing .intro{padding-top:0}.eyebrow{text-transform:uppercase;letter-spacing:.15em;color:var(--gold)!important;font-size:.8rem}.books-row{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}.romance-book{padding:1.5rem;background:#162033;border-radius:1rem}.romance-book img{height:300px;max-width:100%;object-fit:contain;margin:0 auto 1.5rem;display:block}.actions{display:flex;gap:1.2rem;align-items:center;flex-wrap:wrap;margin-top:1.5rem}.essay-list{display:grid;gap:1rem;margin:1.5rem 0;padding-left:1.25rem}.landing a:focus-visible{outline:2px solid var(--gold);outline-offset:5px}.signup{text-align:center}@media(max-width:700px){.landing .intro,.books-row{grid-template-columns:1fr}.portrait{max-width:320px;margin:auto}.landing{padding-top:2rem}}
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfilePage", "@id": "https://coreyljohnson.com/black-male-romance-author/#page", "url": "https://coreyljohnson.com/black-male-romance-author/", "name": "Corey L. Johnson | Black Male Romance Author", "mainEntity": {"@type": "Person", "@id": "https://coreyljohnson.com/#author", "name": "Corey L. Johnson", "url": "https://coreyljohnson.com/about.html", "image": "https://coreyljohnson.com/author.png", "jobTitle": "Author", "description": "Black male author of contemporary romance, psychological suspense, and Christian fiction."}}</script>
-</head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfilePage", "@id": "https://coreyljohnson.com/black-male-romance-author/#page", "url": "https://coreyljohnson.com/black-male-romance-author/", "name": "Corey L. Johnson | Black Male Romance Author", "mainEntity": {"@type": "Person", "@id": "https://coreyljohnson.com/#author", "name": "Corey L. Johnson", "url": "https://coreyljohnson.com/about", "image": "https://coreyljohnson.com/author-800.webp", "jobTitle": "Author", "description": "Corey also writes Christian fiction, bringing the same interest in complicated relationships, family, and hard choices to the Rooted in Grace series."}}</script>
+<meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Corey L. Johnson" />
+  <meta property="og:title" content="Corey L. Johnson | Black Male Romance Author" />
+  <meta property="og:description" content="Meet Corey L. Johnson, a Black male romance author writing funny, honest Black love stories. Explore Into You, upcoming romance, and essays on love." />
+  <meta property="og:url" content="https://coreyljohnson.com/black-male-romance-author/" />
+  <meta property="og:image" content="https://coreyljohnson.com/og-default.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Corey L. Johnson, Black romance author, with the covers of Into You and We Can't Be Friends" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Corey L. Johnson | Black Male Romance Author" />
+  <meta name="twitter:description" content="Meet Corey L. Johnson, a Black male romance author writing funny, honest Black love stories. Explore Into You, upcoming romance, and essays on love." />
+  <meta name="twitter:image" content="https://coreyljohnson.com/og-default.jpg" />
+  </head>
 <body>
 
   <!-- ── NAV ── -->
@@ -285,28 +341,30 @@
           <div class="nav-dropdown-menu">
             <div class="nav-dropdown-menu-inner">
               <a href="/books.html#rooted-in-grace" class="nav-dropdown-item">Christian Fiction</a>
-              <a href="/books.html#rnb-mixtape" class="nav-dropdown-item">Romance</a>
-              <a href="/books.html#highway-51" class="nav-dropdown-item">Horror</a>
+              <a href="/books.html#rnb-mixtape" class="nav-dropdown-item">Romance Books</a>
               <a href="/books.html#standalone-novels" class="nav-dropdown-item">Standalone Novels</a>
             </div>
           </div>
         </div>
+        <a href="/black-male-romance-author/" class="nav-link active">Romance</a>
         <a href="/blog/index.html"  class="nav-link">Blog</a>
         <a href="/news.html"       class="nav-link">News</a>
         <a href="/about.html"       class="nav-link">About</a>
         <a href="/contact.html"     class="nav-link">Contact</a>
+        <a href="/#newsletter" class="nav-cta">Free Chapter</a>
         <a href="https://www.amazon.com/stores/Corey-Johnson/author/B0CTFZPKV1?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=11104394-ef31-44eb-9566-8f0ff4e64682"
-           target="_blank" rel="noopener" class="nav-amazon">Amazon</a>
+           target="_blank" rel="noopener" class="nav-amazon"><span class="nav-amazon-full">Amazon</span><svg class="nav-amazon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></a>
       </nav>
       <button id="mobile-menu-toggle" class="mobile-toggle" aria-label="Menu" aria-expanded="false">☰</button>
     </div>
     <!-- Mobile dropdown -->
     <div id="mobile-menu" class="mobile-menu">
+      <a href="/#newsletter" class="mobile-link mobile-link-cta">Free Chapter</a>
       <a href="/books.html"       class="mobile-link">Books</a>
       <a href="/books.html#rooted-in-grace" class="mobile-link mobile-sublink">Christian Fiction</a>
-      <a href="/books.html#rnb-mixtape"     class="mobile-link mobile-sublink">Romance</a>
-      <a href="/books.html#highway-51"      class="mobile-link mobile-sublink">Horror</a>
+      <a href="/books.html#rnb-mixtape"     class="mobile-link mobile-sublink">Romance Books</a>
       <a href="/books.html#standalone-novels" class="mobile-link mobile-sublink">Standalone Novels</a>
+      <a href="/black-male-romance-author/" class="mobile-link">Romance</a>
       <a href="/blog/index.html"  class="mobile-link">Blog</a>
       <a href="/news.html"        class="mobile-link">News</a>
       <a href="/about.html"       class="mobile-link">About</a>
@@ -320,25 +378,25 @@
 <section class="intro">
 <div><p class="eyebrow">Black love. Real chemistry. Complicated people.</p>
 <h1>Black Male Romance Author Corey L. Johnson</h1>
-<p>Love can be funny, frustrating, and worth the trouble. Corey L. Johnson writes contemporary Black romance about people figuring it out—with sharp humor, slow-building chemistry, and lives that don’t pause just because someone falls in love.</p>
+<p>Love can be funny, frustrating, and worth the trouble. Corey L. Johnson writes contemporary Black romance about people figuring it out, with sharp humor, slow-building chemistry, and lives that don’t pause just because someone falls in love.</p>
 <p>Based in Murfreesboro, Tennessee, Corey centers Black women and Black relationships in stories that leave room for ambition, vulnerability, family, and the choices that make love complicated.</p>
 <div class="actions"><a class="btn-gold" href="#romance-books">Find Your Next Read</a><a href="/about.html">Meet Corey →</a></div></div>
-<img class="portrait" src="/author.png" alt="Corey L. Johnson, Black male romance author" />
+<img class="portrait" src="/author-800.webp" srcset="/author-400.webp 400w, /author-800.webp 800w" sizes="(max-width: 700px) 280px, 380px" alt="Corey L. Johnson, Black male romance author" width="800" height="1202" decoding="async" />
 </section>
 <section><p class="eyebrow">The stories</p><h2>Black romance with humor, heart, and unfinished business</h2>
-<p>Corey’s romance puts Black couples at the center of the story. The attraction matters, but so do the conversations, the history, and the decisions that come after it. His characters have careers, opinions, and something to lose. They can get in their own way—and still have you rooting for them.</p>
+<p>Corey’s romance puts Black couples at the center of the story. The attraction matters, but so do the conversations, the history, and the decisions that come after it. His characters have careers, opinions, and something to lose. They can get in their own way and still have you rooting for them.</p>
 <p>If you enjoy slow-burn tension, enemies-to-lovers chemistry, and grown-up relationships with room for laughter, start with <em>Into You</em>.</p></section>
-<section id="romance-books"><p class="eyebrow">The R&amp;B Mixtape Series</p><h2>Explore Corey’s romance books</h2>
+<section id="romance-books"><p class="eyebrow">Corey's Romance</p><h2>Explore Corey’s romance books</h2>
 <p>Each book stands on its own. No reading order required.</p><div class="books-row">
-<article class="romance-book"><img src="/book3.png" alt="Into You book cover by Corey L. Johnson" loading="lazy" /><p class="eyebrow">Available now · Slow burn · Enemies to lovers</p><h3>Into You</h3><p>She plans weddings. He ends marriages. When their worlds collide, the tension is electric. A slow-burn enemies-to-lovers romance that proves love doesn’t always follow the plan.</p><a class="btn-gold" href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener">Read Into You on Amazon</a></article>
-<article class="romance-book"><img src="/book8.png" alt="We Can't Be Friends book cover by Corey L. Johnson" loading="lazy" /><p class="eyebrow">Coming soon</p><h3>We Can’t Be Friends</h3><p>Childhood friendship. Unfinished business. Another chance at love. Look for Corey’s upcoming romance in the R&amp;B Mixtape Series.</p><a href="/about.html#newsletter">Get release updates →</a></article></div></section>
+<article class="romance-book"><img src="/book3-600.jpg" srcset="/book3-600.webp 600w, /book3-900.webp 900w" sizes="240px" alt="Cover of Into You by Corey L. Johnson" width="600" height="902" loading="lazy" decoding="async" /><p class="eyebrow">Available now · Slow burn · Enemies to lovers</p><h3>Into You</h3><p>She plans weddings. He ends marriages. When their worlds collide, the tension is electric. A slow-burn enemies-to-lovers romance that proves love doesn’t always follow the plan.</p><a class="btn-gold" href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener">Read Into You on Amazon</a></article>
+<article class="romance-book"><img src="/book8-600.jpg" srcset="/book8-600.webp 600w, /book8-900.webp 900w" sizes="240px" alt="Cover of We Can't Be Friends by Corey L. Johnson" width="600" height="900" loading="lazy" decoding="async" /><p class="eyebrow">Coming soon</p><h3>We Can’t Be Friends</h3><p>Childhood friendship. Unfinished business. Another chance at love. Coming soon. Read chapter 1 free.</p><a href="/#newsletter">Read Chapter 1 Free</a></article></div></section>
 <section><h2>A Black man writing Black love</h2><p>For Corey, writing romance means giving Black women room to be fully realized people: funny, imperfect, ambitious, loved, and chosen. His essays explore that approach, along with the vulnerability and honest conversations that shape relationships.</p><ul class="essay-list">
 <li><a href="/blog/black-male-romance-authors.html">Black Male Romance Authors to Read in 2026</a></li>
 <li><a href="/blog/why-i-write-black-men-loving-black-women.html">Why I Write Black Men Loving Black Women</a></li>
 <li><a href="/blog/my-love-letter-to-black-women.html">My Love Letter to Black Women</a></li>
 <li><a href="/blog/what-black-men-think-about-love.html">What Black Men Actually Think About Love (But Rarely Say Out Loud)</a></li></ul><a href="/blog/">Explore Between the Lines, Corey’s blog →</a></section>
-<section><h2>Beyond romance</h2><p>Corey also writes psychological suspense and Christian fiction, bringing his interest in complicated relationships, family, and consequential choices to stories across genres.</p><div class="actions"><a href="/books.html">Browse all books →</a><a href="/about.html">Read Corey’s full biography →</a></div></section>
-<section class="signup"><p class="eyebrow">Stay in the loop</p><h2>Your next love story starts here</h2><p>Get new-release updates, behind-the-scenes notes, and reading picks from Corey.</p><a class="btn-gold" href="/about.html#newsletter">Join Corey’s Newsletter</a></section>
+<section><h2>Beyond romance</h2><p>Corey also writes Christian fiction, bringing the same interest in complicated relationships, family, and hard choices to the Rooted in Grace series.</p><div class="actions"><a href="/books.html">Browse all books →</a><a href="/about.html">Read Corey’s full biography →</a></div></section>
+<section class="signup"><p class="eyebrow">Stay in the loop</p><h2>Your next love story starts here</h2><p>Get new-release updates, behind-the-scenes notes, and reading picks from Corey.</p><a class="btn-gold" href="/#newsletter">Join Corey’s Newsletter</a></section>
 </main>
   <footer class="site-footer">
     <div class="container mx-auto px-6">
@@ -346,6 +404,7 @@
       <p style="margin-bottom:.75rem;">
         <a href="/index.html">Home</a> &nbsp;·&nbsp;
         <a href="/books.html">Books</a> &nbsp;·&nbsp;
+        <a href="/black-male-romance-author/">Romance</a> &nbsp;·&nbsp;
         <a href="/blog/index.html">Blog</a> &nbsp;·&nbsp;
         <a href="/news.html">News</a> &nbsp;·&nbsp;
         <a href="/about.html">About</a> &nbsp;·&nbsp;
@@ -398,13 +457,24 @@
     function handleSubscribe(e) {
       e.preventDefault();
       var form = e.currentTarget;
+      var wrap = form.closest('[data-signup]');
+      var ok = wrap.querySelector('.signup-ok');
+      var err = wrap.querySelector('.signup-err');
+      var btn = form.querySelector('button[type=submit]');
+      btn.disabled = true;
+      err.style.display = 'none';
       fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(new FormData(form)).toString()
-      }).finally(function() {
+      }).then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
         form.style.display = 'none';
-        document.getElementById('subscribe-confirm').style.display = 'block';
+        ok.style.display = 'block';
+      }).catch(function () {
+        err.style.display = 'block';
+      }).finally(function () {
+        btn.disabled = false;
       });
     }
   </script>
