@@ -23,14 +23,14 @@ function ensureShareTags(html, { title, description, slug }) {
     `<meta property="og:title" content="${esc(title)}" />`,
     `<meta property="og:description" content="${esc(description)}" />`,
     `<meta property="og:url" content="${canonical}" />`,
-    `<meta property="og:image" content="https://coreyljohnson.com/og-default.jpg" />`,
+    `<meta property="og:image" content="https://coreyljohnson.com/og-default-2026.jpg" />`,
     `<meta property="og:image:width" content="1200" />`,
     `<meta property="og:image:height" content="630" />`,
     `<meta property="og:image:alt" content="Corey L. Johnson, Black romance author, with the covers of Into You and We Can't Be Friends" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${esc(title)}" />`,
     `<meta name="twitter:description" content="${esc(description)}" />`,
-    `<meta name="twitter:image" content="https://coreyljohnson.com/og-default.jpg" />`,
+    `<meta name="twitter:image" content="https://coreyljohnson.com/og-default-2026.jpg" />`,
   ].join('\n  ');
   let out = html.replace(/\n?[ \t]*<meta[^>]+(?:property="og:[^"]+"|name="twitter:[^"]+")[^>]*>\s*/g, '\n');
   if (/<link\s+rel="canonical"/i.test(out)) {
