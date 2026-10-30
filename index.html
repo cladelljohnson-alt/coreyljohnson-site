@@ -9,7 +9,9 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
   <title>Corey L. Johnson | Black Romance Author of Into You</title>
   <meta name="description" content="Corey L. Johnson writes slow-burn Black romance, plus faith-based fiction. Read chapter 1 of We Can't Be Friends free." />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
@@ -546,6 +548,29 @@
     .romance-actions { display: flex; flex-wrap: wrap; gap: .75rem 1.2rem; align-items: center; margin-top: auto; }
     .text-link { color: var(--gold); font-weight: 600; text-decoration: none; }
     .text-link:hover { color: var(--gold-lt); }
+    .format-availability { color: var(--ink); margin: 0; }
+    .format-actions { display: flex; flex-wrap: wrap; gap: .35rem .85rem; align-items: center; margin-top: auto; }
+    .book-teaser-item .format-actions { justify-content: center; }
+    .format-actions .btn-gold,
+    .romance-actions .btn-gold,
+    .romance-actions .format-extra,
+    .format-extra {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .format-extra {
+      color: var(--gold);
+      font-weight: 700;
+      font-size: .75rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0 .15rem;
+    }
+    .format-extra:hover { color: var(--gold-lt); }
+    a.cover-link { display: block; color: inherit; text-decoration: none; }
     .book-teaser-item { text-align: center; }
     .book-teaser-item .overline { margin-top: .15rem; }
     .teaser-line { font-size: .9rem; line-height: 1.6; margin: .4rem 0 .85rem; }
@@ -621,7 +646,7 @@
         <a href="news.html"       class="nav-link">News</a>
         <a href="about.html"       class="nav-link">About</a>
         <a href="contact.html"     class="nav-link">Contact</a>
-        <a href="#newsletter" class="nav-cta">Free Chapter</a>
+        <a href="/chapter-one/" class="nav-cta">Free Chapter</a>
         <a href="https://www.amazon.com/stores/Corey-Johnson/author/B0CTFZPKV1?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=11104394-ef31-44eb-9566-8f0ff4e64682"
            target="_blank" rel="noopener" class="nav-amazon"><span class="nav-amazon-full">Amazon</span><svg class="nav-amazon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></a>
       </nav>
@@ -629,7 +654,7 @@
     </div>
     <!-- Mobile dropdown -->
     <div id="mobile-menu" class="mobile-menu">
-      <a href="#newsletter" class="mobile-link mobile-link-cta">Free Chapter</a>
+      <a href="/chapter-one/" class="mobile-link mobile-link-cta">Free Chapter</a>
       <a href="books.html"       class="mobile-link">Books</a>
       <a href="books.html#rooted-in-grace" class="mobile-link mobile-sublink">Christian Fiction</a>
       <a href="books.html#rnb-mixtape"     class="mobile-link mobile-sublink">Romance Books</a>
@@ -656,7 +681,7 @@
         </p>
         <div id="hero-ctas" style="display: flex; gap: 1rem; flex-wrap: wrap;">
           <a href="books.html" class="btn-gold">Explore Books</a>
-          <a href="#newsletter" class="btn-outline-gold">Read Chapter 1 Free</a>
+          <a href="/chapter-one/" class="btn-outline-gold">Read Chapter 1 Free</a>
         </div>
       </div>
     </div>
@@ -701,17 +726,18 @@
       </div>
       <div class="romance-grid">
         <article class="card romance-card">
+          <a class="cover-link" href="https://www.amazon.com/dp/B0GSMSW6JW" target="_blank" rel="noopener" aria-label="Kindle edition of Into You">
           <picture>
             <source type="image/webp" srcset="book3-600.webp 600w, book3-900.webp 900w" sizes="(max-width: 800px) 70vw, 280px">
             <img src="book3-600.jpg" alt="Cover of Into You by Corey L. Johnson" width="600" height="902" decoding="async" />
           </picture>
+          </a>
           <p class="overline">Slow-Burn Romance · Standalone</p>
           <h3>Into You</h3>
           <p>She plans weddings. He ends marriages. When their worlds collide, the tension is electric. A slow-burn enemies-to-lovers romance that proves love doesn't always follow the plan.</p>
-          <p>Available now on Amazon and Kindle+.</p>
+          <p class="format-availability">Available now on Amazon and Kindle+.</p>
           <div class="romance-actions">
-            <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener" class="btn-gold">Get Into You on Amazon</a>
-            <a href="https://www.audible.com/pd/Into-You-Audiobook/B0GTK1K9KM" target="_blank" rel="noopener" class="text-link">Listen on Audible</a>
+            <a href="https://www.amazon.com/dp/B0GSMSW6JW" target="_blank" rel="noopener" class="btn-gold">Kindle</a>
           </div>
         </article>
         <article class="card romance-card">
@@ -723,7 +749,7 @@
           <h3>We Can't Be Friends</h3>
           <p>Imani's family creamery is on the line. The best friend she hasn't talked to in ten years just moved in upstairs.</p>
           <div class="romance-actions">
-            <a href="#newsletter" class="btn-gold">Read Chapter 1 Free</a>
+            <a href="/chapter-one/" class="btn-gold">Read Chapter 1 Free</a>
           </div>
         </article>
       </div>
@@ -740,34 +766,50 @@
       </div>
       <div class="book-teaser-grid" style="margin-bottom: 2.5rem;">
         <div class="book-teaser-item">
+          <a class="cover-link" href="https://www.amazon.com/dp/B0C19LWJL7" target="_blank" rel="noopener" aria-label="Kindle edition of The Grass Is Always Greener">
           <picture>
             <source type="image/webp" srcset="book1-600.webp 600w, book1-900.webp 900w" sizes="(max-width: 768px) 80vw, 320px">
             <img src="book1-600.jpg" alt="Cover of The Grass Is Always Greener" width="600" height="901" loading="lazy" decoding="async" />
           </picture>
+          </a>
           <p class="overline">Book 1</p>
           <span>The Grass Is Always Greener</span>
           <p class="teaser-line">A heartfelt tale of family secrets and second chances set in the American South, where faith and resilience light the path through grief and redemption.</p>
-          <a href="https://a.co/d/bIOYPL0" target="_blank" rel="noopener" class="btn-gold">View on Amazon</a>
+          <p class="format-availability">Available now on Amazon and Kindle+.</p>
+          <div class="format-actions">
+            <a href="https://www.amazon.com/dp/B0C19LWJL7" target="_blank" rel="noopener" class="btn-gold">Kindle</a>
+            <a href="https://www.amazon.com/dp/B0CYM5BLY4" target="_blank" rel="noopener" class="format-extra">Paperback</a>
+          </div>
         </div>
         <div class="book-teaser-item">
+          <a class="cover-link" href="https://www.amazon.com/dp/B0H8QKXGZP" target="_blank" rel="noopener" aria-label="Kindle edition of The Seeds We Sow">
           <picture>
             <source type="image/webp" srcset="book7-600.webp 600w, book7-900.webp 900w" sizes="(max-width: 768px) 80vw, 320px">
             <img src="book7-600.jpg" alt="Cover of The Seeds We Sow by Corey L. Johnson" width="600" height="960" loading="lazy" decoding="async" />
           </picture>
+          </a>
           <p class="overline">Book 2</p>
           <span>The Seeds We Sow</span>
           <p class="teaser-line">Five years after walking out of her own wedding, Julie has rebuilt a guarded new life in Memphis, until Mark Baxter, the man she left behind, walks back into it.</p>
-          <a href="https://a.co/d/05ZYHq6i" target="_blank" rel="noopener" class="btn-gold">View on Amazon</a>
+          <p class="format-availability">Available now on Amazon and Kindle+.</p>
+          <div class="format-actions">
+            <a href="https://www.amazon.com/dp/B0H8QKXGZP" target="_blank" rel="noopener" class="btn-gold">Kindle</a>
+          </div>
         </div>
         <div class="book-teaser-item">
+          <a class="cover-link" href="https://a.co/d/0iRS62Hp" target="_blank" rel="noopener" aria-label="Kindle edition of Ain't No Going Back">
           <picture>
             <source type="image/webp" srcset="book4-600.webp 600w, book4-900.webp 900w" sizes="(max-width: 768px) 80vw, 320px">
             <img src="book4-600.jpg" alt="Cover of Ain't No Going Back" width="600" height="900" loading="lazy" decoding="async" />
           </picture>
+          </a>
           <p class="overline">Standalone Novel</p>
           <span>Ain't No Going Back</span>
           <p class="teaser-line">A bold story about the courage it takes to walk away, move forward, and finally choose yourself, even when everything pulls you back.</p>
-          <a href="https://a.co/d/0iRS62Hp" target="_blank" rel="noopener" class="btn-gold">View on Amazon</a>
+          <p class="format-availability">Available now on Amazon and Kindle+.</p>
+          <div class="format-actions">
+            <a href="https://a.co/d/0iRS62Hp" target="_blank" rel="noopener" class="btn-gold">Kindle</a>
+          </div>
         </div>
       </div>
       <div class="text-center">
@@ -837,6 +879,14 @@
         <a href="about.html">About</a> &nbsp;·&nbsp;
         <a href="contact.html">Contact</a>
       </p>
+      <nav class="footer-social" aria-label="Social">
+        <a href="https://www.instagram.com/authorcoreyljohnson/" target="_blank" rel="noopener" aria-label="Corey on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+        <a href="https://www.threads.net/@authorcoreyljohnson" target="_blank" rel="noopener" aria-label="Corey on Threads"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 10.5c.3-2.2 1.8-3.7 4-3.7 2.4 0 3.8 1.6 3.8 4.2v.6c0 3.4-2.2 5.6-5.6 5.6-3.2 0-5.4-2.2-5.4-5.4"/><path d="M12.2 11.2c-1.6 0-2.6.9-2.6 2.2 0 1.2.8 2 2.1 2 1.6 0 2.6-1 2.6-2.6v-.4"/><path d="M8.2 8.6c.8-1.4 2.2-2.2 3.8-2.2"/></svg><span>Threads</span></a>
+        <a href="https://www.facebook.com/share/19dPDpoAgr/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Corey on Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15 8h2V5h-2c-2.2 0-4 1.8-4 4v2H9v3h2v7h3v-7h2.2l.8-3H14V9c0-.6.4-1 1-1z"/></svg><span>Facebook</span></a>
+        <a href="https://www.tiktok.com/@authorcoreyljohnson" target="_blank" rel="noopener" aria-label="Corey on TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 4v10.2a3.2 3.2 0 1 1-2.4-3.1V8.6a5.7 5.7 0 1 0 4.4 5.5V8.4c1.2.7 2.5 1.1 4 1.1V7.1c-1.5 0-2.9-.6-4-1.6V4h-2z"/></svg><span>TikTok</span></a>
+        <a href="https://www.amazon.com/author/coreyljohnson" target="_blank" rel="noopener" aria-label="Corey on Amazon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 15.5c2.4 1.8 5 2.7 8 2.7 2.6 0 4.8-.6 6.8-1.9"/><path d="M16.8 15.2l3.4.5-.8 2.6"/></svg><span>Amazon</span></a>
+      </nav>
+
       <p>&copy; <span id="year"></span> Corey L. Johnson. All rights reserved.</p>
     </div>
   </footer>

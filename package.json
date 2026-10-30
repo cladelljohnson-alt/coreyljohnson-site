@@ -3,8 +3,12 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
+    "build-css": "tailwindcss -i src/tailwind.css -o assets/site.css --minify",
     "build-blog": "node scripts/build_blog.js",
     "build-blog-index": "node scripts/build_blog_index.js",
     "build-sitemap": "node scripts/build_sitemap.js"
+  },
+  "devDependencies": {
+    "tailwindcss": "3.4.17"
   }
 }

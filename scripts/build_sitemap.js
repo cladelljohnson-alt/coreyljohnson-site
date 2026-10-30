@@ -12,6 +12,7 @@ const pages = [
   'contact.html',
   'black-male-romance-author/index.html',
   'blog/index.html',
+  'chapter-one/index.html',
 ];
 const posts = JSON.parse(fs.readFileSync(path.join(root, 'blog/posts.json'), 'utf8'));
 pages.push(...posts.map(post => post.href));

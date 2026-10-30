@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Footer social row. Icons on every page, text labels on small screens. */
+.footer-social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: .15rem .25rem;
+  margin: .15rem 0 .85rem;
+}
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .35rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: .2rem .4rem;
+  color: #e8b96a;
+  text-decoration: none;
+  font-family: Inter, sans-serif;
+  font-size: .72rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+.footer-social a:hover { color: #c9963f; }
+.footer-social a:focus-visible {
+  outline: 2px solid #e8b96a;
+  outline-offset: 2px;
+}
+.footer-social svg { display: block; flex: 0 0 auto; }
+@media (min-width: 701px) {
+  .footer-social span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
