@@ -12,36 +12,45 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/assets/site.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --gold:       #c9963f;
-      --gold-lt:    #e8b96a;
-      --gold-border: rgba(201,150,63,0.25);
-      --page:       #0f172a;
-      --card:       #162033;
-      --ink:        #e5e7eb;
-      --muted:      #94a3b8;
+      --gold:       #f6ecdb;
+      --gold-lt:    #fffdf7;
+      --gold-border: rgba(246,236,219,0.25);
+      --page:       #1a100b;
+      --card:       #2b2118;
+      --ink:        #f6ecdb;
+      --muted:      #c4a484;
     }
+    /* Phase 3: labels and buttons in Barlow Condensed; logo uppercase */
+    .nav-logo { text-transform: uppercase; letter-spacing: .06em; }
+    .nav-link, .nav-cta, .nav-amazon, .mobile-link-cta,
+    .btn-gold, .btn-outline, .btn-outline-gold, .btn-primary,
+    .newsletter-btn, .book-item-btn, .chap-btn, .book-overlay-btn,
+    button, input[type="submit"] {
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+
 
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       background: var(--page);
       color: var(--muted);
       -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--ink); }
+    h1, h2, h3, h4 { text-transform: uppercase; letter-spacing: .035em; font-family: 'Barlow Condensed', sans-serif; color: var(--ink); }
 
     /* ── SHARED NAV ── */
     .site-nav {
-      background: rgba(15,23,42,0.88);
+      background: rgba(26,16,11,0.88);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--gold-border);
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.35rem;
       color: var(--ink);
       text-decoration: none;
@@ -73,7 +82,7 @@
 
     .nav-cta {
       background: var(--gold);
-      color: #0f172a;
+      color: #1a100b;
       padding: .35rem .85rem;
       border-radius: 999px;
       font-size: .8rem;
@@ -84,7 +93,7 @@
       white-space: nowrap;
       line-height: 1.2;
     }
-    .nav-cta:hover { background: var(--gold-lt); color: #0f172a; }
+    .nav-cta:hover { background: var(--gold-lt); color: #1a100b; }
     .mobile-link-cta { color: var(--gold); font-weight: 700; }
     .nav-amazon { display: inline-flex; align-items: center; gap: .35rem; }
     .nav-amazon-icon { display: none; }
@@ -146,7 +155,7 @@
     }
     .nav-dropdown-menu-inner {
       min-width: 190px;
-      background: rgba(11,18,32,.98);
+      background: rgba(21,13,8,.98);
       border: 1px solid var(--gold-border);
       border-radius: .6rem;
       padding: .4rem;
@@ -165,7 +174,7 @@
       white-space: nowrap;
       transition: background .15s, color .15s;
     }
-    .nav-dropdown-item:hover { background: rgba(201,150,63,.1); color: var(--gold-lt); }
+    .nav-dropdown-item:hover { background: rgba(246,236,219,.1); color: var(--gold-lt); }
 
     /* ── DESKTOP / MOBILE NAV TOGGLE ── */
     .desktop-nav { display: flex; gap: 1.75rem; align-items: center; }
@@ -182,7 +191,7 @@
     .mobile-menu {
       display: none;
       flex-direction: column;
-      background: rgba(15,23,42,0.97);
+      background: rgba(26,16,11,0.97);
       border-top: 1px solid var(--gold-border);
       padding: .5rem 1.5rem 1rem;
     }
@@ -194,7 +203,7 @@
       letter-spacing: .06em;
       text-transform: uppercase;
       padding: .9rem .25rem;
-      border-bottom: 1px solid rgba(201,150,63,0.12);
+      border-bottom: 1px solid rgba(246,236,219,0.12);
     }
     .mobile-link:last-child { border-bottom: none; }
     .mobile-link-amazon { color: var(--gold); }
@@ -222,7 +231,7 @@
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, rgba(15,23,42,.94) 0%, rgba(15,23,42,.72) 55%, rgba(15,23,42,.4) 100%);
+      background: linear-gradient(to right, rgba(26,16,11,.94) 0%, rgba(26,16,11,.72) 55%, rgba(26,16,11,.4) 100%);
     }
     @media (max-width: 767px) {
       .hero {
@@ -244,7 +253,7 @@
       line-height: 1.12;
       color: #fff;
     }
-    .hero p { color: rgba(229,231,235,.85); font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.7; }
+    .hero p { color: rgba(246,236,219,.85); font-size: clamp(1rem, 2vw, 1.25rem); line-height: 1.7; }
 
     /* ── GOLD BUTTONS ── */
     .btn-gold {
@@ -252,8 +261,8 @@
       padding: .75rem 2rem;
       border-radius: 999px;
       background: var(--gold);
-      color: #0f172a;
-      font-family: 'Inter', sans-serif;
+      color: #1a100b;
+      font-family: 'Libre Baskerville', serif;
       font-weight: 700;
       font-size: .85rem;
       letter-spacing: .08em;
@@ -269,7 +278,7 @@
       border-radius: 999px;
       border: 1.5px solid var(--gold);
       color: var(--gold);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       font-weight: 700;
       font-size: .85rem;
       letter-spacing: .08em;
@@ -277,7 +286,7 @@
       text-decoration: none;
       transition: background .2s, color .2s, transform .15s;
     }
-    .btn-outline-gold:hover { background: var(--gold); color: #0f172a; transform: translateY(-2px); }
+    .btn-outline-gold:hover { background: var(--gold); color: #1a100b; transform: translateY(-2px); }
 
     /* ── CARDS ── */
     .card {
@@ -288,7 +297,7 @@
 
     /* ── OVERLINE / LABELS ── */
     .overline {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       font-size: .7rem;
       font-weight: 700;
       letter-spacing: .2em;
@@ -328,13 +337,13 @@
 
     .spotlight-badge {
       display: inline-block;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       font-size: .65rem;
       font-weight: 700;
       letter-spacing: .15em;
       text-transform: uppercase;
       background: var(--gold);
-      color: #0f172a;
+      color: #1a100b;
       padding: .3rem .9rem;
       border-radius: 999px;
       margin-bottom: 1rem;
@@ -371,7 +380,7 @@
       margin-bottom: .75rem;
     }
     .book-teaser-item span {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 1rem;
       color: var(--ink);
       line-height: 1.3;
@@ -390,9 +399,9 @@
       text-decoration: none;
     }
     .blog-card:hover {
-      box-shadow: 0 12px 40px rgba(201,150,63,.1);
+      box-shadow: 0 12px 40px rgba(246,236,219,.1);
       transform: translateY(-3px);
-      border-color: rgba(201,150,63,.45);
+      border-color: rgba(246,236,219,.45);
     }
     .blog-card h3 { font-size: 1.1rem; color: var(--ink); line-height: 1.35; margin-bottom: .6rem; }
     .blog-card p { font-size: .9rem; color: var(--muted); line-height: 1.65; flex-grow: 1; margin-bottom: 1rem; }
@@ -419,7 +428,7 @@
 
     /* ── NEWSLETTER STRIP ── */
     .newsletter-strip {
-      background: linear-gradient(135deg, #162033, #1e2a40);
+      background: linear-gradient(135deg, #2b2118, #241a12);
       border: 1px solid var(--gold-border);
       border-radius: .75rem;
       padding: 3rem 2rem;
@@ -445,7 +454,7 @@
       padding: .7rem 1.6rem;
       border-radius: 999px;
       background: var(--gold);
-      color: #0f172a;
+      color: #1a100b;
       font-weight: 700;
       font-size: .85rem;
       letter-spacing: .06em;
@@ -478,7 +487,7 @@
     }
     .book-cover-wrap .gleam {
       position: absolute; inset: 0;
-      background: radial-gradient(180px 180px at var(--mx) var(--my), rgba(232,185,106,.35), transparent 60%);
+      background: radial-gradient(180px 180px at var(--mx) var(--my), rgba(255,253,247,.35), transparent 60%);
       opacity: var(--lift);
       transition: opacity .4s ease;
       mix-blend-mode: soft-light;
@@ -487,7 +496,7 @@
     .book-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(11,18,32,.8);
+      background: rgba(21,13,8,.8);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -501,8 +510,8 @@
       padding: .6rem 1.4rem;
       border-radius: 999px;
       background: var(--gold);
-      color: #0f172a;
-      font-family: 'Inter', sans-serif;
+      color: #1a100b;
+      font-family: 'Libre Baskerville', serif;
       font-weight: 700;
       font-size: .75rem;
       letter-spacing: .1em;
@@ -602,7 +611,7 @@
       text-align: center;
       color: var(--muted);
       font-size: .8rem;
-      background: #0a1020;
+      background: #120b06;
     }
     .site-footer a { color: var(--gold); text-decoration: none; transition: color .2s; }
     .site-footer a:hover { color: var(--gold-lt); }
@@ -757,7 +766,7 @@
   </section>
 
   <!-- ── FAITH AND FAMILY ── -->
-  <section class="faith-row" style="padding: 4.5rem 0; background: #0a1020;">
+  <section class="faith-row" style="padding: 4.5rem 0; background: #120b06;">
     <div class="container mx-auto px-6">
       <div class="text-center" style="margin-bottom: 2.25rem;">
         <span class="overline">Faith &amp; Family</span>
@@ -846,7 +855,7 @@
   </section>
 
   <!-- ── ABOUT TEASER ── -->
-  <section class="about-block" style="padding: 5rem 0; background: #0a1020;">
+  <section class="about-block" style="padding: 5rem 0; background: #120b06;">
     <div class="container mx-auto px-6">
       <div class="about-teaser fade-in">
         <picture>
@@ -870,7 +879,7 @@
   <!-- ── FOOTER ── -->
   <footer class="site-footer">
     <div class="container mx-auto px-6">
-      <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--ink); margin-bottom:.75rem;">Corey L. Johnson</p>
+      <p style="font-family: 'Barlow Condensed', sans-serif; font-size:1.1rem; color:var(--ink); margin-bottom:.75rem;">Corey L. Johnson</p>
       <p style="margin-bottom:.75rem;">
         <a href="books.html">Books</a> &nbsp;·&nbsp;
         <a href="/black-male-romance-author/">Romance</a> &nbsp;·&nbsp;
