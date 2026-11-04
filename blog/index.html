@@ -15,13 +15,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --gold:    #f6ecdb;
-      --gold-lt: #fffdf7;
+      --gold:    #c9963f;
+      --gold-lt: #e8b96a;
       --ink:     #f6ecdb;
       --muted:   #c4a484;
       --page:    #1a100b;
       --card:    #2b2118;
-      --border:  rgba(246,236,219,0.18);
+      --border:  rgba(201,150,63,0.18);
     }
     /* Phase 3: labels and buttons in Barlow Condensed; logo uppercase */
     .nav-logo { text-transform: uppercase; letter-spacing: .06em; }
@@ -84,7 +84,7 @@
     .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
 
     .nav-cta {
-      background: var(--gold);
+      background: #f6ecdb;
       color: #1a100b;
       padding: .35rem .85rem;
       border-radius: 999px;
@@ -96,7 +96,7 @@
       white-space: nowrap;
       line-height: 1.2;
     }
-    .nav-cta:hover { background: var(--gold-lt); color: #1a100b; }
+    .nav-cta:hover { background: #fffdf7; color: #1a100b; }
     .mobile-link-cta { color: var(--gold); font-weight: 700; }
     .nav-amazon { display: inline-flex; align-items: center; gap: .35rem; }
     .nav-amazon-icon { display: none; }
@@ -187,7 +187,8 @@
     }
 
     .overline {
-      font-size: .7rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .85rem;
       letter-spacing: .2em;
       text-transform: uppercase;
       color: var(--gold);
@@ -508,7 +509,7 @@
     .newsletter-btn {
       padding: .7rem 1.6rem;
       border-radius: 999px;
-      background: var(--gold);
+      background: #f6ecdb;
       color: #1a100b;
       font-weight: 700;
       font-size: .85rem;
@@ -519,7 +520,7 @@
       transition: background .2s, transform .15s;
       white-space: nowrap;
     }
-    .newsletter-btn:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .newsletter-btn:hover { background: #fffdf7; transform: translateY(-1px); }
 
     /* ── FOOTER ── */
     footer {

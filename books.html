@@ -15,9 +15,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --gold:       #f6ecdb;
-      --gold-lt:    #fffdf7;
-      --gold-border: rgba(246,236,219,0.25);
+      --gold:       #c9963f;
+      --gold-lt:    #e8b96a;
+      --gold-border: rgba(201,150,63,0.25);
       --page:       #1a100b;
       --card:       #2b2118;
       --ink:        #f6ecdb;
@@ -88,7 +88,7 @@
     .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
 
     .nav-cta {
-      background: var(--gold);
+      background: #f6ecdb;
       color: #1a100b;
       padding: .35rem .85rem;
       border-radius: 999px;
@@ -100,7 +100,7 @@
       white-space: nowrap;
       line-height: 1.2;
     }
-    .nav-cta:hover { background: var(--gold-lt); color: #1a100b; }
+    .nav-cta:hover { background: #fffdf7; color: #1a100b; }
     .mobile-link-cta { color: var(--gold); font-weight: 700; }
     .nav-amazon { display: inline-flex; align-items: center; gap: .35rem; }
     .nav-amazon-icon { display: none; }
@@ -228,8 +228,8 @@
       text-align: center;
     }
     .overline {
-      font-family: 'Libre Baskerville', serif;
-      font-size: .7rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .85rem;
       font-weight: 700;
       letter-spacing: .2em;
       text-transform: uppercase;
@@ -246,7 +246,7 @@
       display: inline-block;
       padding: .75rem 2rem;
       border-radius: 999px;
-      background: var(--gold);
+      background: #f6ecdb;
       color: #1a100b;
       font-family: 'Libre Baskerville', serif;
       font-weight: 700;
@@ -256,7 +256,7 @@
       text-decoration: none;
       transition: background .2s, transform .15s;
     }
-    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .btn-gold:hover { background: #fffdf7; transform: translateY(-2px); }
 
     /* ── FEATURED SPOTLIGHT ── */
     .book-spotlight {
@@ -441,7 +441,7 @@
     .newsletter-form { display: flex; gap: .5rem; flex-wrap: wrap; }
     .newsletter-input { flex: 1; min-width: 0; padding: .7rem 1.1rem; border-radius: 999px; border: 1px solid var(--gold-border); background: rgba(255,255,255,.05); color: var(--ink); font-size: .9rem; outline: none; }
     .newsletter-input:focus { border-color: var(--gold); }
-    .newsletter-btn { min-height: 44px; padding: .7rem 1.4rem; border-radius: 999px; background: var(--gold); color: #1a100b; font-weight: 700; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; border: none; cursor: pointer; }
+    .newsletter-btn { min-height: 44px; padding: .7rem 1.4rem; border-radius: 999px; background: #f6ecdb; color: #1a100b; font-weight: 700; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; border: none; cursor: pointer; }
     .newsletter-btn:disabled { opacity: .65; cursor: wait; }
     .signup-offer h2 { font-size: clamp(1.45rem, 3vw, 1.9rem); margin: .3rem 0 .55rem; }
     .signup-layout { display: grid; grid-template-columns: 140px 1fr; gap: 1.4rem; align-items: center; }
