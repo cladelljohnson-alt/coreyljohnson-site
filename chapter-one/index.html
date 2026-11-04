@@ -13,35 +13,44 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="/assets/site.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="preload" as="image" href="/we-cant-be-friends-2026-600.webp" type="image/webp" />
   <style>
     :root {
       --gold: #c9963f;
       --gold-lt: #e8b96a;
-      --ink: #e5e7eb;
-      --muted: #cbd5e1;
-      --page: #0f172a;
+      --ink: #f6ecdb;
+      --muted: #e9dcc3;
+      --page: #1a100b;
     }
+    /* Phase 3: labels and buttons in Barlow Condensed; logo uppercase */
+    .nav-logo { text-transform: uppercase; letter-spacing: .06em; }
+    .nav-link, .nav-cta, .nav-amazon, .mobile-link-cta,
+    .btn-gold, .btn-outline, .btn-outline-gold, .btn-primary,
+    .newsletter-btn, .book-item-btn, .chap-btn, .book-overlay-btn,
+    button, input[type="submit"] {
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+
     *, *::before, *::after { box-sizing: border-box; }
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Inter, sans-serif;
+      font-family: 'Libre Baskerville', serif;
       color: var(--muted);
       background:
         radial-gradient(880px 420px at 12% 0%, rgba(140, 47, 63, .5), transparent 62%),
         var(--page);
       -webkit-font-smoothing: antialiased;
     }
-    h1 { font-family: 'Playfair Display', serif; color: var(--ink); }
+    h1 { font-family: 'Barlow Condensed', sans-serif; color: var(--ink); }
     a:focus-visible, button:focus-visible, input:focus-visible {
       outline: 2px solid var(--gold-lt);
       outline-offset: 2px;
     }
     .chap-header { padding: .7rem 1.15rem .2rem; }
     .chap-logo {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Barlow Condensed', sans-serif;
       color: var(--ink);
       text-decoration: none;
       font-size: 1.2rem;
@@ -59,8 +68,9 @@
       box-shadow: 0 16px 36px rgba(0, 0, 0, .55);
     }
     .overline {
+      font-family: 'Barlow Condensed', sans-serif;
       margin: 0 0 .3rem;
-      font-size: .68rem;
+      font-size: .85rem;
       font-weight: 700;
       letter-spacing: .18em;
       text-transform: uppercase;
@@ -83,7 +93,7 @@
       border-radius: 999px;
       padding: .7rem 1.2rem;
       background: var(--gold);
-      color: #0f172a;
+      color: #1a100b;
       font-weight: 700;
       letter-spacing: .06em;
       text-transform: uppercase;
@@ -112,7 +122,7 @@
     .chap-footer {
       padding: .5rem 1rem 1.5rem;
       text-align: center;
-      color: #94a3b8;
+      color: #c4a484;
       font-size: .8rem;
     }
     @media (min-width: 800px) {

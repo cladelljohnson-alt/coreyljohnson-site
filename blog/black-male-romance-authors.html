@@ -17,36 +17,45 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/assets/site.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
       --gold:        #c9963f;
       --gold-lt:     #e8b96a;
       --gold-border: rgba(201,150,63,0.25);
-      --page:        #0f172a;
-      --card:        #162033;
-      --ink:         #e5e7eb;
-      --muted:       #94a3b8;
+      --page:        #1a100b;
+      --card:        #2b2118;
+      --ink:         #f6ecdb;
+      --muted:       #c4a484;
     }
+    /* Phase 3: labels and buttons in Barlow Condensed; logo uppercase */
+    .nav-logo { text-transform: uppercase; letter-spacing: .06em; }
+    .nav-link, .nav-cta, .nav-amazon, .mobile-link-cta,
+    .btn-gold, .btn-outline, .btn-outline-gold, .btn-primary,
+    .newsletter-btn, .book-item-btn, .chap-btn, .book-overlay-btn,
+    button, input[type="submit"] {
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+
 
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       background: var(--page);
       color: var(--muted);
       -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--ink); }
+    h1, h2, h3, h4 { text-transform: uppercase; letter-spacing: .035em; font-family: 'Barlow Condensed', sans-serif; color: var(--ink); }
 
     /* ── NAV ── */
     .site-nav {
-      background: rgba(15,23,42,0.88);
+      background: rgba(26,16,11,0.88);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--gold-border);
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.35rem;
       color: var(--ink);
       text-decoration: none;
@@ -77,8 +86,8 @@
     .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
 
     .nav-cta {
-      background: var(--gold);
-      color: #0f172a;
+      background: #f6ecdb;
+      color: #1a100b;
       padding: .35rem .85rem;
       border-radius: 999px;
       font-size: .8rem;
@@ -89,7 +98,7 @@
       white-space: nowrap;
       line-height: 1.2;
     }
-    .nav-cta:hover { background: var(--gold-lt); color: #0f172a; }
+    .nav-cta:hover { background: #fffdf7; color: #1a100b; }
     .mobile-link-cta { color: var(--gold); font-weight: 700; }
     .nav-amazon { display: inline-flex; align-items: center; gap: .35rem; }
     .nav-amazon-icon { display: none; }
@@ -151,7 +160,7 @@
     }
     .nav-dropdown-menu-inner {
       min-width: 190px;
-      background: rgba(11,18,32,.98);
+      background: rgba(21,13,8,.98);
       border: 1px solid var(--gold-border);
       border-radius: .6rem;
       padding: .4rem;
@@ -170,7 +179,7 @@
       white-space: nowrap;
       transition: background .15s, color .15s;
     }
-    .nav-dropdown-item:hover { background: rgba(201,150,63,.1); color: var(--gold-lt); }
+    .nav-dropdown-item:hover { background: rgba(246,236,219,.1); color: var(--gold-lt); }
     .desktop-nav { display: flex; gap: 1.75rem; align-items: center; }
     @media (max-width: 767px) { .desktop-nav { display: none; } }
 
@@ -188,7 +197,7 @@
     .mobile-menu {
       display: none;
       flex-direction: column;
-      background: rgba(15,23,42,0.97);
+      background: rgba(26,16,11,0.97);
       border-top: 1px solid var(--gold-border);
       padding: .5rem 1.5rem 1rem;
     }
@@ -200,7 +209,7 @@
       letter-spacing: .06em;
       text-transform: uppercase;
       padding: .9rem .25rem;
-      border-bottom: 1px solid rgba(201,150,63,0.12);
+      border-bottom: 1px solid rgba(246,236,219,0.12);
     }
     .mobile-link:last-child { border-bottom: none; }
     .mobile-link-amazon { color: var(--gold); }
@@ -211,7 +220,7 @@
 
     /* ── ARTICLE HERO ── */
     .article-hero {
-      background: linear-gradient(135deg, #1a0d15 0%, #2e1a25 50%, #1a0d15 100%);
+      background: linear-gradient(135deg, #1a100b 0%, #2b2118 50%, #1a100b 100%);
       border-bottom: 1px solid var(--gold-border);
       padding: 5rem 0 4rem;
       text-align: center;
@@ -222,14 +231,14 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(201,150,63,.12) 0%, transparent 65%);
+      background: radial-gradient(ellipse at 50% 0%, rgba(246,236,219,.12) 0%, transparent 65%);
       pointer-events: none;
     }
     .article-hero-inner { position: relative; z-index: 1; }
 
     .overline {
-      font-family: 'Inter', sans-serif;
-      font-size: .7rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .85rem;
       font-weight: 700;
       letter-spacing: .2em;
       text-transform: uppercase;
@@ -261,7 +270,7 @@
     .article-body p {
       font-size: 1.08rem;
       line-height: 1.85;
-      color: #cbd5e1;
+      color: #e9dcc3;
       margin-bottom: 1.6rem;
     }
 
@@ -270,11 +279,11 @@
       border-left: 3px solid var(--gold);
       padding: 1.25rem 1.75rem;
       margin: 2.5rem 0;
-      background: rgba(201,150,63,.06);
+      background: rgba(246,236,219,.06);
       border-radius: 0 .5rem .5rem 0;
     }
     .pull-quote p {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.25rem;
       line-height: 1.55;
       color: var(--ink) !important;
@@ -301,7 +310,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(201,150,63,.07) 0%, transparent 70%);
+      background: radial-gradient(ellipse at 50% 0%, rgba(246,236,219,.07) 0%, transparent 70%);
       pointer-events: none;
     }
     .cta-card h3 { font-size: 1.4rem; margin-bottom: .5rem; }
@@ -311,9 +320,9 @@
       display: inline-block;
       padding: .75rem 2rem;
       border-radius: 999px;
-      background: var(--gold);
-      color: #0f172a;
-      font-family: 'Inter', sans-serif;
+      background: #f6ecdb;
+      color: #1a100b;
+      font-family: 'Libre Baskerville', serif;
       font-weight: 700;
       font-size: .85rem;
       letter-spacing: .08em;
@@ -322,7 +331,7 @@
       transition: background .2s, transform .15s;
       margin: .35rem;
     }
-    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .btn-gold:hover { background: #fffdf7; transform: translateY(-2px); }
 
     .btn-outline {
       display: inline-block;
@@ -330,7 +339,7 @@
       border-radius: 999px;
       border: 1.5px solid var(--gold);
       color: var(--gold);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       font-weight: 700;
       font-size: .85rem;
       letter-spacing: .08em;
@@ -339,7 +348,7 @@
       transition: background .2s, color .2s, transform .15s;
       margin: .35rem;
     }
-    .btn-outline:hover { background: var(--gold); color: #0f172a; transform: translateY(-2px); }
+    .btn-outline:hover { background: #f6ecdb; color: #1a100b; transform: translateY(-2px); }
 
     /* ── BACK LINK ── */
     .back-link {
@@ -365,7 +374,7 @@
       text-align: center;
       color: var(--muted);
       font-size: .8rem;
-      background: #0a1020;
+      background: #120b06;
     }
     .site-footer a { color: var(--gold); text-decoration: none; transition: color .2s; }
     .site-footer a:hover { color: var(--gold-lt); }
@@ -511,7 +520,7 @@
   <!-- ── FOOTER ── -->
   <footer class="site-footer">
     <div class="container mx-auto px-6">
-      <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--ink); margin-bottom:.75rem;">Corey L. Johnson</p>
+      <p style="font-family: 'Barlow Condensed', sans-serif; font-size:1.1rem; color:var(--ink); margin-bottom:.75rem;">Corey L. Johnson</p>
       <p style="margin-bottom:.75rem;">
         <a href="../index.html">Home</a> &nbsp;·&nbsp;
         <a href="../books.html">Books</a> &nbsp;·&nbsp;

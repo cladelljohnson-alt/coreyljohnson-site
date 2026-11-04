@@ -12,40 +12,49 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/assets/site.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
       --gold:    #c9963f;
       --gold-lt: #e8b96a;
-      --ink:     #e5e7eb;
-      --muted:   #94a3b8;
-      --page:    #0f172a;
-      --card:    #162033;
+      --ink:     #f6ecdb;
+      --muted:   #c4a484;
+      --page:    #1a100b;
+      --card:    #2b2118;
       --border:  rgba(201,150,63,0.18);
     }
+    /* Phase 3: labels and buttons in Barlow Condensed; logo uppercase */
+    .nav-logo { text-transform: uppercase; letter-spacing: .06em; }
+    .nav-link, .nav-cta, .nav-amazon, .mobile-link-cta,
+    .btn-gold, .btn-outline, .btn-outline-gold, .btn-primary,
+    .newsletter-btn, .book-item-btn, .chap-btn, .book-overlay-btn,
+    button, input[type="submit"] {
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+
 
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       background: var(--page);
       color: var(--ink);
       -webkit-font-smoothing: antialiased;
     }
 
-    h1, h2, h3, h4 {
-      font-family: 'Playfair Display', serif;
+    h1, h2, h3, h4 { text-transform: uppercase; letter-spacing: .035em;
+      font-family: 'Barlow Condensed', sans-serif;
     }
 
     /* ── NAV ── */
     .site-nav {
-      background: rgba(15,23,42,0.88);
+      background: rgba(26,16,11,0.88);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.35rem;
       color: var(--ink);
       text-decoration: none;
@@ -75,8 +84,8 @@
     .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
 
     .nav-cta {
-      background: var(--gold);
-      color: #0f172a;
+      background: #f6ecdb;
+      color: #1a100b;
       padding: .35rem .85rem;
       border-radius: 999px;
       font-size: .8rem;
@@ -87,7 +96,7 @@
       white-space: nowrap;
       line-height: 1.2;
     }
-    .nav-cta:hover { background: var(--gold-lt); color: #0f172a; }
+    .nav-cta:hover { background: #fffdf7; color: #1a100b; }
     .mobile-link-cta { color: var(--gold); font-weight: 700; }
     .nav-amazon { display: inline-flex; align-items: center; gap: .35rem; }
     .nav-amazon-icon { display: none; }
@@ -149,7 +158,7 @@
     }
     .nav-dropdown-menu-inner {
       min-width: 190px;
-      background: rgba(11,18,32,.98);
+      background: rgba(21,13,8,.98);
       border: 1px solid var(--gold-border);
       border-radius: .6rem;
       padding: .4rem;
@@ -168,7 +177,7 @@
       white-space: nowrap;
       transition: background .15s, color .15s;
     }
-    .nav-dropdown-item:hover { background: rgba(201,150,63,.1); color: var(--gold-lt); }
+    .nav-dropdown-item:hover { background: rgba(246,236,219,.1); color: var(--gold-lt); }
 
     /* ── PAGE HEADER ── */
     .page-hero {
@@ -178,7 +187,8 @@
     }
 
     .overline {
-      font-size: .7rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .85rem;
       letter-spacing: .2em;
       text-transform: uppercase;
       color: var(--gold);
@@ -236,7 +246,7 @@
     .filter-pill.active {
       background: var(--gold);
       border-color: var(--gold);
-      color: #0f172a;
+      color: #1a100b;
     }
 
     /* ── FEATURED CARD ── */
@@ -251,7 +261,7 @@
       transition: box-shadow .3s, transform .3s;
     }
     .featured-card:hover {
-      box-shadow: 0 20px 60px rgba(201,150,63,.12);
+      box-shadow: 0 20px 60px rgba(246,236,219,.12);
       transform: translateY(-2px);
     }
 
@@ -260,7 +270,7 @@
     }
 
     .featured-visual {
-      background: linear-gradient(135deg, #0f172a 0%, #162033 50%, #1e2a40 100%);
+      background: linear-gradient(135deg, #1a100b 0%, #2b2118 50%, #241a12 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -273,7 +283,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 30% 50%, rgba(201,150,63,.15) 0%, transparent 70%);
+      background: radial-gradient(circle at 30% 50%, rgba(246,236,219,.15) 0%, transparent 70%);
     }
 
     .featured-visual-icon {
@@ -292,7 +302,7 @@
       text-transform: uppercase;
       font-weight: 700;
       background: var(--gold);
-      color: #0f172a;
+      color: #1a100b;
       padding: .25rem .75rem;
       border-radius: 999px;
       z-index: 2;
@@ -366,9 +376,9 @@
       text-decoration: none;
     }
     .post-card:hover {
-      box-shadow: 0 12px 40px rgba(201,150,63,.1);
+      box-shadow: 0 12px 40px rgba(246,236,219,.1);
       transform: translateY(-3px);
-      border-color: rgba(201,150,63,.4);
+      border-color: rgba(246,236,219,.4);
     }
 
     .card-visual {
@@ -399,7 +409,7 @@
     }
 
     .card-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.1rem;
       color: var(--ink);
       line-height: 1.35;
@@ -443,7 +453,7 @@
       margin: 3.5rem 0 2rem;
     }
     .section-divider span {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.35rem;
       color: var(--ink);
       white-space: nowrap;
@@ -458,7 +468,7 @@
 
     /* ── NEWSLETTER ── */
     .newsletter-strip {
-      background: linear-gradient(135deg, #162033, #1e2a40);
+      background: linear-gradient(135deg, #2b2118, #241a12);
       border: 1px solid var(--border);
       border-radius: .75rem;
       padding: 3rem 2rem;
@@ -499,8 +509,8 @@
     .newsletter-btn {
       padding: .7rem 1.6rem;
       border-radius: 999px;
-      background: var(--gold);
-      color: #0f172a;
+      background: #f6ecdb;
+      color: #1a100b;
       font-weight: 700;
       font-size: .85rem;
       letter-spacing: .06em;
@@ -510,7 +520,7 @@
       transition: background .2s, transform .15s;
       white-space: nowrap;
     }
-    .newsletter-btn:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .newsletter-btn:hover { background: #fffdf7; transform: translateY(-1px); }
 
     /* ── FOOTER ── */
     footer {
@@ -541,7 +551,7 @@
     .mobile-menu {
       display: none;
       flex-direction: column;
-      background: rgba(15,23,42,0.97);
+      background: rgba(26,16,11,0.97);
       border-top: 1px solid var(--border);
       padding: .5rem 1.5rem 1rem;
     }
@@ -553,7 +563,7 @@
       letter-spacing: .06em;
       text-transform: uppercase;
       padding: .9rem .25rem;
-      border-bottom: 1px solid rgba(201,150,63,0.12);
+      border-bottom: 1px solid rgba(246,236,219,0.12);
     }
     .mobile-link:last-child { border-bottom: none; }
     .mobile-link-amazon { color: var(--gold); }
@@ -656,7 +666,7 @@
       <div id="featured-post"><!-- FEATURED:START -->
 
         <a href="/blog/black-male-authors.html" data-category="Black Authors" class="featured-card" style="text-decoration:none;">
-          <div class="featured-visual" style="background:linear-gradient(135deg,#101b2d,#253853)">
+          <div class="featured-visual" style="background:linear-gradient(135deg,#140d07,#2b2118)">
             <span class="featured-badge">Featured</span>
             <span class="featured-visual-icon">📚</span>
           </div>
@@ -678,7 +688,7 @@
     <div id="post-grid" class="posts-grid"><!-- POSTS:START -->
 
         <a href="/blog/black-male-romance-authors.html" data-category="Black Romance" class="post-card">
-          <div class="card-visual" style="background:linear-gradient(135deg,#1a0d15,#2e1a25)">
+          <div class="card-visual" style="background:linear-gradient(135deg,#1a100b,#2b2118)">
             <span style="position:relative;z-index:1;">💛</span>
           </div>
           <div class="card-body">
@@ -693,7 +703,7 @@
         </a>
 
         <a href="/blog/my-love-letter-to-black-women.html" data-category="Relationships" class="post-card">
-          <div class="card-visual" style="background:linear-gradient(135deg,#1a0d15,#2e1a25)">
+          <div class="card-visual" style="background:linear-gradient(135deg,#1a100b,#2b2118)">
             <span style="position:relative;z-index:1;">💛</span>
           </div>
           <div class="card-body">
@@ -708,13 +718,13 @@
         </a>
 
         <a href="/blog/what-black-men-think-about-love.html" data-category="Relationships" class="post-card">
-          <div class="card-visual" style="background:linear-gradient(135deg,#1a0d15,#2e1a25)">
+          <div class="card-visual" style="background:linear-gradient(135deg,#1a100b,#2b2118)">
             <span style="position:relative;z-index:1;">❤️</span>
           </div>
           <div class="card-body">
             <p class="card-cat">Relationships</p>
-            <h2 class="card-title">What Black Men Actually Think About Love (But Rarely Say Out Loud)</h2>
-            <p class="card-excerpt">Black men are not emotionally absent by nature. They are emotionally guarded by design. On the silence, the desire, and what finally makes the wall come down.</p>
+            <h2 class="card-title">Black Men Believe in Love. It's just not always represented.</h2>
+            <p class="card-excerpt">The numbers say Black men believe in love. On how we show it, how it's misread, and writing Black romance that reflects it.</p>
             <div class="card-footer">
 
               <span class="card-arrow">Read →</span>
@@ -723,7 +733,7 @@
         </a>
 
         <a href="/blog/why-i-write-black-men-loving-black-women.html" data-category="Writing & Culture" class="post-card">
-          <div class="card-visual" style="background:linear-gradient(135deg,#1a0d15,#2e1a25)">
+          <div class="card-visual" style="background:linear-gradient(135deg,#1a100b,#2b2118)">
             <span style="position:relative;z-index:1;">❤️</span>
           </div>
           <div class="card-body">
@@ -738,7 +748,7 @@
         </a>
 
         <a href="/blog/10-signs-your-marriage-is-running-on-secrets.html" data-category="Relationships" class="post-card">
-          <div class="card-visual" style="background:linear-gradient(135deg,#1a0d15,#2e1a25)">
+          <div class="card-visual" style="background:linear-gradient(135deg,#1a100b,#2b2118)">
             <span style="position:relative;z-index:1;">💍</span>
           </div>
           <div class="card-body">
@@ -753,7 +763,7 @@
         </a>
 
         <a href="/blog/21-brutal-questions-before-i-do.html" data-category="Relationships" class="post-card">
-          <div class="card-visual" style="background:linear-gradient(135deg,#1a0d15,#2e1a25)">
+          <div class="card-visual" style="background:linear-gradient(135deg,#1a100b,#2b2118)">
             <span style="position:relative;z-index:1;">💬</span>
           </div>
           <div class="card-body">
@@ -768,7 +778,7 @@
         </a>
 
         <a href="/blog/ya-mysteries-black-protagonists.html" data-category="Fiction & Suspense" class="post-card">
-          <div class="card-visual" style="background:linear-gradient(135deg,#0d0f1a,#1a1e35)">
+          <div class="card-visual" style="background:linear-gradient(135deg,#140d07,#2b2118)">
             <span style="position:relative;z-index:1;">🔍</span>
           </div>
           <div class="card-body">
@@ -783,7 +793,7 @@
         </a>
 
         <a href="/blog/why-some-couples-survive-betrayal.html" data-category="Relationships" class="post-card">
-          <div class="card-visual" style="background:linear-gradient(135deg,#1a0d15,#2e1a25)">
+          <div class="card-visual" style="background:linear-gradient(135deg,#1a100b,#2b2118)">
             <span style="position:relative;z-index:1;">❤️</span>
           </div>
           <div class="card-body">
@@ -798,7 +808,7 @@
         </a>
 
         <a href="/blog/family-secrets-in-fiction.html" data-category="Writing & Culture" class="post-card">
-          <div class="card-visual" style="background:linear-gradient(135deg,#0d1a0d,#1a2e1a)">
+          <div class="card-visual" style="background:linear-gradient(135deg,#140d07,#2b2118)">
             <span style="position:relative;z-index:1;">📖</span>
           </div>
           <div class="card-body">
@@ -813,7 +823,7 @@
         </a>
 
         <a href="/blog/why-representation-matters-ya-thrillers.html" data-category="Writing & Culture" class="post-card">
-          <div class="card-visual" style="background:linear-gradient(135deg,#0d0f1a,#1a1e35)">
+          <div class="card-visual" style="background:linear-gradient(135deg,#140d07,#2b2118)">
             <span style="position:relative;z-index:1;">✊</span>
           </div>
           <div class="card-body">
@@ -828,7 +838,7 @@
         </a>
 
         <a href="/blog/how-to-write-suspense-without-gore-11-05-09-am.html" data-category="Writing & Culture" class="post-card">
-          <div class="card-visual" style="background:linear-gradient(135deg,#0d1a0d,#1a2e1a)">
+          <div class="card-visual" style="background:linear-gradient(135deg,#140d07,#2b2118)">
             <span style="position:relative;z-index:1;">⚡</span>
           </div>
           <div class="card-body">
@@ -871,7 +881,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="container mx-auto px-6">
-      <p style="font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--ink); margin-bottom:.6rem;">Corey L. Johnson</p>
+      <p style="font-family: 'Barlow Condensed', sans-serif; font-size:1.05rem; color:var(--ink); margin-bottom:.6rem;">Corey L. Johnson</p>
 
       <p style="margin-top:.4rem;">
         <a href="../index.html">Home</a> &nbsp;·&nbsp;

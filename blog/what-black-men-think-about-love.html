@@ -6,42 +6,51 @@
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
-  <title>What Black Men Actually Think About Love (But Rarely Say Out Loud) – Corey L. Johnson</title>
-  <meta name="description" content="Black men are not emotionally absent by nature. They are emotionally guarded by design. Corey L. Johnson on the silence, the desire, and what finally makes the wall come down." />
+  <title>Black Men Believe in Love. It's just not always represented. – Corey L. Johnson</title>
+  <meta name="description" content="Black men love Black women, get married, and build families every day. Corey L. Johnson on how Black men show love, and writing it into Black romance." />
   <link rel="canonical" href="https://coreyljohnson.com/blog/what-black-men-think-about-love" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/assets/site.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
       --gold:        #c9963f;
       --gold-lt:     #e8b96a;
       --gold-border: rgba(201,150,63,0.25);
-      --page:        #0f172a;
-      --card:        #162033;
-      --ink:         #e5e7eb;
-      --muted:       #94a3b8;
+      --page:        #1a100b;
+      --card:        #2b2118;
+      --ink:         #f6ecdb;
+      --muted:       #c4a484;
     }
+    /* Phase 3: labels and buttons in Barlow Condensed; logo uppercase */
+    .nav-logo { text-transform: uppercase; letter-spacing: .06em; }
+    .nav-link, .nav-cta, .nav-amazon, .mobile-link-cta,
+    .btn-gold, .btn-outline, .btn-outline-gold, .btn-primary,
+    .newsletter-btn, .book-item-btn, .chap-btn, .book-overlay-btn,
+    button, input[type="submit"] {
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+
 
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       background: var(--page);
       color: var(--muted);
       -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--ink); }
+    h1, h2, h3, h4 { text-transform: uppercase; letter-spacing: .035em; font-family: 'Barlow Condensed', sans-serif; color: var(--ink); }
 
     /* ── NAV ── */
     .site-nav {
-      background: rgba(15,23,42,0.88);
+      background: rgba(26,16,11,0.88);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--gold-border);
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.35rem;
       color: var(--ink);
       text-decoration: none;
@@ -72,8 +81,8 @@
     .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
 
     .nav-cta {
-      background: var(--gold);
-      color: #0f172a;
+      background: #f6ecdb;
+      color: #1a100b;
       padding: .35rem .85rem;
       border-radius: 999px;
       font-size: .8rem;
@@ -84,7 +93,7 @@
       white-space: nowrap;
       line-height: 1.2;
     }
-    .nav-cta:hover { background: var(--gold-lt); color: #0f172a; }
+    .nav-cta:hover { background: #fffdf7; color: #1a100b; }
     .mobile-link-cta { color: var(--gold); font-weight: 700; }
     .nav-amazon { display: inline-flex; align-items: center; gap: .35rem; }
     .nav-amazon-icon { display: none; }
@@ -146,7 +155,7 @@
     }
     .nav-dropdown-menu-inner {
       min-width: 190px;
-      background: rgba(11,18,32,.98);
+      background: rgba(21,13,8,.98);
       border: 1px solid var(--gold-border);
       border-radius: .6rem;
       padding: .4rem;
@@ -165,7 +174,7 @@
       white-space: nowrap;
       transition: background .15s, color .15s;
     }
-    .nav-dropdown-item:hover { background: rgba(201,150,63,.1); color: var(--gold-lt); }
+    .nav-dropdown-item:hover { background: rgba(246,236,219,.1); color: var(--gold-lt); }
     .desktop-nav { display: flex; gap: 1.75rem; align-items: center; }
     @media (max-width: 767px) { .desktop-nav { display: none; } }
 
@@ -183,7 +192,7 @@
     .mobile-menu {
       display: none;
       flex-direction: column;
-      background: rgba(15,23,42,0.97);
+      background: rgba(26,16,11,0.97);
       border-top: 1px solid var(--gold-border);
       padding: .5rem 1.5rem 1rem;
     }
@@ -195,7 +204,7 @@
       letter-spacing: .06em;
       text-transform: uppercase;
       padding: .9rem .25rem;
-      border-bottom: 1px solid rgba(201,150,63,0.12);
+      border-bottom: 1px solid rgba(246,236,219,0.12);
     }
     .mobile-link:last-child { border-bottom: none; }
     .mobile-link-amazon { color: var(--gold); }
@@ -206,7 +215,7 @@
 
     /* ── ARTICLE HERO ── */
     .article-hero {
-      background: linear-gradient(135deg, #1a0d15 0%, #2e1a25 60%, #1a1030 100%);
+      background: linear-gradient(135deg, #1a100b 0%, #2b2118 60%, #1a1030 100%);
       border-bottom: 1px solid var(--gold-border);
       padding: 5rem 0 4rem;
       text-align: center;
@@ -217,14 +226,14 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(201,150,63,.14) 0%, transparent 65%);
+      background: radial-gradient(ellipse at 50% 0%, rgba(246,236,219,.14) 0%, transparent 65%);
       pointer-events: none;
     }
     .article-hero-inner { position: relative; z-index: 1; }
 
     .overline {
-      font-family: 'Inter', sans-serif;
-      font-size: .7rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .85rem;
       font-weight: 700;
       letter-spacing: .2em;
       text-transform: uppercase;
@@ -256,7 +265,7 @@
     .article-body p {
       font-size: 1.08rem;
       line-height: 1.85;
-      color: #cbd5e1;
+      color: #e9dcc3;
       margin-bottom: 1.6rem;
     }
 
@@ -265,11 +274,11 @@
       border-left: 3px solid var(--gold);
       padding: 1.25rem 1.75rem;
       margin: 2.5rem 0;
-      background: rgba(201,150,63,.06);
+      background: rgba(246,236,219,.06);
       border-radius: 0 .5rem .5rem 0;
     }
     .pull-quote p {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.25rem;
       line-height: 1.55;
       color: var(--ink) !important;
@@ -292,7 +301,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(201,150,63,.07) 0%, transparent 70%);
+      background: radial-gradient(ellipse at 50% 0%, rgba(246,236,219,.07) 0%, transparent 70%);
       pointer-events: none;
     }
     .cta-card h3 { font-size: 1.4rem; margin-bottom: .5rem; }
@@ -302,9 +311,9 @@
       display: inline-block;
       padding: .75rem 2rem;
       border-radius: 999px;
-      background: var(--gold);
-      color: #0f172a;
-      font-family: 'Inter', sans-serif;
+      background: #f6ecdb;
+      color: #1a100b;
+      font-family: 'Libre Baskerville', serif;
       font-weight: 700;
       font-size: .85rem;
       letter-spacing: .08em;
@@ -313,7 +322,7 @@
       transition: background .2s, transform .15s;
       margin: .35rem;
     }
-    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .btn-gold:hover { background: #fffdf7; transform: translateY(-2px); }
 
     .btn-outline {
       display: inline-block;
@@ -321,7 +330,7 @@
       border-radius: 999px;
       border: 1.5px solid var(--gold);
       color: var(--gold);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       font-weight: 700;
       font-size: .85rem;
       letter-spacing: .08em;
@@ -330,7 +339,7 @@
       transition: background .2s, color .2s, transform .15s;
       margin: .35rem;
     }
-    .btn-outline:hover { background: var(--gold); color: #0f172a; transform: translateY(-2px); }
+    .btn-outline:hover { background: #f6ecdb; color: #1a100b; transform: translateY(-2px); }
 
     /* ── BACK LINK ── */
     .back-link {
@@ -356,23 +365,23 @@
       text-align: center;
       color: var(--muted);
       font-size: .8rem;
-      background: #0a1020;
+      background: #120b06;
     }
     .site-footer a { color: var(--gold); text-decoration: none; transition: color .2s; }
     .site-footer a:hover { color: var(--gold-lt); }
   </style>
 <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Corey L. Johnson" />
-  <meta property="og:title" content="What Black Men Actually Think About Love (But Rarely Say Out Loud) – Corey L. Johnson" />
-  <meta property="og:description" content="Black men are not emotionally absent by nature. They are emotionally guarded by design. Corey L. Johnson on the silence, the desire, and what finally makes the wall come down." />
+  <meta property="og:title" content="Black Men Believe in Love. It's just not always represented. – Corey L. Johnson" />
+  <meta property="og:description" content="Black men love Black women, get married, and build families every day. Corey L. Johnson on how Black men show love, and writing it into Black romance." />
   <meta property="og:url" content="https://coreyljohnson.com/blog/what-black-men-think-about-love" />
   <meta property="og:image" content="https://coreyljohnson.com/og-default-2026.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Corey L. Johnson, Black romance author, with the covers of Into You and We Can't Be Friends" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="What Black Men Actually Think About Love (But Rarely Say Out Loud) – Corey L. Johnson" />
-  <meta name="twitter:description" content="Black men are not emotionally absent by nature. They are emotionally guarded by design. Corey L. Johnson on the silence, the desire, and what finally makes the wall come down." />
+  <meta name="twitter:title" content="Black Men Believe in Love. It's just not always represented. – Corey L. Johnson" />
+  <meta name="twitter:description" content="Black men love Black women, get married, and build families every day. Corey L. Johnson on how Black men show love, and writing it into Black romance." />
   <meta name="twitter:image" content="https://coreyljohnson.com/og-default-2026.jpg" />
   </head>
 <body>
@@ -424,9 +433,9 @@
   <div class="article-hero">
     <div class="container mx-auto px-6 article-hero-inner">
       <span class="overline">Relationships &nbsp;·&nbsp; Author's Note</span>
-      <h1>What Black Men Actually Think About Love (But Rarely Say Out Loud)</h1>
+      <h1>Black Men Believe in Love. It's just not always represented.</h1>
       <div class="gold-rule"></div>
-      <p class="article-meta">By Corey L. Johnson &nbsp;·&nbsp; <span id="pub-date"></span> &nbsp;·&nbsp; 5 min read</p>
+      <p class="article-meta">By Corey L. Johnson &nbsp;·&nbsp; <span id="pub-date"></span> &nbsp;·&nbsp; 6 min read</p>
     </div>
   </div>
 
@@ -438,48 +447,39 @@
 
       <article class="article-body">
 
-        <p>Ask a Black man if he believes in love. Watch what he does before he answers.</p>
-
-        <p>Some laugh first. Not because the question is funny. Because laughing buys time. It is a stall, a recalibration, a way to measure how much truth the room can hold before they have to give any of it. Others answer fast and clean, the way you answer a question you decided the answer to a long time ago and are not interested in revisiting. A few go quiet. Not uncomfortable quiet. Thinking quiet. Those are the ones who have done some work on themselves.</p>
+<p>Spend enough time on social media, and you might start believing Black men don’t want relationships with Black women. There’s always somebody talking about how we don’t want commitment, don’t know how to communicate, or don’t appreciate a good woman. I don’t buy that. Black men love Black women. We’re dating, getting married, raising families, and building lives together every day. Sure, some relationships don’t work out, but that doesn’t mean we should judge an entire group of men by the ones that failed.</p>
 
         <div class="pull-quote">
-          <p>The silence is not indifference. It never was.</p>
+          <p>Black men love Black women. We’re dating, getting married, raising families, and building lives together every day.</p>
         </div>
 
-        <p>From the time Black boys are young, the message comes in from every direction. Strength is silence. Emotion is weakness. Need is something you keep to yourself or it gets used against you. You carry what you carry. You keep moving. A 2024 study published in <em>Metropolitan Universities</em> found that only 26.4% of Black men experiencing anxiety or depression seek mental health treatment. The same research found that Black men described asking for help as being equated with weakness. As proof you could not handle your own life. That belief does not stay in the therapist's office. It walks into every relationship, every hard conversation, every moment when something real is sitting right there and a man chooses to leave it on the table.</p>
+        <p>And the numbers back that up. According to <a href="https://www.pewresearch.org/short-reads/2026/02/05/key-facts-about-black-americans/" target="_blank" rel="noopener">Pew Research Center’s February 2026 report</a>, 78% of married Black men have Black spouses. What’s interesting is how that compares to other groups. In a separate <a href="https://www.pewresearch.org/social-trends/2017/05/18/intermarriage-in-the-u-s-50-years-after-loving-v-virginia/" target="_blank" rel="noopener">Pew Research study published in 2017</a>, which looked at newlyweds in 2015, 76% of Black men married within their race, compared to 74% of Hispanic men and 79% of Asian men who married within their respective groups. So our numbers were pretty much in line with those of other minority groups. Yet somehow, there’s still this idea that Black men don’t want Black women.</p>
 
-        <p>And yet the desire is present. It has always been present.</p>
+        <p>Of course, marriage isn’t everybody’s goal. Those numbers don’t tell us how many unmarried Black couples are dating or building lives together, and they don’t tell us how happy those marriages are or how people treat each other. But they’re worth mentioning when so much of what we hear about Black relationships is negative.</p>
 
-        <p>A 2024 Pew Research survey of more than 6,000 adults found that 60% of Americans say society does not value men who are caring or open about their emotions enough. Not a minority opinion. The majority. People want emotionally available men. The culture just built a world where being one costs something, and for Black men, the cost has always come with interest.</p>
+        <p>I think there’s another conversation we should be having, though. Sometimes Black men are showing love, but it doesn’t look the way their partners expect it to. Take a man who works hard, pays the bills, takes care of things around the house, and makes sure his family has what they need. In his mind, he’s showing love every day. He’s doing those things because he cares about the woman he’s with and wants to make her life easier.</p>
 
-        <p>NIH-backed research published in 2024 added another layer. Black men in positive relationships but disadvantaged neighborhoods showed more emotional distress over time, not less. Not because the love was not real. Because the external pressure worked against a man's ability to show up the way he wanted to. The love was there. The conditions made it hard to carry.</p>
+        <p>But she might want something different. Maybe she wants him to tell her he loves her more often, plan a date without being asked, or spend more time talking with her. She appreciates what he does, but she wants to feel loved in other ways, too. Meanwhile, he’s wondering why she doesn’t recognize everything he’s already doing. Before long, both people are frustrated, even though neither one has stopped caring about the other.</p>
 
-        <p>That is the part nobody puts in the headlines.</p>
+        <p>I’ve had to learn some of these same lessons myself. It’s easy to believe you’re doing everything right when you’re looking at a relationship from your own perspective. You know how hard you’re trying, so you assume your partner should see it, too. But sometimes you have to listen when the person you love tells you something is missing, even when you don’t completely understand why it matters so much to them.</p>
 
         <div class="pull-quote">
-          <p>Black men are not emotionally absent by nature. They are emotionally guarded by design.</p>
+          <p>Sometimes you have to listen when the person you love tells you something is missing, even when you don’t completely understand why it matters so much to them.</p>
         </div>
 
-        <p>By years of being told that tenderness is a liability, that vulnerability is an opening, that the man who says too much gives too much away. What that produces is a man who loves deeply and quietly, who expresses it through action because nobody told him words were also allowed. A man who shows up every time and never explains why showing up matters to him.</p>
+        <p>I also think we need to recognize the ways people already show love. If a man is making an effort to take care of his family and be there when he’s needed, that should count for something. At the same time, he can’t assume those things are all his partner needs. There’s room for both people to appreciate what’s being done while also being honest about what they want from the relationship.</p>
 
-        <p>That love is real. It is also incomplete.</p>
+        <p>And let’s not act like Black men aren’t romantic. Plenty of us enjoy planning dates, buying flowers, surprising our women, and doing all those things people associate with romance. Some men have no problem expressing their feelings, while others are more comfortable showing affection through their actions. I’ve known men who could talk about their feelings all day and others who would rather fix something around the house than have a long conversation. That doesn’t automatically tell you which one loves his woman more.</p>
 
-        <p>That tension is exactly what lives inside Darius Steele in <em>Into You</em>. Darius is a divorce attorney. His whole career is the wreckage of love that did not hold. He has sat across from enough broken marriages to build a perfectly reasonable argument against ever wanting one. Love is a liability. A documented, expensive, emotionally catastrophic liability. He has the case files to prove it.</p>
+        <p>We’re all different, and I think that’s something we forget when talking about Black relationships. Every man has his own personality, experiences, and ideas about love. The same goes for women. Two people can genuinely care about each other and still have to figure out how to make the relationship work for both of them.</p>
 
-        <p>Kiana Mercer is a wedding planner who believes love is worth everything. She has built her entire professional life on that conviction. They share a wall between their offices. His clients argue. Hers cry happy tears. They cannot stand each other.</p>
+        <p>I also think we need to give each other room to make mistakes. Sometimes your partner is going to disappoint you, misunderstand something you said, or overlook something that matters to you. I’ve been on both sides of that, and I imagine most people in long-term relationships have, too. The important thing is being able to talk about those moments without assuming the worst about each other. You should be able to say what’s bothering you and trust that the person you’re with cares enough to listen.</p>
 
-        <p>Until they cannot stay away from each other.</p>
+        <p>That’s something I want to reflect in the Black romance stories I write. I want my male characters to feel like men you might actually know. Men who love women, enjoy being in relationships, and sometimes get things wrong. I also want Black women to see themselves being pursued, appreciated, and loved by men who genuinely want to be with them. We have enough stories about Black relationships falling apart. I enjoy writing about people finding reasons to stay together.</p>
 
-        <p>I wrote Darius as a portrait, not a villain. A Black man who looked at love, did the math, and decided the risk was not worth it. The whole story is about what happens when something real gets through anyway. When a man who armored himself against love meets a woman who makes him question whether the armor was ever actually protecting him.</p>
+        <p>In my novel <em>Into You</em>, Darius Steele is a divorce attorney who’s seen enough failed marriages to become skeptical about love. Kiana Mercer is a wedding planner who believes in romance and marriage. Their offices share a wall, and they can barely stand each other. But as they spend more time together, they begin questioning some of the things they’ve always believed about relationships.</p>
 
-        <p>Black men deserve to see that story told. Not the version where we are absent or irreparably broken. The version where we are complicated, guarded, capable of choosing love, and worth watching when we finally do.</p>
-
-        <p>Black women deserve to see themselves as the reason the wall comes down.</p>
-
-        <p>That is why I write what I write. If you want to see what it looks like when a man who stopped believing in love walks into the life of a woman who never did, <em>Into You</em> is available now.</p>
-
-        <p>The wall comes down slow. But it comes down.</p>
-
+        <p>I enjoy writing stories like theirs because love doesn’t always happen the way we expect. Sometimes two people who see relationships completely differently end up being exactly what the other needs. And watching them figure that out can be a lot of fun. If you enjoy romantic comedies with characters who feel like real people, <a href="https://a.co/d/09c5ov6m" target="_blank" rel="noopener"><em>Into You</em></a>, part of <strong>The R&amp;B Mixtape Series</strong>, is available now.</p>
       </article>
 
       <!-- ── CTA ── -->
@@ -497,7 +497,7 @@
   <!-- ── FOOTER ── -->
   <footer class="site-footer">
     <div class="container mx-auto px-6">
-      <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--ink); margin-bottom:.75rem;">Corey L. Johnson</p>
+      <p style="font-family: 'Barlow Condensed', sans-serif; font-size:1.1rem; color:var(--ink); margin-bottom:.75rem;">Corey L. Johnson</p>
       <p style="margin-bottom:.75rem;">
         <a href="../index.html">Home</a> &nbsp;·&nbsp;
         <a href="../books.html">Books</a> &nbsp;·&nbsp;

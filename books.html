@@ -12,21 +12,30 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="/assets/site.css">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <style>
     :root {
       --gold:       #c9963f;
       --gold-lt:    #e8b96a;
       --gold-border: rgba(201,150,63,0.25);
-      --page:       #0f172a;
-      --card:       #162033;
-      --ink:        #e5e7eb;
-      --muted:      #94a3b8;
+      --page:       #1a100b;
+      --card:       #2b2118;
+      --ink:        #f6ecdb;
+      --muted:      #c4a484;
 
       --romance: #8c2f3f;
       --romance-cream: #efe6d8;
       --romance-border: rgba(140,47,63,.55);
     }
+    /* Phase 3: labels and buttons in Barlow Condensed; logo uppercase */
+    .nav-logo { text-transform: uppercase; letter-spacing: .06em; }
+    .nav-link, .nav-cta, .nav-amazon, .mobile-link-cta,
+    .btn-gold, .btn-outline, .btn-outline-gold, .btn-primary,
+    .newsletter-btn, .book-item-btn, .chap-btn, .book-overlay-btn,
+    button, input[type="submit"] {
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+
 
     .series-romance { --accent: var(--romance-cream); --accent-lt: var(--romance-cream); --accent-border: var(--romance-border); }
     .series-neutral { --accent: var(--muted); --accent-lt: var(--ink); --accent-border: rgba(255,255,255,.16); }
@@ -34,21 +43,21 @@
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       background: var(--page);
       color: var(--muted);
       -webkit-font-smoothing: antialiased;
     }
-    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--ink); }
+    h1, h2, h3, h4 { text-transform: uppercase; letter-spacing: .035em; font-family: 'Barlow Condensed', sans-serif; color: var(--ink); }
 
     /* ── SHARED NAV ── */
     .site-nav {
-      background: rgba(15,23,42,0.88);
+      background: rgba(26,16,11,0.88);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--gold-border);
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 1.35rem;
       color: var(--ink);
       text-decoration: none;
@@ -79,8 +88,8 @@
     .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
 
     .nav-cta {
-      background: var(--gold);
-      color: #0f172a;
+      background: #f6ecdb;
+      color: #1a100b;
       padding: .35rem .85rem;
       border-radius: 999px;
       font-size: .8rem;
@@ -91,7 +100,7 @@
       white-space: nowrap;
       line-height: 1.2;
     }
-    .nav-cta:hover { background: var(--gold-lt); color: #0f172a; }
+    .nav-cta:hover { background: #fffdf7; color: #1a100b; }
     .mobile-link-cta { color: var(--gold); font-weight: 700; }
     .nav-amazon { display: inline-flex; align-items: center; gap: .35rem; }
     .nav-amazon-icon { display: none; }
@@ -153,7 +162,7 @@
     }
     .nav-dropdown-menu-inner {
       min-width: 190px;
-      background: rgba(11,18,32,.98);
+      background: rgba(21,13,8,.98);
       border: 1px solid var(--gold-border);
       border-radius: .6rem;
       padding: .4rem;
@@ -172,7 +181,7 @@
       white-space: nowrap;
       transition: background .15s, color .15s;
     }
-    .nav-dropdown-item:hover { background: rgba(201,150,63,.1); color: var(--gold-lt); }
+    .nav-dropdown-item:hover { background: rgba(246,236,219,.1); color: var(--gold-lt); }
 
     /* ── MOBILE NAV TOGGLE ── */
     .mobile-toggle {
@@ -188,7 +197,7 @@
     .mobile-menu {
       display: none;
       flex-direction: column;
-      background: rgba(15,23,42,0.97);
+      background: rgba(26,16,11,0.97);
       border-top: 1px solid var(--gold-border);
       padding: .5rem 1.5rem 1rem;
     }
@@ -200,7 +209,7 @@
       letter-spacing: .06em;
       text-transform: uppercase;
       padding: .9rem .25rem;
-      border-bottom: 1px solid rgba(201,150,63,0.12);
+      border-bottom: 1px solid rgba(246,236,219,0.12);
     }
     .mobile-link:last-child { border-bottom: none; }
     .mobile-link-amazon { color: var(--gold); }
@@ -219,8 +228,8 @@
       text-align: center;
     }
     .overline {
-      font-family: 'Inter', sans-serif;
-      font-size: .7rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .85rem;
       font-weight: 700;
       letter-spacing: .2em;
       text-transform: uppercase;
@@ -237,9 +246,9 @@
       display: inline-block;
       padding: .75rem 2rem;
       border-radius: 999px;
-      background: var(--gold);
-      color: #0f172a;
-      font-family: 'Inter', sans-serif;
+      background: #f6ecdb;
+      color: #1a100b;
+      font-family: 'Libre Baskerville', serif;
       font-weight: 700;
       font-size: .85rem;
       letter-spacing: .08em;
@@ -247,7 +256,7 @@
       text-decoration: none;
       transition: background .2s, transform .15s;
     }
-    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .btn-gold:hover { background: #fffdf7; transform: translateY(-2px); }
 
     /* ── FEATURED SPOTLIGHT ── */
     .book-spotlight {
@@ -261,7 +270,7 @@
       padding: 3rem;
       transition: box-shadow .3s;
     }
-    .book-spotlight:hover { box-shadow: 0 20px 60px rgba(201,150,63,.12); }
+    .book-spotlight:hover { box-shadow: 0 20px 60px rgba(246,236,219,.12); }
     @media (max-width: 768px) {
       .book-spotlight { grid-template-columns: 1fr; text-align: center; padding: 2rem; }
       .book-spotlight img { max-width: 200px; margin: 0 auto; }
@@ -277,13 +286,13 @@
 
     .spotlight-badge {
       display: inline-block;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       font-size: .65rem;
       font-weight: 700;
       letter-spacing: .15em;
       text-transform: uppercase;
       background: var(--gold);
-      color: #0f172a;
+      color: #1a100b;
       padding: .3rem .9rem;
       border-radius: 999px;
       margin-bottom: .75rem;
@@ -299,7 +308,7 @@
       margin: 4rem 0 2rem;
     }
     .series-label span {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       font-size: .7rem;
       font-weight: 700;
       letter-spacing: .18em;
@@ -335,7 +344,7 @@
     .book-item .cover { position: relative; border-radius: .4rem; overflow: hidden; margin-bottom: 1rem; }
     .book-item .cover .gleam {
       position: absolute; inset: 0;
-      background: radial-gradient(180px 180px at var(--mx) var(--my), rgba(232,185,106,.35), transparent 60%);
+      background: radial-gradient(180px 180px at var(--mx) var(--my), rgba(255,253,247,.35), transparent 60%);
       opacity: var(--lift);
       transition: opacity .4s ease;
       mix-blend-mode: soft-light;
@@ -354,7 +363,7 @@
       .book-item { transition: none; }
     }
     .book-item-series {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       font-size: .65rem;
       font-weight: 600;
       letter-spacing: .12em;
@@ -363,7 +372,7 @@
       margin-bottom: .25rem;
     }
     .book-item-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Barlow Condensed', sans-serif;
       font-size: 1rem;
       color: var(--ink);
       line-height: 1.3;
@@ -371,7 +380,7 @@
     }
     .book-item-desc { font-size: .82rem; color: var(--muted); line-height: 1.6; margin-bottom: .75rem; flex-grow: 1; }
     .book-item-btn {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       font-size: .72rem;
       font-weight: 600;
       letter-spacing: .08em;
@@ -412,7 +421,7 @@
     .format-actions .btn-gold { padding: .7rem 1.15rem; }
     .format-extra {
       color: var(--gold);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Libre Baskerville', serif;
       font-weight: 700;
       font-size: .75rem;
       letter-spacing: .08em;
@@ -428,11 +437,11 @@
     .book-item-soon:hover .book-item-btn { color: var(--accent, var(--gold)); gap: .3rem; }
 
 
-    .newsletter-strip { background: linear-gradient(135deg, #162033, #1e2a40); border: 1px solid var(--gold-border); border-radius: .75rem; padding: 2rem 1.4rem; }
+    .newsletter-strip { background: linear-gradient(135deg, #2b2118, #241a12); border: 1px solid var(--gold-border); border-radius: .75rem; padding: 2rem 1.4rem; }
     .newsletter-form { display: flex; gap: .5rem; flex-wrap: wrap; }
     .newsletter-input { flex: 1; min-width: 0; padding: .7rem 1.1rem; border-radius: 999px; border: 1px solid var(--gold-border); background: rgba(255,255,255,.05); color: var(--ink); font-size: .9rem; outline: none; }
     .newsletter-input:focus { border-color: var(--gold); }
-    .newsletter-btn { min-height: 44px; padding: .7rem 1.4rem; border-radius: 999px; background: var(--gold); color: #0f172a; font-weight: 700; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; border: none; cursor: pointer; }
+    .newsletter-btn { min-height: 44px; padding: .7rem 1.4rem; border-radius: 999px; background: #f6ecdb; color: #1a100b; font-weight: 700; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; border: none; cursor: pointer; }
     .newsletter-btn:disabled { opacity: .65; cursor: wait; }
     .signup-offer h2 { font-size: clamp(1.45rem, 3vw, 1.9rem); margin: .3rem 0 .55rem; }
     .signup-layout { display: grid; grid-template-columns: 140px 1fr; gap: 1.4rem; align-items: center; }
@@ -453,7 +462,7 @@
       text-align: center;
       color: var(--muted);
       font-size: .8rem;
-      background: #0a1020;
+      background: #120b06;
       margin-top: 5rem;
     }
     .site-footer a { color: var(--gold); text-decoration: none; transition: color .2s; }
@@ -696,7 +705,7 @@
   <!-- ── FOOTER ── -->
   <footer class="site-footer">
     <div class="container mx-auto px-6">
-      <p style="font-family:'Playfair Display',serif; font-size:1.1rem; color:var(--ink); margin-bottom:.75rem;">Corey L. Johnson</p>
+      <p style="font-family: 'Barlow Condensed', sans-serif; font-size:1.1rem; color:var(--ink); margin-bottom:.75rem;">Corey L. Johnson</p>
       <p style="margin-bottom:.75rem;">
         <a href="index.html">Home</a> &nbsp;·&nbsp;
         <a href="books.html">Books</a> &nbsp;·&nbsp;
