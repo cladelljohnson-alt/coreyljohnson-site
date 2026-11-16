@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="canonical" href="https://coreyljohnson.com/press">
+  <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+  <title>Press Kit | Corey L. Johnson, Black Romance and Faith Fiction Author</title>
+  <meta name="description" content="Press kit for Corey L. Johnson, indie author of Black romance and faith-based fiction: author bios, book details, suggested interview questions, and media contact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/site.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:       #c9963f;
+      --gold-lt:    #e8b96a;
+      --gold-border: rgba(201,150,63,0.25);
+      --page:       #1a100b;
+      --card:       #2b2118;
+      --ink:        #f6ecdb;
+      --muted:      #c4a484;
+    }
+    /* Phase 3: labels and buttons in Barlow Condensed; logo uppercase */
+    .nav-logo { text-transform: uppercase; letter-spacing: .06em; }
+    .nav-link, .nav-cta, .nav-amazon, .mobile-link-cta,
+    .btn-gold, .btn-outline, .btn-outline-gold, .btn-primary,
+    .newsletter-btn, .book-item-btn, .chap-btn, .book-overlay-btn,
+    button, input[type="submit"] {
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Libre Baskerville', serif;
+      background: var(--page);
+      color: var(--muted);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { text-transform: uppercase; letter-spacing: .035em; font-family: 'Barlow Condensed', sans-serif; color: var(--ink); }
+
+    /* ── SHARED NAV ── */
+    .site-nav {
+      background: rgba(26,16,11,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--gold-border);
+    }
+    .nav-logo {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.35rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: .02em;
+      white-space: nowrap;
+    }
+    .nav-link {
+      color: var(--muted);
+      font-size: .875rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-link:hover { color: var(--gold); }
+    .nav-link.active { color: var(--gold); }
+    .nav-amazon {
+      color: var(--gold);
+      border: 1px solid var(--gold-border);
+      padding: .35rem .9rem;
+      border-radius: 999px;
+      font-size: .875rem;
+      text-decoration: none;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      transition: border-color .2s, color .2s;
+    }
+    .nav-amazon:hover { border-color: var(--gold); color: var(--gold-lt); }
+
+    .nav-cta {
+      background: #f6ecdb;
+      color: #1a100b;
+      padding: .35rem .85rem;
+      border-radius: 999px;
+      font-size: .8rem;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      line-height: 1.2;
+    }
+    .nav-cta:hover { background: #fffdf7; color: #1a100b; }
+    .mobile-link-cta { color: var(--gold); font-weight: 700; }
+    .nav-amazon { display: inline-flex; align-items: center; gap: .35rem; }
+    .nav-amazon-icon { display: none; }
+    @media (min-width: 768px) and (max-width: 1180px) {
+      .nav-logo { font-size: 1.02rem; }
+      header .container { flex-wrap: nowrap; gap: .65rem; }
+      .desktop-nav { gap: .28rem; flex-wrap: nowrap; }
+      nav.space-x-7 { gap: .28rem; }
+      nav.space-x-7 > :not([hidden]) ~ :not([hidden]) { margin-left: .28rem !important; }
+      .nav-link { font-size: .72rem; letter-spacing: .02em; }
+      .nav-cta, .nav-amazon { font-size: .68rem; letter-spacing: .02em; padding: .32rem .42rem; }
+      .nav-amazon-full {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      .nav-amazon-icon { display: inline-flex; }
+      .nav-amazon { position: relative; }
+    }
+
+
+    /* ── NAV DROPDOWN (click-to-open, not hover) ── */
+    .nav-dropdown { position: relative; display: inline-flex; align-items: center; gap: .25rem; }
+    .nav-caret-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--gold);
+      font-size: 1.1rem;
+      padding: .2rem .3rem;
+      line-height: 1;
+      transition: color .2s ease, transform .2s ease;
+    }
+    .nav-caret-btn:hover { color: var(--gold-lt); }
+    .nav-dropdown.open .nav-caret-btn { color: var(--gold-lt); transform: rotate(180deg); }
+    .nav-dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(4px);
+      padding-top: .6rem;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity .15s ease, transform .15s ease, visibility .15s;
+      z-index: 30;
+    }
+    .nav-dropdown.open .nav-dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+    .nav-dropdown-menu-inner {
+      min-width: 190px;
+      background: rgba(21,13,8,.98);
+      border: 1px solid var(--gold-border);
+      border-radius: .6rem;
+      padding: .4rem;
+      box-shadow: 0 20px 45px rgba(0,0,0,.5);
+    }
+    .nav-dropdown-item {
+      display: block;
+      padding: .6rem .9rem;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-radius: .4rem;
+      white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+    .nav-dropdown-item:hover { background: rgba(246,236,219,.1); color: var(--gold-lt); }
+
+    /* ── MOBILE NAV TOGGLE ── */
+    .mobile-toggle {
+      display: none;
+      font-size: 1.65rem;
+      color: var(--ink);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: .25rem .5rem;
+      line-height: 1;
+    }
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      background: rgba(26,16,11,0.97);
+      border-top: 1px solid var(--gold-border);
+      padding: .5rem 1.5rem 1rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-link {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: .95rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: .9rem .25rem;
+      border-bottom: 1px solid rgba(246,236,219,0.12);
+    }
+    .mobile-link:last-child { border-bottom: none; }
+    .mobile-link-amazon { color: var(--gold); }
+    .mobile-sublink { padding-left: 1.5rem; font-size: .82rem; color: var(--muted); text-transform: none; letter-spacing: .02em; }
+    @media (max-width: 767px) {
+      .mobile-toggle { display: inline-block; }
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      border-bottom: 1px solid var(--gold-border);
+      padding: 5rem 0 3rem;
+      text-align: center;
+    }
+    .overline {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-bottom: .75rem;
+    }
+    .page-hero h1 { font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.1; }
+    .gold-rule { width: 3rem; height: 2px; background: var(--gold); margin: 1.25rem auto 0; }
+    .page-hero p { color: var(--muted); max-width: 36rem; margin: 1rem auto 0; font-size: 1rem; line-height: 1.7; }
+
+    /* ── CARD ── */
+    .contact-card {
+      background: var(--card);
+      border: 1px solid var(--gold-border);
+      border-radius: .75rem;
+      padding: 2.5rem;
+    }
+    .contact-card h3 { font-size: 1.6rem; margin-bottom: .5rem; }
+    .contact-card p { color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; font-size: .95rem; }
+
+    /* ── FORM FIELDS ── */
+    .form-field {
+      width: 100%;
+      padding: .75rem 1rem;
+      border-radius: .5rem;
+      border: 1px solid var(--gold-border);
+      background: rgba(255,255,255,.04);
+      color: var(--ink);
+      font-family: 'Libre Baskerville', serif;
+      font-size: .95rem;
+      outline: none;
+      transition: border-color .2s;
+      margin-bottom: 1rem;
+    }
+    .form-field::placeholder { color: var(--muted); }
+    .form-field:focus { border-color: var(--gold); }
+    textarea.form-field { resize: vertical; min-height: 130px; }
+
+    /* ── BUTTONS ── */
+    .btn-gold {
+      display: inline-block;
+      width: 100%;
+      padding: .8rem 2rem;
+      border-radius: 999px;
+      background: #f6ecdb;
+      color: #1a100b;
+      font-family: 'Libre Baskerville', serif;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      text-align: center;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .btn-gold:hover { background: #fffdf7; transform: translateY(-2px); }
+
+    /* ── NEWSLETTER PILL INPUT ROW ── */
+    .newsletter-form-row {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .newsletter-input {
+      flex: 1; min-width: 0;
+      padding: .75rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--gold-border);
+      background: rgba(255,255,255,.05);
+      color: var(--ink);
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .newsletter-input::placeholder { color: var(--muted); }
+    .newsletter-input:focus { border-color: var(--gold); }
+    .newsletter-btn {
+      padding: .75rem 1.5rem;
+      border-radius: 999px;
+      background: #f6ecdb;
+      color: #1a100b;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .newsletter-btn:hover { background: #fffdf7; transform: translateY(-1px); }
+
+    /* ── SOCIAL STRIP ── */
+    .social-strip {
+      background: var(--card);
+      border: 1px solid var(--gold-border);
+      border-radius: .75rem;
+      padding: 2rem;
+      text-align: center;
+    }
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: .875rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      padding: .5rem 1.25rem;
+      border: 1px solid var(--gold-border);
+      border-radius: 999px;
+      transition: border-color .2s, background .2s, color .2s;
+      margin: .35rem;
+    }
+    .social-link { min-height: 44px; }
+    .social-link:hover { background: var(--gold); color: #1a100b; border-color: var(--gold); }
+
+    /* ── FOOTER ── */
+    .site-footer {
+      border-top: 1px solid var(--gold-border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: .8rem;
+      background: #120b06;
+      margin-top: 5rem;
+    }
+    .site-footer a { color: var(--gold); text-decoration: none; transition: color .2s; }
+    .site-footer a:hover { color: var(--gold-lt); }
+  </style>
+<meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Corey L. Johnson" />
+  <meta property="og:title" content="Contact Corey L. Johnson" />
+  <meta property="og:description" content="Reach out to Corey L. Johnson about books, book clubs, or events, or join his list for chapter 1 of We Can't Be Friends free." />
+  <meta property="og:url" content="https://coreyljohnson.com/contact" />
+  <meta property="og:image" content="https://coreyljohnson.com/og-default-2026.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Corey L. Johnson, Black romance author, with the covers of Into You and We Can't Be Friends" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Contact Corey L. Johnson" />
+  <meta name="twitter:description" content="Reach out to Corey L. Johnson about books, book clubs, or events, or join his list for chapter 1 of We Can't Be Friends free." />
+  <meta name="twitter:image" content="https://coreyljohnson.com/og-default-2026.jpg" />
+  </head>
+<body>
+
+  <!-- ── NAV ── -->
+  <header class="site-nav sticky top-0 z-20">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="index.html" class="nav-logo">Corey L. Johnson</a>
+      <nav class="space-x-7 hidden md:flex items-center">
+        <div class="nav-dropdown">
+          <a href="books.html" class="nav-link nav-dropdown-toggle">Books</a>
+          <button type="button" class="nav-caret-btn" aria-expanded="false" aria-label="Show book categories">⌄</button>
+          <div class="nav-dropdown-menu">
+            <div class="nav-dropdown-menu-inner">
+              <a href="books.html#rooted-in-grace" class="nav-dropdown-item">Christian Fiction</a>
+              <a href="books.html#rnb-mixtape" class="nav-dropdown-item">Romance Books</a>
+              <a href="books.html#standalone-novels" class="nav-dropdown-item">Standalone Novels</a>
+            </div>
+          </div>
+        </div>
+        <a href="/black-male-romance-author/" class="nav-link">Romance</a>
+        <a href="blog/index.html"  class="nav-link">Blog</a>
+        <a href="news.html"       class="nav-link">News</a>
+        <a href="about.html"       class="nav-link">About</a>
+        <a href="press.html"       class="nav-link active">Press</a>
+        <a href="contact.html"     class="nav-link">Contact</a>
+        <a href="/chapter-one/" class="nav-cta">Free Chapter</a>
+        <a href="https://www.amazon.com/stores/Corey-Johnson/author/B0CTFZPKV1?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=11104394-ef31-44eb-9566-8f0ff4e64682"
+           target="_blank" rel="noopener" class="nav-amazon"><span class="nav-amazon-full">Amazon</span><svg class="nav-amazon-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6L5 3H2"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></a>
+      </nav>
+      <button id="mobile-menu-toggle" class="mobile-toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    </div>
+    <!-- Mobile dropdown -->
+    <div id="mobile-menu" class="mobile-menu">
+      <a href="/chapter-one/" class="mobile-link mobile-link-cta">Free Chapter</a>
+      <a href="books.html"       class="mobile-link">Books</a>
+      <a href="books.html#rooted-in-grace" class="mobile-link mobile-sublink">Christian Fiction</a>
+      <a href="books.html#rnb-mixtape"     class="mobile-link mobile-sublink">Romance Books</a>
+      <a href="books.html#standalone-novels" class="mobile-link mobile-sublink">Standalone Novels</a>
+      <a href="/black-male-romance-author/" class="mobile-link">Romance</a>
+      <a href="blog/index.html"  class="mobile-link">Blog</a>
+      <a href="news.html"        class="mobile-link">News</a>
+      <a href="about.html"       class="mobile-link">About</a>
+      <a href="press.html"       class="mobile-link">Press</a>
+      <a href="contact.html"     class="mobile-link">Contact</a>
+      <a href="https://www.amazon.com/stores/Corey-Johnson/author/B0CTFZPKV1?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=11104394-ef31-44eb-9566-8f0ff4e64682"
+         target="_blank" rel="noopener" class="mobile-link mobile-link-amazon">Amazon</a>
+    </div>
+  </header>
+
+  <!-- ── PAGE HERO ── -->
+  <div class="page-hero">
+    <div class="container mx-auto px-6">
+      <span class="overline">Reach Out</span>
+      <h1>Get in Touch</h1>
+      <div class="gold-rule"></div>
+      <p>Questions, collaboration ideas, press inquiries, or just say hello. Corey reads every message.</p>
+    </div>
+  </div>
+
+  <!-- ── TWO-COL CARDS ── -->
+    <main class="container mx-auto px-6" style="padding-top: 4rem; padding-bottom: 2rem; max-width: 1100px;">
+    <style>
+      .press-hero { display: grid; grid-template-columns: 1fr 320px; gap: 2.5rem; align-items: start; }
+      .press-photo { width: 100%; border-radius: 12px; border: 1px solid var(--gold-border); }
+      .press-quote { font-style: italic; color: var(--ink); font-size: 1.15rem; line-height: 1.6; border-left: 3px solid var(--gold); padding-left: 1rem; margin: 1.5rem 0; }
+      .press-section { margin-top: 3.5rem; }
+      .press-section h2 { font-size: 1.9rem; margin-bottom: 1rem; }
+      .press-label { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .08em; color: var(--gold); font-size: .95rem; margin-top: 1.5rem; margin-bottom: .4rem; }
+      .press-book { display: grid; grid-template-columns: 220px 1fr; gap: 2rem; background: var(--card); border: 1px solid var(--gold-border); border-radius: 14px; padding: 1.75rem; margin-bottom: 1.75rem; }
+      .press-book img { width: 100%; border-radius: 8px; }
+      .press-book h3 { font-size: 1.6rem; margin-bottom: .25rem; }
+      .press-series { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .07em; color: var(--gold); font-size: .95rem; margin-bottom: .75rem; }
+      .press-logline { font-style: italic; color: var(--ink); margin-bottom: .9rem; }
+      .press-facts { list-style: none; padding: 0; margin: 0 0 .9rem 0; font-size: .92rem; }
+      .press-facts li { margin-bottom: .3rem; }
+      .press-facts strong { color: var(--ink); font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .05em; font-weight: 600; margin-right: .4rem; }
+      .press-links a { color: var(--gold); margin-right: 1.1rem; font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .05em; font-size: .95rem; }
+      .press-questions li { margin-bottom: .8rem; line-height: 1.55; }
+      .press-contact { list-style: none; padding: 0; font-size: .95rem; }
+      .press-contact li { margin-bottom: .45rem; }
+      .press-contact strong { color: var(--ink); font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: .05em; font-weight: 600; margin-right: .4rem; }
+      .press-contact a, .press-section a { color: var(--gold); }
+      @media (max-width: 768px) {
+        .press-hero, .press-book { grid-template-columns: 1fr; }
+        .press-photo { max-width: 300px; }
+        .press-book img { max-width: 200px; }
+      }
+    </style>
+
+    <!-- HERO -->
+    <div class="press-hero">
+      <div>
+        <p class="overline">Press Kit</p>
+        <h1 style="font-size: 2.6rem; line-height: 1.1;">Corey L. Johnson</h1>
+        <p style="font-size: 1.05rem; margin-top: .5rem;">Indie author of Black romance and faith-based fiction<br />Murfreesboro, Tennessee</p>
+        <p class="press-quote">&ldquo;I just think it&rsquo;s my mission to restore faith in Black love between Black men and women.&rdquo;</p>
+        <p>
+          <a href="#media" class="btn-gold" style="margin-right: .75rem;">For Media</a>
+          <a href="author.png" download class="btn-outline-gold">Download Author Photo</a>
+        </p>
+        <p style="font-size: .9rem; margin-top: 1rem;">coreyljohnson.com &nbsp;&middot;&nbsp; @authorcoreyljohnson</p>
+      </div>
+      <div>
+        <img class="press-photo" src="author-800.webp" alt="Black-and-white portrait of author Corey L. Johnson" width="800" height="1000" />
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="press-section" id="about">
+      <h2>About the Author</h2>
+      <p class="press-label">Short Bio</p>
+      <p>Corey L. Johnson is an indie author from Murfreesboro, Tennessee, and one of the few Black men writing contemporary romance. He writes stories about Black love that trade fairy-tale filters for sharp, honest character studies of real people. His novel <em>Into You</em> is the first book in the R&amp;B Mixtape Series. He is also the author of the faith-based Rooted in Grace series, beginning with <em>The Grass Is Always Greener</em>.</p>
+      <p class="press-label">Long Bio</p>
+      <p>Corey L. Johnson knows exactly how rare his lane is. The numbers on Black male romance authors are thin, and he occupies that space entirely on purpose.</p>
+      <p>From his home in Murfreesboro, Tennessee, Corey writes contemporary romance and Christian fiction that strips away the fairy-tale filters to look at how real people navigate life and modern love in today&rsquo;s landscape. His stories center Black women and the men pursuing them, trading idealized perfection for sharp, witty, and deeply honest character studies. He is not interested in sanitized drama, just the authentic, messy, and sometimes funny choices that shape a life.</p>
+      <p>His debut novel, <em>The Grass Is Always Greener</em>, dug into family, faith, and second chances in the American South. Since then he&rsquo;s moved into romance, and every story stays anchored by the emotional truth at the center of it.</p>
+      <p><em>Into You</em>, a slow-burn enemies-to-lovers romance, is the first book in his R&amp;B Mixtape Series. Book 2, <em>We Can&rsquo;t Be Friends</em>, is coming soon. He is also the author of <em>The Seeds We Sow</em>, the second book in the Rooted in Grace series.</p>
+    </section>
+
+    <!-- BOOKS -->
+    <section class="press-section" id="books">
+      <h2>The Books</h2>
+
+      <article class="press-book">
+        <img src="book3-600.jpg" alt="Cover of Into You by Corey L. Johnson" width="600" height="902" loading="lazy" />
+        <div>
+          <h3>Into You</h3>
+          <p class="press-series">R&amp;B Mixtape Series &middot; Book 1</p>
+          <p class="press-logline">She plans weddings. He ends marriages. When their worlds collide, the tension is electric.</p>
+          <ul class="press-facts">
+            <li><strong>Genre</strong> Contemporary romance, Black romance</li>
+            <li><strong>Tropes</strong> Slow-burn, enemies-to-lovers, single dad, offices next door, siblings getting married</li>
+            <li><strong>Published</strong> March 15, 2026 &middot; 274 pages</li>
+            <li><strong>Amazon</strong> 4.3 stars (84 ratings), current as of November 16, 2026</li>
+            <li><strong>Formats</strong> Available now on Amazon and Kindle+</li>
+          </ul>
+          <p><em>Into You</em> is a slow-burn, enemies-to-lovers romance about a wedding planner and a divorce attorney whose offices are right next door to each other. Kiana Mercer believes in happily ever after. Darius Steele has made a career out of helping people end theirs. He&rsquo;s also raising his five-year-old daughter, Amara. They already have enough to argue about. Then their siblings decide to get married, and avoiding each other becomes a lot harder.</p>
+          <p class="press-links">
+            <a href="https://www.amazon.com/dp/B0GSMSW6JW" target="_blank" rel="noopener">Amazon</a>
+            <a href="https://www.goodreads.com/book/show/249723921" target="_blank" rel="noopener">Goodreads</a>
+            <a href="book3.png" download>Hi-Res Cover</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="press-book">
+        <img src="book1-600.jpg" alt="Cover of The Grass Is Always Greener by Corey L. Johnson" width="600" height="901" loading="lazy" />
+        <div>
+          <h3>The Grass Is Always Greener</h3>
+          <p class="press-series">Rooted in Grace Series &middot; Book 1</p>
+          <p class="press-logline">Faith, family, and the choices we make.</p>
+          <ul class="press-facts">
+            <li><strong>Genre</strong> Faith-based drama, Christian fiction, contemporary African American fiction</li>
+            <li><strong>Published</strong> April 2, 2023 &middot; 213 pages</li>
+            <li><strong>ISBN-13</strong> 979-8-3898-0379-4 (paperback)</li>
+            <li><strong>Amazon</strong> 4.6 stars (39 ratings), current as of November 16, 2026</li>
+            <li><strong>Formats</strong> Available now on Amazon and Kindle+</li>
+          </ul>
+          <p>Behind every perfect life lies a storm waiting to break. Mark is a once-proud provider now out of work, desperate to prove his worth. His wife, Terri, is exhausted from the struggle of life and starved for affection, until she&rsquo;s drawn back to her former college professor, a man who offers the attention she craves, but at a cost that could shatter her family. Quincey is a lawyer turned pastor, shattered by loss and paralyzed by fear, asked to lead others when his own faith is crumbling. As marriages fracture, secrets explode, and faith is tested, these families will learn the hardest truth of all: the grass isn&rsquo;t greener on the other side, it&rsquo;s hiding the same dirt.</p>
+          <p class="press-links">
+            <a href="https://www.amazon.com/dp/B0C19LWJL7" target="_blank" rel="noopener">Kindle</a>
+            <a href="https://www.amazon.com/dp/B0CYM5BLY4" target="_blank" rel="noopener">Paperback</a>
+            <a href="book1.png" download>Hi-Res Cover</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="press-book">
+        <img src="book7-600.jpg" alt="Cover of The Seeds We Sow by Corey L. Johnson" width="600" height="960" loading="lazy" />
+        <div>
+          <h3>The Seeds We Sow</h3>
+          <p class="press-series">Rooted in Grace Series &middot; Book 2</p>
+          <p class="press-logline">A novel of hard lessons and second chances.</p>
+          <ul class="press-facts">
+            <li><strong>Genre</strong> Faith-based drama, Christian fiction, contemporary African American fiction</li>
+            <li><strong>Published</strong> July 13, 2026 &middot; 353 pages</li>
+            <li><strong>Amazon</strong> 4.6 stars (14 ratings), current as of November 16, 2026</li>
+            <li><strong>Formats</strong> Available now on Amazon and Kindle+</li>
+          </ul>
+          <p>Five years ago, Julie Perry walked out of her own wedding in front of three hundred church guests and a reality television audience. Humiliated, betrayed, and stripped of the future she thought was hers, Julie fled Nashville for Memphis with one suitcase and no intention of ever looking back. Now she runs New Ground, a thriving nonprofit that helps broken women rebuild their lives. Then Mark Baxter arrives at a leadership conference in Memphis, and the past Julie buried collides with the life she has built. <em>The Seeds We Sow</em> is a gripping story of faith, betrayal, forgiveness, and the dangerous cost of silence.</p>
+          <p class="press-links">
+            <a href="https://www.amazon.com/dp/B0H8QKXGZP" target="_blank" rel="noopener">Amazon</a>
+            <a href="book7.png" download>Hi-Res Cover</a>
+          </p>
+        </div>
+      </article>
+
+      <article class="press-book">
+        <img src="we-cant-be-friends-2026-600.jpg" alt="Cover of We Can't Be Friends by Corey L. Johnson" width="600" height="900" loading="lazy" />
+        <div>
+          <h3>We Can&rsquo;t Be Friends</h3>
+          <p class="press-series">Coming Soon &middot; R&amp;B Mixtape Series &middot; Book 2</p>
+          <p>Imani&rsquo;s family creamery is on the line. The best friend she hasn&rsquo;t talked to in ten years just moved in upstairs.</p>
+          <p class="press-links">
+            <a href="/chapter-one/">Read Chapter 1 Free</a>
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <!-- INTERVIEW QUESTIONS -->
+    <section class="press-section" id="interview">
+      <h2>Suggested Interview Questions</h2>
+      <ol class="press-questions">
+        <li>You&rsquo;re one of the few Black men writing contemporary romance. What pulled you into this lane, and why does it matter to you?</li>
+        <li>On your site you say, &ldquo;I just think it&rsquo;s my mission to restore faith in Black love between Black men and women.&rdquo; What does that look like on the page?</li>
+        <li><em>Into You</em> follows a wedding planner and a divorce attorney whose offices sit next door to each other. Where did Kiana and Darius come from?</li>
+        <li>Darius is a single father to five-year-old Amara, and you&rsquo;ve said you enjoyed writing a man who loves being a father but has some things to figure out when it comes to romance. What did you want readers to see in him?</li>
+        <li>What have readers shared with you about reading Black love written by a man, and has any of that surprised you?</li>
+        <li>Before <em>Into You</em>, you wrote faith-based drama, including <em>The Grass Is Always Greener</em> and its sequel, <em>The Seeds We Sow</em>. How did that work shape the way you write romance?</li>
+        <li><em>Into You</em> is the first book in your R&amp;B Mixtape Series, with <em>We Can&rsquo;t Be Friends</em> coming soon. How do the books speak to each other, and what can readers expect next?</li>
+        <li>Your stories are set around Nashville and Murfreesboro, and <em>The Seeds We Sow</em> moves to Memphis. What does writing the South mean to you?</li>
+        <li>You write both slow-burn romance and faith-and-family drama. What do you want a first-time reader to know about the range of your work?</li>
+        <li>What kinds of conversations do you hope book clubs, bloggers, and podcast listeners will have after reading <em>Into You</em> or the Rooted in Grace books?</li>
+      </ol>
+    </section>
+
+    <!-- FOR MEDIA -->
+    <section class="press-section" id="media">
+      <h2>For Media</h2>
+      <p class="press-label">Review Copies</p>
+      <p>Ebook review copies of Corey&rsquo;s books are available on request, in whichever format works for the reviewer.</p>
+      <p>For a Q&amp;A, a guest post, or a giveaway, email <span id="author-email"></span>.</p>
+      <p class="press-label">Upcoming Media</p>
+      <p>An interview with Black Fiction Addiction (Chandra Sparks Splond) was completed in November 2026 and is not yet published.</p>
+      <p class="press-label">Contact</p>
+      <ul class="press-contact">
+        <li><strong>Name</strong> Corey L. Johnson</li>
+        <li><strong>Website</strong> <a href="https://coreyljohnson.com">coreyljohnson.com</a></li>
+        <li><strong>Amazon</strong> <a href="https://www.amazon.com/author/coreyljohnson" target="_blank" rel="noopener">amazon.com/author/coreyljohnson</a></li>
+        <li><strong>Goodreads</strong> <a href="https://www.goodreads.com/author/show/53216204.Corey_L_Johnson" target="_blank" rel="noopener">goodreads.com/author/show/53216204.Corey_L_Johnson</a></li>
+        <li><strong>Instagram</strong> <a href="https://www.instagram.com/authorcoreyljohnson/" target="_blank" rel="noopener">@authorcoreyljohnson</a></li>
+        <li><strong>TikTok</strong> <a href="https://www.tiktok.com/@authorcoreyljohnson" target="_blank" rel="noopener">@authorcoreyljohnson</a></li>
+        <li><strong>Threads</strong> <a href="https://www.threads.net/@authorcoreyljohnson" target="_blank" rel="noopener">@authorcoreyljohnson</a></li>
+        <li><strong>Facebook</strong> <a href="https://www.facebook.com/share/19dPDpoAgr/?mibextid=wwXIfr" target="_blank" rel="noopener">Author Corey L. Johnson</a></li>
+      </ul>
+      <p class="press-label">Photo and Cover Use</p>
+      <p>The author photo on this page is the official black-and-white portrait used on coreyljohnson.com. Book covers are the current editions used on coreyljohnson.com and, where noted, on Amazon. High-resolution files are linked with each book above, and the author photo is available <a href="author.png" download>here</a>.</p>
+    </section>
+  </main>
+
+
+
+  <!-- ── FOOTER ── -->
+  <footer class="site-footer">
+    <div class="container mx-auto px-6">
+      <p style="font-family: 'Barlow Condensed', sans-serif; font-size:1.1rem; color:var(--ink); margin-bottom:.75rem;">Corey L. Johnson</p>
+      <p style="margin-bottom:.75rem;">
+        <a href="index.html">Home</a> &nbsp;·&nbsp;
+        <a href="books.html">Books</a> &nbsp;·&nbsp;
+        <a href="/black-male-romance-author/">Romance</a> &nbsp;·&nbsp;
+        <a href="blog/index.html">Blog</a> &nbsp;·&nbsp;
+        <a href="news.html">News</a> &nbsp;·&nbsp;
+        <a href="about.html">About</a> &nbsp;·&nbsp;
+        <a href="contact.html">Contact</a> &nbsp;·&nbsp;
+        <a href="press.html">Press</a>
+      </p>
+      <nav class="footer-social" aria-label="Social">
+        <a href="https://www.instagram.com/authorcoreyljohnson/" target="_blank" rel="noopener" aria-label="Corey on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".9" fill="currentColor" stroke="none"/></svg><span>Instagram</span></a>
+        <a href="https://www.threads.net/@authorcoreyljohnson" target="_blank" rel="noopener" aria-label="Corey on Threads"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M9 10.5c.3-2.2 1.8-3.7 4-3.7 2.4 0 3.8 1.6 3.8 4.2v.6c0 3.4-2.2 5.6-5.6 5.6-3.2 0-5.4-2.2-5.4-5.4"/><path d="M12.2 11.2c-1.6 0-2.6.9-2.6 2.2 0 1.2.8 2 2.1 2 1.6 0 2.6-1 2.6-2.6v-.4"/><path d="M8.2 8.6c.8-1.4 2.2-2.2 3.8-2.2"/></svg><span>Threads</span></a>
+        <a href="https://www.facebook.com/share/19dPDpoAgr/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Corey on Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15 8h2V5h-2c-2.2 0-4 1.8-4 4v2H9v3h2v7h3v-7h2.2l.8-3H14V9c0-.6.4-1 1-1z"/></svg><span>Facebook</span></a>
+        <a href="https://www.tiktok.com/@authorcoreyljohnson" target="_blank" rel="noopener" aria-label="Corey on TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14 4v10.2a3.2 3.2 0 1 1-2.4-3.1V8.6a5.7 5.7 0 1 0 4.4 5.5V8.4c1.2.7 2.5 1.1 4 1.1V7.1c-1.5 0-2.9-.6-4-1.6V4h-2z"/></svg><span>TikTok</span></a>
+        <a href="https://www.amazon.com/author/coreyljohnson" target="_blank" rel="noopener" aria-label="Corey on Amazon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M5 15.5c2.4 1.8 5 2.7 8 2.7 2.6 0 4.8-.6 6.8-1.9"/><path d="M16.8 15.2l3.4.5-.8 2.6"/></svg><span>Amazon</span></a>
+      </nav>
+
+      <p>&copy; <span id="year"></span> Corey L. Johnson. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // Mobile menu toggle
+    (function () {
+      var btn = document.getElementById('mobile-menu-toggle');
+      var menu = document.getElementById('mobile-menu');
+      if (btn && menu) {
+        btn.addEventListener('click', function () {
+          var open = menu.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          btn.textContent = open ? '✕' : '☰';
+        });
+      }
+    })();
+
+    // Books nav dropdown (click-to-open)
+    (function () {
+      document.querySelectorAll('.nav-dropdown').forEach(function (dd) {
+        var caretBtn = dd.querySelector('.nav-caret-btn');
+        if (!caretBtn) return;
+        caretBtn.addEventListener('click', function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var isOpen = dd.classList.toggle('open');
+          caretBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      });
+      document.addEventListener('click', function (e) {
+        document.querySelectorAll('.nav-dropdown.open').forEach(function (dd) {
+          if (!dd.contains(e.target)) dd.classList.remove('open');
+        });
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.nav-dropdown.open').forEach(function (dd) {
+            dd.classList.remove('open');
+          });
+        }
+      });
+    })();
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      var form = e.currentTarget;
+      var wrap = form.closest('[data-signup]');
+      var ok = wrap.querySelector('.signup-ok');
+      var err = wrap.querySelector('.signup-err');
+      var btn = form.querySelector('button[type=submit]');
+      btn.disabled = true;
+      err.style.display = 'none';
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        form.style.display = 'none';
+        ok.style.display = 'block';
+      }).catch(function () {
+        err.style.display = 'block';
+      }).finally(function () {
+        btn.disabled = false;
+      });
+    }
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      var form = e.currentTarget;
+      var wrap = form.closest('[data-signup]');
+      var ok = wrap.querySelector('.signup-ok');
+      var err = wrap.querySelector('.signup-err');
+      var btn = form.querySelector('button[type=submit]');
+      btn.disabled = true;
+      err.style.display = 'none';
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(form)).toString()
+      }).then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        form.style.display = 'none';
+        ok.style.display = 'block';
+      }).catch(function () {
+        err.style.display = 'block';
+      }).finally(function () {
+        btn.disabled = false;
+      });
+    }
+
+    // Author email, assembled at render time so page scrapers don't harvest it
+    (function () {
+      var u = 'coreyljohnsonbooks', d = 'gmail.com';
+      var addr = u + '@' + d;
+      var el = document.getElementById('author-email');
+      if (el) {
+        var a = document.createElement('a');
+        a.href = 'mailto:' + addr;
+        a.textContent = addr;
+        a.style.color = 'var(--gold)';
+        el.appendChild(a);
+      }
+    })();
+  </script>
+</body>
+</html>
