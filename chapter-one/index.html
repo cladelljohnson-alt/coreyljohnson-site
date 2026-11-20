@@ -24,7 +24,8 @@
       --page: #1a100b;
     }
     /* Phase 3: labels and buttons in Barlow Condensed; logo uppercase */
-    .nav-logo { text-transform: uppercase; letter-spacing: .06em; }
+    .nav-logo { display: inline-flex; align-items: center; line-height: 0; text-decoration: none; }
+    .nav-logo img, .chap-logo img { display: block; height: 22px; width: auto; }
     .nav-link, .nav-cta, .nav-amazon, .mobile-link-cta,
     .btn-gold, .btn-outline, .btn-outline-gold, .btn-primary,
     .newsletter-btn, .book-item-btn, .chap-btn, .book-overlay-btn,
@@ -50,11 +51,12 @@
     }
     .chap-header { padding: .7rem 1.15rem .2rem; }
     .chap-logo {
-      font-family: 'Barlow Condensed', sans-serif;
-      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      line-height: 0;
       text-decoration: none;
-      font-size: 1.2rem;
     }
+    .chap-logo img { display: block; height: 22px; width: auto; }
     .chap {
       max-width: 980px;
       margin: 0 auto;
@@ -152,7 +154,7 @@
 </head>
 <body>
   <header class="chap-header">
-    <a href="/" class="chap-logo">Corey L. Johnson</a>
+    <a href="/" class="chap-logo"><img src="/assets/wordmark.svg" alt="Corey L. Johnson" width="223" height="22"></a>
   </header>
   <main class="chap">
     <div class="chap-grid">
