@@ -1,5 +1,5 @@
 /**
- * enhancements.js — Corey L. Johnson author site
+ * enhancements.js: Corey L. Johnson author site
  * Scroll-triggered fade-ins (Intersection Observer)
  * No external libraries. Vanilla JS only.
  */
@@ -41,7 +41,7 @@
 
 
   /* ─────────────────────────────────────────
-   * INIT — run after DOM is ready
+   * INIT: run after DOM is ready
    * ───────────────────────────────────────── */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {

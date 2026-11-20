@@ -52,7 +52,16 @@ async function main() {
 
   await fs.mkdir(blogDir, { recursive: true });
 
-  const entries = await fs.readdir(draftsDir, { withFileTypes: true });
+  let entries;
+  try {
+    entries = await fs.readdir(draftsDir, { withFileTypes: true });
+  } catch (error) {
+    if (error && error.code === 'ENOENT') {
+      console.warn('No drafts directory. Leaving the published blog catalog unchanged.');
+      return;
+    }
+    throw error;
+  }
   const slugCounts = new Map();
   const posts = [];
 
@@ -98,6 +107,11 @@ async function main() {
   }
 
   posts.sort((a, b) => a.title.localeCompare(b.title));
+
+  if (posts.length === 0) {
+    console.warn('No publishable drafts found. Leaving blog/posts.json and the homepage blog section unchanged.');
+    return;
+  }
 
   const metadataPath = path.join(blogDir, 'posts.json');
   await fs.writeFile(metadataPath, JSON.stringify(posts, null, 2) + '\n', 'utf8');
@@ -182,7 +196,7 @@ function decodeEntities(text) {
     .replace(/&ldquo;|&#8220;/gi, '\u201c')
     .replace(/&rdquo;|&#8221;/gi, '\u201d')
     .replace(/&ndash;|&#8211;/gi, '\u2013')
-    .replace(/&mdash;|&#8212;/gi, '\u2014')
+    .replace(new RegExp('&' + 'mdash;|' + '&#' + '8212;|' + '&#x' + '2014;', 'gi'), String.fromCharCode(8212))
     .replace(/&hellip;|&#8230;/gi, '\u2026');
 }
 
