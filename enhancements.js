@@ -1,7 +1,6 @@
 /**
  * enhancements.js — Corey L. Johnson author site
- * 1. Parallax hero (CSS fixed on desktop)
- * 2. Scroll-triggered fade-ins (Intersection Observer)
+ * Scroll-triggered fade-ins (Intersection Observer)
  * No external libraries. Vanilla JS only.
  */
 
@@ -9,29 +8,7 @@
   'use strict';
 
   /* ─────────────────────────────────────────
-   * 1. PARALLAX HERO
-   * CSS handles desktop via background-attachment:fixed.
-   * JS detects iOS (where fixed attachment is broken) and
-   * applies a scroll-based backgroundPositionY instead.
-   * ───────────────────────────────────────── */
-  function initParallax() {
-    var hero = document.querySelector('.hero');
-    if (!hero) return;
-
-    var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    var isMobile = window.innerWidth <= 768;
-
-    if (isIOS || isMobile) {
-      // Fixed backgrounds are unreliable on phones, and a scroll-driven
-      // background position fights the hero image loading. Leave it static.
-      hero.style.backgroundAttachment = 'scroll';
-      return;
-    }
-  }
-
-
-  /* ─────────────────────────────────────────
-   * 2. SCROLL-TRIGGERED FADE-INS
+   * SCROLL-TRIGGERED FADE-INS
    * Elements with class="fade-in" start invisible
    * and animate in when they enter the viewport.
    * Falls back to instant-show on browsers without
@@ -68,11 +45,9 @@
    * ───────────────────────────────────────── */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function () {
-      initParallax();
       initFadeIns();
     });
   } else {
-    initParallax();
     initFadeIns();
   }
 

@@ -24,7 +24,8 @@
       --muted:      #c4a484;
     }
     /* Phase 3: labels and buttons in Barlow Condensed; logo uppercase */
-    .nav-logo { text-transform: uppercase; letter-spacing: .06em; }
+    .nav-logo { display: inline-flex; align-items: center; line-height: 0; text-decoration: none; }
+    .nav-logo img, .chap-logo img { display: block; height: 22px; width: auto; }
     .nav-link, .nav-cta, .nav-amazon, .mobile-link-cta,
     .btn-gold, .btn-outline, .btn-outline-gold, .btn-primary,
     .newsletter-btn, .book-item-btn, .chap-btn, .book-overlay-btn,
@@ -99,6 +100,7 @@
     .nav-amazon-icon { display: none; }
     @media (min-width: 768px) and (max-width: 1180px) {
       .nav-logo { font-size: 1.02rem; }
+      .nav-logo img { height: 18px; }
       header .container { flex-wrap: nowrap; gap: .65rem; }
       .desktop-nav { gap: .28rem; flex-wrap: nowrap; }
       nav.space-x-7 { gap: .28rem; }
@@ -373,7 +375,7 @@
   <!-- ── NAV ── -->
   <header class="site-nav sticky top-0 z-20">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="index.html" class="nav-logo">Corey L. Johnson</a>
+      <a href="index.html" class="nav-logo"><img src="/assets/wordmark.svg" alt="Corey L. Johnson" width="223" height="22"></a>
       <nav class="space-x-7 hidden md:flex items-center">
         <div class="nav-dropdown">
           <a href="books.html" class="nav-link nav-dropdown-toggle">Books</a>
@@ -723,18 +725,18 @@
       });
     }
 
-    // Author email, assembled at render time so page scrapers don't harvest it
+    // Author address, stored as encoded values and assembled in the browser.
     (function () {
-      var u = 'coreyljohnsonbooks', d = 'gmail.com';
-      var addr = u + '@' + d;
       var el = document.getElementById('author-email');
-      if (el) {
-        var a = document.createElement('a');
-        a.href = 'mailto:' + addr;
-        a.textContent = addr;
-        a.style.color = 'var(--gold)';
-        el.appendChild(a);
-      }
+      if (!el) return;
+      var n = [55,59,51,54,46,53,96,57,53,40,63,35,54,48,53,50,52,41,53,52,56,53,53,49,41,26,61,55,59,51,54,116,57,53,55];
+      var s = '';
+      for (var i = 0; i < n.length; i++) s += String.fromCharCode(n[i] ^ 90);
+      var a = document.createElement('a');
+      a.href = s;
+      a.textContent = s.slice(s.indexOf(':') + 1);
+      a.style.color = 'var(--gold)';
+      el.appendChild(a);
     })();
   </script>
 </body>

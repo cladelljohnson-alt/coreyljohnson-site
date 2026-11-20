@@ -23,7 +23,8 @@
       --brass: #f6ecdb;
     }
     /* Phase 3: labels and buttons in Barlow Condensed; logo uppercase */
-    .nav-logo { text-transform: uppercase; letter-spacing: .06em; }
+    .nav-logo { display: inline-flex; align-items: center; line-height: 0; text-decoration: none; }
+    .nav-logo img, .chap-logo img { display: block; height: 22px; width: auto; }
     .nav-link, .nav-cta, .nav-amazon, .mobile-link-cta,
     .btn-gold, .btn-outline, .btn-outline-gold, .btn-primary,
     .newsletter-btn, .book-item-btn, .chap-btn, .book-overlay-btn,
@@ -80,7 +81,7 @@
 <body class="font-sans antialiased">
   <header class="backdrop-blur-md sticky top-0 z-10" style="background: rgba(21,13,8,0.7); box-shadow: 0 1px 0 rgba(255,255,255,0.06);">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <a href="/index.html" class="text-2xl font-bold" style="color: var(--ink);">Corey L. Johnson</a>
+      <a href="/index.html" class="nav-logo"><img src="/assets/wordmark.svg" alt="Corey L. Johnson" width="223" height="22"></a>
       <nav class="space-x-6 hidden md:block">
         <a href="/index.html#books" class="hover:underline link-accent">Books</a>
         <a href="/index.html#about" class="hover:underline link-accent">About</a>
