@@ -591,7 +591,7 @@
       <h2>For Media</h2>
       <p class="press-label">Review Copies</p>
       <p>Ebook review copies of Corey&rsquo;s books are available on request, in whichever format works for the reviewer.</p>
-      <p>For a Q&amp;A, a guest post, or a giveaway, email <span id="author-email"></span>.</p>
+      <p>For a Q&amp;A, a guest post, or a giveaway, send a note through the <a href="/contact">contact form</a>.</p>
       <p class="press-label">Upcoming Media</p>
       <p>An interview with Black Fiction Addiction (Chandra Sparks Splond) was completed in November 2026 and is not yet published.</p>
       <p class="press-label">Contact</p>
@@ -725,19 +725,6 @@
       });
     }
 
-    // Author address, stored as encoded values and assembled in the browser.
-    (function () {
-      var el = document.getElementById('author-email');
-      if (!el) return;
-      var n = [55,59,51,54,46,53,96,57,53,40,63,35,54,48,53,50,52,41,53,52,56,53,53,49,41,26,61,55,59,51,54,116,57,53,55];
-      var s = '';
-      for (var i = 0; i < n.length; i++) s += String.fromCharCode(n[i] ^ 90);
-      var a = document.createElement('a');
-      a.href = s;
-      a.textContent = s.slice(s.indexOf(':') + 1);
-      a.style.color = 'var(--gold)';
-      el.appendChild(a);
-    })();
   </script>
 </body>
 </html>
