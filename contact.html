@@ -463,9 +463,6 @@
         <p>
           Have a question, press inquiry, or collaboration idea? Drop a message below and Corey will get back to you.
         </p>
-        <p>
-          Prefer email? Reach Corey directly at <span id="author-email"></span>.
-        </p>
         <div data-signup>
         <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleContactSubmit(event)">
           <input type="hidden" name="form-name" value="contact" />
@@ -615,19 +612,6 @@
       });
     }
 
-    // Author address, stored as encoded values and assembled in the browser.
-    (function () {
-      var el = document.getElementById('author-email');
-      if (!el) return;
-      var n = [55,59,51,54,46,53,96,57,53,40,63,35,54,48,53,50,52,41,53,52,56,53,53,49,41,26,61,55,59,51,54,116,57,53,55];
-      var s = '';
-      for (var i = 0; i < n.length; i++) s += String.fromCharCode(n[i] ^ 90);
-      var a = document.createElement('a');
-      a.href = s;
-      a.textContent = s.slice(s.indexOf(':') + 1);
-      a.style.color = 'var(--gold)';
-      el.appendChild(a);
-    })();
   </script>
 </body>
 </html>
